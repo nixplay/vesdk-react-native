@@ -6,6 +6,9 @@
 /// The React Native module for VideoEditor SDK
 @interface RNVideoEditorSDK : RNVESDKImglyKit <RCTBridgeModule>
 
+@property (nonatomic, retain) PESDKVideoEditViewController * _Nullable mainController;
+@property (nonatomic, strong) UIView * _Nullable banner;
+
 typedef void (^RNVESDKConfigurationBlock)(PESDKConfigurationBuilder * _Nonnull builder);
 typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull videoEditViewController);
 
@@ -15,5 +18,9 @@ typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull 
 
 /// Set this closure to modify a new @c VideoEditViewController before it is presented on screen.
 @property (class, strong, atomic, nullable) RNVESDKWillPresentBlock willPresentVideoEditViewController;
+
+// generic method to present tool bar of editor sub menus
+- (void)presentToolWithName:(NSString *_Nullable)toolName icon:(NSString *_Nullable)icon class:(Class _Nonnull )class;
+- (void)addBanner:(NSString *_Nullable)nixTitle subtitle:(NSString *_Nullable)nixSubtitle;
 
 @end
