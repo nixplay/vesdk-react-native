@@ -1,7 +1,20 @@
 #import "RNImglyKit.h"
+#import "RNVideoEditorSDK.h"
 #import "RNImglyKitSubclass.h"
 
 #define RN_IMGLY_DEBUG 0
+
+NSString *const kNixVSubscriberState = @"isSubscriber";
+NSString *const kNixVToolFilterDefault = @"filter.categories";
+NSString *const kNixVToolFilter = @"nixFilter.list";
+NSString *const kNixVToolAdjust = @"nixAdjust.list";
+NSString *const kNixVToolFocus = @"nixFocus.list";
+NSString *const kNixVToolSticker = @"nixSticker.list";
+NSString *const kNixVToolText = @"nixText.list";
+NSString *const kNixVToolTextDesign = @"nixTextDesign.list";
+NSString *const kNixVToolOverlay = @"nixOverlay.list";
+NSString *const kNixVToolFrame = @"nixFrame.list";
+NSString *const kNixVTopTools = @"parentTools";
 
 @implementation RN_IMGLY_ImglyKit
 
@@ -30,7 +43,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 }
 
 - (void)present:(nonnull IMGLYMediaEditViewControllerBlock)createMediaEditViewController withUTI:(nonnull IMGLYUTIBlock)getUTI
-  configuration:(nullable NSDictionary *)dictionary serialization:(nullable NSDictionary *)state
+  configuration:(nullable NSDictionary *)dictionary serialization:(nullable NSDictionary *)state controller:(RNVideoEditorSDK *)controller
         resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject
 {
 #if RN_IMGLY_DEBUG
@@ -104,12 +117,32 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
       return;
     }
 
+    // Check if subscriber
+    __block BOOL isSubscriber = NO;
+    if ([[dictionary allKeys] containsObject:kNixVSubscriberState]) {
+        isSubscriber = [[dictionary objectForKey:kNixVSubscriberState] boolValue];
+    }
+
+    NSArray *nixToolFilter = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolFilter] : nil;
+    NSArray *nixToolFilterDefault = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolFilterDefault] : nil;
+    NSArray *nixTFCDuotone = [(NSDictionary *)nixToolFilterDefault[0] objectForKey:@"items"];
+    NSArray *nixToolAdjust = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolAdjust] : nil;
+    NSArray *nixToolFocus = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolFocus] : nil;
+    NSArray *nixToolSticker = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolSticker] : nil;
+    NSArray *nixToolText = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolText] : nil;
+    NSArray *nixToolTextDesign = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolTextDesign] : nil;
+    NSArray *nixToolOverlay = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolOverlay] : nil;
+    NSArray *nixToolFrame = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolFrame] : nil;
+
     // Update configuration
     NSMutableDictionary *updatedDictionary = [NSMutableDictionary dictionaryWithDictionary:dictionary];
     NSMutableDictionary *exportDictionary = [NSMutableDictionary dictionaryWithDictionary:[NSDictionary RN_IMGLY_dictionary:updatedDictionary valueForKeyPath:@"export" default:@{}]];
     [exportDictionary setValue:exportFile.absoluteString forKeyPath:@"filename"];
     [updatedDictionary setValue:exportDictionary forKeyPath:@"export"];
 
+    __weak typeof(self)weakSelf = self;
+    __block NSDictionary *rawDictionary = [dictionary copy];
+    __weak typeof(RNVideoEditorSDK)* weakController = controller;
     configuration = [[PESDKConfiguration alloc] initWithBuilder:^(PESDKConfigurationBuilder * _Nonnull builder) {
       builder.assetCatalog = assetCatalog;
       [builder configureFromDictionary:updatedDictionary error:&error];
@@ -117,7 +150,191 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
       if (configureWithBuilder != nil) {
         configureWithBuilder(builder);
       }
+#pragma mark - Setup Functions Config
+        // FRAME CONFIG
+        [builder configureFrameToolController:^(PESDKFrameToolControllerOptionsBuilder * _Nonnull options) {
+            [options setCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKFrame * _Nullable frame) {
+                if (isSubscriber == NO) {
+                    NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFrame"];
+                    [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+
+                    // reset all plus icon
+                    [weakSelf removePlusBanner:cell];
+                    // enable and adding plus icon
+                    if ([weakSelf isExistWithList:nixToolFrame predicate:[NSPredicate predicateWithFormat:@"SELF == %@", frame.identifier]]
+                        || frame == nil) {
+                        [cell setUserInteractionEnabled:YES];
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                        [cell setUserInteractionEnabled:NO];
+                    }
+                }
+            }];
+            [options setWillLeaveToolClosure:^{
+                NSLog(@"configureFrameToolController>Leave");
+                [weakController.banner removeFromSuperview];
+                weakController.banner = nil;
+            }];
+        }];
+
+        // OVERLAY CONFIG
+        [builder configureOverlayToolController:^(PESDKOverlayToolControllerOptionsBuilder * _Nonnull options) {
+            [options setOverlayCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKOverlay * _Nonnull overlay) {
+                if (isSubscriber == NO) {
+                    // reset all plus icon
+                    [weakSelf removePlusBanner:cell];
+                    // enable and adding plus icon
+                    if ([weakSelf isExistWithList:nixToolOverlay predicate:[NSPredicate predicateWithFormat:@"SELF == %@", overlay.identifier]]) {
+                        [cell setUserInteractionEnabled:YES];
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                        [cell setUserInteractionEnabled:NO];
+                    }
+                }
+            }];
+            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixOverlay" subscriber:isSubscriber opt:options];
+        }];
+
+        // TEXT DESIGN CONFIG
+        [builder configureTextDesignOptionsToolController:^(PESDKTextDesignOptionsToolControllerOptionsBuilder * _Nonnull options) {
+            [options setActionButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKTextDesign * _Nonnull design) {
+                if (isSubscriber == NO) {
+                    // reset all plus icon
+                    [weakSelf removePlusBanner:cell];
+                    // enable and adding plus icon
+                    if ([weakSelf isExistWithList:nixToolTextDesign predicate:[NSPredicate predicateWithFormat:@"SELF == %@", design.identifier]]) {
+                        [cell setUserInteractionEnabled:YES];
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                        [cell setUserInteractionEnabled:NO];
+                    }
+                }
+            }];
+            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixTextDesign" subscriber:isSubscriber opt:options];
+        }];
+
+        // TEXT CONFIG
+        [builder configureTextFontToolController:^(PESDKTextFontToolControllerOptionsBuilder * _Nonnull options) {
+            [options setActionButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKFont * _Nonnull font) {
+                if (isSubscriber == NO) {
+                    // reset all plus icon
+                    [weakSelf removePlusBanner:cell];
+                    // enable and adding plus icon
+                    if ([weakSelf isExistWithList:nixToolText predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
+                        [cell setUserInteractionEnabled:YES];
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                        [cell setUserInteractionEnabled:NO];
+                    }
+                }
+            }];
+            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixText" subscriber:isSubscriber opt:options];
+        }];
+
+        // STICKER CONFIG
+        [builder configureStickerToolController:^(PESDKStickerToolControllerOptionsBuilder * _Nonnull options) {
+            [options setStickerButtonConfigurationClosure:^(PESDKIconCollectionViewCell * _Nonnull cell, PESDKSticker * _Nonnull sticker) {
+                if (isSubscriber == NO) {
+                    [weakSelf removePlusBanner:cell];
+                    if ([weakSelf isExistWithList:nixToolSticker predicate:[NSPredicate predicateWithFormat:@"SELF == %@", sticker.identifier]]) {
+                        [cell setUserInteractionEnabled:YES];
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                        [cell setUserInteractionEnabled:NO];
+                    }
+                }
+            }];
+            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixSticker" subscriber:isSubscriber opt:options];
+        }];
+
+        // FOCUS CONFIG
+        [builder configureFocusToolController:^(PESDKFocusToolControllerOptionsBuilder * _Nonnull options) {
+            [options setFocusModeButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, enum PESDKFocusMode mode) {
+                if (isSubscriber == NO) {
+                    [weakSelf removePlusBanner:cell];
+                    if ([weakSelf isExistWithList:nixToolFocus predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
+                        [cell setUserInteractionEnabled:YES];
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                        [cell setUserInteractionEnabled:NO];
+                    }
+                }
+            }];
+            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixFocus" subscriber:isSubscriber opt:options];
+        }];
+
+        // ADJUSTMENT CONFIG
+        [builder configureAdjustToolController:^(PESDKAdjustToolControllerOptionsBuilder * _Nonnull options) {
+            [options setAdjustToolButtonConfigurationBlock:^(PESDKMenuCollectionViewCell * _Nonnull cell, NSNumber * _Nullable index) {
+                if (isSubscriber == NO) {
+                    [weakSelf removePlusBanner:cell];
+                    if ([weakSelf isExistWithList:nixToolAdjust predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
+                        [cell setUserInteractionEnabled:YES];
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                        [cell setUserInteractionEnabled:NO];
+                    }
+                }
+            }];
+            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixAdjust" subscriber:isSubscriber opt:options];
+        }];
+
+        // FILTER CONFIG
+        [builder configureFilterToolController:^(PESDKFilterToolControllerOptionsBuilder * _Nonnull options) {
+          // visible on the screen
+          [options setFilterCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKEffect * _Nonnull effect) {
+              if (isSubscriber == NO) {
+                  // safe remove plus banner
+                  [weakSelf removePlusBanner:cell];
+                  // will change this if plus user
+                  if ([weakSelf isExistWithList:nixTFCDuotone predicate:[NSPredicate predicateWithFormat:@"SELF.identifier == %@", effect.identifier]]) {
+                      [cell setUserInteractionEnabled:YES];
+                  } else if ([cell.captionTextLabel.text isEqualToString:@"None"]){
+                      [cell setUserInteractionEnabled:YES];
+                  } else {
+                      [weakSelf addPlusBanner:cell];
+                      [cell setUserInteractionEnabled:NO];
+                  }
+              }
+          }];
+          [options setFolderCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell) {
+              if (isSubscriber == NO) {
+                  [cell setUserInteractionEnabled:YES];
+                  [weakSelf removePlusBanner:cell];
+                  if (![weakSelf isExistWithList:nixToolFilter predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
+                      [weakSelf addPlusBanner:cell];
+                  }
+              }
+          }];
+          [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull btn) {
+              // track
+          }];
+          [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixFilter" subscriber:isSubscriber opt:options];
+        }];
+
+#pragma mark - Setup Top Level Menu
+        // MAIN MENU
+        [builder configureVideoEditViewController:^(PESDKVideoEditViewControllerOptionsBuilder * _Nonnull options) {
+            NSMutableArray<PESDKPhotoEditMenuItem *> *menuItems = [[PESDKPhotoEditMenuItem defaultItems] mutableCopy];
+            [menuItems removeObjectAtIndex:0]; // remove video/trim
+            if (isSubscriber == NO) {
+                [options setActionButtonConfigurationBlock:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKPhotoEditMenuItem * _Nonnull menuItem) {
+                    // remove subview for transform
+                    [weakSelf removePlusBanner:cell];
+                    // add plus icon
+                    if (![cell.captionTextLabel.text isEqualToString:@"Transform"] && ![cell.captionTextLabel.text isEqualToString:@"Brush"]) {
+                        [weakSelf addPlusBanner:cell];
+                    }
+                }];
+                // remove for brush
+                [menuItems removeLastObject];
+                // custom action button for brush that can go inside
+                [menuItems addObject:[self createMenuitemWithTitle:@"Brush" icon:@"ic_brush_plus" vc:controller isEnable:NO]];
+            }
+            options.menuItems = menuItems;
+        }];
     }];
+
     if (error != nil) {
       RCTLogError(@"Error while updating configuration: %@", error);
       reject(RN_IMGLY.kErrorUnableToLoad, [NSString RN_IMGLY_string:@"Unable to update configuration." withError:error], error);
@@ -142,6 +359,59 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
     UIViewController *currentViewController = RCTPresentedViewController();
     [currentViewController presentViewController:self.mediaEditViewController animated:YES completion:NULL];
   });
+}
+
+- (BOOL)isExistWithList:(NSArray *)list predicate:(NSPredicate*)predicate {
+    return ([list filteredArrayUsingPredicate:predicate].count > 0);
+}
+
+- (void)addPlusBanner:(UICollectionViewCell *)cell {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGRect rect = cell.bounds;
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_plus"]];
+        imageView.frame = CGRectMake(rect.size.width - 24, 4, 20, 10);
+        imageView.tag = 100;
+        [cell addSubview:imageView];
+        [cell setNeedsDisplay];
+        [cell setNeedsLayout];
+    });
+}
+
+- (void)removePlusBanner:(UICollectionViewCell *)cell {
+    for (UIView *view in cell.subviews) {
+      if (view.tag == 100) {
+          [view removeFromSuperview];
+      }
+    }
+}
+
+- (void)addSubscriptionBanner:(NSDictionary *)rawDictionary
+                   controller:(RNVideoEditorSDK *)controller
+                          key:(NSString *)key
+                   subscriber:(BOOL)isSubscriber
+                          opt:(PESDKToolControllerOptionsBuilder *)options
+{
+    if (isSubscriber == NO) {
+        [options setWillLeaveToolClosure:^{
+            [controller.banner removeFromSuperview];
+            controller.banner = nil;
+        }];
+        [options setDidEnterToolClosure:^{
+            NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:key];
+            [controller addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+        }];
+    }
+}
+
+- (PESDKPhotoEditMenuItem *)createMenuitemWithTitle:(NSString *)title icon:(NSString *)icon vc:(RNVideoEditorSDK *)vc isEnable:(BOOL)isEnable {
+    PESDKActionMenuItem *actionItem =
+        [[PESDKActionMenuItem alloc] initWithTitle:title
+                                              icon:[UIImage imageNamed:icon]
+                                 objcActionClosure:^(PESDKPhotoEditModel * _Nonnull editModel) {
+    } objcSelectedClosure:^BOOL(PESDKPhotoEditModel * _Nonnull editModel) {
+      return NO;
+    }];
+    return [[PESDKPhotoEditMenuItem alloc] initWithActionMenuItem:actionItem];
 }
 
 - (void)dismiss:(nullable PESDKMediaEditViewController *)mediaEditViewController animated:(BOOL)animated completion:(nullable IMGLYCompletionBlock)completion
