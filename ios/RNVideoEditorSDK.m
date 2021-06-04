@@ -119,6 +119,8 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 #pragma mark - Nixplay Customization
 
 - (void)didSubscribe:(id)sender {
+    [self.banner removeFromSuperview];
+    self.banner = nil;
     RCTPromiseResolveBlock resolve = self.resolve;
 //    RCTPromiseRejectBlock reject = self.reject;
     [self.mainController dismissViewControllerAnimated:YES completion:^{
