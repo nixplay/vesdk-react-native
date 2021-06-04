@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ly.img.android.pesdk.ui.widgets.EditorRootView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/rootView"
+	style="@style/Imgly.PESDK.Editor.Activity">
+	<ly.img.android.pesdk.backend.views.EditorPreview
+		android:id="@id/editorImageView"
+		style="@style/Imgly.PESDK.Editor.Activity.Preview"/>
+	<ly.img.android.pesdk.ui.widgets.ProgressView
+		style="@style/Imgly.PESDK.Editor.Activity.Progress"/>
+	<ly.img.react_native.vesdk.VideoSubscriptionOverlay
+		android:id="@+id/video_subscription_overlay"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/subscription_gradient_bg"
+		android:visibility="gone">
+
+		<TextView
+			android:id="@+id/tv_add_more_features"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/white"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toTopOf="@id/tv_features"
+			android:layout_marginStart="24dp"
+			android:layout_marginTop="12dp"
+			android:textStyle="bold"
+			android:textSize="16sp"
+			android:text="Try more advanced features"/>
+
+		<TextView
+			android:id="@+id/tv_features"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@id/tv_add_more_features"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:layout_marginStart="24dp"
+			android:layout_marginBottom="12dp"
+			android:textColor="@color/white"
+			android:textSize="16sp"
+			android:text="More Filters: B&amp;W, vintage, smooth, etc"/>
+
+		<ImageView
+			android:id="@+id/ib_next"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:layout_marginEnd="12dp"/>
+
+	</ly.img.react_native.vesdk.VideoSubscriptionOverlay>
+	<ly.img.android.pesdk.ui.widgets.ToolContainer
+		android:id="@+id/toolPanelContainer"
+		style="@style/Imgly.PESDK.Editor.Activity.ToolPanelContainer"/>
+	<ly.img.android.pesdk.ui.widgets.ImgLyTitleBar
+		android:id="@+id/imglyActionBar"
+		style="@style/Imgly.PESDK.Editor.Activity.ActionBar"/>
+</ly.img.android.pesdk.ui.widgets.EditorRootView>
+

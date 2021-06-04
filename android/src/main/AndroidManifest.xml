@@ -2,6 +2,7 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="ly.img.react_native.vesdk">
     <application>
+        <activity android:name=".view.CustomVideoEditorActivity"/>
         <provider
             tools:replace="android:enabled"
             android:authorities="${applicationId}.IMGLYAutoInit"
@@ -10,4 +11,3 @@
             android:name="ly.img.android.IMGLYAutoInit" />
     </application>
 </manifest>
-  

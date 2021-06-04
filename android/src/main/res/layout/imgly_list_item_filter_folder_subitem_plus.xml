@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ly.img.android.pesdk.ui.widgets.AutoRotateLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/contentHolder"
+	android:layout_marginTop="14dp"
+	android:layout_height="66dp"
+	android:layout_width="72dp">
+	<!--ly.img.android.pesdk.ui.widgets.ImageSourceView
+		android:id="@+id/image"
+		android:scaleType="centerCrop"
+		style="@style/Imgly.PESDK.Editor.Panel.Filter.FilterItem.Icon"/-->
+	<ly.img.android.pesdk.ui.panels.FilterPreviewView
+		android:id="@+id/filterPreview"
+		style="@style/Imgly.PESDK.Editor.Panel.Filter.FilterItem.Icon"/>
+	<TextView
+		android:id="@+id/label"
+		style="@style/Imgly.PESDK.Editor.Panel.Filter.FilterItem.Label"/>
+	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/nixPlusText"
+		android:layout_width="24dp"
+		android:layout_height="12dp"
+		android:layout_margin="4dp"
+		android:scaleType="fitXY"
+		android:layout_alignParentEnd="true"
+		android:src="@drawable/ic_plus"/>
+	<View
+		style="@style/Imgly.PESDK.Editor.Panel.Filter.FilterItem.Border"/>
+</ly.img.android.pesdk.ui.widgets.AutoRotateLayout>
