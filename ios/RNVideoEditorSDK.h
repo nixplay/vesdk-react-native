@@ -22,5 +22,6 @@ typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull 
 // generic method to present tool bar of editor sub menus
 - (void)presentToolWithName:(NSString *_Nullable)toolName icon:(NSString *_Nullable)icon class:(Class _Nonnull )class;
 - (void)addBanner:(NSString *_Nullable)nixTitle subtitle:(NSString *_Nullable)nixSubtitle;
+- (void)addTargetDiscard:(UIButton * _Nonnull)button;
 
 @end

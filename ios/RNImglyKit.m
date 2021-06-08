@@ -315,6 +315,11 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 #pragma mark - Setup Top Level Menu
         // MAIN MENU
         [builder configureVideoEditViewController:^(PESDKVideoEditViewControllerOptionsBuilder * _Nonnull options) {
+            // fix video playback dismissal
+            [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                [controller addTargetDiscard:button];
+            }];
+
             NSMutableArray<PESDKPhotoEditMenuItem *> *menuItems = [[PESDKPhotoEditMenuItem defaultItems] mutableCopy];
             [menuItems removeObjectAtIndex:0]; // remove video/trim
             if (isSubscriber == NO) {
