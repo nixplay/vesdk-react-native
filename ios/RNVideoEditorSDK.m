@@ -118,6 +118,14 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 
 #pragma mark - Nixplay Customization
 
+- (void)addTargetDiscard:(UIButton *)button {
+    [button addTarget:self action:@selector(didSelectDiscard:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)didSelectDiscard:(id)sender {
+    self.mainController = nil;
+}
+
 - (void)didSubscribe:(id)sender {
     [self.banner removeFromSuperview];
     self.banner = nil;
@@ -128,77 +136,55 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
     }];
 }
 
-- (void)presentTrimMenu {
-  PESDKToolMenuItem *trimItems = [PESDKToolMenuItem createTrimToolItem];
-  [self.mainController presentToolFor:trimItems];
-//  PESDKTrimToolController *trimCtl = [[PESDKTrimToolController alloc] init];
-//  [trimCtl configureToolbarItem];
-//  [self.mainController willPresent:trimCtl];
-}
-
-- (void)presentFilterMenu {
-  PESDKToolMenuItem *filterItems = [PESDKToolMenuItem createFilterToolItem];
-//  if (self.banner == nil) {
-//    CGRect frame = [UIScreen mainScreen].bounds;
-//
-//    self.banner = [[UIView alloc] init];
-//    self.banner.backgroundColor = [UIColor  blueColor];
-//    self.banner.frame = CGRectMake(0, 0, frame.size.width, 60);
-//
-//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    [btn addTarget:self action:@selector(didSubscribe:) forControlEvents:UIControlEventTouchUpInside];
-//    [btn setTitle:@"Subscribe" forState:UIControlStateNormal];
-//    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [btn sizeToFit];
-//    btn.center = CGPointMake(frame.size.width/2, 30);
-//    [self.banner addSubview:btn];
-//  }
-
-  [self.mainController.view addSubview:self.banner];
-  [self.mainController presentToolFor:filterItems];
-}
-
 - (void)addBanner:(NSString *)nixTitle subtitle:(NSString *)nixSubtitle {
-    if (self.banner == nil) {
-      CGRect frame = [UIScreen mainScreen].bounds;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        int additionalHeight = 0;
+        if (@available( iOS 11.0, * )) {
+            if ([[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom > 0) {
+              additionalHeight = 10;
+            }
+        }
+        if (self.banner == nil) {
+          CGRect frame = [UIScreen mainScreen].bounds;
 
-      self.banner = [[UIView alloc] init];
-      self.banner.backgroundColor = UIColorFromRGB(0x4A90E2);
-      self.banner.frame = CGRectMake(0, 0, frame.size.width, 80);
+          self.banner = [[UIView alloc] init];
+          self.banner.backgroundColor = UIColorFromRGB(0x4A90E2);
+          self.banner.frame = CGRectMake(0, 0, frame.size.width, (80 + additionalHeight));
 
-      CAGradientLayer *gradient = [CAGradientLayer layer];
-      gradient.frame = self.banner.bounds;
-      gradient.colors = @[(id)UIColorFromRGB(0x80C3F3).CGColor, (id)UIColorFromRGB(0x4A90E2).CGColor, (id)UIColorFromRGB(0x4A90E2).CGColor];
-      gradient.startPoint = CGPointMake(0.10, 0.10);
-      gradient.endPoint = CGPointMake(1.0, 0.8);
+          CAGradientLayer *gradient = [CAGradientLayer layer];
+          gradient.frame = self.banner.bounds;
+          gradient.colors = @[(id)UIColorFromRGB(0x80C3F3).CGColor, (id)UIColorFromRGB(0x4A90E2).CGColor, (id)UIColorFromRGB(0x4A90E2).CGColor];
+          gradient.startPoint = CGPointMake(0.10, 0.10);
+          gradient.endPoint = CGPointMake(1.0, 0.8);
 
-      [self.banner.layer insertSublayer:gradient atIndex:0];
+          [self.banner.layer insertSublayer:gradient atIndex:0];
 
-      // label top
-      UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(20, 25, frame.size.width - 16, 25)];
-      [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
-      [title setTextColor:[UIColor whiteColor]];
-      [title setText:nixTitle];
-      [self.banner addSubview:title];
+          // label top
+          UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(20, (25 + additionalHeight), frame.size.width - 16, 25)];
+          [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
+          [title setTextColor:[UIColor whiteColor]];
+          [title setText:nixTitle];
+          [self.banner addSubview:title];
 
-      // label bottom
-      UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 42, frame.size.width - 16, 25)];
-      [subtitle setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
-      [subtitle setText:nixSubtitle];
-      [subtitle setTextColor:[UIColor whiteColor]];
-      [self.banner addSubview:subtitle];
+          // label bottom
+          UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(20, (42 + additionalHeight), frame.size.width - 16, 25)];
+          [subtitle setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
+          [subtitle setText:nixSubtitle];
+          [subtitle setTextColor:[UIColor whiteColor]];
+          [self.banner addSubview:subtitle];
 
-      // chevron-forward icon
-      UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic-arrow-right"]];
-      imgView.frame = CGRectMake(frame.size.width - 40, 35, 20, 20);
-      [self.banner addSubview:imgView];
+          // chevron-forward icon
+          UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic-arrow-right"]];
+          imgView.frame = CGRectMake(frame.size.width - 40, (35 + additionalHeight), 20, 20);
+          [self.banner addSubview:imgView];
 
-      UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-      [btn addTarget:self action:@selector(didSubscribe:) forControlEvents:UIControlEventTouchUpInside];
-      [btn setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-      [self.banner addSubview:btn];
-      [self.mainController.view addSubview:self.banner];
-    }
+          UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+          [btn addTarget:self action:@selector(didSubscribe:) forControlEvents:UIControlEventTouchUpInside];
+          [btn setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+          [self.banner addSubview:btn];
+          [self.mainController.view addSubview:self.banner];
+        }
+    });
 }
 
 - (void)presentToolWithName:(NSString *)toolName icon:(NSString *)icon class:(Class)class {
