@@ -86,7 +86,6 @@ import ly.img.react_native.vesdk.view.CustomTextDesignItem;
 import ly.img.react_native.vesdk.view.CustomToolItem;
 import ly.img.react_native.vesdk.view.CustomToolItemDisabled;
 
-import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implements ActivityEventListener {
@@ -98,8 +97,8 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         getReactApplicationContext().addActivityEventListener(this);
     }
 
-    public static int VESDK_RESULT = 1;
-    public static int RESULT_SUBSCRIBE = 12;
+    public static int VESDK_RESULT = 32;
+    public static int RESULT_SUBSCRIBE = 35;
     public static boolean _isSubscriber;
     private ReadableMap configMap;
 
@@ -338,6 +337,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
             Log.i("PESDK", "Source image is located here " + data.getSourceUri());
             Log.i("PESDK", "Result image is located here " + data.getResultUri());
 
+
             JSONObject mDetails = new JSONObject();
 
             String mimeType = FileUtils.getMimeType(getCurrentActivity(), data.getResultUri());
@@ -395,13 +395,10 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
             }
 
 
-        } else if (resultCode == RESULT_CANCELED && requestCode == VESDK_RESULT) {
-//            EditorSDKResult data = new EditorSDKResult(intent);
-//            Uri sourceURI = data.getSourceUri();
-//            Log.d(TAG, "onActivityResult: " + sourceURI);
-        } else if (resultCode == RESULT_SUBSCRIBE && requestCode == VESDK_RESULT) {
-            Log.d(TAG, "onActivityResult: " + "SUBSCRIBE");
-            _promise.resolve("subscribe");
+        } else if (resultCode == RESULT_SUBSCRIBE) {
+            WritableMap map = Arguments.createMap();
+            map.putString("action", " ");
+            _promise.resolve(map);
         }
 
     }
