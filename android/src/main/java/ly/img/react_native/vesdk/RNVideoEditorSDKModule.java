@@ -107,7 +107,6 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
     private static final String FULLFILEPATH = "fullFilePath";
     private static final String MIME_TYPE = "mime";
     private static final String TYPE = "type";
-    private static final String CAPTION = "caption";
     private static final String ID = "id";
     private static final String FILE_SIZE = "fileSize";
 
@@ -355,7 +354,6 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
                     mDetails.put(FILENAME, fileName);
                     mDetails.put(MIME_TYPE, mimeType);
                     mDetails.put(TYPE, mimeType);
-                    mDetails.put(CAPTION, "");
                     mDetails.put(URI, data.getResultUri());
                     mDetails.put(FULLFILEPATH, data.getResultUri());
                     mDetails.put(FILE_SIZE, new File(data.getResultUri().getPath()).length());
@@ -377,6 +375,8 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
                     }
 
                     mDetails.put("duration", durationMs / 1000.0f);
+                    mDetails.put("endTime", durationMs / 1000.0f);
+                    mDetails.put("startTime", 0);
                     mDetails.put("width", videoWidth);
                     mDetails.put("height", videoHeight);
                 }
