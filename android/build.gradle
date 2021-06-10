@@ -11,12 +11,35 @@ imglyConfig {
     vesdk {
         enabled true
     }
-
-    useInheritanceDependencies true
-
     modules {
         include 'ui:core'
         include 'backend:config-loader'
+        include 'ui:text'
+        include 'ui:focus'
+        include 'ui:frame'
+        include 'ui:brush'
+        include 'ui:filter'
+        include 'ui:sticker'
+        include 'ui:overlay'
+        include 'ui:transform'
+        include 'ui:adjustment'
+        include 'ui:text-design'
+        include 'ui:video-trim'
+
+        // This module is big, remove the serializer if you don't need that feature.
+        include 'backend:serializer'
+
+        // Remove the asset packs you don't need, these are also big in size.
+        include 'assets:font-basic'
+        include 'assets:frame-basic'
+        include 'assets:filter-basic'
+        include 'assets:overlay-basic'
+        include 'assets:sticker-shapes'
+        include 'assets:sticker-emoticons'
+        include 'assets:sticker-animated'
+
+        include 'backend:sticker-animated'
+        include 'backend:sticker-smart'
     }
 }
 
@@ -63,5 +86,7 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation project(path: ':react-native-photoeditorsdk')
     compileOnly "ly.img.android.sdk:serializer:$imglyConfig.version"
 }
