@@ -80,6 +80,7 @@ import ly.img.react_native.vesdk.view.CustomFontItem;
 import ly.img.react_native.vesdk.view.CustomFrameItem;
 import ly.img.react_native.vesdk.view.CustomImageStickerItem;
 import ly.img.react_native.vesdk.view.CustomOverlayItem;
+import ly.img.react_native.vesdk.view.CustomOverlayPack;
 import ly.img.react_native.vesdk.view.CustomStickerPackEmoticons;
 import ly.img.react_native.vesdk.view.CustomStickerPackShapes;
 import ly.img.react_native.vesdk.view.CustomTextDesignItem;
@@ -100,7 +101,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
     public static int VESDK_RESULT = 32;
     public static int RESULT_SUBSCRIBE = 35;
     public static boolean _isSubscriber;
-    private ReadableMap configMap;
+    public static ReadableMap configMap;
 
     private static final String URI = "uri";
     private static final String FILENAME = "fileName";
@@ -123,7 +124,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
                     FramePackBasic.getFramePack()
             );
             settingsList.getSettingsModel(UiConfigOverlay.class).setOverlayList(
-                    OverlayPackBasic.getOverlayPack()
+                    CustomOverlayPack.getOverlayPack()
             );
             settingsList.getSettingsModel(UiConfigSticker.class).setStickerLists(
                     StickerPackEmoticons.getStickerCategory(),
@@ -218,7 +219,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
             uiConfigTextDesign.setTextDesignList(customTextDesignList);
 
             UiConfigOverlay uiConfigOverlay = settingsList.getSettingsModel(UiConfigOverlay.class);
-            DataSourceIdItemList<OverlayItem> overlayList = OverlayPackBasic.getOverlayPack();
+            DataSourceIdItemList<OverlayItem> overlayList = CustomOverlayPack.getOverlayPack();
             DataSourceIdItemList<OverlayItem> customOverlayList = new DataSourceIdItemList<>();
             for (int i = 0; i < overlayList.size(); i++) {
                 for (int j = 0; j < configMap.getMap("nixOverlay").getArray("list").size(); j++) {
