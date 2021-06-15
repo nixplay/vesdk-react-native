@@ -41,11 +41,12 @@
 			style="@style/Imgly.PESDK.Editor.Panel.Tool.FolderItem.Label"/>
 		<androidx.appcompat.widget.AppCompatImageView
 			android:id="@+id/nixPlusText"
-			android:layout_width="24dp"
-			android:layout_height="12dp"
+			android:layout_width="30dp"
+			android:layout_height="14dp"
 			android:layout_margin="4dp"
 			android:scaleType="fitXY"
 			android:layout_alignParentEnd="true"
+			android:elevation="20dp"
 			android:src="@drawable/ic_plus"/>
 	</ly.img.android.pesdk.ui.widgets.AutoRotateLayout>
 </LinearLayout>
