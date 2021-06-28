@@ -37,10 +37,13 @@ import ly.img.android.pesdk.assets.sticker.emoticons.StickerPackEmoticons;
 import ly.img.android.pesdk.assets.sticker.shapes.StickerPackShapes;
 import ly.img.android.pesdk.backend.decoder.ImageSource;
 import ly.img.android.pesdk.backend.model.EditorSDKResult;
+import ly.img.android.pesdk.backend.model.config.CropAspectAsset;
+import ly.img.android.pesdk.backend.model.state.AssetConfig;
 import ly.img.android.pesdk.backend.model.state.LoadSettings;
 import ly.img.android.pesdk.backend.model.state.manager.SettingsList;
 import ly.img.android.pesdk.ui.activity.VideoEditorBuilder;
 import ly.img.android.pesdk.ui.model.state.UiConfigAdjustment;
+import ly.img.android.pesdk.ui.model.state.UiConfigAspect;
 import ly.img.android.pesdk.ui.model.state.UiConfigFilter;
 import ly.img.android.pesdk.ui.model.state.UiConfigFocus;
 import ly.img.android.pesdk.ui.model.state.UiConfigFrame;
@@ -61,6 +64,8 @@ import ly.img.android.pesdk.ui.panels.TextToolPanel;
 import ly.img.android.pesdk.ui.panels.TransformToolPanel;
 import ly.img.android.pesdk.ui.panels.item.AbstractIdItem;
 import ly.img.android.pesdk.ui.panels.item.AdjustOption;
+import ly.img.android.pesdk.ui.panels.item.CropAspectItem;
+import ly.img.android.pesdk.ui.panels.item.CropResetItem;
 import ly.img.android.pesdk.ui.panels.item.FilterItem;
 import ly.img.android.pesdk.ui.panels.item.FocusOption;
 import ly.img.android.pesdk.ui.panels.item.FolderItem;
@@ -69,6 +74,7 @@ import ly.img.android.pesdk.ui.panels.item.FrameItem;
 import ly.img.android.pesdk.ui.panels.item.ImageStickerItem;
 import ly.img.android.pesdk.ui.panels.item.OverlayItem;
 import ly.img.android.pesdk.ui.panels.item.TextDesignItem;
+import ly.img.android.pesdk.ui.panels.item.ToggleAspectItem;
 import ly.img.android.pesdk.ui.panels.item.ToolItem;
 import ly.img.android.pesdk.ui.utils.DataSourceIdItemList;
 import ly.img.android.pesdk.utils.DataSourceArrayList;
@@ -296,6 +302,28 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
                     new CustomToolItemDisabled(BrushToolPanel.TOOL_ID, R.string.pesdk_brush_title_name, ImageSource.create(R.drawable.imgly_icon_tool_brush))
             );
         }
+
+        AssetConfig assetConfig = settingsList.getConfig();
+
+        assetConfig.getAssetMap(CropAspectAsset.class).add(
+                new CropAspectAsset("aspect_16_10", 16, 10, false),
+                new CropAspectAsset("aspect_10_16", 10, 16, false)
+        );
+
+        UiConfigAspect uiConfigAspect = settingsList.getSettingsModel(UiConfigAspect.class);
+
+        DataSourceIdItemList<CropAspectItem> customCropOptionsList = new DataSourceIdItemList<>();
+        customCropOptionsList.add(new CropResetItem());
+        customCropOptionsList.add(new CropAspectItem("imgly_crop_free", R.string.pesdk_transform_button_freeCrop, ImageSource.create(R.drawable.imgly_icon_custom_crop)));
+        customCropOptionsList.add(new CropAspectItem("imgly_crop_1_1", R.string.pesdk_transform_button_squareCrop));
+        customCropOptionsList.add(new CropAspectItem("aspect_16_10"));
+        customCropOptionsList.add(new CropAspectItem("aspect_10_16"));
+        customCropOptionsList.add(new ToggleAspectItem(new CropAspectItem("imgly_crop_16_9"), new CropAspectItem("imgly_crop_9_16")));
+        customCropOptionsList.add(new ToggleAspectItem(new CropAspectItem("imgly_crop_4_3"), new CropAspectItem("imgly_crop_3_4")));
+        customCropOptionsList.add(new ToggleAspectItem(new CropAspectItem("imgly_crop_3_2"), new CropAspectItem("imgly_crop_2_3")));
+
+        uiConfigAspect.setAspectList(customCropOptionsList);
+
         return settingsList;
     }
 
