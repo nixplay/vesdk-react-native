@@ -318,9 +318,12 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         customCropOptionsList.add(new CropAspectItem("imgly_crop_1_1", R.string.pesdk_transform_button_squareCrop));
         customCropOptionsList.add(new CropAspectItem("aspect_16_10"));
         customCropOptionsList.add(new CropAspectItem("aspect_10_16"));
-        customCropOptionsList.add(new ToggleAspectItem(new CropAspectItem("imgly_crop_16_9"), new CropAspectItem("imgly_crop_9_16")));
-        customCropOptionsList.add(new ToggleAspectItem(new CropAspectItem("imgly_crop_4_3"), new CropAspectItem("imgly_crop_3_4")));
-        customCropOptionsList.add(new ToggleAspectItem(new CropAspectItem("imgly_crop_3_2"), new CropAspectItem("imgly_crop_2_3")));
+        customCropOptionsList.add(new CropAspectItem("imgly_crop_16_9"));
+        customCropOptionsList.add(new CropAspectItem("imgly_crop_9_16"));
+        customCropOptionsList.add(new CropAspectItem("imgly_crop_4_3"));
+        customCropOptionsList.add(new CropAspectItem("imgly_crop_3_4"));
+        customCropOptionsList.add(new CropAspectItem("imgly_crop_3_2"));
+        customCropOptionsList.add(new CropAspectItem("imgly_crop_2_3"));
 
         uiConfigAspect.setAspectList(customCropOptionsList);
 
