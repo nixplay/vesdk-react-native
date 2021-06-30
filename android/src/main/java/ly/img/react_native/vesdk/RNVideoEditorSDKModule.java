@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import ly.img.android.IMGLY;
@@ -304,28 +305,30 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         }
 
         AssetConfig assetConfig = settingsList.getConfig();
-
-        assetConfig.getAssetMap(CropAspectAsset.class).add(
-                new CropAspectAsset("aspect_16_10", 16, 10, false),
-                new CropAspectAsset("aspect_10_16", 10, 16, false)
-        );
-
+        assetConfig.getAssetMap(CropAspectAsset.class).clear();
         UiConfigAspect uiConfigAspect = settingsList.getSettingsModel(UiConfigAspect.class);
+        ArrayList<CropAspectItem> cropAspectItems = new ArrayList<>();
 
-        DataSourceIdItemList<CropAspectItem> customCropOptionsList = new DataSourceIdItemList<>();
-        customCropOptionsList.add(new CropResetItem());
-        customCropOptionsList.add(new CropAspectItem("imgly_crop_free", R.string.pesdk_transform_button_freeCrop, ImageSource.create(R.drawable.imgly_icon_custom_crop)));
-        customCropOptionsList.add(new CropAspectItem("imgly_crop_1_1", R.string.pesdk_transform_button_squareCrop));
-        customCropOptionsList.add(new CropAspectItem("aspect_16_10"));
-        customCropOptionsList.add(new CropAspectItem("aspect_10_16"));
-        customCropOptionsList.add(new CropAspectItem("imgly_crop_16_9"));
-        customCropOptionsList.add(new CropAspectItem("imgly_crop_9_16"));
-        customCropOptionsList.add(new CropAspectItem("imgly_crop_4_3"));
-        customCropOptionsList.add(new CropAspectItem("imgly_crop_3_4"));
-        customCropOptionsList.add(new CropAspectItem("imgly_crop_3_2"));
-        customCropOptionsList.add(new CropAspectItem("imgly_crop_2_3"));
+        if (configMap.getMap("transform").getBoolean("showResetButton")) {
+            cropAspectItems.add(new CropResetItem());
+        }
+        if (configMap.getMap("transform").getBoolean("allowFreeCrop")) {
+            cropAspectItems.add(new CropAspectItem("my_crop_free", ly.img.react_native.pesdk.R.string.pesdk_transform_button_freeCrop, ImageSource.create(ly.img.react_native.pesdk.R.drawable.imgly_icon_custom_crop)));
+        }
+        for (int i = 0; i < configMap.getMap("transform").getArray("items").size(); i++) {
+            String name = configMap.getMap("transform").getArray("items").getMap(i).getString("name");
+            int width =  configMap.getMap("transform").getArray("items").getMap(i).getInt("width");
+            int height = configMap.getMap("transform").getArray("items").getMap(i).getInt("height");
+            String cropName = "aspect" + "_" + width + "_" + height;
+            assetConfig.getAssetMap(CropAspectAsset.class).add(new CropAspectAsset(cropName, width, height, false));
+            if (name != null && name.equals("Square")) {
+                cropAspectItems.add(new CropAspectItem(cropName, ly.img.react_native.pesdk.R.string.pesdk_transform_button_squareCrop));
+            } else {
+                cropAspectItems.add(new CropAspectItem(cropName));
+            }
+        }
 
-        uiConfigAspect.setAspectList(customCropOptionsList);
+        uiConfigAspect.setAspectList(cropAspectItems);
 
         return settingsList;
     }
