@@ -313,7 +313,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
             cropAspectItems.add(new CropResetItem());
         }
         if (configMap.getMap("transform").getBoolean("allowFreeCrop")) {
-            cropAspectItems.add(new CropAspectItem("my_crop_free", ly.img.react_native.pesdk.R.string.pesdk_transform_button_freeCrop, ImageSource.create(ly.img.react_native.pesdk.R.drawable.imgly_icon_custom_crop)));
+            cropAspectItems.add(new CropAspectItem("my_crop_free", R.string.pesdk_transform_button_freeCrop, ImageSource.create(R.drawable.imgly_icon_custom_crop)));
         }
         for (int i = 0; i < configMap.getMap("transform").getArray("items").size(); i++) {
             String name = configMap.getMap("transform").getArray("items").getMap(i).getString("name");
@@ -322,7 +322,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
             String cropName = "aspect" + "_" + width + "_" + height;
             assetConfig.getAssetMap(CropAspectAsset.class).add(new CropAspectAsset(cropName, width, height, false));
             if (name != null && name.equals("Square")) {
-                cropAspectItems.add(new CropAspectItem(cropName, ly.img.react_native.pesdk.R.string.pesdk_transform_button_squareCrop));
+                cropAspectItems.add(new CropAspectItem(cropName, R.string.pesdk_transform_button_squareCrop));
             } else {
                 cropAspectItems.add(new CropAspectItem(cropName));
             }
