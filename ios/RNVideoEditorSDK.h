@@ -1,4 +1,5 @@
 #import <React/RCTBridgeModule.h>
+#import <React/RCTViewManager.h>
 #import "RNImglyKit.h"
 
 @import VideoEditorSDK;
@@ -8,6 +9,10 @@
 
 @property (nonatomic, retain) PESDKVideoEditViewController * _Nullable mainController;
 @property (nonatomic, strong) UIView * _Nullable banner;
+@property (nonatomic, strong) NSUserDefaults * _Nonnull sharedDefaults;
+@property (nonatomic, strong) NSMutableDictionary * _Nullable userActivity;
+@property int needToUpgrade;
+@property int enableToValidate;
 
 typedef void (^RNVESDKConfigurationBlock)(PESDKConfigurationBuilder * _Nonnull builder);
 typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull videoEditViewController);
@@ -23,5 +28,9 @@ typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull 
 - (void)presentToolWithName:(NSString *_Nullable)toolName icon:(NSString *_Nullable)icon class:(Class _Nonnull )class;
 - (void)addBanner:(NSString *_Nullable)nixTitle subtitle:(NSString *_Nullable)nixSubtitle;
 - (void)addTargetDiscard:(UIButton * _Nonnull)button;
+- (void)addButtonTrigger:(UIButton* _Nonnull)button usage:(NSString * _Nonnull)usage;
+- (void)showPromptUpgrade;
+- (void)resetEffectsOnExit;
+- (void)addButtonApply:(UIButton* _Nonnull)button;
 
 @end

@@ -35,36 +35,61 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
 - (void)present:(nonnull PESDKVideo *)video withConfiguration:(nullable NSDictionary *)dictionary andSerialization:(nullable NSDictionary *)state
         resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
-  [self present:^PESDKMediaEditViewController * _Nullable(PESDKConfiguration * _Nonnull configuration, NSData * _Nullable serializationData) {
-
-    PESDKPhotoEditModel *photoEditModel = [[PESDKPhotoEditModel alloc] init];
-
-    if (serializationData != nil) {
-      PESDKDeserializationResult *deserializationResult = [PESDKDeserializer deserializeWithData:serializationData imageDimensions:video.size assetCatalog:configuration.assetCatalog];
-      photoEditModel = deserializationResult.model ?: photoEditModel;
+    // Check if subscriber
+    __block BOOL isSubscriber = NO;
+    if ([[dictionary allKeys] containsObject:@"isSubscriber"]) {
+        isSubscriber = [[dictionary objectForKey:@"isSubscriber"] boolValue];
     }
 
-    [VESDK setBundleImageBlock:^UIImage * _Nullable(NSString * _Nonnull imageName) {
-        if ([imageName isEqualToString:@"imgly_icon_save"]) {
-            return [UIImage imageNamed:@"ic_approve"];
+    // Check if came on subscription
+    __block BOOL isCameOnSubscription = NO;
+    if ([[dictionary allKeys] containsObject:@"isCameOnSubscription"]) {
+        isSubscriber = [[dictionary objectForKey:@"isCameOnSubscription"] boolValue];
+    }
+
+    [self present:^PESDKMediaEditViewController * _Nullable(PESDKConfiguration * _Nonnull configuration, NSData * _Nullable serializationData) {
+
+        PESDKPhotoEditModel *photoEditModel = [[PESDKPhotoEditModel alloc] init];
+
+        if (isSubscriber && isCameOnSubscription) {
+            // Only apply previous changes if user successfuly
+            NSDictionary *stateStore = [[NSKeyedUnarchiver unarchiveObjectWithData:
+                                       [self.sharedDefaults objectForKey:@"lastChanges"]] copy];
+
+            if ([[stateStore allKeys] count] && ![[stateStore objectForKey:@"data"] isEqual:[NSNull null]]) {
+                photoEditModel = [[PESDKPhotoEditModel alloc] initWithSerializedData:[NSData dataWithData:[stateStore objectForKey:@"data"]] referenceSize:CGSizeMake(1280, 720)];
+            }
+        } else if(isCameOnSubscription) {
+            // Only apply previous changes if user successfuly
+            NSDictionary *stateStore = [[NSKeyedUnarchiver unarchiveObjectWithData:
+                                       [self.sharedDefaults objectForKey:@"nonPlusActivity"]] copy];
+
+            if ([[stateStore allKeys] count] && ![[stateStore objectForKey:@"data"] isEqual:[NSNull null]]) {
+                photoEditModel = [[PESDKPhotoEditModel alloc] initWithSerializedData:[NSData dataWithData:[stateStore objectForKey:@"data"]] referenceSize:CGSizeMake(1280, 720)];
+            }
         }
-        return nil;
-    }];
 
-    self.mainController = [PESDKVideoEditViewController videoEditViewControllerWithVideoAsset:video configuration:configuration photoEditModel:photoEditModel];
-    self.mainController.modalPresentationStyle = UIModalPresentationFullScreen;
-    self.mainController.delegate = self;
-    RNVESDKWillPresentBlock willPresentVideoEditViewController = RNVideoEditorSDK.willPresentVideoEditViewController;
-    if (willPresentVideoEditViewController != nil) {
-      willPresentVideoEditViewController(self.mainController);
-    }
-    return self.mainController;
+        [VESDK setBundleImageBlock:^UIImage * _Nullable(NSString * _Nonnull imageName) {
+            if ([imageName isEqualToString:@"imgly_icon_save"]) {
+                return [UIImage imageNamed:@"ic_approve"];
+            }
+            return nil;
+        }];
 
-  } withUTI:^CFStringRef _Nonnull(PESDKConfiguration * _Nonnull configuration) {
+        self.mainController = [PESDKVideoEditViewController videoEditViewControllerWithVideoAsset:video configuration:configuration photoEditModel:photoEditModel];
+        self.mainController.modalPresentationStyle = UIModalPresentationFullScreen;
+        self.mainController.delegate = self;
+        RNVESDKWillPresentBlock willPresentVideoEditViewController = RNVideoEditorSDK.willPresentVideoEditViewController;
+        if (willPresentVideoEditViewController != nil) {
+          willPresentVideoEditViewController(self.mainController);
+        }
+        return self.mainController;
 
-    return configuration.videoEditViewControllerOptions.videoContainerFormatUTI;
+        } withUTI:^CFStringRef _Nonnull(PESDKConfiguration * _Nonnull configuration) {
 
-  } configuration:dictionary serialization:state controller:self resolve:resolve reject:reject];
+        return configuration.videoEditViewControllerOptions.videoContainerFormatUTI;
+
+    } configuration:dictionary serialization:state controller:self resolve:resolve reject:reject];
 }
 
 RCT_EXPORT_METHOD(unlockWithLicenseURL:(nonnull NSURL *)url)
@@ -105,6 +130,9 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 {
+  // initialize user defaults
+  self.sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:[self appGroup]];
+
   // TODO: Handle React Native URLs from camera roll.
   if (request.URL.isFileURL) {
     if (![[NSFileManager defaultManager] fileExistsAtPath:request.URL.path]) {
@@ -118,6 +146,15 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 
 #pragma mark - Nixplay Customization
 
+-(NSString*) appGroup {
+    return [NSString stringWithFormat:@"group.%@", [self appID]];
+}
+-(NSString*) appID {
+    NSString *appID = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"] stringByReplacingOccurrencesOfString:@".EditorSDKVideoExtension" withString:@""];
+    NSLog(@"appID %@", appID);
+    return appID != nil ? appID : @"group.com.creedon.Nixplay";
+}
+
 - (void)addTargetDiscard:(UIButton *)button {
     [button addTarget:self action:@selector(didSelectDiscard:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -126,13 +163,96 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
     self.mainController = nil;
 }
 
+- (void)undoTrigger:(id)button {
+    self.needToUpgrade -= 1;
+}
+
+- (void)redoTrigger:(id)button {
+    self.needToUpgrade += 1;
+}
+
+- (void)deleteTrigger:(id)button {
+    // sticker: ask confirm, check if need to upgrade is 1
+    if (self.needToUpgrade == 1) {
+        [self resetEffectsOnExit];
+        self.enableToValidate = 0;
+    }
+}
+
+- (void)applyTrigger:(id)button {
+    if (self.needToUpgrade) {
+        [self showPromptUpgrade];
+    }
+}
+
+- (void)addButtonApply:(UIButton* _Nonnull)button {
+    [button addTarget:self action:@selector(applyTrigger:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)showPromptUpgrade {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unblock this feature?"
+                                                                     message:@"Upgrade to Nixplay Plus now to apply these changes and enjoy more advanced features."
+                                                              preferredStyle:UIAlertControllerStyleAlert];
+
+      UIAlertAction * action = [UIAlertAction actionWithTitle:@"Upgrade"
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+          // save last changes to user defaults for advance usage
+          [self saveSerialDataWithKey:@"lastChanges"];
+          [self.mainController play];
+          RCTPromiseResolveBlock resolve = self.resolve;
+          [self.mainController dismissViewControllerAnimated:YES completion:^{
+              resolve(@{ @"action": @"open-subscription", @"path": @2 });
+          }];
+                                                            }];
+      UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Discard"
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+          [self resetEffectsOnExit];
+          [self.mainController play];
+          [alert dismissViewControllerAnimated:YES completion:nil];
+                                                            }];
+      [alert addAction:cancelAction];
+      [alert addAction:action];
+
+      [self.mainController presentViewController:alert animated:YES completion:nil];
+    });
+}
+
+- (void)resetEffectsOnExit {
+    [self.mainController.undoController undo];
+    [self.mainController.undoController undoStep];
+    [self.mainController.undoController undoStepInCurrentGroup];
+    [self.mainController.undoController removeAllActionsInCurrentGroup];
+}
+
+- (void)saveSerialDataWithKey:(NSString *)key {
+    NSDictionary *state = @{ @"data" : self.mainController.serializedSettings };
+    NSMutableDictionary *md = [[NSMutableDictionary alloc] initWithDictionary:state];
+    [self.sharedDefaults setObject:[NSKeyedArchiver archivedDataWithRootObject:md]
+                                forKey:key];
+    [self.sharedDefaults synchronize];
+}
+
+
+- (void)addButtonTrigger:(UIButton* _Nonnull)button usage:(NSString * _Nonnull)usage {
+    if ([usage isEqualToString:@"undo"]) {
+        [button addTarget:self action:@selector(undoTrigger:) forControlEvents:UIControlEventTouchUpInside];
+    } else if ([usage isEqualToString:@"delete"]){
+        [button addTarget:self action:@selector(deleteTrigger:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        [button addTarget:self action:@selector(redoTrigger:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
 - (void)didSubscribe:(id)sender {
     [self.banner removeFromSuperview];
     self.banner = nil;
     RCTPromiseResolveBlock resolve = self.resolve;
 //    RCTPromiseRejectBlock reject = self.reject;
     [self.mainController dismissViewControllerAnimated:YES completion:^{
-        resolve(@{ @"action": @"open-subscription" });
+        resolve(@{ @"action": @"open-subscription", @"path": @1 });
     }];
 }
 
