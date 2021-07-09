@@ -6,8 +6,10 @@ import androidx.annotation.NonNull;
 
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.FontItem;
-import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.viewholder.CustomFontViewHolder;
+import ly.img.react_native.vesdk.R;
+
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textConfig;
 
 public class CustomFontItem extends FontItem {
     public static final Creator<CustomFontItem> CREATOR = new Creator<CustomFontItem>() {
@@ -22,6 +24,10 @@ public class CustomFontItem extends FontItem {
 
     public CustomFontItem(String id, String name) {
         super(id, name);
+    }
+
+    public boolean isEnabled() {
+        return textConfig.toArrayList().contains(getName());
     }
 
     protected CustomFontItem(Parcel in) {

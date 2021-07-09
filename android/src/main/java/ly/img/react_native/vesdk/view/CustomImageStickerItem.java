@@ -7,8 +7,10 @@ import org.jetbrains.annotations.NotNull;
 import ly.img.android.pesdk.backend.decoder.ImageSource;
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.ImageStickerItem;
-import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.viewholder.CustomImageStickerViewHolder;
+import ly.img.react_native.vesdk.R;
+
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.stickerConfig;
 
 public class CustomImageStickerItem extends ImageStickerItem {
 
@@ -28,6 +30,10 @@ public class CustomImageStickerItem extends ImageStickerItem {
 
     public CustomImageStickerItem(String id, String name, ImageSource previewSource) {
         super(id, name, previewSource);
+    }
+
+    public boolean isEnabled() {
+        return stickerConfig.toArrayList().contains(getId());
     }
 
     protected CustomImageStickerItem(Parcel in) {

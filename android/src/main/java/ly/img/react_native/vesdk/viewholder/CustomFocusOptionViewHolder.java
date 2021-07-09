@@ -10,13 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 
+import org.jetbrains.annotations.NotNull;
+
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
-import ly.img.android.pesdk.ui.panels.item.AbstractItem;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
 import ly.img.react_native.vesdk.R;
-import ly.img.react_native.vesdk.view.CustomAdjustOption;
+import ly.img.react_native.vesdk.view.CustomFocusOption;
 
-public class CustomAdjustOptionViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomAdjustOption, CustomAdjustOptionViewHolder.ThumbnailResult> implements View.OnClickListener {
+public class CustomFocusOptionViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomFocusOption, CustomFocusOptionViewHolder.ThumbnailResult> implements View.OnClickListener {
     public final View contentHolder;
     @Nullable
     private final TextView textView;
@@ -26,7 +27,7 @@ public class CustomAdjustOptionViewHolder extends DataSourceListAdapter.DataSour
     private final Context context;
     private boolean isEnabled;
 
-    public CustomAdjustOptionViewHolder(@NonNull View v) {
+    public CustomFocusOptionViewHolder(@NonNull @NotNull View v) {
         super(v);
         this.textView = v.findViewById(R.id.label);
         this.imageView = v.findViewById(R.id.image);
@@ -43,17 +44,17 @@ public class CustomAdjustOptionViewHolder extends DataSourceListAdapter.DataSour
     }
 
     @Override
-    protected void bindData(CustomAdjustOption abstractItem) {
-        isEnabled = abstractItem.isEnabled();
+    protected void bindData(CustomFocusOption customFocusOption) {
+        isEnabled = customFocusOption.isEnabled();
         nixPlusIcon.setVisibility(isEnabled ? View.GONE : View.VISIBLE);
-        this.itemView.setContentDescription(abstractItem.getName());
+        this.itemView.setContentDescription(customFocusOption.getName());
         if (this.textView != null) {
-            this.textView.setText(abstractItem.getName());
+            this.textView.setText(customFocusOption.getName());
         }
 
         if (this.imageView != null) {
-            if (abstractItem.hasStaticThumbnail()) {
-                this.imageView.setImageSource(abstractItem.getThumbnailSource());
+            if (customFocusOption.hasStaticThumbnail()) {
+                this.imageView.setImageSource(customFocusOption.getThumbnailSource());
             } else {
                 this.imageView.setImageBitmap(null);
             }
@@ -61,7 +62,7 @@ public class CustomAdjustOptionViewHolder extends DataSourceListAdapter.DataSour
     }
 
     @Override
-    protected void bindData(CustomAdjustOption data, CustomAdjustOptionViewHolder.ThumbnailResult thumbnailResult) {
+    protected void bindData(CustomFocusOption data, CustomFocusOptionViewHolder.ThumbnailResult thumbnailResult) {
         if (this.imageView != null && thumbnailResult != null) {
             if (thumbnailResult.bitmap != null) {
                 this.imageView.setImageBitmap(thumbnailResult.bitmap);

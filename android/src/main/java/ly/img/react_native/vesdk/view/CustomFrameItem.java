@@ -7,8 +7,10 @@ import androidx.annotation.NonNull;
 import ly.img.android.pesdk.backend.decoder.ImageSource;
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.FrameItem;
-import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.viewholder.CustomFrameViewHolder;
+import ly.img.react_native.vesdk.R;
+
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.frameConfig;
 
 public class CustomFrameItem extends FrameItem {
     public static final Creator<CustomFrameItem> CREATOR = new Creator<CustomFrameItem>() {
@@ -30,12 +32,16 @@ public class CustomFrameItem extends FrameItem {
         super(id, name, drawableId);
     }
 
+    public boolean isEnabled() {
+        return frameConfig.toArrayList().contains(getName());
+    }
+
     protected CustomFrameItem(Parcel in) {
         super(in);
     }
 
     public int getLayout() {
-        return "imgly_frame_none".equals(this.getId()) ? R.layout.imgly_list_item_none_frame : R.layout.imgly_list_item_frame_plus;
+        return "imgly_frame_none".equals(this.getId()) ? R.layout.imgly_list_item_none_frame : ly.img.react_native.pesdk.R.layout.imgly_list_item_frame_plus;
     }
 
     @NonNull
