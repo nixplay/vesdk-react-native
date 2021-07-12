@@ -195,7 +195,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 [weakController.banner removeFromSuperview];
                 weakController.banner = nil;
                 if (weakController.needToUpgrade) {
-                    [weakController showPromptUpgrade];
+                    [weakController showPromptUpgrade:@"nixFrame"];
                 }
             }];
         }];
@@ -222,15 +222,15 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     if ([weakSelf isExistWithList:nixToolOverlay predicate:[NSPredicate predicateWithFormat:@"SELF == %@", overlay.identifier]]) {
                         [weakController.banner removeFromSuperview];
                         weakController.banner = nil;
-                        weakController.needToUpgrade -= 1;
+                        weakController.needToUpgrade = 0;
                     } else {
                         NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixOverlay"];
                         [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-                        weakController.needToUpgrade += 1;
+                        weakController.needToUpgrade = 1;
                     }
                 }
             }];
-            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixOverlay" subscriber:isSubscriber opt:options];
+            [weakSelf handleApply:weakController opt:options];
         }];
 
         // TEXT DESIGN CONFIG
@@ -266,7 +266,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 [weakController.banner removeFromSuperview];
                 weakController.banner = nil;
                 if (weakController.needToUpgrade) {
-                    [weakController showPromptUpgrade];
+                    [weakController showPromptUpgrade:@"nixText"];
                 }
                 weakController.enableToValidate = 0;
             }];
@@ -328,7 +328,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 [weakController.banner removeFromSuperview];
                 weakController.banner = nil;
                 if (weakController.needToUpgrade) {
-                    [weakController showPromptUpgrade];
+                    [weakController showPromptUpgrade:@"nixText"];
                 }
                 weakController.enableToValidate = 0;
             }];
@@ -399,7 +399,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 });
                 [weakController.mainController.undoController endUndoGrouping];
                 if (weakController.enableToValidate > 1 && weakController.needToUpgrade) {
-                    [weakController showPromptUpgrade];
+                    [weakController showPromptUpgrade:@"nixSticker"];
                 }
                 weakController.enableToValidate = 0;
             }];
@@ -434,7 +434,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     weakController.needToUpgrade += 1;
                 }
             }];
-            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixFocus" subscriber:isSubscriber opt:options];
+            [weakSelf handleApply:weakController opt:options];
         }];
 
         // ADJUSTMENT CONFIG
@@ -478,7 +478,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }
             }];
             // enter, leave
-            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixAdjust" subscriber:isSubscriber opt:options];
+            [weakSelf handleApply:weakController opt:options];
             // undo, redo
             [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum AdjustOverlayAction action) {
                 if ((long)action == 0) {
@@ -523,9 +523,9 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 //                  } else
                   if ([effect.identifier isEqualToString:@"None"]){
                       // do nothing
-                      weakController.needToUpgrade--;
+                      weakController.needToUpgrade = 0;
                   } else {
-                      weakController.needToUpgrade++;
+                      weakController.needToUpgrade = 1;
                       NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFilter"];
                       [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
                   }
@@ -540,10 +540,14 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 //                  }
               }
             }];
-            [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull btn) {
-              // track
+            [weakSelf handleApply:weakController opt:options];
+        }];
+
+        // TRANSFORM
+        [builder configureTransformToolController:^(PESDKTransformToolControllerOptionsBuilder * _Nonnull options) {
+            [options setWillLeaveToolClosure:^{
+                [weakController saveSerialDataWithKey:@"nonPlusActivity"];
             }];
-            [weakSelf addSubscriptionBanner:rawDictionary controller:weakController key:@"nixFilter" subscriber:isSubscriber opt:options];
         }];
 
 #pragma mark - Setup Top Level Menu
@@ -608,6 +612,23 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
     UIViewController *currentViewController = RCTPresentedViewController();
     [currentViewController presentViewController:self.mediaEditViewController animated:YES completion:NULL];
   });
+}
+
+- (void)handleApply:(RNVideoEditorSDK *)controller opt:(PESDKToolControllerOptionsBuilder *)options {
+    [options setDidEnterToolClosure:^{
+        controller.needToUpgrade = 0;
+        controller.userActivity = nil;
+        controller.userActivity = [[NSMutableDictionary alloc] init];
+        // save last changes
+        [controller saveSerialDataWithKey:@"nonPlusActivity"];
+    }];
+    [options setWillLeaveToolClosure:^{
+        [controller.banner removeFromSuperview];
+        controller.banner = nil;
+    }];
+    [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+        [controller addButtonApply:button];
+    }];
 }
 
 - (BOOL)hasUsedPlusAdjust:(NSDictionary *)activity {
@@ -718,7 +739,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
             [controller.banner removeFromSuperview];
             controller.banner = nil;
             if (controller.userActivity != nil && controller.needToUpgrade) {
-                [controller showPromptUpgrade];
+                [controller showPromptUpgrade:key];
             }
         }];
         [options setDidEnterToolClosure:^{
@@ -739,7 +760,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 
 - (void)resetEffectValidator:(RNVideoEditorSDK*)controller {
     if (controller.userActivity != nil && controller.needToUpgrade) {
-        [controller resetEffectsOnExit];
+        [controller resetEffectsOnExit:@""];
         controller.needToUpgrade = 0;
         controller.userActivity = nil;
         controller.userActivity = [[NSMutableDictionary alloc] init];

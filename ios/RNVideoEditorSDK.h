@@ -29,8 +29,10 @@ typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull 
 - (void)addBanner:(NSString *_Nullable)nixTitle subtitle:(NSString *_Nullable)nixSubtitle;
 - (void)addTargetDiscard:(UIButton * _Nonnull)button;
 - (void)addButtonTrigger:(UIButton* _Nonnull)button usage:(NSString * _Nonnull)usage;
-- (void)showPromptUpgrade;
-- (void)resetEffectsOnExit;
+- (void)showPromptUpgrade:(NSString * _Nonnull)key;
+- (void)resetEffectsOnExit:(NSString * _Nonnull)key;
 - (void)addButtonApply:(UIButton* _Nonnull)button;
+- (void)saveSerialDataWithKey:(NSString * _Nonnull)key;
+
 
 @end
