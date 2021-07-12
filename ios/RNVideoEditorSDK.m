@@ -44,7 +44,7 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
     // Check if came on subscription
     __block BOOL isCameOnSubscription = NO;
     if ([[dictionary allKeys] containsObject:@"isCameOnSubscription"]) {
-        isSubscriber = [[dictionary objectForKey:@"isCameOnSubscription"] boolValue];
+        isCameOnSubscription = [[dictionary objectForKey:@"isCameOnSubscription"] boolValue];
     }
 
     [self present:^PESDKMediaEditViewController * _Nullable(PESDKConfiguration * _Nonnull configuration, NSData * _Nullable serializationData) {
