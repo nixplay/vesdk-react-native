@@ -174,14 +174,14 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 - (void)deleteTrigger:(id)button {
     // sticker: ask confirm, check if need to upgrade is 1
     if (self.needToUpgrade == 1) {
-        [self resetEffectsOnExit];
+        [self resetEffectsOnExit:@""];
         self.enableToValidate = 0;
     }
 }
 
 - (void)applyTrigger:(id)button {
     if (self.needToUpgrade) {
-        [self showPromptUpgrade];
+        [self showPromptUpgrade:@"apply"];
     }
 }
 
@@ -189,7 +189,7 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
     [button addTarget:self action:@selector(applyTrigger:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)showPromptUpgrade {
+- (void)showPromptUpgrade:(NSString * _Nonnull)key {
     dispatch_async(dispatch_get_main_queue(), ^{
       UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unblock this feature?"
                                                                      message:@"Upgrade to Nixplay Plus now to unblock this feature and enjoy more advanced editing tools."
@@ -209,7 +209,7 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
       UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
-          [self resetEffectsOnExit];
+          [self resetEffectsOnExit:key];
           [self.mainController play];
           [alert dismissViewControllerAnimated:YES completion:nil];
                                                             }];
@@ -220,11 +220,16 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
     });
 }
 
-- (void)resetEffectsOnExit {
-    [self.mainController.undoController undo];
-    [self.mainController.undoController undoStep];
-    [self.mainController.undoController undoStepInCurrentGroup];
-    [self.mainController.undoController removeAllActionsInCurrentGroup];
+- (void)resetEffectsOnExit:(NSString * _Nonnull)key {
+    if ([key isEqualToString:@"nixSticker"]) {
+        [self.mainController.undoController undo];
+        [self.mainController.undoController undoStep];
+        [self.mainController.undoController undoStepInCurrentGroup];
+        [self.mainController.undoController removeAllActionsInCurrentGroup];
+    } else {
+        [self.mainController.undoController undoStep];
+        [self.mainController.undoController removeAllActionsInCurrentGroup];
+    }
 }
 
 - (void)saveSerialDataWithKey:(NSString *)key {
