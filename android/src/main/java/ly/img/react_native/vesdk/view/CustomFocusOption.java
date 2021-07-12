@@ -7,7 +7,9 @@ import org.jetbrains.annotations.NotNull;
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.FocusOption;
 import ly.img.react_native.vesdk.R;
-import ly.img.react_native.vesdk.viewholder.CustomAdjustOptionViewHolder;
+import ly.img.react_native.vesdk.viewholder.CustomFocusOptionViewHolder;
+
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.focusConfig;
 
 public class CustomFocusOption extends FocusOption {
 
@@ -21,7 +23,9 @@ public class CustomFocusOption extends FocusOption {
         }
     };
 
-
+    public boolean isEnabled() {
+        return focusConfig.toArrayList().contains(getName());
+    }
     public CustomFocusOption(int id) {
         super(id);
     }
@@ -37,6 +41,6 @@ public class CustomFocusOption extends FocusOption {
 
     @NotNull
     public Class<? extends DataSourceListAdapter.DataSourceViewHolder> getViewHolderClass() {
-        return CustomAdjustOptionViewHolder.class;
+        return CustomFocusOptionViewHolder.class;
     }
 }

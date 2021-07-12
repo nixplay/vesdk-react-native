@@ -10,8 +10,10 @@ import java.util.List;
 import ly.img.android.pesdk.backend.decoder.ImageSource;
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.FolderItem;
-import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.viewholder.CustomFolderViewHolder;
+import ly.img.react_native.vesdk.R;
+
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.filterConfig;
 
 public class CustomFolderItem extends FolderItem {
 
@@ -39,6 +41,10 @@ public class CustomFolderItem extends FolderItem {
 
     public CustomFolderItem(String id, @Nullable String name, @Nullable ImageSource thumbnailSource, List itemList) {
         super(id, name, thumbnailSource, itemList);
+    }
+
+    public boolean isEnabled() {
+        return filterConfig.toArrayList().contains(getName());
     }
 
     protected CustomFolderItem(Parcel parcel) {

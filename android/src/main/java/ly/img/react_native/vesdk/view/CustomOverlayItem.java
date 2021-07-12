@@ -8,8 +8,10 @@ import ly.img.android.pesdk.backend.decoder.ImageSource;
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.OverlayItem;
 import ly.img.android.pesdk.ui.viewholder.OverlayViewHolder;
-import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.viewholder.CustomOverlayViewHolder;
+import ly.img.react_native.vesdk.R;
+
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.overlayConfig;
 
 public class CustomOverlayItem extends OverlayItem {
 
@@ -29,6 +31,10 @@ public class CustomOverlayItem extends OverlayItem {
 
     public CustomOverlayItem(String id, String name, ImageSource previewSource) {
         super(id, name, previewSource);
+    }
+
+    public boolean isEnabled() {
+        return overlayConfig.toArrayList().contains(getName());
     }
 
     protected CustomOverlayItem(Parcel in) {

@@ -8,6 +8,7 @@ import androidx.annotation.Keep;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import ly.img.android.PESDK;
 import ly.img.android.pesdk.backend.model.state.OverlaySettings;
@@ -31,6 +32,8 @@ public class CustomOverlayViewHolder extends DataSourceListAdapter.DataSourceVie
     protected final ImageSourceView selectedOverlay;
     @Nullable
     protected final ImageSourceView selectedShuffle;
+    private final AppCompatImageView nixPlusIcon;
+    private boolean isEnabled;
     private boolean isNoneOverlayItem = false;
 
     @Keep
@@ -42,6 +45,7 @@ public class CustomOverlayViewHolder extends DataSourceListAdapter.DataSourceVie
         this.contentHolder = v.findViewById(R.id.contentHolder);
         this.selectedOverlay = v.findViewById(R.id.selected_overlay);
         this.selectedShuffle = v.findViewById(R.id.selected_shuffle);
+        this.nixPlusIcon = v.findViewById(R.id.nixPlusText);
         this.contentHolder.setOnClickListener(this);
     }
 
@@ -53,8 +57,8 @@ public class CustomOverlayViewHolder extends DataSourceListAdapter.DataSourceVie
     }
 
     public void onClick(View v) {
-//        this.dispatchSelection();
-//        this.dispatchOnItemClick();
+        this.dispatchSelection();
+        this.dispatchOnItemClick();
     }
 
     @MainThread
@@ -82,6 +86,11 @@ public class CustomOverlayViewHolder extends DataSourceListAdapter.DataSourceVie
 
         if (this.selectedShuffle != null) {
             this.selectedShuffle.setVisibility(this.isNoneOverlayItem ? View.INVISIBLE : View.VISIBLE);
+        }
+
+        if (!isNoneOverlayItem) {
+            isEnabled = data.isEnabled();
+            nixPlusIcon.setVisibility(isEnabled ? View.GONE : View.VISIBLE);
         }
 
         if (this.imageView != null) {

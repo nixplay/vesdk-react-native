@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
@@ -18,12 +19,15 @@ public class CustomFolderViewHolder extends DataSourceListAdapter.DataSourceView
     private final TextView textView;
     @Nullable
     private final ImageSourceView imageView;
+    private final AppCompatImageView nixPlusIcon;
+    private boolean isEnabled;
 
     public CustomFolderViewHolder(@NonNull View itemView) {
         super(itemView);
         this.textView = itemView.findViewById(R.id.label);
         this.imageView = itemView.findViewById(R.id.image);
         this.contentHolder = itemView.findViewById(R.id.contentHolder);
+        this.nixPlusIcon = itemView.findViewById(R.id.nixPlusText);
         this.contentHolder.setOnClickListener(this);
         this.receiveTouches = true;
     }
@@ -35,6 +39,8 @@ public class CustomFolderViewHolder extends DataSourceListAdapter.DataSourceView
 
     @Override
     protected void bindData(CustomFolderItem customFolderItem) {
+        isEnabled = customFolderItem.isEnabled();
+        nixPlusIcon.setVisibility(isEnabled ? View.GONE : View.VISIBLE);
         this.itemView.setContentDescription(customFolderItem.getName());
         this.itemView.setSelected(customFolderItem.isOpen());
         if (this.textView != null) {
