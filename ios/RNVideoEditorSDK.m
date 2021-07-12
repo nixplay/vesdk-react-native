@@ -192,7 +192,7 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 - (void)showPromptUpgrade {
     dispatch_async(dispatch_get_main_queue(), ^{
       UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unblock this feature?"
-                                                                     message:@"Upgrade to Nixplay Plus now to apply these changes and enjoy more advanced features."
+                                                                     message:@"Upgrade to Nixplay Plus now to unblock this feature and enjoy more advanced editing tools."
                                                               preferredStyle:UIAlertControllerStyleAlert];
 
       UIAlertAction * action = [UIAlertAction actionWithTitle:@"Upgrade"
@@ -206,7 +206,7 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
               resolve(@{ @"action": @"open-subscription", @"path": @2 });
           }];
                                                             }];
-      UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Discard"
+      UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
           [self resetEffectsOnExit];

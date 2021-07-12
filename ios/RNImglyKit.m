@@ -169,27 +169,34 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }
             }];
             [options setSelectedFrameClosure:^(PESDKFrame * _Nullable frame) {
-                [weakController.userActivity setObject:frame.identifier forKey:@"nixFrame"];
                 if (isSubscriber == NO) {
-//                    if ([weakSelf isExistWithList:nixToolFrame predicate:[NSPredicate predicateWithFormat:@"SELF == %@", frame.identifier]]
-//                        || frame == nil) {
-//                        [weakController.banner removeFromSuperview];
-//                        weakController.banner = nil;
-//                    } else {
+  //                    [weakSelf isExistWithList:nixToolFrame predicate:[NSPredicate predicateWithFormat:@"SELF == %@", frame.identifier]] || frame == nil
+                    if (frame.identifier) {
                         NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFrame"];
                         [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-//                    }
+                        weakController.needToUpgrade = 1;
+                    } else {
+                        [weakController.banner removeFromSuperview];
+                        weakController.banner = nil;
+                        weakController.needToUpgrade = 0;
+                    }
                 }
+            }];
+            [options setDidEnterToolClosure:^{
+                weakController.needToUpgrade = 0;
+                weakController.userActivity = nil;
+                weakController.userActivity = [[NSMutableDictionary alloc] init];
+                // save last changes
+                [weakSelf saveSerialDataWithKey:@"nonPlusActivity" controller:controller];
             }];
         }];
         [builder configureFrameOptionsToolController:^(PESDKFrameOptionsToolControllerOptionsBuilder * _Nonnull options) {
             [options setWillLeaveToolClosure:^{
+                [weakController.banner removeFromSuperview];
                 weakController.banner = nil;
-                if (isSubscriber == NO && [weakSelf hasUsedAdvanceFeatures:weakController]) {
-                    [controller showPromptUpgrade];
+                if (weakController.needToUpgrade) {
+                    [weakController showPromptUpgrade];
                 }
-            }];
-            [options setDidEnterToolClosure:^{
             }];
         }];
 
@@ -215,9 +222,11 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     if ([weakSelf isExistWithList:nixToolOverlay predicate:[NSPredicate predicateWithFormat:@"SELF == %@", overlay.identifier]]) {
                         [weakController.banner removeFromSuperview];
                         weakController.banner = nil;
+                        weakController.needToUpgrade -= 1;
                     } else {
                         NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixOverlay"];
                         [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                        weakController.needToUpgrade += 1;
                     }
                 }
             }];
@@ -677,25 +686,25 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 //    });
 //}
 
-- (BOOL)hasUsedAdvanceFeatures:(RNVideoEditorSDK *)controller {
-    BOOL hasUsedAdvance = NO;
-    if (controller.userActivity != nil) {
-        int entries = (int)[[controller.userActivity allKeys] count];
-        if (entries > 1) {
-            // adjustment
-            for (NSString *key in [controller.userActivity allKeys]) {
-                NSDictionary *effects = [controller.userActivity objectForKey:key];
-                if ([[effects objectForKey:@"value"] intValue] > 0 && !(BOOL)[effects objectForKey:@"isUsed"]) {
-                    hasUsedAdvance = YES;
-                }
-            }
-        } else if (entries == 1){
-            // filter, brush, frame, focus, text, text design, sticker
-            hasUsedAdvance = YES;
-        }
-    }
-    return hasUsedAdvance;
-}
+//- (BOOL)hasUsedAdvanceFeatures:(RNVideoEditorSDK *)controller {
+//    BOOL hasUsedAdvance = NO;
+//    if (controller.userActivity != nil) {
+//        int entries = (int)[[controller.userActivity allKeys] count];
+//        if (entries > 1) {
+//            // adjustment
+//            for (NSString *key in [controller.userActivity allKeys]) {
+//                NSDictionary *effects = [controller.userActivity objectForKey:key];
+//                if ([[effects objectForKey:@"value"] intValue] > 0 && !(BOOL)[effects objectForKey:@"isUsed"]) {
+//                    hasUsedAdvance = YES;
+//                }
+//            }
+//        } else if (entries == 1){
+//            // filter, brush, frame, focus, text, text design, sticker
+//            hasUsedAdvance = YES;
+//        }
+//    }
+//    return hasUsedAdvance;
+//}
 
 - (void)addSubscriptionBanner:(NSDictionary *)rawDictionary
                    controller:(RNVideoEditorSDK *)controller
