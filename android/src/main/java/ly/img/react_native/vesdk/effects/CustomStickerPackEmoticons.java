@@ -91,7 +91,7 @@ public class CustomStickerPackEmoticons {
         DataSourceIdItemList stickers = new DataSourceIdItemList();
 
         try {
-            stickers.addAll(SmartStickerPack.getStickers());
+            stickers.addAll(CustomSmartStickerPack.getStickers());
         } catch (NoClassDefFoundError var3) {
         } catch (Exception var4) {
         }
@@ -104,8 +104,8 @@ public class CustomStickerPackEmoticons {
         DataSourceIdItemList stickers = new DataSourceIdItemList();
 
         try {
-            stickers.addAll(SmartStickerPack.getStickers());
-            stickers.addAll(SmartStickerPack.getStickersWithWeather(holderInterface, weatherProvider));
+            stickers.addAll(CustomSmartStickerPack.getStickers());
+            stickers.addAll(CustomSmartStickerPack.getStickersWithWeather(holderInterface, weatherProvider));
         } catch (NoClassDefFoundError var5) {
         } catch (Exception var6) {
         }

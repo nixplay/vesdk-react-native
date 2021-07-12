@@ -23,6 +23,7 @@ import ly.img.android.pesdk.backend.model.state.ColorAdjustmentSettings;
 import ly.img.android.pesdk.backend.model.state.FilterSettings;
 import ly.img.android.pesdk.backend.model.state.FocusSettings;
 import ly.img.android.pesdk.backend.model.state.FrameSettings;
+import ly.img.android.pesdk.backend.model.state.HistoryState;
 import ly.img.android.pesdk.backend.model.state.LayerListSettings;
 import ly.img.android.pesdk.backend.model.state.OverlaySettings;
 import ly.img.android.pesdk.backend.model.state.layer.ImageStickerLayerSettings;
@@ -105,15 +106,11 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
             FrameSettings frameSettings = stateHandler.get(FrameSettings.class);
             OverlaySettings overlaySettings = stateHandler.get(OverlaySettings.class);
 
-            if (!filterSettings.getFilter().getId().equals("imgly_filter_none")) {
+            if (filterSettings.hasChanges()) {
                 showUpgradeDialog();
-            } else if (adjustmentSettings.getBrightness() != 0.0 || adjustmentSettings.getContrast() != 0.0 ||
-                    adjustmentSettings.getSaturation() != 0.0 || adjustmentSettings.getClarity() != 0.0 || adjustmentSettings.getShadow() != 0.0 ||
-                    adjustmentSettings.getHighlight() != 0.0 || adjustmentSettings.getExposure() != 0.0 || adjustmentSettings.getGamma() != 1.0 ||
-                    adjustmentSettings.getBlacks() != 0.0 || adjustmentSettings.getWhites() != 0.0 || adjustmentSettings.getTemperature() != 0.0 ||
-                    adjustmentSettings.getSharpness() != 0.0) {
+            } else if (adjustmentSettings.hasChanges()) {
                 showUpgradeDialog();
-            } else if (!focusSettings.getFocusMode().equals(FocusSettings.MODE.NO_FOCUS)) {
+            } else if (focusSettings.hasChanges()) {
                 showUpgradeDialog();
             } else if (hasPlusSticker || hasPlusTextLayer || hasPlusTextDesignLayer) {
                 if (uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.TextOptionToolPanel")
@@ -123,9 +120,9 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                 } else {
                     super.onAcceptClicked();
                 }
-            } else if (!frameSettings.getFrameConfig().getId().equals("imgly_frame_none")) {
+            } else if (frameSettings.hasChanges()) {
                 showUpgradeDialog();
-            } else if (!overlaySettings.getOverlayAsset().getId().equals("imgly_overlay_none")) {
+            } else if (overlaySettings.hasChanges()) {
                 showUpgradeDialog();
             } else {
                 super.onAcceptClicked();
@@ -148,6 +145,8 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        getStateHandler().getStateModel(HistoryState.class).revertToInitial(0);
+                        getStateHandler().getStateModel(HistoryState.class).removeAll(0);
                         uiStateMenu.openMainMenu();
                     }
                 })
@@ -172,6 +171,23 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
             file.createNewFile();
             writer.writeJson(file);
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onCloseClicked() {
+        deleteSerialization();
+        super.onCloseClicked();
+    }
+
+    public void deleteSerialization() {
+        File file = new File(Environment.getExternalStorageDirectory(), "staveState.pesdk");
+        try {
+            if (file.exists()) {
+                file.delete();
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
