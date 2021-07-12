@@ -7,8 +7,8 @@ import androidx.annotation.NonNull;
 import ly.img.android.pesdk.backend.decoder.ImageSource;
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.ToolItem;
-import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.viewholder.CustomDefaultViewHolder;
+import ly.img.react_native.vesdk.R;
 
 public class CustomToolItem extends ToolItem {
     public static final Creator<CustomToolItem> CREATOR = new Creator<CustomToolItem>() {

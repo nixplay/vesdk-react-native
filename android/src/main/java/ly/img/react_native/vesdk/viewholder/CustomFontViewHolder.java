@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import ly.img.android.pesdk.backend.model.config.FontAsset;
 import ly.img.android.pesdk.backend.model.state.AssetConfig;
@@ -21,6 +22,8 @@ public class CustomFontViewHolder extends DataSourceListAdapter.DataSourceViewHo
     @NonNull
     private final TextView labelView;
     private AssetConfig assetConfig;
+    private final AppCompatImageView nixPlusIcon;
+    private boolean isEnabled;
 
     @Keep
     public CustomFontViewHolder(@NonNull View v) {
@@ -30,6 +33,7 @@ public class CustomFontViewHolder extends DataSourceListAdapter.DataSourceViewHo
         this.contentHolder = v.findViewById(R.id.contentHolder);
         this.contentHolder.setOnClickListener(this);
         this.assetConfig = this.stateHandler.getSettingsModel(AssetConfig.class);
+        this.nixPlusIcon = v.findViewById(R.id.nixPlusText);
     }
 
     protected Typeface createAsyncData(FontItem data) {
@@ -38,6 +42,8 @@ public class CustomFontViewHolder extends DataSourceListAdapter.DataSourceViewHo
     }
 
     protected void bindData(CustomFontItem data) {
+        isEnabled = data.isEnabled();
+        nixPlusIcon.setVisibility(isEnabled ? View.GONE : View.VISIBLE);
         FontAsset asset = data.getData(this.assetConfig.getAssetMap(FontAsset.class));
         if (asset.isLocalAsset()) {
             this.textView.setTypeface(asset.getTypeface());
@@ -57,7 +63,7 @@ public class CustomFontViewHolder extends DataSourceListAdapter.DataSourceViewHo
     }
 
     public void onClick(View v) {
-//        this.dispatchOnItemClick();
-//        this.dispatchSelection();
+        this.dispatchOnItemClick();
+        this.dispatchSelection();
     }
 }

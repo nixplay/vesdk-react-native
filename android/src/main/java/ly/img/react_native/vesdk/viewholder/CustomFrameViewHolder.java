@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
@@ -20,7 +21,9 @@ public class CustomFrameViewHolder extends DataSourceListAdapter.DataSourceViewH
     protected final TextView labelTextView;
     @Nullable
     protected final ImageSourceView imageView;
+    private final AppCompatImageView nixPlusIcon;
     private boolean isNoneFrameItem = false;
+    private boolean isEnabled;
 
     @Keep
     public CustomFrameViewHolder(@NonNull View v) {
@@ -28,12 +31,13 @@ public class CustomFrameViewHolder extends DataSourceListAdapter.DataSourceViewH
         this.imageView = v.findViewById(R.id.image);
         this.labelTextView = v.findViewById(R.id.label);
         this.contentHolder = v.findViewById(R.id.contentHolder);
+        this.nixPlusIcon = v.findViewById(R.id.nixPlusText);
         this.contentHolder.setOnClickListener(this);
     }
 
     public void onClick(View v) {
-//        this.dispatchSelection();
-//        this.dispatchOnItemClick();
+        this.dispatchSelection();
+        this.dispatchOnItemClick();
     }
 
     protected Bitmap createAsyncData(CustomFrameItem abstractItem) {
@@ -45,6 +49,11 @@ public class CustomFrameViewHolder extends DataSourceListAdapter.DataSourceViewH
         if (this.labelTextView != null) {
             this.labelTextView.setText(data.getName());
             this.labelTextView.setVisibility(this.isNoneFrameItem ? View.VISIBLE : View.INVISIBLE);
+        }
+
+        if (!isNoneFrameItem) {
+            isEnabled = data.isEnabled();
+            nixPlusIcon.setVisibility(isEnabled ? View.GONE : View.VISIBLE);
         }
 
         if (this.imageView != null) {

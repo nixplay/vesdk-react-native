@@ -7,8 +7,10 @@ import androidx.annotation.NonNull;
 import ly.img.android.pesdk.backend.decoder.ImageSource;
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.TextDesignItem;
-import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.viewholder.CustomTextDesignViewHolder;
+import ly.img.react_native.vesdk.R;
+
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textDesignConfig;
 
 public class CustomTextDesignItem extends TextDesignItem {
 
@@ -33,6 +35,10 @@ public class CustomTextDesignItem extends TextDesignItem {
 
     protected CustomTextDesignItem(Parcel in) {
         super(in);
+    }
+
+    public boolean isEnabled() {
+        return textDesignConfig.toArrayList().contains(getName());
     }
 
     public int getLayout() {

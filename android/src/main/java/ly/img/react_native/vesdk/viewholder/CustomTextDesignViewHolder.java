@@ -10,6 +10,7 @@ import android.view.View;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import ly.img.android.pesdk.backend.decoder.ImageSource;
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
@@ -23,13 +24,16 @@ public class CustomTextDesignViewHolder extends DataSourceListAdapter.DataSource
     public final View contentHolder;
     @Nullable
     protected final ImageSourceView imageView;
+    private final AppCompatImageView nixPlusIcon;
     private Paint paint = new Paint();
+    private boolean isEnabled;
 
     @Keep
     public CustomTextDesignViewHolder(@NonNull View v) {
         super(v);
         this.imageView = v.findViewById(R.id.image);
         this.contentHolder = v.findViewById(R.id.contentHolder);
+        this.nixPlusIcon = v.findViewById(R.id.nixPlusText);
         this.contentHolder.setOnClickListener(this);
         int theme = this.getStateHandler().getSettingsModel(UiConfigTheme.class).getTheme();
         TypedArray typedArray = this.itemView.getContext().obtainStyledAttributes(theme, new int[]{R.attr.imgly_icon_color});
@@ -46,6 +50,8 @@ public class CustomTextDesignViewHolder extends DataSourceListAdapter.DataSource
     }
 
     protected void bindData(CustomTextDesignItem data) {
+        isEnabled = data.isEnabled();
+        nixPlusIcon.setVisibility(isEnabled ? View.GONE : View.VISIBLE);
         ImageSource imageSourceIdle = data.getThumbnailSource();
         if (this.imageView != null) {
             this.imageView.setImageSource(imageSourceIdle);
@@ -59,7 +65,7 @@ public class CustomTextDesignViewHolder extends DataSourceListAdapter.DataSource
     }
 
     public void onClick(View v) {
-//        this.dispatchSelection();
-//        this.dispatchOnItemClick();
+        this.dispatchSelection();
+        this.dispatchOnItemClick();
     }
 }
