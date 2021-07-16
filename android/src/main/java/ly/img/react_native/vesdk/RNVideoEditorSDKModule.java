@@ -44,6 +44,7 @@ import ly.img.android.pesdk.backend.model.config.CropAspectAsset;
 import ly.img.android.pesdk.backend.model.state.AssetConfig;
 import ly.img.android.pesdk.backend.model.state.LoadSettings;
 import ly.img.android.pesdk.backend.model.state.manager.SettingsList;
+import ly.img.android.pesdk.ui.activity.VideoEditorBuilder;
 import ly.img.android.pesdk.ui.model.state.UiConfigAdjustment;
 import ly.img.android.pesdk.ui.model.state.UiConfigAspect;
 import ly.img.android.pesdk.ui.model.state.UiConfigFilter;
@@ -215,7 +216,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         }
         for (int i = 0; i < configMap.getMap("transform").getArray("items").size(); i++) {
             String name = configMap.getMap("transform").getArray("items").getMap(i).getString("name");
-            int width =  configMap.getMap("transform").getArray("items").getMap(i).getInt("width");
+            int width = configMap.getMap("transform").getArray("items").getMap(i).getInt("width");
             int height = configMap.getMap("transform").getArray("items").getMap(i).getInt("height");
             String cropName = "aspect" + "_" + width + "_" + height;
             assetConfig.getAssetMap(CropAspectAsset.class).add(new CropAspectAsset(cropName, width, height, false));
@@ -263,28 +264,17 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         settingsList = createsVesdkSettingsList();
         settingsList.getSettingsModel(LoadSettings.class).setSource(uri);
 
-        String fileName;
-        if (config.getBoolean("isCameOnSubscription") && _isSubscriber) {
-            fileName = "staveState.pesdk.plus";
+
+        if (_isSubscriber) {
+            new VideoEditorBuilder(getCurrentActivity())
+                    .setSettingsList(settingsList)
+                    .startActivityForResult(getCurrentActivity(), VESDK_RESULT);
         } else {
-            fileName = "staveState.pesdk";
-        }
-        File file = new File(Environment.getExternalStorageDirectory(), fileName);
-        if (file.exists()) {
-            IMGLYFileReader reader = new IMGLYFileReader(settingsList);
-            try {
-                reader.readJson(file);
-                file.delete();
-            } catch (Exception e) {
-                e.printStackTrace();
-                file.delete();
-                return;
-            }
+            new CustomVideoEditorBuilder(getCurrentActivity())
+                    .setSettingsList(settingsList)
+                    .startActivityForResult(getCurrentActivity(), VESDK_RESULT);
         }
 
-        new CustomVideoEditorBuilder(getCurrentActivity())
-                .setSettingsList(settingsList)
-                .startActivityForResult(getCurrentActivity(), VESDK_RESULT);
     }
 
 

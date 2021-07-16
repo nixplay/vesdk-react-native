@@ -105,7 +105,7 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
             FocusSettings focusSettings = stateHandler.get(FocusSettings.class);
             FrameSettings frameSettings = stateHandler.get(FrameSettings.class);
             OverlaySettings overlaySettings = stateHandler.get(OverlaySettings.class);
-
+            videoSubscriptionOverlayLayout.setHasChanges(true);
             if (filterSettings.hasChanges()) {
                 showUpgradeDialog();
             } else if (adjustmentSettings.hasChanges()) {
@@ -125,9 +125,11 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
             } else if (overlaySettings.hasChanges()) {
                 showUpgradeDialog();
             } else {
+                videoSubscriptionOverlayLayout.setHasChanges(false);
                 super.onAcceptClicked();
             }
         } else {
+            videoSubscriptionOverlayLayout.setHasChanges(false);
             super.onAcceptClicked();
         }
     }
@@ -138,19 +140,30 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                 .setMessage("Upgrade to Nixplay Plus now to unblock this feature and enjoy more advance editing tools.")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        saveSerialization();
+//                        saveSerialization();
                         goToSubscriptionScreen(0);
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        getStateHandler().getStateModel(HistoryState.class).revertToInitial(0);
-                        getStateHandler().getStateModel(HistoryState.class).removeAll(0);
-                        uiStateMenu.openMainMenu();
+                        revertToInitial();
                     }
                 })
                 .show();
+    }
+
+    @Override
+    protected void onCancelClicked() {
+        getStateHandler().getStateModel(HistoryState.class).revertToInitial(0);
+        getStateHandler().getStateModel(HistoryState.class).removeAll(0);
+        super.onCancelClicked();
+    }
+
+    public void revertToInitial() {
+        getStateHandler().getStateModel(HistoryState.class).revertToInitial(0);
+        getStateHandler().getStateModel(HistoryState.class).removeAll(0);
+        onCancelClicked();
     }
 
     private void goToSubscriptionScreen(int target) {
@@ -177,7 +190,7 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
 
     @Override
     protected void onCloseClicked() {
-        deleteSerialization();
+//        deleteSerialization();
         super.onCloseClicked();
     }
 
