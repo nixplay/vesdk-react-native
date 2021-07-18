@@ -12,7 +12,9 @@
 @property (nonatomic, strong) NSUserDefaults * _Nonnull sharedDefaults;
 @property (nonatomic, strong) NSMutableDictionary * _Nullable userActivity;
 @property int needToUpgrade;
+@property int textAdded;
 @property int enableToValidate;
+@property BOOL hasBegan;
 
 typedef void (^RNVESDKConfigurationBlock)(PESDKConfigurationBuilder * _Nonnull builder);
 typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull videoEditViewController);
@@ -32,6 +34,7 @@ typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull 
 - (void)showPromptUpgrade:(NSString * _Nonnull)key;
 - (void)resetEffectsOnExit:(NSString * _Nonnull)key;
 - (void)addButtonApply:(UIButton* _Nonnull)button;
+- (void)addButtonDiscard:(UIButton* _Nonnull)button;
 - (void)saveSerialDataWithKey:(NSString * _Nonnull)key;
 
 

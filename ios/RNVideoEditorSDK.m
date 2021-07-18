@@ -4,6 +4,8 @@
 
 #import <Photos/Photos.h>
 
+#import <FirebaseAnalytics/FirebaseAnalytics.h>
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface RNVideoEditorSDK () <PESDKVideoEditViewControllerDelegate>
@@ -52,6 +54,7 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
         PESDKPhotoEditModel *photoEditModel = [[PESDKPhotoEditModel alloc] init];
 
         if (isSubscriber && isCameOnSubscription) {
+            [FIRAnalytics logEventWithName:@"unblock_feat_p_buy" parameters:@{}];
             // Only apply previous changes if user successfuly
             NSDictionary *stateStore = [[NSKeyedUnarchiver unarchiveObjectWithData:
                                        [self.sharedDefaults objectForKey:@"lastChanges"]] copy];
@@ -172,24 +175,32 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 }
 
 - (void)deleteTrigger:(id)button {
-    // sticker: ask confirm, check if need to upgrade is 1
-    if (self.needToUpgrade == 1) {
-        [self resetEffectsOnExit:@""];
-        self.enableToValidate = 0;
-    }
+    [self resetEffectsOnExit:@"discard"];
+    self.enableToValidate = 0;
 }
 
 - (void)applyTrigger:(id)button {
     if (self.needToUpgrade) {
         [self showPromptUpgrade:@"apply"];
+    } else {
+        [self resetEffectsOnExit:@"discard"];
     }
+}
+
+- (void)discardTrigger:(id)button {
+    [self resetEffectsOnExit:@"discard"];
 }
 
 - (void)addButtonApply:(UIButton* _Nonnull)button {
     [button addTarget:self action:@selector(applyTrigger:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)addButtonDiscard:(UIButton* _Nonnull)button {
+    [button addTarget:self action:@selector(discardTrigger:) forControlEvents:UIControlEventTouchUpInside];
+}
+
 - (void)showPromptUpgrade:(NSString * _Nonnull)key {
+    [FIRAnalytics logEventWithName:@"unblock_feat_p_show" parameters:@{}];
     dispatch_async(dispatch_get_main_queue(), ^{
       UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unblock this feature?"
                                                                      message:@"Upgrade to Nixplay Plus now to unblock this feature and enjoy more advanced editing tools."
@@ -198,9 +209,9 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
       UIAlertAction * action = [UIAlertAction actionWithTitle:@"Upgrade"
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
+          [FIRAnalytics logEventWithName:@"unblock_feat_p_upgrade" parameters:@{}];
           // save last changes to user defaults for advance usage
           [self saveSerialDataWithKey:@"lastChanges"];
-          [self.mainController play];
           RCTPromiseResolveBlock resolve = self.resolve;
           [self.mainController dismissViewControllerAnimated:YES completion:^{
               resolve(@{ @"action": @"open-subscription", @"path": @2 });
@@ -210,7 +221,6 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
           [self resetEffectsOnExit:key];
-          [self.mainController play];
           [alert dismissViewControllerAnimated:YES completion:nil];
                                                             }];
       [alert addAction:cancelAction];
@@ -221,14 +231,30 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 }
 
 - (void)resetEffectsOnExit:(NSString * _Nonnull)key {
-    if ([key isEqualToString:@"nixSticker"]) {
-        [self.mainController.undoController undo];
-        [self.mainController.undoController undoStep];
+    if ([key isEqualToString:@"apply"] ||
+        [key isEqualToString:@"discard"] ||
+        [key isEqualToString:@"nixText"] ||
+        [key isEqualToString:@"nixFrame"] ||
+        [key isEqualToString:@"nixFrame"] ||
+        [key isEqualToString:@"nixTextDesign"]) {
+        for (int i = 0; i < 20; i++) {
+            [self.mainController.undoController undoStep];
+        }
+        [self.mainController.undoController undoGroup];
         [self.mainController.undoController undoStepInCurrentGroup];
+        [self.mainController.undoController undoAllInCurrentGroup];
         [self.mainController.undoController removeAllActionsInCurrentGroup];
+        [self.mainController.undoController removeAllActions];
     } else {
         [self.mainController.undoController undoStep];
         [self.mainController.undoController removeAllActionsInCurrentGroup];
+    }
+    self.needToUpgrade = 0;
+    self.textAdded = 0;
+    self.hasBegan = NO;
+    if (self.banner != nil) {
+        [self.banner removeFromSuperview];
+        self.banner = nil;
     }
 }
 
