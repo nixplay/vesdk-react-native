@@ -49,6 +49,16 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
         isCameOnSubscription = [[dictionary objectForKey:@"isCameOnSubscription"] boolValue];
     }
 
+    // content width and height
+    __block int contentWidth = 0;
+    if ([[dictionary allKeys] containsObject:@"width"]) {
+        contentWidth = [[dictionary objectForKey:@"width"] intValue];
+    }
+    __block int contentHeight = 0;
+    if ([[dictionary allKeys] containsObject:@"height"]) {
+        contentHeight = [[dictionary objectForKey:@"height"] intValue];
+    }
+
     [self present:^PESDKMediaEditViewController * _Nullable(PESDKConfiguration * _Nonnull configuration, NSData * _Nullable serializationData) {
 
         PESDKPhotoEditModel *photoEditModel = [[PESDKPhotoEditModel alloc] init];
@@ -60,7 +70,7 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
                                        [self.sharedDefaults objectForKey:@"lastChanges"]] copy];
 
             if ([[stateStore allKeys] count] && ![[stateStore objectForKey:@"data"] isEqual:[NSNull null]]) {
-                photoEditModel = [[PESDKPhotoEditModel alloc] initWithSerializedData:[NSData dataWithData:[stateStore objectForKey:@"data"]] referenceSize:CGSizeMake(1280, 720)];
+                photoEditModel = [[PESDKPhotoEditModel alloc] initWithSerializedData:[NSData dataWithData:[stateStore objectForKey:@"data"]] referenceSize:CGSizeMake(contentWidth, contentHeight)];
             }
         } else if(isCameOnSubscription) {
             // Only apply previous changes if user successfuly
@@ -68,7 +78,7 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
                                        [self.sharedDefaults objectForKey:@"nonPlusActivity"]] copy];
 
             if ([[stateStore allKeys] count] && ![[stateStore objectForKey:@"data"] isEqual:[NSNull null]]) {
-                photoEditModel = [[PESDKPhotoEditModel alloc] initWithSerializedData:[NSData dataWithData:[stateStore objectForKey:@"data"]] referenceSize:CGSizeMake(1280, 720)];
+                photoEditModel = [[PESDKPhotoEditModel alloc] initWithSerializedData:[NSData dataWithData:[stateStore objectForKey:@"data"]] referenceSize:CGSizeMake(contentWidth, contentHeight)];
             }
         }
 
