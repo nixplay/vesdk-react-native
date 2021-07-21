@@ -399,8 +399,10 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
           weakController.banner = nil;
       }];
       [options setWillLeaveToolClosure:^{
-          NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixSticker"];
-          [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+          if (isSubscriber == NO) {
+              NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixSticker"];
+              [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+          }
       }];
       [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
           if (isSubscriber == NO) {
@@ -527,15 +529,17 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
       }];
       // reset invoke
       [options setAdjustToolSelectedBlock:^(NSNumber * _Nullable adjust) {
-          NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixAdjust"];
-          [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-          if ([adjust intValue] == 0 && weakController.needToUpgrade) {
-              [weakController.mainController.undoController undo];
-              [weakController.mainController.undoController undoStep];
-              [weakController.mainController.undoController undoStepInCurrentGroup];
-              [weakController.mainController.undoController removeAllActionsInCurrentGroup];
-              weakController.needToUpgrade = 0;
-              weakController.hasBegan = NO;
+          if (isSubscriber == NO) {
+              NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixAdjust"];
+              [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+              if ([adjust intValue] == 0 && weakController.needToUpgrade) {
+                  [weakController.mainController.undoController undo];
+                  [weakController.mainController.undoController undoStep];
+                  [weakController.mainController.undoController undoStepInCurrentGroup];
+                  [weakController.mainController.undoController removeAllActionsInCurrentGroup];
+                  weakController.needToUpgrade = 0;
+                  weakController.hasBegan = NO;
+              }
           }
       }];
       // enter, leave
