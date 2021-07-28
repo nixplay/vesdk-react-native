@@ -151,481 +151,400 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
         configureWithBuilder(builder);
       }
 #pragma mark - Setup Functions Config
-  // FRAME CONFIG
-  [builder configureFrameToolController:^(PESDKFrameToolControllerOptionsBuilder * _Nonnull options) {
-//            __block PESDKToolControllerOptionsBuilder * _options = options;
-      [options setCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKFrame * _Nullable frame) {
-          if (isSubscriber == NO) {
-              // reset all plus icon
-              [weakSelf removePlusBanner:cell];
-              // enable and adding plus icon
-              if ([weakSelf isExistWithList:nixToolFrame predicate:[NSPredicate predicateWithFormat:@"SELF == %@", frame.identifier]]
-                  || frame == nil) {
-//                        [cell setUserInteractionEnabled:YES];
-              } else {
-                  [weakSelf addPlusBanner:cell];
-//                        [cell setUserInteractionEnabled:NO];
-              }
-          }
-      }];
-      [options setSelectedFrameClosure:^(PESDKFrame * _Nullable frame) {
-          if (isSubscriber == NO) {
-              if (weakController.hasBegan == NO) {
-                  [weakController.mainController.undoController beginUndoGrouping];
-              }
-//                    [weakSelf isExistWithList:nixToolFrame predicate:[NSPredicate predicateWithFormat:@"SELF == %@", frame.identifier]] || frame == nil
-              if (frame.identifier) {
-                  weakController.needToUpgrade = 1;
-                  NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFrame"];
-                  [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-              } else {
-                  [weakController.banner removeFromSuperview];
-                  weakController.banner = nil;
-                  weakController.needToUpgrade = 0;
-              }
-          }
-      }];
-      [options setDidEnterToolClosure:^{
-          weakController.userActivity = nil;
-          weakController.userActivity = [[NSMutableDictionary alloc] init];
-          // save last changes
-          [weakController saveSerialDataWithKey:@"nonPlusActivity"];
-      }];
-  }];
-  [builder configureFrameOptionsToolController:^(PESDKFrameOptionsToolControllerOptionsBuilder * _Nonnull options) {
-      [options setWillLeaveToolClosure:^{
-          [weakController.banner removeFromSuperview];
-          weakController.banner = nil;
-      }];
-      [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          if (isSubscriber == NO) {
-              [weakController addButtonApply:button];
-          }
-      }];
-      [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          [weakController addButtonDiscard:button];
-      }];
-  }];
-
-  // OVERLAY CONFIG
-  [builder configureOverlayToolController:^(PESDKOverlayToolControllerOptionsBuilder * _Nonnull options) {
-      [options setOverlayCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKOverlay * _Nonnull overlay) {
-          if (isSubscriber == NO) {
-              // reset all plus icon
-              [weakSelf removePlusBanner:cell];
-              // enable and adding plus icon
-              if ([weakSelf isExistWithList:nixToolOverlay predicate:[NSPredicate predicateWithFormat:@"SELF == %@", overlay.identifier]]) {
-//                        [cell setUserInteractionEnabled:YES];
-              } else {
-                  [weakSelf addPlusBanner:cell];
-//                        [cell setUserInteractionEnabled:NO];
-              }
-          }
-      }];
-      // handling of upgrade new upgrade path
-      [options setOverlaySelectedClosure:^(PESDKOverlay * _Nonnull overlay) {
-          [weakController.userActivity setObject:overlay.identifier forKey:@"nixOverlay"];
-          if (isSubscriber == NO) {
-              if ([weakSelf isExistWithList:nixToolOverlay predicate:[NSPredicate predicateWithFormat:@"SELF == %@", overlay.identifier]]) {
-                  [weakController.banner removeFromSuperview];
-                  weakController.banner = nil;
-                  weakController.needToUpgrade = 0;
-              } else {
-                  weakController.needToUpgrade = 1;
-                  NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixOverlay"];
-                  [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-              }
-          }
-      }];
-      [weakSelf handleApply:weakController opt:options];
-  }];
-
-  // TEXT DESIGN CONFIG
-  [builder configureTextDesignOptionsToolController:^(PESDKTextDesignOptionsToolControllerOptionsBuilder * _Nonnull options) {
-      [options setActionButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKTextDesign * _Nonnull design) {
-          if (isSubscriber == NO) {
-              // reset all plus icon
-              [weakSelf removePlusBanner:cell];
-              // enable and adding plus icon
-              if ([weakSelf isExistWithList:nixToolTextDesign predicate:[NSPredicate predicateWithFormat:@"SELF == %@", design.identifier]]) {
-//                        [cell setUserInteractionEnabled:YES];
-              } else {
-                  [weakSelf addPlusBanner:cell];
-//                        [cell setUserInteractionEnabled:NO];
-              }
-          }
-      }];
-      // handling of upgrade new upgrade path
-      [options setTextDesignActionSelectedClosure:^(PESDKTextDesign * _Nonnull design) {
-          if (isSubscriber == NO) {
-              [weakController.userActivity setObject:design.identifier forKey:@"nixTextDesign"];
-              weakController.needToUpgrade = 1;
-          }
-      }];
-      [options setWillLeaveToolClosure:^{
-          [weakController.banner removeFromSuperview];
-          weakController.banner = nil;
-          weakController.enableToValidate = 0;
-      }];
-      [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum TextDesignOverlayAction action) {
-          if ((long)action == 4) {
-              // undo
-              [weakController addButtonTrigger:button usage:@"undo"];
-          } else if ((long)action == 0 || (long)action == 5) {
-              // add, redo
-              [weakController addButtonTrigger:button usage:@"redo"];
-          } else if ((long)action == 1) {
-              // delete
-              [weakController addButtonTrigger:button usage:@"delete"];
-          }
-      }];
-      [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          if (isSubscriber == NO) {
-              [weakController addButtonApply:button];
-          }
-      }];
-      [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          [weakController addButtonDiscard:button];
-      }];
-  }];
-  [builder configureTextDesignToolController:^(PESDKTextDesignToolControllerOptionsBuilder * _Nonnull options) {
-      if (isSubscriber == NO) {
-          [options setWillLeaveToolClosure:^{
-              weakController.needToUpgrade = 1;
-              NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixText"];
-              [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-              if (weakController.hasBegan == NO) {
-                  [weakController.mainController.undoController beginUndoGrouping];
-              }
-          }];
-          [options setDidEnterToolClosure:^{
-              [weakController.banner removeFromSuperview];
-              weakController.banner = nil;
-          }];
-      }
-  }];
-
-  // TEXT CONFIG
-  [builder configureTextFontToolController:^(PESDKTextFontToolControllerOptionsBuilder * _Nonnull options) {
-      [options setActionButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKFont * _Nonnull font) {
-          if (isSubscriber == NO) {
-              // reset all plus icon
-              [weakSelf removePlusBanner:cell];
-              // enable and adding plus icon
-              if ([weakSelf isExistWithList:nixToolText predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
-//                        [cell setUserInteractionEnabled:YES];
-              } else {
-                  [weakSelf addPlusBanner:cell];
-//                        [cell setUserInteractionEnabled:NO];
-              }
-          }
-      }];
-      // handling of upgrade new upgrade path
-    [options setTextFontActionSelectedClosure:^(NSString * _Nonnull font) {
         if (isSubscriber == NO) {
-            weakController.needToUpgrade = 1;
+            // FRAME CONFIG
+            [builder configureFrameToolController:^(PESDKFrameToolControllerOptionsBuilder * _Nonnull options) {
+          //            __block PESDKToolControllerOptionsBuilder * _options = options;
+                [options setCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKFrame * _Nullable frame) {
+                    // reset all plus icon
+                    [weakSelf removePlusBanner:cell];
+                    // enable and adding plus icon
+                    if (![weakSelf isExistWithList:nixToolFrame predicate:[NSPredicate predicateWithFormat:@"SELF == %@", frame.identifier]]
+                        || frame != nil) {
+                        [weakSelf addPlusBanner:cell];
+                    }
+                }];
+                [options setSelectedFrameClosure:^(PESDKFrame * _Nullable frame) {
+                    if (weakController.hasBegan == NO) {
+                        [weakController.mainController.undoController beginUndoGrouping];
+                    }
+                    if (frame.identifier) {
+                        weakController.needToUpgrade = 1;
+                        NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFrame"];
+                        [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                    } else {
+                        [weakController.banner removeFromSuperview];
+                        weakController.banner = nil;
+                        weakController.needToUpgrade = 0;
+                    }
+                }];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"frame";
+                    weakController.userActivity = nil;
+                    weakController.userActivity = [[NSMutableDictionary alloc] init];
+                    // save last changes
+                    [weakController saveSerialDataWithKey:@"nonPlusActivity"];
+                }];
+            }];
+            [builder configureFrameOptionsToolController:^(PESDKFrameOptionsToolControllerOptionsBuilder * _Nonnull options) {
+                [options setWillLeaveToolClosure:^{
+                    [weakController.banner removeFromSuperview];
+                    weakController.banner = nil;
+                }];
+                [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonApply:button];
+                }];
+                [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonDiscard:button];
+                }];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"frame";
+                }];
+            }];
+
+            // OVERLAY CONFIG
+            [builder configureOverlayToolController:^(PESDKOverlayToolControllerOptionsBuilder * _Nonnull options) {
+                [options setOverlayCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKOverlay * _Nonnull overlay) {
+                    // reset all plus icon
+                    [weakSelf removePlusBanner:cell];
+                    // enable and adding plus icon
+                    if (![weakSelf isExistWithList:nixToolOverlay predicate:[NSPredicate predicateWithFormat:@"SELF == %@", overlay.identifier]]) {
+                        [weakSelf addPlusBanner:cell];
+                    }
+                }];
+                // handling of upgrade new upgrade path
+                [options setOverlaySelectedClosure:^(PESDKOverlay * _Nonnull overlay) {
+                    [weakController.userActivity setObject:overlay.identifier forKey:@"nixOverlay"];
+                    if ([weakSelf isExistWithList:nixToolOverlay predicate:[NSPredicate predicateWithFormat:@"SELF == %@", overlay.identifier]]) {
+                        [weakController.banner removeFromSuperview];
+                        weakController.banner = nil;
+                        weakController.needToUpgrade = 0;
+                    } else {
+                        weakController.needToUpgrade = 1;
+                        NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixOverlay"];
+                        [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                    }
+                }];
+                [weakSelf handleApply:weakController opt:options key:@"overlay"];
+            }];
+
+            // TEXT DESIGN CONFIG
+            [builder configureTextDesignOptionsToolController:^(PESDKTextDesignOptionsToolControllerOptionsBuilder * _Nonnull options) {
+                [options setActionButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKTextDesign * _Nonnull design) {
+                    // reset all plus icon
+                    [weakSelf removePlusBanner:cell];
+                    // enable and adding plus icon
+                    if (![weakSelf isExistWithList:nixToolTextDesign predicate:[NSPredicate predicateWithFormat:@"SELF == %@", design.identifier]]) {
+                        [weakSelf addPlusBanner:cell];
+                    }
+                }];
+                // handling of upgrade new upgrade path
+                [options setTextDesignActionSelectedClosure:^(PESDKTextDesign * _Nonnull design) {
+                    [weakController.userActivity setObject:design.identifier forKey:@"nixTextDesign"];
+                    weakController.needToUpgrade = 1;
+                }];
+                [options setWillLeaveToolClosure:^{
+                    [weakController.banner removeFromSuperview];
+                    weakController.banner = nil;
+                    weakController.enableToValidate = 0;
+                }];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"textdesign";
+                }];
+                [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum TextDesignOverlayAction action) {
+                    if ((long)action == 4) {
+                        // undo
+                        [weakController addButtonTrigger:button usage:@"undo"];
+                    } else if ((long)action == 0 || (long)action == 5) {
+                        // add, redo
+                        [weakController addButtonTrigger:button usage:@"redo"];
+                    } else if ((long)action == 1) {
+                        // delete
+                        [weakController addButtonTrigger:button usage:@"delete"];
+                    }
+                }];
+                [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonApply:button];
+                }];
+                [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonDiscard:button];
+                }];
+            }];
+            [builder configureTextDesignToolController:^(PESDKTextDesignToolControllerOptionsBuilder * _Nonnull options) {
+                [options setWillLeaveToolClosure:^{
+                    weakController.needToUpgrade = 1;
+                    NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixText"];
+                    [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                    if (weakController.hasBegan == NO) {
+                        [weakController.mainController.undoController beginUndoGrouping];
+                    }
+                }];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"textdesign";
+                    [weakController.banner removeFromSuperview];
+                    weakController.banner = nil;
+                }];
+            }];
+
+            // TEXT CONFIG
+            [builder configureTextFontToolController:^(PESDKTextFontToolControllerOptionsBuilder * _Nonnull options) {
+                [options setActionButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKFont * _Nonnull font) {
+                    // reset all plus icon
+                    [weakSelf removePlusBanner:cell];
+                    // enable and adding plus icon
+                    if (![weakSelf isExistWithList:nixToolText predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
+                        [weakSelf addPlusBanner:cell];
+                    }
+                }];
+                // handling of upgrade new upgrade path
+                [options setTextFontActionSelectedClosure:^(NSString * _Nonnull font) {
+                    weakController.needToUpgrade = 1;
+                }];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"text";
+                }];
+            }];
+            [builder configureTextToolController:^(PESDKTextToolControllerOptionsBuilder * _Nonnull options) {
+                [options setWillLeaveToolClosure:^{
+                    NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixText"];
+                    [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                    weakController.needToUpgrade = 1;
+                    if (weakController.hasBegan == NO) {
+                        [weakController.mainController.undoController beginUndoGrouping];
+                    }
+                }];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"text";
+                    [weakController.banner removeFromSuperview];
+                    weakController.banner = nil;
+                }];
+            }];
+            [builder configureTextOptionsToolController:^(PESDKTextOptionsToolControllerOptionsBuilder * _Nonnull options) {
+                [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum TextOverlayAction action) {
+                    if ((long)action == 4) {
+                        // undo
+                        [weakController addButtonTrigger:button usage:@"undo"];
+                    } else if ((long)action == 0 || (long)action == 5) {
+                        // add, redo
+                        [weakController addButtonTrigger:button usage:@"redo"];
+                    } else if ((long)action == 1) {
+                        // delete
+                        [weakController addButtonTrigger:button usage:@"delete"];
+                    }
+                }];
+                [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonApply:button];
+                }];
+                [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonDiscard:button];
+                }];
+                [options setWillLeaveToolClosure:^{
+                    [weakController.banner removeFromSuperview];
+                    weakController.banner = nil;
+                    weakController.enableToValidate = 0;
+                }];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"text";
+                }];
+            }];
+
+            // STICKER CONFIG
+            [builder configureStickerToolController:^(PESDKStickerToolControllerOptionsBuilder * _Nonnull options) {
+                [options setStickerButtonConfigurationClosure:^(PESDKIconCollectionViewCell * _Nonnull cell, PESDKSticker * _Nonnull sticker) {
+                    [weakSelf removePlusBanner:cell];
+                    if (![weakSelf isExistWithList:nixToolSticker predicate:[NSPredicate predicateWithFormat:@"SELF == %@", sticker.identifier]]) {
+                        [weakSelf addPlusBanner:cell];
+                    }
+                }];
+                // handling of upgrade new upgrade path
+                [options setAddedStickerClosure:^(PESDKSticker * _Nonnull sticker) {
+                    // need to check if came from replace, if yes need to remove previous added sticker
+                    weakController.needToUpgrade++;
+                    [weakController.userActivity setObject:sticker.identifier
+                                                    forKey:[NSString stringWithFormat:@"sticker-%@", sticker.identifier]];
+                    if (weakController.hasBegan == NO) {
+                        [weakController.mainController.undoController beginUndoGrouping];
+                    }
+                }];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"sticker";
+                    [weakController.banner removeFromSuperview];
+                    weakController.banner = nil;
+                    weakController.enableToValidate++;
+                }];
+                [options setWillLeaveToolClosure:^{
+                    NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixSticker"];
+                    [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                }];
+                [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonApply:button];
+                }];
+                [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonDiscard:button];
+                }];
+            }];
+            [builder configureStickerOptionsToolController:^(PESDKStickerOptionsToolControllerOptionsBuilder * _Nonnull options) {
+                // add, delete, flip-up, flip-down, undo, redo
+                [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum StickerOverlayAction action) {
+                    if ((long)action == 4) {
+                        // undo
+                        [weakController addButtonTrigger:button usage:@"undo"];
+                    } else if ((long)action == 0 || (long)action == 5) {
+                        // add, redo
+                        [weakController addButtonTrigger:button usage:@"redo"];
+                    } else if ((long)action == 1) {
+                        // delete
+                        [weakController addButtonTrigger:button usage:@"delete"];
+                    }
+                }];
+                // replace, opacity
+                [options setActionButtonConfigurationClosure:^(UICollectionViewCell * _Nonnull cell, enum StickerAction action) {}];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"sticker";
+                    weakController.enableToValidate++;
+                }];
+                [options setWillLeaveToolClosure:^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakController.banner removeFromSuperview];
+                        weakController.banner = nil;
+                    });
+                    [weakController.mainController.undoController endUndoGrouping];
+                    weakController.enableToValidate = 0;
+                }];
+                [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonApply:button];
+                }];
+                [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController addButtonDiscard:button];
+                }];
+            }];
+            [builder configureStickerColorToolController:^(PESDKColorToolControllerOptionsBuilder * _Nonnull options) {
+                // enter, leave
+            }];
+
+            // FOCUS CONFIG
+            [builder configureFocusToolController:^(PESDKFocusToolControllerOptionsBuilder * _Nonnull options) {
+                [options setFocusModeButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, enum PESDKFocusMode mode) {
+                    [weakSelf removePlusBanner:cell];
+                    if (![weakSelf isExistWithList:nixToolFocus predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
+                        [weakSelf addPlusBanner:cell];
+                    }
+                }];
+                // handling of upgrade new upgrade path
+                [options setFocusModeSelectedClosure:^(enum PESDKFocusMode mode) {
+                    [weakController.banner removeFromSuperview];
+                    weakController.banner = nil;
+                    [weakController.userActivity setObject:[NSNumber numberWithLong:mode]
+                                                    forKey:@"nixFocus"];
+                    if ((long)mode > 0) {
+                        NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFocus"];
+                        [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                        weakController.needToUpgrade = 1;
+                    } else {
+                        weakController.needToUpgrade = 0;
+                    }
+                }];
+                // enter, leave
+                [weakSelf handleApply:weakController opt:options key:@"focus"];
+            }];
+
+            // ADJUSTMENT CONFIG
+            [builder configureAdjustToolController:^(PESDKAdjustToolControllerOptionsBuilder * _Nonnull options) {
+                [options setAdjustToolButtonConfigurationBlock:^(PESDKMenuCollectionViewCell * _Nonnull cell, NSNumber * _Nullable index) {
+                    [weakSelf removePlusBanner:cell];
+                    if (![weakSelf isExistWithList:nixToolAdjust predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
+                        [weakSelf addPlusBanner:cell];
+                    }
+                }];
+                [options setSliderChangedValueClosure:^(PESDKSlider * _Nonnull slider, enum AdjustTool tool) {
+                    if (weakController.hasBegan == NO) {
+                        [weakController.mainController.undoController beginUndoGrouping];
+                    }
+                    float sliderValue = slider.value * 100;
+                    if (fabsf(sliderValue)) {
+                        weakController.needToUpgrade++;
+                    }
+                    [weakController.userActivity setObject:[NSNumber numberWithFloat:sliderValue]
+                                                    forKey:[NSString stringWithFormat:@"%ld", (long)tool]];
+                }];
+                // reset invoke
+                [options setAdjustToolSelectedBlock:^(NSNumber * _Nullable adjust) {
+                    NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixAdjust"];
+                    [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                    if ([adjust intValue] == 0 && weakController.needToUpgrade) {
+                        [weakController.mainController.undoController undo];
+                        [weakController.mainController.undoController undoStep];
+                        [weakController.mainController.undoController undoStepInCurrentGroup];
+                        [weakController.mainController.undoController removeAllActionsInCurrentGroup];
+                        weakController.needToUpgrade = 0;
+                        weakController.hasBegan = NO;
+                    }
+                }];
+                // enter, leave
+                [weakSelf handleApply:weakController opt:options key:@"adjust"];
+                // undo, redo
+                [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum AdjustOverlayAction action) {
+                    if ((long)action == 0) {
+                        [weakController addButtonTrigger:button usage:@"undo"];
+                    } else if ((long)action == 1) {
+                        // redo
+                        [weakController addButtonTrigger:button usage:@"redo"];
+                    }
+                }];
+            }];
+
+            // FILTER CONFIG
+            [builder configureFilterToolController:^(PESDKFilterToolControllerOptionsBuilder * _Nonnull options) {
+              // visible on the screen
+              [options setFilterCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKEffect * _Nonnull effect) {
+                  // safe remove plus banner
+                  [weakSelf removePlusBanner:cell];
+                  if ([cell.captionTextLabel.text isEqualToString:@"None"]){
+                      // do nothing
+                  } else {
+                      [weakSelf addPlusBanner:cell];
+                  }
+              }];
+              // handling of upgrade new upgrade path
+                [options setFilterSelectedClosure:^(PESDKEffect * _Nonnull effect) {
+                    [weakController.userActivity setObject:effect.identifier
+                                                    forKey:@"nixFilter"];
+                    [weakController.banner removeFromSuperview];
+                    weakController.banner = nil;
+                    if ([effect.identifier isEqualToString:@"None"]){
+                        // do nothing
+                        weakController.needToUpgrade = 0;
+                    } else {
+                        weakController.needToUpgrade = 1;
+                        NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFilter"];
+                        [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                    }
+                }];
+                [options setFolderCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell) {
+                    [cell setUserInteractionEnabled:YES];
+                    [weakSelf removePlusBanner:cell];
+                    [weakSelf addPlusBanner:cell];
+                }];
+                [weakSelf handleApply:weakController opt:options key:@"filter"];
+            }];
+
+            // TRANSFORM
+            [builder configureTransformToolController:^(PESDKTransformToolControllerOptionsBuilder * _Nonnull options) {
+                [options setWillLeaveToolClosure:^{
+                    [weakController saveSerialDataWithKey:@"nonPlusActivity"];
+                    weakController.hasBegan = NO;
+                }];
+                [options setDidEnterToolClosure:^{
+                    weakController.currentEffects = @"filter";
+                }];
+            }];
         }
-    }];
-  }];
-  [builder configureTextToolController:^(PESDKTextToolControllerOptionsBuilder * _Nonnull options) {
-      if (isSubscriber == NO) {
-          [options setWillLeaveToolClosure:^{
-              NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixText"];
-              [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-              weakController.needToUpgrade = 1;
-              if (weakController.hasBegan == NO) {
-                  [weakController.mainController.undoController beginUndoGrouping];
-              }
-          }];
-          [options setDidEnterToolClosure:^{
-              [weakController.banner removeFromSuperview];
-              weakController.banner = nil;
-          }];
-      }
-  }];
-  [builder configureTextOptionsToolController:^(PESDKTextOptionsToolControllerOptionsBuilder * _Nonnull options) {
-      [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum TextOverlayAction action) {
-          if ((long)action == 4) {
-              // undo
-              [weakController addButtonTrigger:button usage:@"undo"];
-          } else if ((long)action == 0 || (long)action == 5) {
-              // add, redo
-              [weakController addButtonTrigger:button usage:@"redo"];
-          } else if ((long)action == 1) {
-              // delete
-              [weakController addButtonTrigger:button usage:@"delete"];
-          }
-      }];
-      [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          if (isSubscriber == NO) {
-              [weakController addButtonApply:button];
-          }
-      }];
-      [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          [weakController addButtonDiscard:button];
-      }];
-      [options setWillLeaveToolClosure:^{
-          [weakController.banner removeFromSuperview];
-          weakController.banner = nil;
-          weakController.enableToValidate = 0;
-      }];
-  }];
-
-  // STICKER CONFIG
-  [builder configureStickerToolController:^(PESDKStickerToolControllerOptionsBuilder * _Nonnull options) {
-      [options setStickerButtonConfigurationClosure:^(PESDKIconCollectionViewCell * _Nonnull cell, PESDKSticker * _Nonnull sticker) {
-          if (isSubscriber == NO) {
-              [weakSelf removePlusBanner:cell];
-              if ([weakSelf isExistWithList:nixToolSticker predicate:[NSPredicate predicateWithFormat:@"SELF == %@", sticker.identifier]]) {
-//                        [cell setUserInteractionEnabled:YES];
-              } else {
-                  [weakSelf addPlusBanner:cell];
-//                        [cell setUserInteractionEnabled:NO];
-              }
-          }
-      }];
-      // handling of upgrade new upgrade path
-      [options setAddedStickerClosure:^(PESDKSticker * _Nonnull sticker) {
-          // need to check if came from replace, if yes need to remove previous added sticker
-          weakController.needToUpgrade++;
-          [weakController.userActivity setObject:sticker.identifier
-                                          forKey:[NSString stringWithFormat:@"sticker-%@", sticker.identifier]];
-          if (weakController.hasBegan == NO) {
-              [weakController.mainController.undoController beginUndoGrouping];
-          }
-      }];
-      [options setDidEnterToolClosure:^{
-          [weakController.banner removeFromSuperview];
-          weakController.banner = nil;
-      }];
-      [options setWillLeaveToolClosure:^{
-          if (isSubscriber == NO) {
-              NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixSticker"];
-              [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-          }
-      }];
-      [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          if (isSubscriber == NO) {
-              [weakController addButtonApply:button];
-          }
-      }];
-      [options setDidEnterToolClosure:^{
-          weakController.enableToValidate++;
-      }];
-      [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          [weakController addButtonDiscard:button];
-      }];
-  }];
-  [builder configureStickerOptionsToolController:^(PESDKStickerOptionsToolControllerOptionsBuilder * _Nonnull options) {
-      // add, delete, flip-up, flip-down, undo, redo
-      [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum StickerOverlayAction action) {
-          if ((long)action == 4) {
-              // undo
-              [weakController addButtonTrigger:button usage:@"undo"];
-          } else if ((long)action == 0 || (long)action == 5) {
-              // add, redo
-              [weakController addButtonTrigger:button usage:@"redo"];
-          } else if ((long)action == 1) {
-              // delete
-              [weakController addButtonTrigger:button usage:@"delete"];
-          }
-      }];
-      // replace, opacity
-//            [options setActionButtonConfigurationClosure:^(UICollectionViewCell * _Nonnull, enum StickerAction) {
-//
-//            }];
-      [options setActionButtonConfigurationClosure:^(UICollectionViewCell * _Nonnull cell, enum StickerAction action) {}];
-      [options setDidEnterToolClosure:^{
-          weakController.enableToValidate++;
-      }];
-      [options setWillLeaveToolClosure:^{
-          dispatch_async(dispatch_get_main_queue(), ^{
-              [weakController.banner removeFromSuperview];
-              weakController.banner = nil;
-          });
-          [weakController.mainController.undoController endUndoGrouping];
-//              if (weakController.enableToValidate > 1 && weakController.needToUpgrade) {
-//                  [weakController showPromptUpgrade:@"nixSticker"];
-//              }
-          weakController.enableToValidate = 0;
-      }];
-      [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          [weakController addButtonApply:button];
-      }];
-      [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
-          [weakController addButtonDiscard:button];
-      }];
-  }];
-  [builder configureStickerColorToolController:^(PESDKColorToolControllerOptionsBuilder * _Nonnull options) {
-      // enter, leave
-  }];
-
-  // FOCUS CONFIG
-  [builder configureFocusToolController:^(PESDKFocusToolControllerOptionsBuilder * _Nonnull options) {
-      [options setFocusModeButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, enum PESDKFocusMode mode) {
-          if (isSubscriber == NO) {
-              [weakSelf removePlusBanner:cell];
-              if ([weakSelf isExistWithList:nixToolFocus predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
-//                        [cell setUserInteractionEnabled:YES];
-              } else {
-                  [weakSelf addPlusBanner:cell];
-//                        [cell setUserInteractionEnabled:NO];
-              }
-          }
-      }];
-      // handling of upgrade new upgrade path
-      [options setFocusModeSelectedClosure:^(enum PESDKFocusMode mode) {
-          if (isSubscriber == NO) {
-              [weakController.banner removeFromSuperview];
-              weakController.banner = nil;
-
-              [weakController.userActivity setObject:[NSNumber numberWithLong:mode]
-                                              forKey:@"nixFocus"];
-              if ((long)mode > 0) {
-                  NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFocus"];
-                  [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-                  weakController.needToUpgrade = 1;
-              } else {
-                  weakController.needToUpgrade = 0;
-              }
-          }
-      }];
-      // enter, leave
-      [weakSelf handleApply:weakController opt:options];
-  }];
-
-  // ADJUSTMENT CONFIG
-  [builder configureAdjustToolController:^(PESDKAdjustToolControllerOptionsBuilder * _Nonnull options) {
-      [options setAdjustToolButtonConfigurationBlock:^(PESDKMenuCollectionViewCell * _Nonnull cell, NSNumber * _Nullable index) {
-          if (isSubscriber == NO) {
-              [weakSelf removePlusBanner:cell];
-              if ([weakSelf isExistWithList:nixToolAdjust predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
-//                        [cell setUserInteractionEnabled:YES];
-              } else {
-                  [weakSelf addPlusBanner:cell];
-//                        [cell setUserInteractionEnabled:NO];
-              }
-          }
-      }];
-      [options setSliderChangedValueClosure:^(PESDKSlider * _Nonnull slider, enum AdjustTool tool) {
-          if (weakController.hasBegan == NO) {
-              [weakController.mainController.undoController beginUndoGrouping];
-          }
-          if (isSubscriber == NO) {
-              float sliderValue = slider.value * 100;
-              if (fabsf(sliderValue)) {
-                  weakController.needToUpgrade++;
-              }
-//                  if ([weakController.userActivity objectForKey:[NSString stringWithFormat:@"%ld", (long)tool]] == nil) {
-//                      if (fabs(sliderValue)) {
-//
-//                      } else {
-//                          weakController.needToUpgrade--;
-//                      }
-//                  }
-              [weakController.userActivity setObject:[NSNumber numberWithFloat:sliderValue]
-                                              forKey:[NSString stringWithFormat:@"%ld", (long)tool]];
-          }
-      }];
-      // reset invoke
-      [options setAdjustToolSelectedBlock:^(NSNumber * _Nullable adjust) {
-          if (isSubscriber == NO) {
-              NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixAdjust"];
-              [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-              if ([adjust intValue] == 0 && weakController.needToUpgrade) {
-                  [weakController.mainController.undoController undo];
-                  [weakController.mainController.undoController undoStep];
-                  [weakController.mainController.undoController undoStepInCurrentGroup];
-                  [weakController.mainController.undoController removeAllActionsInCurrentGroup];
-                  weakController.needToUpgrade = 0;
-                  weakController.hasBegan = NO;
-              }
-          }
-      }];
-      // enter, leave
-      [weakSelf handleApply:weakController opt:options];
-      // undo, redo
-      [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum AdjustOverlayAction action) {
-          if ((long)action == 0) {
-              [weakController addButtonTrigger:button usage:@"undo"];
-          } else if ((long)action == 1) {
-              // redo
-              [weakController addButtonTrigger:button usage:@"redo"];
-          }
-      }];
-  }];
-
-  // FILTER CONFIG
-  [builder configureFilterToolController:^(PESDKFilterToolControllerOptionsBuilder * _Nonnull options) {
-    // visible on the screen
-    [options setFilterCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKEffect * _Nonnull effect) {
-        if (isSubscriber == NO) {
-            // safe remove plus banner
-            [weakSelf removePlusBanner:cell];
-            if ([cell.captionTextLabel.text isEqualToString:@"None"]){
-                // do nothing
-            } else {
-                [weakSelf addPlusBanner:cell];
-            }
-        }
-    }];
-    // handling of upgrade new upgrade path
-      [options setFilterSelectedClosure:^(PESDKEffect * _Nonnull effect) {
-          [weakController.userActivity setObject:effect.identifier
-                                          forKey:@"nixFilter"];
-        if (isSubscriber == NO) {
-            [weakController.banner removeFromSuperview];
-            weakController.banner = nil;
-            if ([effect.identifier isEqualToString:@"None"]){
-                // do nothing
-                weakController.needToUpgrade = 0;
-            } else {
-                weakController.needToUpgrade = 1;
-                NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFilter"];
-                [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
-            }
-        }
-      }];
-      [options setFolderCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell) {
-        if (isSubscriber == NO) {
-            [cell setUserInteractionEnabled:YES];
-            [weakSelf removePlusBanner:cell];
-            [weakSelf addPlusBanner:cell];
-//                  if (![weakSelf isExistWithList:nixToolFilter predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
-//                  }
-        }
-      }];
-      [weakSelf handleApply:weakController opt:options];
-  }];
-
-  // TRANSFORM
-  [builder configureTransformToolController:^(PESDKTransformToolControllerOptionsBuilder * _Nonnull options) {
-      if (isSubscriber == NO) {
-          [options setWillLeaveToolClosure:^{
-              [weakController saveSerialDataWithKey:@"nonPlusActivity"];
-              weakController.hasBegan = NO;
-          }];
-          [options setDidEnterToolClosure:^{
-          }];
-      }
-  }];
-
 #pragma mark - Setup Top Level Menu
         // MAIN MENU
         [builder configureVideoEditViewController:^(PESDKVideoEditViewControllerOptionsBuilder * _Nonnull options) {
             [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
                 [controller addTargetDiscard:button];
             }];
-
-//            [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum MediaEditOverlayAction action) {
-//                if ((long)action == 0) {
-//                    [weakController addButtonTrigger:button isUndo:YES];
-//                } else if ((long)action == 1) {
-//                    // redo
-//                    [weakController addButtonTrigger:button isUndo:NO];
-//                }
-//            }];
-
             NSMutableArray<PESDKPhotoEditMenuItem *> *menuItems = [[PESDKPhotoEditMenuItem defaultItems] mutableCopy];
             [menuItems removeObjectAtIndex:0]; // remove video/trim
             if (isSubscriber == NO) {
@@ -639,10 +558,6 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                         [weakSelf addPlusBanner:cell];
                     }
                 }];
-                // remove for brush
-//                [menuItems removeLastObject];
-                // custom action button for brush that can go inside
-//                [menuItems addObject:[self createMenuitemWithTitle:@"Brush" icon:@"ic_brush_plus" vc:controller isEnable:NO]];
             }
             options.menuItems = menuItems;
         }];
@@ -674,8 +589,9 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
   });
 }
 
-- (void)handleApply:(RNVideoEditorSDK *)controller opt:(PESDKToolControllerOptionsBuilder *)options {
+- (void)handleApply:(RNVideoEditorSDK *)controller opt:(PESDKToolControllerOptionsBuilder *)options key:(NSString*)key {
     [options setDidEnterToolClosure:^{
+        controller.currentEffects = key;
         controller.needToUpgrade = 0;
         controller.userActivity = nil;
         controller.userActivity = [[NSMutableDictionary alloc] init];

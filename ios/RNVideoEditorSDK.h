@@ -11,6 +11,7 @@
 @property (nonatomic, strong) UIView * _Nullable banner;
 @property (nonatomic, strong) NSUserDefaults * _Nonnull sharedDefaults;
 @property (nonatomic, strong) NSMutableDictionary * _Nullable userActivity;
+@property (nonatomic, strong) NSString * _Nonnull currentEffects;
 @property int needToUpgrade;
 @property int textAdded;
 @property int enableToValidate;
