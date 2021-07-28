@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.ReadableMap;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +39,7 @@ import ly.img.react_native.pesdk.SubscriptionOverlay;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.RNVideoEditorSDKModule;
 
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isCameOnSubscription;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isSubscriber;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.stickerConfig;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textConfig;
@@ -48,10 +50,12 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     private SubscriptionOverlay videoSubscriptionOverlayLayout;
     private TextView tv_subtitle;
     private UiStateMenu uiStateMenu;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         uiStateMenu = getStateHandler().getStateModel(UiStateMenu.class);
         videoSubscriptionOverlayLayout = findViewById(R.id.subscription_overlay);
         tv_subtitle = findViewById(R.id.tv_features);
@@ -64,6 +68,10 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                 finish();
             }
         });
+
+        if (_isSubscriber && _isCameOnSubscription) {
+            mFirebaseAnalytics.logEvent("unblock_feat_p_buy", null);
+        }
     }
 
     @Override
@@ -135,12 +143,14 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     }
 
     private void showUpgradeDialog() {
+        mFirebaseAnalytics.logEvent("unblock_feat_p_show", null);
         new AlertDialog.Builder(this)
                 .setTitle("Unblock this feature?")
                 .setMessage("Upgrade to Nixplay Plus now to unblock this feature and enjoy more advance editing tools.")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 //                        saveSerialization();
+                        mFirebaseAnalytics.logEvent("unblock_feat_p_upgrade", null);
                         goToSubscriptionScreen(0);
                     }
                 })

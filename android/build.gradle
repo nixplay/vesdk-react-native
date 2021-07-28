@@ -82,6 +82,7 @@ android {
 
 repositories {
     mavenCentral()
+    google()
 }
 
 dependencies {
@@ -89,4 +90,5 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation project(path: ':react-native-photoeditorsdk')
     compileOnly "ly.img.android.sdk:serializer:$imglyConfig.version"
+    implementation 'com.google.firebase:firebase-analytics:16.0.0'
 }

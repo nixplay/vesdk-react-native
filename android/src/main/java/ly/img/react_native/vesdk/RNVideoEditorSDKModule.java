@@ -102,6 +102,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
     public static int VESDK_RESULT = 32;
     public static int RESULT_SUBSCRIBE = 35;
     public static boolean _isSubscriber;
+    public static boolean _isCameOnSubscription;
     public static ReadableMap configMap;
     public static ReadableArray filterConfig;
     public static ReadableArray adjustConfig;
@@ -260,6 +261,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         overlayConfig = configMap.getMap("nixOverlay").getArray("list");
         frameConfig = configMap.getMap("nixFrame").getArray("list");
         _isSubscriber = config.getBoolean("isSubscriber");
+        _isCameOnSubscription = config.getBoolean("isCameOnSubscription");
 
         settingsList = createsVesdkSettingsList();
         settingsList.getSettingsModel(LoadSettings.class).setSource(uri);
