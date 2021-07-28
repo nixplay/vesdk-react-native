@@ -64,11 +64,13 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
         PESDKPhotoEditModel *photoEditModel = [[PESDKPhotoEditModel alloc] init];
 
         if (isSubscriber && isCameOnSubscription) {
-            [FIRAnalytics logEventWithName:@"unblock_feat_p_buy" parameters:@{}];
             // Only apply previous changes if user successfuly
             NSDictionary *stateStore = [[NSKeyedUnarchiver unarchiveObjectWithData:
                                        [self.sharedDefaults objectForKey:@"lastChanges"]] copy];
-
+            NSString *effectsUsed = [stateStore objectForKey:@"effects"];
+            if (effectsUsed != nil && ![effectsUsed isEqualToString:@""]) {
+                [FIRAnalytics logEventWithName:[NSString stringWithFormat:@"unblock_feat_v_%@_buy", effectsUsed] parameters:@{}];
+            }
             if ([[stateStore allKeys] count] && ![[stateStore objectForKey:@"data"] isEqual:[NSNull null]]) {
                 photoEditModel = [[PESDKPhotoEditModel alloc] initWithSerializedData:[NSData dataWithData:[stateStore objectForKey:@"data"]] referenceSize:CGSizeMake(contentWidth, contentHeight)];
             }
@@ -89,6 +91,7 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
             return nil;
         }];
 
+        self.currentEffects = [[NSString alloc] init];
         self.mainController = [PESDKVideoEditViewController videoEditViewControllerWithVideoAsset:video configuration:configuration photoEditModel:photoEditModel];
         self.mainController.modalPresentationStyle = UIModalPresentationFullScreen;
         self.mainController.delegate = self;
@@ -210,7 +213,9 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 }
 
 - (void)showPromptUpgrade:(NSString * _Nonnull)key {
-    [FIRAnalytics logEventWithName:@"unblock_feat_p_show" parameters:@{}];
+    if (self.currentEffects != nil && ![self.currentEffects isEqualToString:@""]) {
+        [FIRAnalytics logEventWithName:[NSString stringWithFormat:@"unblock_feat_v_%@_show", self.currentEffects] parameters:@{}];
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
       UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unblock this feature?"
                                                                      message:@"Upgrade to Nixplay Plus now to unblock this feature and enjoy more advanced editing tools."
@@ -219,7 +224,9 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
       UIAlertAction * action = [UIAlertAction actionWithTitle:@"Upgrade"
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
-          [FIRAnalytics logEventWithName:@"unblock_feat_p_upgrade" parameters:@{}];
+          if (self.currentEffects != nil && ![self.currentEffects isEqualToString:@""]) {
+              [FIRAnalytics logEventWithName:[NSString stringWithFormat:@"unblock_feat_v_%@_upgrade", self.currentEffects] parameters:@{}];
+          }
           // save last changes to user defaults for advance usage
           [self saveSerialDataWithKey:@"lastChanges"];
           RCTPromiseResolveBlock resolve = self.resolve;
@@ -269,13 +276,12 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 }
 
 - (void)saveSerialDataWithKey:(NSString *)key {
-    NSDictionary *state = @{ @"data" : self.mainController.serializedSettings };
+    NSDictionary *state = @{ @"data" : self.mainController.serializedSettings, @"effects": self.currentEffects };
     NSMutableDictionary *md = [[NSMutableDictionary alloc] initWithDictionary:state];
     [self.sharedDefaults setObject:[NSKeyedArchiver archivedDataWithRootObject:md]
                                 forKey:key];
     [self.sharedDefaults synchronize];
 }
-
 
 - (void)addButtonTrigger:(UIButton* _Nonnull)button usage:(NSString * _Nonnull)usage {
     if ([usage isEqualToString:@"undo"]) {
