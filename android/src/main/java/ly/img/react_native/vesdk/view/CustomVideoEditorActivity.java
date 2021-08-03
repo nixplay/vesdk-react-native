@@ -145,8 +145,8 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     private void showUpgradeDialog() {
         mFirebaseAnalytics.logEvent("unblock_feat_p_show", null);
         new AlertDialog.Builder(this)
-                .setTitle("Unblock this feature?")
-                .setMessage("Upgrade to Nixplay Plus now to unblock this feature and enjoy more advance editing tools.")
+                .setTitle("Unlock this feature?")
+                .setMessage("Upgrade to Nixplay Plus now to unlock this feature and enjoy more advanced editing tools.")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 //                        saveSerialization();

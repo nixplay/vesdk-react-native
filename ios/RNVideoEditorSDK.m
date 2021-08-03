@@ -217,8 +217,8 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
         [FIRAnalytics logEventWithName:[NSString stringWithFormat:@"unblock_feat_v_%@_show", self.currentEffects] parameters:@{}];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unblock this feature?"
-                                                                     message:@"Upgrade to Nixplay Plus now to unblock this feature and enjoy more advanced editing tools."
+      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unlock this feature?"
+                                                                     message:@"Upgrade to Nixplay Plus now to unlock this feature and enjoy more advanced editing tools."
                                                               preferredStyle:UIAlertControllerStyleAlert];
 
       UIAlertAction * action = [UIAlertAction actionWithTitle:@"Upgrade"
