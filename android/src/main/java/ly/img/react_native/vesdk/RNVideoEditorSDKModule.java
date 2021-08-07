@@ -101,7 +101,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
 
     public static int VESDK_RESULT = 32;
     public static int RESULT_SUBSCRIBE = 35;
-    public static boolean _isSubscriber;
+    public static boolean _isSubscriber = false;
     public static boolean _isCameOnSubscription;
     public static ReadableMap configMap;
     public static ReadableArray filterConfig;
@@ -266,17 +266,9 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         settingsList = createsVesdkSettingsList();
         settingsList.getSettingsModel(LoadSettings.class).setSource(uri);
 
-
-        if (_isSubscriber) {
-            new VideoEditorBuilder(getCurrentActivity())
-                    .setSettingsList(settingsList)
-                    .startActivityForResult(getCurrentActivity(), VESDK_RESULT);
-        } else {
-            new CustomVideoEditorBuilder(getCurrentActivity())
-                    .setSettingsList(settingsList)
-                    .startActivityForResult(getCurrentActivity(), VESDK_RESULT);
-        }
-
+        new CustomVideoEditorBuilder(getCurrentActivity())
+            .setSettingsList(settingsList)
+            .startActivityForResult(getCurrentActivity(), VESDK_RESULT);
     }
 
 

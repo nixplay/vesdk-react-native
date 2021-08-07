@@ -41,7 +41,7 @@ public class CustomFrameItem extends FrameItem {
     }
 
     public int getLayout() {
-        return "imgly_frame_none".equals(this.getId()) ? R.layout.imgly_list_item_none_frame : ly.img.react_native.pesdk.R.layout.imgly_list_item_frame_plus;
+        return "imgly_frame_none".equals(this.getId()) ? R.layout.imgly_list_item_none_frame : ly.img.react_native.vesdk.R.layout.imgly_list_item_frame_plus;
     }
 
     @NonNull

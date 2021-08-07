@@ -2,18 +2,15 @@ package ly.img.react_native.vesdk.view;
 
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.facebook.react.bridge.ReadableMap;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.File;
@@ -35,7 +32,7 @@ import ly.img.android.pesdk.ui.activity.VideoEditorActivity;
 
 import ly.img.android.pesdk.ui.model.state.UiStateMenu;
 import ly.img.android.serializer._3.IMGLYFileWriter;
-import ly.img.react_native.pesdk.SubscriptionOverlay;
+import ly.img.react_native.vesdk.SubscriptionOverlayVideo;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.RNVideoEditorSDKModule;
 
@@ -47,7 +44,7 @@ import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textDesignConfig;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.RESULT_SUBSCRIBE;
 
 public class CustomVideoEditorActivity extends VideoEditorActivity {
-    private SubscriptionOverlay videoSubscriptionOverlayLayout;
+    private SubscriptionOverlayVideo videoSubscriptionOverlayLayout;
     private TextView tv_subtitle;
     private UiStateMenu uiStateMenu;
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -55,20 +52,23 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.imgly_activity_video_editor);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         uiStateMenu = getStateHandler().getStateModel(UiStateMenu.class);
-        videoSubscriptionOverlayLayout = findViewById(R.id.subscription_overlay);
-        tv_subtitle = findViewById(R.id.tv_features);
-        videoSubscriptionOverlayLayout.setConfigs(RNVideoEditorSDKModule.configMap, tv_subtitle);
-        videoSubscriptionOverlayLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                setResult(RESULT_SUBSCRIBE, intent);
-                finish();
-            }
-        });
-
+        if (!_isSubscriber) {
+            videoSubscriptionOverlayLayout = findViewById(R.id.subscription_overlay_video);
+            videoSubscriptionOverlayLayout.configMap = RNVideoEditorSDKModule.configMap;
+            tv_subtitle = findViewById(R.id.tv_features_video);
+            videoSubscriptionOverlayLayout.setConfigs(RNVideoEditorSDKModule.configMap, tv_subtitle);
+            videoSubscriptionOverlayLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    setResult(RESULT_SUBSCRIBE, intent);
+                    finish();
+                }
+            });
+        }
         if (_isSubscriber && _isCameOnSubscription) {
             mFirebaseAnalytics.logEvent("unblock_feat_p_buy", null);
         }
@@ -76,68 +76,69 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
 
     @Override
     protected void onAcceptClicked() {
-        if (!_isSubscriber && !uiStateMenu.getCurrentPanelData().getId().equals("imgly_tool_transform")) {
-            boolean hasPlusSticker = false;
-            boolean hasPlusTextLayer = false;
-            boolean hasPlusTextDesignLayer = false;
-            StateHandler stateHandler = getStateHandler();
-            LayerListSettings layerListSettings = stateHandler.get(LayerListSettings.class);
-            layerListSettings.acquireLayerReadLock();
-            for (AbsLayerSettings layer : layerListSettings.getLayerSettingsList()) {
-                if (layer instanceof ImageStickerLayerSettings) {
-                    ImageStickerLayerSettings sticker = (ImageStickerLayerSettings) layer;
-                    String stickerId = sticker.getStickerConfig().getId();
-                    hasPlusSticker = !stickerConfig.toArrayList().contains(stickerId);
-                    if (hasPlusSticker) {
-                        break;
-                    }
-                } else if (layer instanceof TextLayerSettings) {
-                    TextLayerSettings textLayerSettings = (TextLayerSettings) layer;
-                    String textLayerId = textLayerSettings.getStickerConfig().getFont().getId();
-                    hasPlusTextLayer = !textConfig.toArrayList().contains(textLayerId);
-                    if (hasPlusTextLayer) {
-                        break;
-                    }
-                } else if (layer instanceof TextDesignLayerSettings) {
-                    TextDesignLayerSettings textDesignLayerSettings = (TextDesignLayerSettings) layer;
-                    String textDesignLayerId = textDesignLayerSettings.getStickerConfig().getId();
-                    hasPlusTextDesignLayer = !textDesignConfig.toArrayList().contains(textDesignLayerId);
-                    if (hasPlusTextDesignLayer) {
-                        break;
+        if (!_isSubscriber) {
+            if (!uiStateMenu.getCurrentPanelData().getId().equals("imgly_tool_transform")) {
+                boolean hasPlusSticker = false;
+                boolean hasPlusTextLayer = false;
+                boolean hasPlusTextDesignLayer = false;
+                StateHandler stateHandler = getStateHandler();
+                LayerListSettings layerListSettings = stateHandler.get(LayerListSettings.class);
+                layerListSettings.acquireLayerReadLock();
+                for (AbsLayerSettings layer : layerListSettings.getLayerSettingsList()) {
+                    if (layer instanceof ImageStickerLayerSettings) {
+                        ImageStickerLayerSettings sticker = (ImageStickerLayerSettings) layer;
+                        String stickerId = sticker.getStickerConfig().getId();
+                        hasPlusSticker = !stickerConfig.toArrayList().contains(stickerId);
+                        if (hasPlusSticker) {
+                            break;
+                        }
+                    } else if (layer instanceof TextLayerSettings) {
+                        TextLayerSettings textLayerSettings = (TextLayerSettings) layer;
+                        String textLayerId = textLayerSettings.getStickerConfig().getFont().getId();
+                        hasPlusTextLayer = !textConfig.toArrayList().contains(textLayerId);
+                        if (hasPlusTextLayer) {
+                            break;
+                        }
+                    } else if (layer instanceof TextDesignLayerSettings) {
+                        TextDesignLayerSettings textDesignLayerSettings = (TextDesignLayerSettings) layer;
+                        String textDesignLayerId = textDesignLayerSettings.getStickerConfig().getId();
+                        hasPlusTextDesignLayer = !textDesignConfig.toArrayList().contains(textDesignLayerId);
+                        if (hasPlusTextDesignLayer) {
+                            break;
+                        }
                     }
                 }
-            }
-            layerListSettings.releaseLayerReadLock();
-            FilterSettings filterSettings = stateHandler.get(FilterSettings.class);
-            ColorAdjustmentSettings adjustmentSettings = stateHandler.get(ColorAdjustmentSettings.class);
-            FocusSettings focusSettings = stateHandler.get(FocusSettings.class);
-            FrameSettings frameSettings = stateHandler.get(FrameSettings.class);
-            OverlaySettings overlaySettings = stateHandler.get(OverlaySettings.class);
-            videoSubscriptionOverlayLayout.setHasChanges(true);
-            if (filterSettings.hasChanges()) {
-                showUpgradeDialog();
-            } else if (adjustmentSettings.hasChanges()) {
-                showUpgradeDialog();
-            } else if (focusSettings.hasChanges()) {
-                showUpgradeDialog();
-            } else if (hasPlusSticker || hasPlusTextLayer || hasPlusTextDesignLayer) {
-                if (uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.TextOptionToolPanel")
-                        || uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.TextDesignOptionToolPanel")
-                        || uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.StickerOptionToolPanel")) {
+                layerListSettings.releaseLayerReadLock();
+                FilterSettings filterSettings = stateHandler.get(FilterSettings.class);
+                ColorAdjustmentSettings adjustmentSettings = stateHandler.get(ColorAdjustmentSettings.class);
+                FocusSettings focusSettings = stateHandler.get(FocusSettings.class);
+                FrameSettings frameSettings = stateHandler.get(FrameSettings.class);
+                OverlaySettings overlaySettings = stateHandler.get(OverlaySettings.class);
+                videoSubscriptionOverlayLayout.setHasChanges(true);
+                if (filterSettings.hasChanges()) {
+                    showUpgradeDialog();
+                } else if (adjustmentSettings.hasChanges()) {
+                    showUpgradeDialog();
+                } else if (focusSettings.hasChanges()) {
+                    showUpgradeDialog();
+                } else if (hasPlusSticker || hasPlusTextLayer || hasPlusTextDesignLayer) {
+                    if (uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.TextOptionToolPanel")
+                            || uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.TextDesignOptionToolPanel")
+                            || uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.StickerOptionToolPanel")) {
+                        showUpgradeDialog();
+                    } else {
+                        super.onAcceptClicked();
+                    }
+                } else if (frameSettings.hasChanges()) {
+                    showUpgradeDialog();
+                } else if (overlaySettings.hasChanges()) {
                     showUpgradeDialog();
                 } else {
+                    videoSubscriptionOverlayLayout.setHasChanges(false);
                     super.onAcceptClicked();
                 }
-            } else if (frameSettings.hasChanges()) {
-                showUpgradeDialog();
-            } else if (overlaySettings.hasChanges()) {
-                showUpgradeDialog();
-            } else {
-                videoSubscriptionOverlayLayout.setHasChanges(false);
-                super.onAcceptClicked();
             }
         } else {
-            videoSubscriptionOverlayLayout.setHasChanges(false);
             super.onAcceptClicked();
         }
     }
