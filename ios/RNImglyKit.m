@@ -548,7 +548,6 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
             NSMutableArray<PESDKPhotoEditMenuItem *> *menuItems = [[PESDKPhotoEditMenuItem defaultItems] mutableCopy];
             [menuItems removeObjectAtIndex:0]; // remove video/trim
             if (isSubscriber == NO) {
-                [menuItems removeLastObject]; // magic
                 [menuItems removeLastObject]; // brush
                 [options setActionButtonConfigurationBlock:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKPhotoEditMenuItem * _Nonnull menuItem) {
                     // remove subview for transform
