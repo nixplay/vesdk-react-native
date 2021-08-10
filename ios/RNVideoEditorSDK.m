@@ -84,6 +84,15 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
             }
         }
 
+        [VESDK setLocalizationDictionary:@{
+          @"en": @{
+                  @"pesdk_editor_title_discardChangesAlert": @"Discard Changes?",
+                  @"pesdk_common_button_cancel": @"Cancel",
+                  @"pesdk_editor_button_discardChanges": @"Discard",
+                  @"pesdk_editor_text_discardChangesAlert": @"If you go back now, your edits will be discarded.",
+          }
+        }];
+
         [VESDK setBundleImageBlock:^UIImage * _Nullable(NSString * _Nonnull imageName) {
             if ([imageName isEqualToString:@"imgly_icon_save"]) {
                 return [UIImage imageNamed:@"ic_approve"];
