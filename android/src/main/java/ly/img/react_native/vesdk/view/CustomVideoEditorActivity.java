@@ -70,7 +70,7 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
             });
         }
         if (_isSubscriber && _isCameOnSubscription) {
-            mFirebaseAnalytics.logEvent("unblock_feat_p_buy", null);
+            mFirebaseAnalytics.logEvent("unblock_feat_v_buy", null);
         }
     }
 
@@ -144,14 +144,14 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     }
 
     private void showUpgradeDialog() {
-        mFirebaseAnalytics.logEvent("unblock_feat_p_show", null);
+        mFirebaseAnalytics.logEvent("unblock_feat_v_show", null);
         new AlertDialog.Builder(this)
                 .setTitle("Unlock this feature?")
                 .setMessage("Upgrade to Nixplay Plus now to unlock this feature and enjoy more advanced editing tools.")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 //                        saveSerialization();
-                        mFirebaseAnalytics.logEvent("unblock_feat_p_upgrade", null);
+                        mFirebaseAnalytics.logEvent("unblock_feat_v_upgrade", null);
                         goToSubscriptionScreen(0);
                     }
                 })
