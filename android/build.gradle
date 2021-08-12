@@ -46,7 +46,7 @@ imglyConfig {
     }
 }
 
-def MIN_LY_IMG_ANDROID_SDK_PLUGIN_VERSION = "8.0.8"
+def MIN_LY_IMG_ANDROID_SDK_PLUGIN_VERSION = "8.3.0"
 
 task checkVersion {
     if (imglyConfig.convertToVersionNumber(imglyConfig.getVersion()) < imglyConfig.convertToVersionNumber(MIN_LY_IMG_ANDROID_SDK_PLUGIN_VERSION)) {
@@ -65,12 +65,12 @@ task checkVersion {
 preBuild.dependsOn checkVersion
 
 android {
-    compileSdkVersion safeExtGet('compileSdkVersion', 29)
-    buildToolsVersion safeExtGet('buildToolsVersion', '29.0.2')
+    compileSdkVersion safeExtGet('compileSdkVersion', 30)
+    buildToolsVersion safeExtGet('buildToolsVersion', '30.0.3')
 
     defaultConfig {
         minSdkVersion safeExtGet('minSdkVersion', 19)
-        targetSdkVersion safeExtGet('targetSdkVersion', 29)
+        targetSdkVersion safeExtGet('targetSdkVersion', 30)
         versionCode 1
         versionName "1.0"
     }
