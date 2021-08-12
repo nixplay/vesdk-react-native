@@ -137,8 +137,12 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                     videoSubscriptionOverlayLayout.setHasChanges(false);
                     super.onAcceptClicked();
                 }
+            } else {
+                videoSubscriptionOverlayLayout.setHasChanges(false);
+                super.onAcceptClicked();
             }
         } else {
+            videoSubscriptionOverlayLayout.setHasChanges(false);
             super.onAcceptClicked();
         }
     }
