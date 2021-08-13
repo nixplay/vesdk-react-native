@@ -102,7 +102,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
     public static int VESDK_RESULT = 32;
     public static int RESULT_SUBSCRIBE = 35;
     public static boolean _isSubscriber = false;
-    public static boolean _isCameOnSubscription;
+    public static boolean _isCameOnSubscription = false;
     public static ReadableMap configMap;
     public static ReadableArray filterConfig;
     public static ReadableArray adjustConfig;

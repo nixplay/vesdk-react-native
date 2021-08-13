@@ -36,6 +36,7 @@ import ly.img.react_native.vesdk.SubscriptionOverlayVideo;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.RNVideoEditorSDKModule;
 
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.VESDK_RESULT;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isCameOnSubscription;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isSubscriber;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.stickerConfig;
@@ -65,12 +66,10 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent();
                     setResult(RESULT_SUBSCRIBE, intent);
+                    finishActivity(VESDK_RESULT);
                     finish();
                 }
             });
-        }
-        if (_isSubscriber && _isCameOnSubscription) {
-            mFirebaseAnalytics.logEvent("unblock_feat_v_buy", null);
         }
     }
 
@@ -148,14 +147,15 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     }
 
     private void showUpgradeDialog() {
-        mFirebaseAnalytics.logEvent("unblock_feat_v_show", null);
+        final String effects = getCurrentEffects();
+        mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_show", null);
         new AlertDialog.Builder(this)
                 .setTitle("Unlock this feature?")
                 .setMessage("Upgrade to Nixplay Plus now to unlock this feature and enjoy more advanced editing tools.")
                 .setPositiveButton("Upgrade", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 //                        saveSerialization();
-                        mFirebaseAnalytics.logEvent("unblock_feat_v_upgrade", null);
+                        mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_upgrade", null);
                         goToSubscriptionScreen(0);
                     }
                 })
@@ -185,6 +185,7 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
         Intent intent = new Intent();
         intent.putExtra("targetScreen", target);
         setResult(RESULT_SUBSCRIBE, intent);
+        finishActivity(VESDK_RESULT);
         finish();
     }
 
@@ -201,6 +202,16 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String getCurrentEffects () {
+        String effects = uiStateMenu.getCurrentPanelData().getId().toString().replaceAll("imgly_tool_","");
+        effects = effects.replaceAll("_options", "");
+        effects = effects.replaceAll("_replacement", "");
+        if (effects.contains("adjustment")) {
+            effects = "adjust";
+        }
+        return effects;
     }
 
     @Override
