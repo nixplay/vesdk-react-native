@@ -169,6 +169,40 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
   [self present:video withConfiguration:configuration andSerialization:state resolve:resolve reject:reject];
 }
 
+RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
+{
+    NSString *needle = [languageCode lowercaseString];
+    NSString *resourceName = @"ImglyEN";
+    if ([needle isEqualToString:@"de"]) {
+        resourceName=@"ImglyDE";
+    } else if ([needle isEqualToString:@"es"]) {
+        resourceName=@"ImglyES";
+    } else if ([needle isEqualToString:@"fr"]) {
+        resourceName=@"ImglyFR";
+    } else if ([needle isEqualToString:@"it"]) {
+        resourceName=@"ImglyIT";
+    } else if ([needle isEqualToString:@"ja"]) {
+        resourceName=@"ImglyJA";
+    } else {
+        //always default to english
+        resourceName=@"ImglyEN";
+    }
+                
+	NSBundle *bundle = [NSBundle mainBundle]; //query mainbundle
+    NSString* path = [bundle pathForResource:resourceName ofType:@"plist"];
+    NSDictionary *d = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    if (d) {
+        @try {
+            [PESDK setLocalizationDictionary: @{
+                @"en": d
+            }];
+        } @catch (NSException *exception) {
+            NSLog(@"Error setting localization dictionary");
+        };
+    }
+}
+
 #pragma mark - Nixplay Customization
 
 -(NSString*) appGroup {
