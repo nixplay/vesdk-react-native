@@ -36,6 +36,7 @@ import ly.img.react_native.vesdk.SubscriptionOverlayVideo;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.RNVideoEditorSDKModule;
 
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.RESULT_DISCARD;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.VESDK_RESULT;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isCameOnSubscription;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isSubscriber;
@@ -75,67 +76,62 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
 
     @Override
     protected void onAcceptClicked() {
-        if (!_isSubscriber) {
-            if (!uiStateMenu.getCurrentPanelData().getId().equals("imgly_tool_transform")) {
-                boolean hasPlusSticker = false;
-                boolean hasPlusTextLayer = false;
-                boolean hasPlusTextDesignLayer = false;
-                StateHandler stateHandler = getStateHandler();
-                LayerListSettings layerListSettings = stateHandler.get(LayerListSettings.class);
-                layerListSettings.acquireLayerReadLock();
-                for (AbsLayerSettings layer : layerListSettings.getLayerSettingsList()) {
-                    if (layer instanceof ImageStickerLayerSettings) {
-                        ImageStickerLayerSettings sticker = (ImageStickerLayerSettings) layer;
-                        String stickerId = sticker.getStickerConfig().getId();
-                        hasPlusSticker = !stickerConfig.toArrayList().contains(stickerId);
-                        if (hasPlusSticker) {
-                            break;
-                        }
-                    } else if (layer instanceof TextLayerSettings) {
-                        TextLayerSettings textLayerSettings = (TextLayerSettings) layer;
-                        String textLayerId = textLayerSettings.getStickerConfig().getFont().getId();
-                        hasPlusTextLayer = !textConfig.toArrayList().contains(textLayerId);
-                        if (hasPlusTextLayer) {
-                            break;
-                        }
-                    } else if (layer instanceof TextDesignLayerSettings) {
-                        TextDesignLayerSettings textDesignLayerSettings = (TextDesignLayerSettings) layer;
-                        String textDesignLayerId = textDesignLayerSettings.getStickerConfig().getId();
-                        hasPlusTextDesignLayer = !textDesignConfig.toArrayList().contains(textDesignLayerId);
-                        if (hasPlusTextDesignLayer) {
-                            break;
-                        }
+        if (!_isSubscriber && !uiStateMenu.getCurrentPanelData().getId().equals("imgly_tool_transform") && uiStateMenu.getCurrentTool().isAttached()) {
+            boolean hasPlusSticker = false;
+            boolean hasPlusTextLayer = false;
+            boolean hasPlusTextDesignLayer = false;
+            StateHandler stateHandler = getStateHandler();
+            LayerListSettings layerListSettings = stateHandler.get(LayerListSettings.class);
+            layerListSettings.acquireLayerReadLock();
+            for (AbsLayerSettings layer : layerListSettings.getLayerSettingsList()) {
+                if (layer instanceof ImageStickerLayerSettings) {
+                    ImageStickerLayerSettings sticker = (ImageStickerLayerSettings) layer;
+                    String stickerId = sticker.getStickerConfig().getId();
+                    hasPlusSticker = !stickerConfig.toArrayList().contains(stickerId);
+                    if (hasPlusSticker) {
+                        break;
+                    }
+                } else if (layer instanceof TextLayerSettings) {
+                    TextLayerSettings textLayerSettings = (TextLayerSettings) layer;
+                    String textLayerId = textLayerSettings.getStickerConfig().getFont().getId();
+                    hasPlusTextLayer = !textConfig.toArrayList().contains(textLayerId);
+                    if (hasPlusTextLayer) {
+                        break;
+                    }
+                } else if (layer instanceof TextDesignLayerSettings) {
+                    TextDesignLayerSettings textDesignLayerSettings = (TextDesignLayerSettings) layer;
+                    String textDesignLayerId = textDesignLayerSettings.getStickerConfig().getId();
+                    hasPlusTextDesignLayer = !textDesignConfig.toArrayList().contains(textDesignLayerId);
+                    if (hasPlusTextDesignLayer) {
+                        break;
                     }
                 }
-                layerListSettings.releaseLayerReadLock();
-                FilterSettings filterSettings = stateHandler.get(FilterSettings.class);
-                ColorAdjustmentSettings adjustmentSettings = stateHandler.get(ColorAdjustmentSettings.class);
-                FocusSettings focusSettings = stateHandler.get(FocusSettings.class);
-                FrameSettings frameSettings = stateHandler.get(FrameSettings.class);
-                OverlaySettings overlaySettings = stateHandler.get(OverlaySettings.class);
-                videoSubscriptionOverlayLayout.setHasChanges(true);
-                if (filterSettings.hasChanges()) {
-                    showUpgradeDialog();
-                } else if (adjustmentSettings.hasChanges()) {
-                    showUpgradeDialog();
-                } else if (focusSettings.hasChanges()) {
-                    showUpgradeDialog();
-                } else if (hasPlusSticker || hasPlusTextLayer || hasPlusTextDesignLayer) {
-                    if (uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.TextOptionToolPanel")
-                            || uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.TextDesignOptionToolPanel")
-                            || uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.StickerOptionToolPanel")) {
-                        showUpgradeDialog();
-                    } else {
-                        super.onAcceptClicked();
-                    }
-                } else if (frameSettings.hasChanges()) {
-                    showUpgradeDialog();
-                } else if (overlaySettings.hasChanges()) {
+            }
+            layerListSettings.releaseLayerReadLock();
+            FilterSettings filterSettings = stateHandler.get(FilterSettings.class);
+            ColorAdjustmentSettings adjustmentSettings = stateHandler.get(ColorAdjustmentSettings.class);
+            FocusSettings focusSettings = stateHandler.get(FocusSettings.class);
+            FrameSettings frameSettings = stateHandler.get(FrameSettings.class);
+            OverlaySettings overlaySettings = stateHandler.get(OverlaySettings.class);
+            videoSubscriptionOverlayLayout.setHasChanges(true);
+            if (filterSettings.hasChanges()) {
+                showUpgradeDialog();
+            } else if (adjustmentSettings.hasChanges()) {
+                showUpgradeDialog();
+            } else if (focusSettings.hasChanges()) {
+                showUpgradeDialog();
+            } else if (hasPlusSticker || hasPlusTextLayer || hasPlusTextDesignLayer) {
+                if (uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.TextOptionToolPanel")
+                        || uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.TextDesignOptionToolPanel")
+                        || uiStateMenu.getCurrentTool().toString().equals("ly.img.android.pesdk.ui.panels.StickerOptionToolPanel")) {
                     showUpgradeDialog();
                 } else {
-                    videoSubscriptionOverlayLayout.setHasChanges(false);
                     super.onAcceptClicked();
                 }
+            } else if (frameSettings.hasChanges()) {
+                showUpgradeDialog();
+            } else if (overlaySettings.hasChanges()) {
+                showUpgradeDialog();
             } else {
                 videoSubscriptionOverlayLayout.setHasChanges(false);
                 super.onAcceptClicked();
@@ -165,8 +161,32 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                         revertToInitial();
                     }
                 })
+                .setCancelable(false)
                 .show();
     }
+
+    private void showDismissDialog() {
+        final String effects = getCurrentEffects();
+        mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_show", null);
+        new AlertDialog.Builder(this)
+                .setTitle("Discard Changes?")
+                .setMessage("If you go back now, your edits will be discarded.")
+                .setPositiveButton("Discard", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+//                        saveSerialization();
+                        discardChanges();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .setCancelable(false)
+                .show();
+    }
+
 
     @Override
     protected void onCancelClicked() {
@@ -179,6 +199,13 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
         getStateHandler().getStateModel(HistoryState.class).revertToInitial(0);
         getStateHandler().getStateModel(HistoryState.class).removeAll(0);
         onCancelClicked();
+    }
+
+    private void discardChanges() {
+        Intent intent = new Intent();
+        setResult(RESULT_DISCARD, intent);
+        finishActivity(VESDK_RESULT);
+        finish();
     }
 
     private void goToSubscriptionScreen(int target) {
@@ -218,6 +245,11 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     protected void onCloseClicked() {
 //        deleteSerialization();
         super.onCloseClicked();
+        // verify if there has changes
+        StateHandler stateHandler = getStateHandler();
+        if (stateHandler.hasChanges()) {
+            showDismissDialog();
+        }
     }
 
     public void deleteSerialization() {
