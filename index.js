@@ -133,6 +133,15 @@ class VESDK {
       RNVideoEditorSDK.unlockWithLicense(license);
     }
   }
+
+//RRC try to override behavior here to prepare for language update
+static updateLanguage(languageCode) {
+    if (Platform.OS == 'android') {
+      //no handling yet
+    } else {
+      RNPhotoEditorSDK.updateLanguage(languageCode);
+    }
+  }
 }
 
 class VideoEditorModal extends Component {
