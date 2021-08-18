@@ -406,15 +406,21 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
           [self.banner.layer insertSublayer:gradient atIndex:0];
 
           // label top
-          UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(20, (25 + additionalHeight), frame.size.width - 16, 25)];
-          [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
+		  UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(20, (25 + additionalHeight), frame.size.width - 60, 25)];
+          [title setAdjustsFontSizeToFitWidth:TRUE];
+          [title setBaselineAdjustment:UIBaselineAdjustmentNone];
+          [title setMinimumScaleFactor:0.7];          
+		  [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
           [title setTextColor:[UIColor whiteColor]];
           [title setText:nixTitle];
           [self.banner addSubview:title];
 
           // label bottom
-          UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(20, (42 + additionalHeight), frame.size.width - 16, 25)];
-          [subtitle setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
+ 		  UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(20, (42 + additionalHeight), frame.size.width - 60, 25)];
+          [subtitle setAdjustsFontSizeToFitWidth:TRUE];
+          [subtitle setBaselineAdjustment:UIBaselineAdjustmentNone];
+          [subtitle setMinimumScaleFactor:0.6];          
+		  [subtitle setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
           [subtitle setText:nixSubtitle];
           [subtitle setTextColor:[UIColor whiteColor]];
           [self.banner addSubview:subtitle];
