@@ -84,6 +84,8 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
             }
         }
 
+	// commented out. this will be automatically replaced on update of the dictionary
+		/*
         [VESDK setLocalizationDictionary:@{
           @"en": @{
                   @"pesdk_editor_title_discardChangesAlert": @"Discard Changes?",
@@ -92,6 +94,7 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
                   @"pesdk_editor_text_discardChangesAlert": @"If you go back now, your edits will be discarded.",
           }
         }];
+		*/
 
         [VESDK setBundleImageBlock:^UIImage * _Nullable(NSString * _Nonnull imageName) {
             if ([imageName isEqualToString:@"imgly_icon_save"]) {
