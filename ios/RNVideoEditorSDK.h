@@ -16,6 +16,7 @@
 @property int textAdded;
 @property int enableToValidate;
 @property BOOL hasBegan;
+@property NSString *languageCode;
 
 typedef void (^RNVESDKConfigurationBlock)(PESDKConfigurationBuilder * _Nonnull builder);
 typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull videoEditViewController);
