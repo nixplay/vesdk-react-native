@@ -152,17 +152,45 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
       }
 #pragma mark - Setup Functions Config
         if (isSubscriber == NO) {
+			// "Reset" and "None" strings for all languages
+            NSBundle *bundle = [NSBundle mainBundle];
+            NSArray *resourceNameList = @[@"ImglyEN", @"ImglyDE", @"ImglyES",
+                                          @"ImglyFR", @"ImglyIT", @"ImglyJA"];
+            NSArray *identifiersList = @[@"pesdk_transform_button_reset",
+                                         @"pesdk_adjustments_button_reset",
+                                         @"pesdk_frame_button_none",
+                                         @"pesdk_filter_button_none",
+                                         @"pesdk_overlay_button_none",
+                                         @"pesdk_focus_button_disabled"];
+            NSMutableArray *noneAndResetListRaw = [NSMutableArray new];
+            for (NSString *r in resourceNameList) {
+                NSString* path = [bundle pathForResource:r ofType:@"plist"];
+                NSDictionary *d = [[NSDictionary alloc] initWithContentsOfFile:path];
+                for(NSString *t in identifiersList) {
+                    [noneAndResetListRaw addObject:[d objectForKey:t]];
+                }
+            }
+            NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:noneAndResetListRaw];
+            NSArray *noneAndResetList = [orderedSet array]; //no duplicates
+
             // FRAME CONFIG
             [builder configureFrameToolController:^(PESDKFrameToolControllerOptionsBuilder * _Nonnull options) {
           //            __block PESDKToolControllerOptionsBuilder * _options = options;
                 [options setCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKFrame * _Nullable frame) {
                     // reset all plus icon
                     [weakSelf removePlusBanner:cell];
-                    // enable and adding plus icon
+					// enable and adding plus icon
+					 if ([noneAndResetList containsObject:cell.captionTextLabel.text]) {
+                        // do nothing
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                    }
+					/*
                     if (![weakSelf isExistWithList:nixToolFrame predicate:[NSPredicate predicateWithFormat:@"SELF == %@", frame.identifier]]
                         || frame != nil) {
                         [weakSelf addPlusBanner:cell];
                     }
+					*/
                 }];
                 [options setSelectedFrameClosure:^(PESDKFrame * _Nullable frame) {
                     if (weakController.hasBegan == NO) {
@@ -452,9 +480,16 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
             [builder configureAdjustToolController:^(PESDKAdjustToolControllerOptionsBuilder * _Nonnull options) {
                 [options setAdjustToolButtonConfigurationBlock:^(PESDKMenuCollectionViewCell * _Nonnull cell, NSNumber * _Nullable index) {
                     [weakSelf removePlusBanner:cell];
+					 if ([noneAndResetList containsObject:cell.captionTextLabel.text]) {
+                        // do nothing
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                    }
+					/*
                     if (![weakSelf isExistWithList:nixToolAdjust predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
                         [weakSelf addPlusBanner:cell];
                     }
+					*/
                 }];
                 [options setSliderChangedValueClosure:^(PESDKSlider * _Nonnull slider, enum AdjustTool tool) {
                     if (weakController.hasBegan == NO) {
@@ -469,8 +504,13 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 // reset invoke
                 [options setAdjustToolSelectedBlock:^(NSNumber * _Nullable adjust) {
-                    NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixAdjust"];
-                    [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+					 if (adjust != nil) {
+                        NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixAdjust"];
+                        [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
+                    } else {
+                        [weakController.banner removeFromSuperview];
+                        weakController.banner = nil;
+                    }
                     if ([adjust intValue] == 0 && weakController.needToUpgrade) {
                         [weakController.mainController.undoController undo];
                         [weakController.mainController.undoController undoStep];
@@ -499,11 +539,18 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
               [options setFilterCellConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKEffect * _Nonnull effect) {
                   // safe remove plus banner
                   [weakSelf removePlusBanner:cell];
+				    if ([noneAndResetList containsObject:cell.captionTextLabel.text]) {
+                      // do nothing
+                  } else {
+                      [weakSelf addPlusBanner:cell];
+                  }
+				  /*
                   if ([cell.captionTextLabel.text isEqualToString:@"None"]){
                       // do nothing
                   } else {
                       [weakSelf addPlusBanner:cell];
                   }
+				  */
               }];
               // handling of upgrade new upgrade path
                 [options setFilterSelectedClosure:^(PESDKEffect * _Nonnull effect) {
