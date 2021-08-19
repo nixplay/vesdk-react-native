@@ -454,9 +454,16 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
             [builder configureFocusToolController:^(PESDKFocusToolControllerOptionsBuilder * _Nonnull options) {
                 [options setFocusModeButtonConfigurationClosure:^(PESDKMenuCollectionViewCell * _Nonnull cell, enum PESDKFocusMode mode) {
                     [weakSelf removePlusBanner:cell];
+					if ([noneAndResetList containsObject:cell.captionTextLabel.text]) {
+                        // do nothing
+                    } else {
+                        [weakSelf addPlusBanner:cell];
+                    }
+					/*
                     if (![weakSelf isExistWithList:nixToolFocus predicate:[NSPredicate predicateWithFormat:@"SELF == %@", cell.captionTextLabel.text]]) {
                         [weakSelf addPlusBanner:cell];
                     }
+					*/
                 }];
                 // handling of upgrade new upgrade path
                 [options setFocusModeSelectedClosure:^(enum PESDKFocusMode mode) {
