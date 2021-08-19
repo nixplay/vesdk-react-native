@@ -552,10 +552,30 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 [options setActionButtonConfigurationBlock:^(PESDKMenuCollectionViewCell * _Nonnull cell, PESDKPhotoEditMenuItem * _Nonnull menuItem) {
                     // remove subview for transform
                     [weakSelf removePlusBanner:cell];
-                    // add plus icon
-                    if (![cell.captionTextLabel.text isEqualToString:@"Transform"]) {
+
+					// add plus icon
+					//look for "Transform" localization in all languages to hide plus icon on Transform
+                    NSBundle *bundle = [NSBundle mainBundle];
+                    NSArray *resourceNameList = @[@"ImglyEN", @"ImglyDE", @"ImglyES", @"ImglyFR", @"ImglyIT", @"ImglyJA"];
+                    NSMutableArray *transformStrings = [NSMutableArray new];
+                    for (NSString *r in resourceNameList) {
+                        NSString* path = [bundle pathForResource:r ofType:@"plist"];
+                        NSDictionary *d = [[NSDictionary alloc] initWithContentsOfFile:path];
+                        [transformStrings addObject:[d objectForKey:@"pesdk_transform_title_name"]]; //key for Transform
+                    }
+                      
+                    BOOL isTransform = NO;
+                    for (NSString *t in transformStrings) {
+                        if ([cell.captionTextLabel.text isEqualToString:t]){
+                            isTransform = YES;
+                        }
+                    }
+                    if (!isTransform) {
                         [weakSelf addPlusBanner:cell];
                     }
+                    //   if (![cell.captionTextLabel.text isEqualToString:@"Transform"]) {
+                    //       [weakSelf addPlusBanner:cell];
+                    //   }
                 }];
             }
             options.menuItems = menuItems;
