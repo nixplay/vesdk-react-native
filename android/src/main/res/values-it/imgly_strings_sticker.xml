@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_sticker_title_name">itSticker</string>
+    <string name="pesdk_sticker_title_color">itSticker Color</string>
+    <string name="pesdk_sticker_title_options">itSticker Options</string>
+
+    <string name="pesdk_sticker_button_add">itAdd</string>
+    <string name="pesdk_sticker_button_color">itColor</string>
+    <string name="pesdk_sticker_button_flipV">itFlip V</string>
+    <string name="pesdk_sticker_button_flipH">itFlip H</string>
+    <string name="pesdk_sticker_button_delete">itDelete</string>
+    <string name="pesdk_sticker_button_bringToFront">itTo Front</string>
+    <string name="pesdk_sticker_button_straighten">itStraighten</string>
+    <string name="pesdk_sticker_button_replace">itReplace</string>
+    <string name="pesdk_sticker_button_opacity">itOpacity</string>
+
+    <string name="pesdk_sticker_button_contrast">itContrast</string>
+    <string name="pesdk_sticker_button_saturation">itSaturation</string>
+    <string name="pesdk_sticker_button_brightness">itBrightness</string>
+
+    <string name="pesdk_sticker_category_name_custom">itUploads</string>
+
+</resources>

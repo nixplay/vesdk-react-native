@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="app_name"/>
+
+    <string name="pesdk_editor_title_name">jaEditor</string>
+    <string name="pesdk_editor_title_mainMenu"/>
+
+    <string name="pesdk_editor_title_closeEditorAlert">jaClose Editor?</string>
+    <string name="pesdk_editor_text_closeEditorAlert">jaDo you really want to discard the image?</string>
+    <string name="pesdk_editor_button_closeEditorAlertConfirmation">jaYes</string>
+    <string name="pesdk_editor_button_closeEditorAlertCancelation">jaNo</string>
+
+    <string name="pesdk_editor_title_somethingWentWrongAlert">jaSomething went wrong.</string>
+    <string name="pesdk_editor_text_somethingWentWrongAlert">jaCouldn\'t load Photo/Video.</string>
+    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">jaClose</string>
+
+    <string name="pesdk_editor_cancel">jaCancel</string>
+    <string name="pesdk_editor_accept">jaAccept</string>
+    <string name="pesdk_editor_save">jaSave</string>
+
+    <string name="pesdk_editor_text_exportProgressUnknown">jaExporting…</string>
+    <string name="pesdk_editor_text_exportProgress" formatted="false">jaExporting %s.</string>
+
+    <string name="pesdk_editor_text_loadProgressUnknown">jaLoad Data…</string>
+    <string name="pesdk_editor_text_loadProgress" formatted="false">jaLoad Data %s.</string>
+
+    <string name="pesdk_common_button_flipH">jaFlip H</string>
+    <string name="pesdk_common_button_flipV">jaFlip V</string>
+    <string name="pesdk_common_button_undo">jaUndo</string>
+    <string name="pesdk_common_button_redo">jaRedo</string>
+
+    <string name="vesdk_video_trim_title_name">jaTrim</string>
+    <string name="vesdk_video_composition_title_name">jaCompose</string>
+    <string name="vesdk_audio_composition_title_name">jaAudio</string>
+    <string name="pesdk_transform_title_name">jaTransform</string>
+    <string name="pesdk_filter_title_name">jaFilter</string>
+    <string name="pesdk_adjustments_title_name">jaAdjust</string>
+    <string name="pesdk_sticker_title_name">jaSticker</string>
+    <string name="pesdk_text_title_name">jaText</string>
+    <string name="pesdk_textDesign_title_name">jaText Design</string>
+    <string name="pesdk_overlay_title_name">jaOverlay</string>
+    <string name="pesdk_frame_title_name">jaFrame</string>
+    <string name="pesdk_brush_title_name">jaBrush</string>
+    <string name="pesdk_focus_title_name">jaFocus</string>
+
+
+    <string name="pesdk_common_title_colorPicker">jaColor Picker</string>
+    <string name="pesdk_common_title_transparentColor">jaTransparent</string>
+    <string name="pesdk_common_title_whiteColor">jaWhite</string>
+    <string name="pesdk_common_title_grayColor">jaGray</string>
+    <string name="pesdk_common_title_blackColor">jaBlack</string>
+    <string name="pesdk_common_title_lightBlueColor">jaLight blue</string>
+    <string name="pesdk_common_title_blueColor">jaBlue</string>
+    <string name="pesdk_common_title_purpleColor">jaPurple</string>
+    <string name="pesdk_common_title_orchidColor">jaOrchid</string>
+    <string name="pesdk_common_title_pinkColor">jaPink</string>
+    <string name="pesdk_common_title_redColor">jaRed</string>
+    <string name="pesdk_common_title_orangeColor">jaOrange</string>
+    <string name="pesdk_common_title_goldColor">jaGold</string>
+    <string name="pesdk_common_title_yellowColor">jaYellow</string>
+    <string name="pesdk_common_title_oliveColor">jaOlive</string>
+    <string name="pesdk_common_title_greenColor">jaGreen</string>
+    <string name="pesdk_common_title_aquamarinColor">jaAquamarin</string>
+    <string name="pesdk_common_title_pipettableColor">jaPipettable color</string>
+
+</resources>

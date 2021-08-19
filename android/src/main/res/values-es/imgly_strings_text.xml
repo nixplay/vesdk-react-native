@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_text_title_name">esText</string>
+    <string name="pesdk_text_title_options">esText Options</string>
+    <string name="pesdk_text_title_input">esAdd Text</string>
+    <string name="pesdk_text_title_textColor">esText Color</string>
+    <string name="pesdk_text_title_font">esFont</string>
+
+    <string name="pesdk_text_button_add">esAdd</string>
+    <string name="pesdk_text_button_edit">esEdit</string>
+    <string name="pesdk_text_button_straighten">esStraighten</string>
+
+    <string name="pesdk_text_button_font">esFont</string>
+    <string name="pesdk_text_button_color">esColor</string>
+    <string name="pesdk_text_button_backgroundColor">esBG Color</string>
+    <string name="pesdk_text_button_alignment">esAlignment</string>
+
+    <string name="pesdk_text_button_flipV">esFlip V</string>
+    <string name="pesdk_text_button_flipH">esFlip H</string>
+    <string name="pesdk_text_button_bringToFront">esTo Front</string>
+    <string name="pesdk_text_button_delete">esDelete</string>
+
+    <string name="pesdk_text_text_editTextPlaceholder">Your text</string>
+
+    <string name="pesdk_text_button_fontPreview">esAg</string>
+
+</resources>

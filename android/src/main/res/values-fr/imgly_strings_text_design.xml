@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_textDesign_title_name">frText Design</string>
+    <string name="pesdk_textDesign_title_options">frText Design Options</string>
+    <string name="pesdk_textDesign_title_input">frAdd Text</string>
+
+    <string name="pesdk_textDesign_button_flipV">frFlip V</string>
+    <string name="pesdk_textDesign_button_flipH">frFlip H</string>
+    <string name="pesdk_textDesign_button_bringToFront">frTo Front</string>
+    <string name="pesdk_textDesign_button_add">frAdd</string>
+    <string name="pesdk_textDesign_button_delete">frDelete</string>
+    <string name="pesdk_textDesign_button_invert">frInvert</string>
+
+    <string name="pesdk_textDesign_text_editTextPlaceholder">frYour text</string>
+
+    <string name="pesdk_textDesign_asset_none">frNone</string>
+    <string name="pesdk_textDesign_asset_blocks">frBlocks</string>
+    <string name="pesdk_textDesign_asset_rotated">frRotated</string>
+    <string name="pesdk_textDesign_asset_blocksLight">frBlocks Light</string>
+    <string name="pesdk_textDesign_asset_equalWidth">frEqual Width</string>
+    <string name="pesdk_textDesign_asset_masked">frMasked</string>
+    <string name="pesdk_textDesign_asset_celebrate">frCelebrate</string>
+    <string name="pesdk_textDesign_asset_sunshine">frSunshine</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">frMasked Badge</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">frBlocks Condensed</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">frCelebrate Simple</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">frEqual Width Fat</string>
+    <string name="pesdk_textDesign_asset_watercolor">frWatercolor</string>
+    <string name="pesdk_textDesign_asset_particles">frParticles</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">frMasked Speech Bubble</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">frMasked Speech Bubble Comic</string>
+    <string name="pesdk_textDesign_asset_multiline">frMultiline</string>
+
+</resources>

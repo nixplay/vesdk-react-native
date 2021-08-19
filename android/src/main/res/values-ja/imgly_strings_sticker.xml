@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_sticker_title_name">jaSticker</string>
+    <string name="pesdk_sticker_title_color">jaSticker Color</string>
+    <string name="pesdk_sticker_title_options">jaSticker Options</string>
+
+    <string name="pesdk_sticker_button_add">jaAdd</string>
+    <string name="pesdk_sticker_button_color">jaColor</string>
+    <string name="pesdk_sticker_button_flipV">jaFlip V</string>
+    <string name="pesdk_sticker_button_flipH">jaFlip H</string>
+    <string name="pesdk_sticker_button_delete">jaDelete</string>
+    <string name="pesdk_sticker_button_bringToFront">jaTo Front</string>
+    <string name="pesdk_sticker_button_straighten">jaStraighten</string>
+    <string name="pesdk_sticker_button_replace">jaReplace</string>
+    <string name="pesdk_sticker_button_opacity">jaOpacity</string>
+
+    <string name="pesdk_sticker_button_contrast">jaContrast</string>
+    <string name="pesdk_sticker_button_saturation">jaSaturation</string>
+    <string name="pesdk_sticker_button_brightness">jaBrightness</string>
+
+    <string name="pesdk_sticker_category_name_custom">jaUploads</string>
+
+</resources>
