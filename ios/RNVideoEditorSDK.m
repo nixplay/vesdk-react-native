@@ -381,9 +381,11 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
 - (void)saveSerialDataWithKey:(NSString *)key {
     NSDictionary *state = @{ @"data" : self.mainController.serializedSettings, @"effects": self.currentEffects };
     NSMutableDictionary *md = [[NSMutableDictionary alloc] initWithDictionary:state];
-    [self.sharedDefaults setObject:[NSKeyedArchiver archivedDataWithRootObject:md]
-                                forKey:key];
-    [self.sharedDefaults synchronize];
+	if(md) {
+		[self.sharedDefaults setObject:[NSKeyedArchiver archivedDataWithRootObject:md]
+									forKey:key];
+		[self.sharedDefaults synchronize];
+	}
 }
 
 - (void)addButtonTrigger:(UIButton* _Nonnull)button usage:(NSString * _Nonnull)usage {
