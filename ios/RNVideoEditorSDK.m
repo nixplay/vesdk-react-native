@@ -196,14 +196,38 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
     NSString* path = [bundle pathForResource:resourceName ofType:@"plist"];
     NSDictionary *d = [[NSDictionary alloc] initWithContentsOfFile:path];
     
+    // sometimes languagePreferred is not the phone language, use languageCurrent
+    NSString *languagePreferred = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSString *languagePreferredCode = [[NSLocale componentsFromLocaleIdentifier:languagePreferred] objectForKey:NSLocaleLanguageCode];
+    NSString *languageCurrentCode = @"en";
+    if (@available(iOS 10.0, *)) {
+        languageCurrentCode = [[NSLocale currentLocale] languageCode];
+    }
+
     if (d) {
-        @try {
-            [PESDK setLocalizationDictionary: @{
-                @"en": d
-            }];
-        } @catch (NSException *exception) {
-            NSLog(@"Error setting localization dictionary");
-        };
+        if ([languagePreferredCode isEqualToString:languageCurrentCode]) {
+            @try {
+                [PESDK setLocalizationDictionary: @{
+                    languagePreferredCode: d
+                }];
+                
+            } @catch (NSException *exception) {
+                NSLog(@"Error setting localization dictionary");
+            };
+        } else {
+            @try {
+                [PESDK setLocalizationDictionary: @{
+                    languagePreferredCode: d
+                }];
+                
+                [PESDK setLocalizationDictionary: @{
+                    languageCurrentCode: d
+                }];
+                
+            } @catch (NSException *exception) {
+                NSLog(@"Error setting localization dictionary");
+            };
+        }
     }
 }
 
