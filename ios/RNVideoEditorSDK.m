@@ -306,7 +306,7 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
 		} else if ([self.languageCode isEqualToString:@"fr"]) {
 			title = @"Débloquer cette fonctionnalité ?";
 			message = @"Passez à Nixplay Plus maintenant pour déverrouiller cette fonction et profiter d'outils d'édition plus avancés.";
-			upgrade = @"Mettre à niveau";
+			upgrade = @"Mise à niveau";
 			cancel = @"Annuler";
 		} else if ([self.languageCode isEqualToString:@"it"]) {
 			title = @"Sbloccare questa funzione?";
@@ -315,7 +315,7 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
 			cancel = @"Annulla";
 		} else if ([self.languageCode isEqualToString:@"ja"]) {
 			title = @"この機能を解除しますか？";
-			message = @" 今すぐNixplay Plusにアップグレードして、この機能を解除し、より高度な編集ツールをお楽しみください。";
+			message = @"今すぐNixplay Plusにアップグレードして、この機能を解除し、より高度な編集ツールをお楽しみください。";
 			upgrade = @"アップグレード";
 			cancel = @"キャンセル";
 		} 
