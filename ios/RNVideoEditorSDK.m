@@ -296,7 +296,7 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
 		if ([self.languageCode isEqualToString:@"de"]) {
 			title = @"Diese Funktion freischalten?";
 			message = @"Erwerben Sie jetzt ein Upgrade auf Nixplay Plus, um diese Funktion freizuschalten und mehr fortschrittliche Bearbeitungswerkzeuge zu nutzen.";
-			upgrade = @"Upgrade";
+			upgrade = @"Aufrüstung";
 			cancel = @"Abbrechen";
 		} else if ([self.languageCode isEqualToString:@"es"]) {
 			title = @"¿Desbloquear esta función?";
