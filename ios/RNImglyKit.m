@@ -301,7 +301,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
             [builder configureTextDesignToolController:^(PESDKTextDesignToolControllerOptionsBuilder * _Nonnull options) {
                 [options setWillLeaveToolClosure:^{
                     weakController.needToUpgrade = 1;
-                    NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixText"];
+                    NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixTextDesign"];
                     [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
                     if (weakController.hasBegan == NO) {
                         [weakController.mainController.undoController beginUndoGrouping];
