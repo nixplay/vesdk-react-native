@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+    <string name="pesdk_adjustments_title_name">deAdjust</string>
+
+    <string name="pesdk_adjustments_button_shadowTool">deShadows</string>
+    <string name="pesdk_adjustments_button_exposureTool">deExposure</string>
+    <string name="pesdk_adjustments_button_highlightTool">deHighlights</string>
+    <string name="pesdk_adjustments_button_brightnessTool">deBrightness</string>
+    <string name="pesdk_adjustments_button_contrastTool">deContrast</string>
+    <string name="pesdk_adjustments_button_saturationTool">deSaturation</string>
+    <string name="pesdk_adjustments_button_clarityTool">deClarity</string>
+    <string name="pesdk_adjustments_button_gammaTool">deGamma</string>
+    <string name="pesdk_adjustments_button_blacksTool">deBlacks</string>
+    <string name="pesdk_adjustments_button_whitesTool">deWhites</string>
+    <string name="pesdk_adjustments_button_temperatureTool">deTemperature</string>
+    <string name="pesdk_adjustments_button_sharpnessTool">deSharpness</string>
+    <string name="pesdk_adjustments_button_reset">deReset</string>
+
+</resources>

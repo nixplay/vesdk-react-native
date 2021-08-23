@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_textDesign_title_name">deText Design</string>
+    <string name="pesdk_textDesign_title_options">deText Design Options</string>
+    <string name="pesdk_textDesign_title_input">deAdd Text</string>
+
+    <string name="pesdk_textDesign_button_flipV">deFlip V</string>
+    <string name="pesdk_textDesign_button_flipH">deFlip H</string>
+    <string name="pesdk_textDesign_button_bringToFront">deTo Front</string>
+    <string name="pesdk_textDesign_button_add">deAdd</string>
+    <string name="pesdk_textDesign_button_delete">deDelete</string>
+    <string name="pesdk_textDesign_button_invert">deInvert</string>
+
+    <string name="pesdk_textDesign_text_editTextPlaceholder">deYour text</string>
+
+    <string name="pesdk_textDesign_asset_none">deNone</string>
+    <string name="pesdk_textDesign_asset_blocks">deBlocks</string>
+    <string name="pesdk_textDesign_asset_rotated">deRotated</string>
+    <string name="pesdk_textDesign_asset_blocksLight">deBlocks Light</string>
+    <string name="pesdk_textDesign_asset_equalWidth">deEqual Width</string>
+    <string name="pesdk_textDesign_asset_masked">deMasked</string>
+    <string name="pesdk_textDesign_asset_celebrate">deCelebrate</string>
+    <string name="pesdk_textDesign_asset_sunshine">deSunshine</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">deMasked Badge</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">deBlocks Condensed</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">deCelebrate Simple</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">deEqual Width Fat</string>
+    <string name="pesdk_textDesign_asset_watercolor">deWatercolor</string>
+    <string name="pesdk_textDesign_asset_particles">deParticles</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">deMasked Speech Bubble</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">deMasked Speech Bubble Comic</string>
+    <string name="pesdk_textDesign_asset_multiline">deMultiline</string>
+
+</resources>

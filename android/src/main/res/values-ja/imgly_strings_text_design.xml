@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_textDesign_title_name">jaText Design</string>
+    <string name="pesdk_textDesign_title_options">jaText Design Options</string>
+    <string name="pesdk_textDesign_title_input">jaAdd Text</string>
+
+    <string name="pesdk_textDesign_button_flipV">jaFlip V</string>
+    <string name="pesdk_textDesign_button_flipH">jaFlip H</string>
+    <string name="pesdk_textDesign_button_bringToFront">jaTo Front</string>
+    <string name="pesdk_textDesign_button_add">jaAdd</string>
+    <string name="pesdk_textDesign_button_delete">jaDelete</string>
+    <string name="pesdk_textDesign_button_invert">jaInvert</string>
+
+    <string name="pesdk_textDesign_text_editTextPlaceholder">jaYour text</string>
+
+    <string name="pesdk_textDesign_asset_none">jaNone</string>
+    <string name="pesdk_textDesign_asset_blocks">jaBlocks</string>
+    <string name="pesdk_textDesign_asset_rotated">jaRotated</string>
+    <string name="pesdk_textDesign_asset_blocksLight">jaBlocks Light</string>
+    <string name="pesdk_textDesign_asset_equalWidth">jaEqual Width</string>
+    <string name="pesdk_textDesign_asset_masked">jaMasked</string>
+    <string name="pesdk_textDesign_asset_celebrate">jaCelebrate</string>
+    <string name="pesdk_textDesign_asset_sunshine">jaSunshine</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">jaMasked Badge</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">jaBlocks Condensed</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">jaCelebrate Simple</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">jaEqual Width Fat</string>
+    <string name="pesdk_textDesign_asset_watercolor">jaWatercolor</string>
+    <string name="pesdk_textDesign_asset_particles">jaParticles</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">jaMasked Speech Bubble</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">jaMasked Speech Bubble Comic</string>
+    <string name="pesdk_textDesign_asset_multiline">jaMultiline</string>
+
+</resources>

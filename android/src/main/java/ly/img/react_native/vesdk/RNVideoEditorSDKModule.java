@@ -101,6 +101,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
 
     public static int VESDK_RESULT = 32;
     public static int RESULT_SUBSCRIBE = 35;
+    public static int RESULT_DISCARD = 36;
     public static boolean _isSubscriber = false;
     public static boolean _isCameOnSubscription = false;
     public static ReadableMap configMap;
@@ -348,8 +349,12 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         } else if (resultCode == RESULT_CANCELED && requestCode == VESDK_RESULT) {
             EditorSDKResult data = new EditorSDKResult(intent);
             Uri sourceURI = data.getSourceUri();
+        } else if (resultCode == RESULT_DISCARD && requestCode == VESDK_RESULT) {
+            WritableMap map = Arguments.createMap();
+            map.putString("action", " ");
+            map.putInt("path", 0);
+            _promise.resolve(map);
         }
-
     }
 
     @Override

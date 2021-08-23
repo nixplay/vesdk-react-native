@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_text_title_name">jaText</string>
+    <string name="pesdk_text_title_options">jaText Options</string>
+    <string name="pesdk_text_title_input">jaAdd Text</string>
+    <string name="pesdk_text_title_textColor">jaText Color</string>
+    <string name="pesdk_text_title_font">jaFont</string>
+
+    <string name="pesdk_text_button_add">jaAdd</string>
+    <string name="pesdk_text_button_edit">jaEdit</string>
+    <string name="pesdk_text_button_straighten">jaStraighten</string>
+
+    <string name="pesdk_text_button_font">jaFont</string>
+    <string name="pesdk_text_button_color">jaColor</string>
+    <string name="pesdk_text_button_backgroundColor">jaBG Color</string>
+    <string name="pesdk_text_button_alignment">jaAlignment</string>
+
+    <string name="pesdk_text_button_flipV">jaFlip V</string>
+    <string name="pesdk_text_button_flipH">jaFlip H</string>
+    <string name="pesdk_text_button_bringToFront">jaTo Front</string>
+    <string name="pesdk_text_button_delete">jaDelete</string>
+
+    <string name="pesdk_text_text_editTextPlaceholder">jaYour text</string>
+
+    <string name="pesdk_text_button_fontPreview">jaAg</string>
+
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_textDesign_title_name">itText Design</string>
+    <string name="pesdk_textDesign_title_options">itText Design Options</string>
+    <string name="pesdk_textDesign_title_input">itAdd Text</string>
+
+    <string name="pesdk_textDesign_button_flipV">itFlip V</string>
+    <string name="pesdk_textDesign_button_flipH">itFlip H</string>
+    <string name="pesdk_textDesign_button_bringToFront">itTo Front</string>
+    <string name="pesdk_textDesign_button_add">itAdd</string>
+    <string name="pesdk_textDesign_button_delete">itDelete</string>
+    <string name="pesdk_textDesign_button_invert">itInvert</string>
+
+    <string name="pesdk_textDesign_text_editTextPlaceholder">itYour text</string>
+
+    <string name="pesdk_textDesign_asset_none">itNone</string>
+    <string name="pesdk_textDesign_asset_blocks">itBlocks</string>
+    <string name="pesdk_textDesign_asset_rotated">itRotated</string>
+    <string name="pesdk_textDesign_asset_blocksLight">itBlocks Light</string>
+    <string name="pesdk_textDesign_asset_equalWidth">itEqual Width</string>
+    <string name="pesdk_textDesign_asset_masked">itMasked</string>
+    <string name="pesdk_textDesign_asset_celebrate">itCelebrate</string>
+    <string name="pesdk_textDesign_asset_sunshine">itSunshine</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">itMasked Badge</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">itBlocks Condensed</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">itCelebrate Simple</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">itEqual Width Fat</string>
+    <string name="pesdk_textDesign_asset_watercolor">itWatercolor</string>
+    <string name="pesdk_textDesign_asset_particles">itParticles</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">itMasked Speech Bubble</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">itMasked Speech Bubble Comic</string>
+    <string name="pesdk_textDesign_asset_multiline">itMultiline</string>
+
+</resources>
