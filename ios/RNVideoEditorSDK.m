@@ -84,6 +84,8 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
             }
         }
 
+	// commented out. this will be automatically replaced on update of the dictionary
+		/*
         [VESDK setLocalizationDictionary:@{
           @"en": @{
                   @"pesdk_editor_title_discardChangesAlert": @"Discard Changes?",
@@ -92,6 +94,7 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
                   @"pesdk_editor_text_discardChangesAlert": @"If you go back now, your edits will be discarded.",
           }
         }];
+		*/
 
         [VESDK setBundleImageBlock:^UIImage * _Nullable(NSString * _Nonnull imageName) {
             if ([imageName isEqualToString:@"imgly_icon_save"]) {
@@ -169,6 +172,65 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
   [self present:video withConfiguration:configuration andSerialization:state resolve:resolve reject:reject];
 }
 
+RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
+{
+    NSString *needle = [languageCode lowercaseString];
+	self.languageCode = needle;
+    NSString *resourceName = @"ImglyEN";
+    if ([needle isEqualToString:@"de"]) {
+        resourceName=@"ImglyDE";
+    } else if ([needle isEqualToString:@"es"]) {
+        resourceName=@"ImglyES";
+    } else if ([needle isEqualToString:@"fr"]) {
+        resourceName=@"ImglyFR";
+    } else if ([needle isEqualToString:@"it"]) {
+        resourceName=@"ImglyIT";
+    } else if ([needle isEqualToString:@"ja"]) {
+        resourceName=@"ImglyJA";
+    } else {
+        //always default to english
+        resourceName=@"ImglyEN";
+    }
+                
+	NSBundle *bundle = [NSBundle mainBundle]; //query mainbundle
+    NSString* path = [bundle pathForResource:resourceName ofType:@"plist"];
+    NSDictionary *d = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    // sometimes languagePreferred is not the phone language, use languageCurrent
+    NSString *languagePreferred = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSString *languagePreferredCode = [[NSLocale componentsFromLocaleIdentifier:languagePreferred] objectForKey:NSLocaleLanguageCode];
+    NSString *languageCurrentCode = @"en";
+    if (@available(iOS 10.0, *)) {
+        languageCurrentCode = [[NSLocale currentLocale] languageCode];
+    }
+
+    if (d) {
+        if ([languagePreferredCode isEqualToString:languageCurrentCode]) {
+            @try {
+                [PESDK setLocalizationDictionary: @{
+                    languagePreferredCode: d
+                }];
+                
+            } @catch (NSException *exception) {
+                NSLog(@"Error setting localization dictionary");
+            };
+        } else {
+            @try {
+                [PESDK setLocalizationDictionary: @{
+                    languagePreferredCode: d
+                }];
+                
+                [PESDK setLocalizationDictionary: @{
+                    languageCurrentCode: d
+                }];
+                
+            } @catch (NSException *exception) {
+                NSLog(@"Error setting localization dictionary");
+            };
+        }
+    }
+}
+
 #pragma mark - Nixplay Customization
 
 -(NSString*) appGroup {
@@ -226,11 +288,43 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
         [FIRAnalytics logEventWithName:[NSString stringWithFormat:@"unblock_feat_v_%@_show", self.currentEffects] parameters:@{}];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unlock this feature?"
-                                                                     message:@"Upgrade to Nixplay Plus now to unlock this feature and enjoy more advanced editing tools."
+		// update language first
+		NSString *title = @"Unlock this feature?";
+		NSString *message = @"Upgrade to Nixplay Plus now to unlock this feature and enjoy more advanced editing tools.";
+		NSString *upgrade = @"Upgrade";
+		NSString *cancel = @"Cancel";
+		if ([self.languageCode isEqualToString:@"de"]) {
+			title = @"Diese Funktion freischalten?";
+			message = @"Erwerben Sie jetzt ein Upgrade auf Nixplay Plus, um diese Funktion freizuschalten und mehr fortschrittliche Bearbeitungswerkzeuge zu nutzen.";
+			upgrade = @"Aufrüstung";
+			cancel = @"Abbrechen";
+		} else if ([self.languageCode isEqualToString:@"es"]) {
+			title = @"¿Desbloquear esta función?";
+			message = @"Actualiza ahora a Nixplay Plus para desbloquear esta función y disfrutar de herramientas de edición más avanzadas.";
+			upgrade = @"Actualización";
+			cancel = @"Cancelar";
+		} else if ([self.languageCode isEqualToString:@"fr"]) {
+			title = @"Débloquer cette fonctionnalité ?";
+			message = @"Passez à Nixplay Plus maintenant pour déverrouiller cette fonction et profiter d'outils d'édition plus avancés.";
+			upgrade = @"Mise à niveau";
+			cancel = @"Annuler";
+		} else if ([self.languageCode isEqualToString:@"it"]) {
+			title = @"Sbloccare questa funzione?";
+			message = @"Aggiorna a Nixplay Plus ora per sbloccare questa funzione e godere di strumenti di editing più avanzati.";
+			upgrade = @"Aggiorna";
+			cancel = @"Annulla";
+		} else if ([self.languageCode isEqualToString:@"ja"]) {
+			title = @"この機能を解除しますか？";
+			message = @"今すぐNixplay Plusにアップグレードして、この機能を解除し、より高度な編集ツールをお楽しみください。";
+			upgrade = @"アップグレード";
+			cancel = @"キャンセル";
+		} 
+
+      UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                     message:message
                                                               preferredStyle:UIAlertControllerStyleAlert];
 
-      UIAlertAction * action = [UIAlertAction actionWithTitle:@"Upgrade"
+      UIAlertAction * action = [UIAlertAction actionWithTitle:upgrade
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
           if (self.currentEffects != nil && ![self.currentEffects isEqualToString:@""]) {
@@ -243,7 +337,7 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
               resolve(@{ @"action": @"open-subscription", @"path": @2 });
           }];
                                                             }];
-      UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+      UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:cancel
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
           [self resetEffectsOnExit:key];
@@ -287,9 +381,11 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
 - (void)saveSerialDataWithKey:(NSString *)key {
     NSDictionary *state = @{ @"data" : self.mainController.serializedSettings, @"effects": self.currentEffects };
     NSMutableDictionary *md = [[NSMutableDictionary alloc] initWithDictionary:state];
-    [self.sharedDefaults setObject:[NSKeyedArchiver archivedDataWithRootObject:md]
-                                forKey:key];
-    [self.sharedDefaults synchronize];
+	if(md) {
+		[self.sharedDefaults setObject:[NSKeyedArchiver archivedDataWithRootObject:md]
+									forKey:key];
+		[self.sharedDefaults synchronize];
+	}
 }
 
 - (void)addButtonTrigger:(UIButton* _Nonnull)button usage:(NSString * _Nonnull)usage {
@@ -336,15 +432,21 @@ RCT_EXPORT_METHOD(present:(nonnull NSURLRequest *)request
           [self.banner.layer insertSublayer:gradient atIndex:0];
 
           // label top
-          UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(20, (25 + additionalHeight), frame.size.width - 16, 25)];
-          [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
+		  UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(20, (25 + additionalHeight), frame.size.width - 60, 25)];
+          [title setAdjustsFontSizeToFitWidth:TRUE];
+          [title setBaselineAdjustment:UIBaselineAdjustmentNone];
+          [title setMinimumScaleFactor:0.7];          
+		  [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
           [title setTextColor:[UIColor whiteColor]];
           [title setText:nixTitle];
           [self.banner addSubview:title];
 
           // label bottom
-          UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(20, (42 + additionalHeight), frame.size.width - 16, 25)];
-          [subtitle setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
+ 		  UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(20, (42 + additionalHeight), frame.size.width - 60, 25)];
+          [subtitle setAdjustsFontSizeToFitWidth:TRUE];
+          [subtitle setBaselineAdjustment:UIBaselineAdjustmentNone];
+          [subtitle setMinimumScaleFactor:0.6];          
+		  [subtitle setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
           [subtitle setText:nixSubtitle];
           [subtitle setTextColor:[UIColor whiteColor]];
           [self.banner addSubview:subtitle];
