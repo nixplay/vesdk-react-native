@@ -154,7 +154,7 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                     public void onClick(DialogInterface dialog, int which) {
 //                        saveSerialization();
                         mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_upgrade", null);
-                        goToSubscriptionScreen(0);
+                        goToSubscriptionScreen(2);
                     }
                 })
                 .setNegativeButton(R.string.nixplay_button_upgradeEditorAlertCancelation, new DialogInterface.OnClickListener() {
