@@ -19,8 +19,8 @@
 <resources>
 
     <string name="pesdk_sticker_title_name">Sticker</string>
-    <string name="pesdk_sticker_title_color">Colore dell'adesivo</string>
-    <string name="pesdk_sticker_title_options">Opzioni dell'adesivo</string>
+    <string name="pesdk_sticker_title_color">Colore dell\'adesivo</string>
+    <string name="pesdk_sticker_title_options">Opzioni dell\'adesivo</string>
 
     <string name="pesdk_sticker_button_add">Aggiungi</string>
     <string name="pesdk_sticker_button_color">Colore</string>
