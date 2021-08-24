@@ -33,7 +33,22 @@
     <string name="nixplay_button_upgradeEditorAlertConfirmation">Upgrade</string>
     <string name="nixplay_button_upgradeEditorAlertCancelation">Cancel</string>
 
-    <string name="nixplay_banner_advanced_title">Try more advanced features</string>
+    <string name="nixplay_banner_advanced_title_filter">Try more advanced features</string>
+    <string name="nixplay_banner_advanced_subtitle_filter">More filters: Duotone, b&amp;w, vintage, etc.</string>
+    <string name="nixplay_banner_advanced_title_adjust">Try more advanced features</string>
+    <string name="nixplay_banner_advanced_subtitle_adjust">More adjustment: Brightness, contrast, etc.</string>
+    <string name="nixplay_banner_advanced_title_focus">Try more advanced features</string>
+    <string name="nixplay_banner_advanced_subtitle_focus">More focus: Mirrored, linear, etc.</string>
+    <string name="nixplay_banner_advanced_title_sticker">Try more advanced features</string>
+    <string name="nixplay_banner_advanced_subtitle_sticker">More stickers and shapes</string>
+    <string name="nixplay_banner_advanced_title_text">Try more advanced features</string>
+    <string name="nixplay_banner_advanced_subtitle_text">More fonts: Open Sans, aleo, amatic, etc.</string>
+    <string name="nixplay_banner_advanced_title_textdesign">Try more advanced features</string>
+    <string name="nixplay_banner_advanced_subtitle_textdesign">More text designs</string>
+    <string name="nixplay_banner_advanced_title_overlay">Try more advanced features</string>
+    <string name="nixplay_banner_advanced_subtitle_overlay">More overlay: Golden, light leak, rain, etc.</string>
+    <string name="nixplay_banner_advanced_title_frame">Try more advanced features</string>
+    <string name="nixplay_banner_advanced_subtitle_frame">More frames</string>
 
     <string name="pesdk_editor_title_somethingWentWrongAlert">Something went wrong.</string>
     <string name="pesdk_editor_text_somethingWentWrongAlert">Couldn\'t load Photo/Video.</string>
