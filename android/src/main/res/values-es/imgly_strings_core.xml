@@ -33,7 +33,22 @@
     <string name="nixplay_button_upgradeEditorAlertConfirmation">Actualizar</string>
     <string name="nixplay_button_upgradeEditorAlertCancelation">Cancelar</string>
 
-    <string name="nixplay_banner_advanced_title">Prova funzioni più avanzate</string>
+    <string name="nixplay_banner_advanced_title_filter">Prueba las funciones más avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_filter">Más filtros: Duotono, b&amp;n, vintage, etc.</string>
+    <string name="nixplay_banner_advanced_title_adjust">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_adjust">Más ajustes: Brillo, contraste, etc.</string>
+    <string name="nixplay_banner_advanced_title_focus">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_focus">Más enfoque: Espejo, lineal, etc.</string>
+    <string name="nixplay_banner_advanced_title_sticker">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_sticker">Más pegatinas y formas</string>
+    <string name="nixplay_banner_advanced_title_text">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_text">Más fuentes: Open Sans, aleo, amatic, etc.</string>
+    <string name="nixplay_banner_advanced_title_textdesign">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_textdesign">Más diseños de texto</string>
+    <string name="nixplay_banner_advanced_title_overlay">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_overlay">Más superposiciones: Dorado, lightleak, lluvia, etc.</string>
+    <string name="nixplay_banner_advanced_title_frame">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_frame">Más marcos</string>
 
     <string name="pesdk_editor_title_somethingWentWrongAlert">Something went wrong.</string>
     <string name="pesdk_editor_text_somethingWentWrongAlert">Couldn\'t load Photo/Video.</string>

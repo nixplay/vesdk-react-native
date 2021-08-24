@@ -33,7 +33,22 @@
     <string name="nixplay_button_upgradeEditorAlertConfirmation">Aggiornare</string>
     <string name="nixplay_button_upgradeEditorAlertCancelation">Cancella</string>
 
-    <string name="nixplay_banner_advanced_title">Prova funzioni più avanzate</string>
+    <string name="nixplay_banner_advanced_title_filter">Prova funzioni più avanzate</string>
+    <string name="nixplay_banner_advanced_subtitle_filter">Altri filtri: Duotone, b&amp;w, vintage, ecc.</string>
+    <string name="nixplay_banner_advanced_title_adjust">Prova funzioni più avanzate</string>
+    <string name="nixplay_banner_advanced_subtitle_adjust">Più regolazione: Luminosità, contrasto, ecc.</string>
+    <string name="nixplay_banner_advanced_title_focus">Prova funzioni più avanzate</string>
+    <string name="nixplay_banner_advanced_subtitle_focus">Più messa a fuoco: Specchiato, lineare, ecc.</string>
+    <string name="nixplay_banner_advanced_title_sticker">Prova funzioni più avanzate</string>
+    <string name="nixplay_banner_advanced_subtitle_sticker">Più adesivi e forme</string>
+    <string name="nixplay_banner_advanced_title_text">Prova funzioni più avanzate</string>
+    <string name="nixplay_banner_advanced_subtitle_text">Più font: Open Sans, aleo, amatic, ecc.</string>
+    <string name="nixplay_banner_advanced_title_textdesign">Prova funzioni più avanzate</string>
+    <string name="nixplay_banner_advanced_subtitle_textdesign">Più disegni di testo</string>
+    <string name="nixplay_banner_advanced_title_overlay">Prova funzioni più avanzate</string>
+    <string name="nixplay_banner_advanced_subtitle_overlay">Più sovrapposizioni: Golden, lightleak, rain, etc.</string>
+    <string name="nixplay_banner_advanced_title_frame">Prova le caratteristiche più avanzate</string>
+    <string name="nixplay_banner_advanced_subtitle_frame">Più cornici</string>
 
     <string name="pesdk_editor_title_somethingWentWrongAlert">Qualcosa è andato storto.</string>
     <string name="pesdk_editor_text_somethingWentWrongAlert">Impossibile caricare foto/video.</string>

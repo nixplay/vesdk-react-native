@@ -33,7 +33,22 @@
     <string name="nixplay_button_upgradeEditorAlertConfirmation">アップグレード</string>
     <string name="nixplay_button_upgradeEditorAlertCancelation">キャンセル </string>
 
-    <string name="nixplay_banner_advanced_title">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_title_filter">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_filter">より多くのフィルター。デュオトーン、B&amp;W、ビンテージなど</string>
+    <string name="nixplay_banner_advanced_title_adjust">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_adjust">もっと調整したい。輝度、コントラストなど</string>
+    <string name="nixplay_banner_advanced_title_focus">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_focus">より多くのフォーカス。ミラーリング、リニアなど</string>
+    <string name="nixplay_banner_advanced_title_sticker">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_sticker">より多くのステッカーとシェイプ</string>
+    <string name="nixplay_banner_advanced_title_text">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_text">より多くのフォント。Open Sans、aleo、amaticなど</string>
+    <string name="nixplay_banner_advanced_title_textdesign">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_textdesign">より多くのテキストデザイン</string>
+    <string name="nixplay_banner_advanced_title_overlay">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_overlay">オーバーレイを増やす。ゴールデン、ライトリーク、レインなど</string>
+    <string name="nixplay_banner_advanced_title_frame">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_frame">フレームを増やす</string>
 
     <string name="pesdk_editor_title_somethingWentWrongAlert">何かがうまくいかなかった。</string>
     <string name="pesdk_editor_text_somethingWentWrongAlert">写真/ビデオを読み込めませんでした。</string>

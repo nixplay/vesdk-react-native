@@ -24,6 +24,7 @@ import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isSubscriber;
 
 public class SubscriptionOverlayVideo extends ConstraintLayout {
     private UiStateMenu settings;
+    private TextView tv_title;
     private TextView tv_subtitle;
     public ReadableMap configMap;
     private StateHandler stateHandler;
@@ -41,8 +42,9 @@ public class SubscriptionOverlayVideo extends ConstraintLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setConfigs(ReadableMap configMap, TextView tv_subtitle) {
+    public void setConfigs(ReadableMap configMap, TextView tv_subtitle, TextView tv_title) {
         this.configMap = configMap;
+        this.tv_title = tv_title;
         this.tv_subtitle = tv_subtitle;
     }
 
@@ -89,28 +91,36 @@ public class SubscriptionOverlayVideo extends ConstraintLayout {
                 window.setBackgroundDrawable(background);
                 setVisibility(View.VISIBLE);
                 if (settings.getCurrentPanelData().getId().equals("imgly_tool_filter")) {
-                    tv_subtitle.setText(configMap.getMap("nixFilter").getString("subtitle"));
+                    tv_title.setText(R.string.nixplay_banner_advanced_title_filter);
+                    tv_subtitle.setText(R.string.nixplay_banner_advanced_subtitle_filter);
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_adjustment")) {
-                    tv_subtitle.setText(configMap.getMap("nixAdjust").getString("subtitle"));
+                    tv_title.setText(R.string.nixplay_banner_advanced_title_adjust);
+                    tv_subtitle.setText(R.string.nixplay_banner_advanced_subtitle_adjust);
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_focus")) {
-                    tv_subtitle.setText(configMap.getMap("nixFocus").getString("subtitle"));
+                    tv_title.setText(R.string.nixplay_banner_advanced_title_focus);
+                    tv_subtitle.setText(R.string.nixplay_banner_advanced_subtitle_focus);
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_sticker_selection")) {
-                    tv_subtitle.setText(configMap.getMap("nixSticker").getString("subtitle"));
+                    tv_title.setText(R.string.nixplay_banner_advanced_title_sticker);
+                    tv_subtitle.setText(R.string.nixplay_banner_advanced_subtitle_sticker);
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_text")) {
-                    tv_subtitle.setText(configMap.getMap("nixText").getString("subtitle"));
+                    tv_title.setText(R.string.nixplay_banner_advanced_title_text);
+                    tv_subtitle.setText(R.string.nixplay_banner_advanced_subtitle_text);
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_text_design")) {
-                    tv_subtitle.setText(configMap.getMap("nixTextDesign").getString("subtitle"));
+                    tv_title.setText(R.string.nixplay_banner_advanced_title_textdesign);
+                    tv_subtitle.setText(R.string.nixplay_banner_advanced_subtitle_textdesign);
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_overlay")) {
-                    tv_subtitle.setText(configMap.getMap("nixOverlay").getString("subtitle"));
+                    tv_title.setText(R.string.nixplay_banner_advanced_title_overlay);
+                    tv_subtitle.setText(R.string.nixplay_banner_advanced_subtitle_overlay);
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_frame_replacement")) {
-                    tv_subtitle.setText(configMap.getMap("nixFrame").getString("subtitle"));
+                    tv_title.setText(R.string.nixplay_banner_advanced_title_frame);
+                    tv_subtitle.setText(R.string.nixplay_banner_advanced_subtitle_frame);
                     saveSerialization();
                 }
             }
