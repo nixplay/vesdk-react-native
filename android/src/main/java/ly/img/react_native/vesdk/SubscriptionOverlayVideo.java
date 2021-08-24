@@ -24,6 +24,7 @@ import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isSubscriber;
 
 public class SubscriptionOverlayVideo extends ConstraintLayout {
     private UiStateMenu settings;
+    private TextView tv_title;
     private TextView tv_subtitle;
     public ReadableMap configMap;
     private StateHandler stateHandler;
@@ -41,8 +42,9 @@ public class SubscriptionOverlayVideo extends ConstraintLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setConfigs(ReadableMap configMap, TextView tv_subtitle) {
+    public void setConfigs(ReadableMap configMap, TextView tv_subtitle, TextView tv_title) {
         this.configMap = configMap;
+        this.tv_title = tv_title;
         this.tv_subtitle = tv_subtitle;
     }
 
@@ -89,27 +91,35 @@ public class SubscriptionOverlayVideo extends ConstraintLayout {
                 window.setBackgroundDrawable(background);
                 setVisibility(View.VISIBLE);
                 if (settings.getCurrentPanelData().getId().equals("imgly_tool_filter")) {
+                    tv_title.setText(configMap.getMap("nixFilter").getString("title"));
                     tv_subtitle.setText(configMap.getMap("nixFilter").getString("subtitle"));
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_adjustment")) {
+                    tv_title.setText(configMap.getMap("nixAdjust").getString("title"));
                     tv_subtitle.setText(configMap.getMap("nixAdjust").getString("subtitle"));
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_focus")) {
+                    tv_title.setText(configMap.getMap("nixFocus").getString("title"));
                     tv_subtitle.setText(configMap.getMap("nixFocus").getString("subtitle"));
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_sticker_selection")) {
+                    tv_title.setText(configMap.getMap("nixSticker").getString("title"));
                     tv_subtitle.setText(configMap.getMap("nixSticker").getString("subtitle"));
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_text")) {
+                    tv_title.setText(configMap.getMap("nixText").getString("title"));
                     tv_subtitle.setText(configMap.getMap("nixText").getString("subtitle"));
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_text_design")) {
+                    tv_title.setText(configMap.getMap("nixTextDesign").getString("title"));
                     tv_subtitle.setText(configMap.getMap("nixTextDesign").getString("subtitle"));
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_overlay")) {
+                    tv_title.setText(configMap.getMap("nixOverlay").getString("title"));
                     tv_subtitle.setText(configMap.getMap("nixOverlay").getString("subtitle"));
                     saveSerialization();
                 } else if (settings.getCurrentPanelData().getId().equals("imgly_tool_frame_replacement")) {
+                    tv_title.setText(configMap.getMap("nixFrame").getString("title"));
                     tv_subtitle.setText(configMap.getMap("nixFrame").getString("subtitle"));
                     saveSerialization();
                 }

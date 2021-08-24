@@ -47,6 +47,7 @@ import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.RESULT_SUBSCRIBE;
 
 public class CustomVideoEditorActivity extends VideoEditorActivity {
     private SubscriptionOverlayVideo videoSubscriptionOverlayLayout;
+    private TextView tv_title;
     private TextView tv_subtitle;
     private UiStateMenu uiStateMenu;
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -60,8 +61,9 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
         if (!_isSubscriber) {
             videoSubscriptionOverlayLayout = findViewById(R.id.subscription_overlay_video);
             videoSubscriptionOverlayLayout.configMap = RNVideoEditorSDKModule.configMap;
+            tv_title = findViewById(R.id.tv_add_more_features_video);
             tv_subtitle = findViewById(R.id.tv_features_video);
-            videoSubscriptionOverlayLayout.setConfigs(RNVideoEditorSDKModule.configMap, tv_subtitle);
+            videoSubscriptionOverlayLayout.setConfigs(RNVideoEditorSDKModule.configMap, tv_subtitle, tv_title);
             videoSubscriptionOverlayLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
