@@ -16,13 +16,13 @@
 
 <resources>
 
-    <string name="vesdk_audio_composition_title_name">jaAudio</string>
+    <string name="vesdk_audio_composition_title_name">オーディオ</string>
     <string name="vesdk_audio_composition_trim_start_time">%1$02d:%2$02d</string>
     <string name="vesdk_audio_composition_title">%2$s - %1$s</string>
 
-    <string name="vesdk_audio_composition_video_level">jaOriginal</string>
-    <string name="vesdk_audio_composition_equal_level">jaBalanced</string>
-    <string name="vesdk_audio_composition_overlay_level">jaOverlay</string>
+    <string name="vesdk_audio_composition_video_level">オリジナル</string>
+    <string name="vesdk_audio_composition_equal_level">バランス</string>
+    <string name="vesdk_audio_composition_overlay_level">オーバーレイ</string>
 
 
 </resources>

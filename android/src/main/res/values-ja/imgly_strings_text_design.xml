@@ -18,35 +18,35 @@
 
 <resources>
 
-    <string name="pesdk_textDesign_title_name">jaText Design</string>
-    <string name="pesdk_textDesign_title_options">jaText Design Options</string>
-    <string name="pesdk_textDesign_title_input">jaAdd Text</string>
+    <string name="pesdk_textDesign_title_name">テキストデザイン</string>
+    <string name="pesdk_textDesign_title_options">テキストデザインオプション</string>
+    <string name="pesdk_textDesign_title_input">テキストの追加</string>
 
-    <string name="pesdk_textDesign_button_flipV">jaFlip V</string>
-    <string name="pesdk_textDesign_button_flipH">jaFlip H</string>
-    <string name="pesdk_textDesign_button_bringToFront">jaTo Front</string>
-    <string name="pesdk_textDesign_button_add">jaAdd</string>
-    <string name="pesdk_textDesign_button_delete">jaDelete</string>
-    <string name="pesdk_textDesign_button_invert">jaInvert</string>
+    <string name="pesdk_textDesign_button_flipV">反転V</string>
+    <string name="pesdk_textDesign_button_flipH">反転H</string>
+    <string name="pesdk_textDesign_button_bringToFront">前面へ</string>
+    <string name="pesdk_textDesign_button_add">追加</string>
+    <string name="pesdk_textDesign_button_delete">削除</string>
+    <string name="pesdk_textDesign_button_invert">反転</string>
 
-    <string name="pesdk_textDesign_text_editTextPlaceholder">jaYour text</string>
+    <string name="pesdk_textDesign_text_editTextPlaceholder">あなたのテキスト</string>
 
-    <string name="pesdk_textDesign_asset_none">jaNone</string>
-    <string name="pesdk_textDesign_asset_blocks">jaBlocks</string>
-    <string name="pesdk_textDesign_asset_rotated">jaRotated</string>
-    <string name="pesdk_textDesign_asset_blocksLight">jaBlocks Light</string>
-    <string name="pesdk_textDesign_asset_equalWidth">jaEqual Width</string>
-    <string name="pesdk_textDesign_asset_masked">jaMasked</string>
-    <string name="pesdk_textDesign_asset_celebrate">jaCelebrate</string>
-    <string name="pesdk_textDesign_asset_sunshine">jaSunshine</string>
-    <string name="pesdk_textDesign_asset_maskedBadge">jaMasked Badge</string>
-    <string name="pesdk_textDesign_asset_blocksCondensed">jaBlocks Condensed</string>
-    <string name="pesdk_textDesign_asset_celebrateSimple">jaCelebrate Simple</string>
-    <string name="pesdk_textDesign_asset_equalWidthFat">jaEqual Width Fat</string>
-    <string name="pesdk_textDesign_asset_watercolor">jaWatercolor</string>
-    <string name="pesdk_textDesign_asset_particles">jaParticles</string>
-    <string name="pesdk_textDesign_asset_maskedSpeechBubble">jaMasked Speech Bubble</string>
-    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">jaMasked Speech Bubble Comic</string>
-    <string name="pesdk_textDesign_asset_multiline">jaMultiline</string>
+    <string name="pesdk_textDesign_asset_none">なし</string>
+    <string name="pesdk_textDesign_asset_blocks">ブロック</string>
+    <string name="pesdk_textDesign_asset_rotated">回転</string>
+    <string name="pesdk_textDesign_asset_blocksLight">ブロック ライト</string>
+    <string name="pesdk_textDesign_asset_equalWidth">等幅</string>
+    <string name="pesdk_textDesign_asset_masked">マスキング</string>
+    <string name="pesdk_textDesign_asset_celebrate">セレブレート</string>
+    <string name="pesdk_textDesign_asset_sunshine">サンシャイン</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">マスキングされたバッジ</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">ブロック コンデンス</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">セレブレート・シンプル</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">等幅ファット</string>
+    <string name="pesdk_textDesign_asset_watercolor">水彩画</string>
+    <string name="pesdk_textDesign_asset_particles">パーティクル</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">マスクドスピーチバブル</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">マスキングされたフキダシのコミック</string>
+    <string name="pesdk_textDesign_asset_multiline">マルチライン</string>
 
 </resources>

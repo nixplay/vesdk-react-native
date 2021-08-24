@@ -16,13 +16,13 @@
 
 <resources>
 
-    <string name="vesdk_audio_composition_title_name">frAudio</string>
+    <string name="vesdk_audio_composition_title_name">Audio</string>
     <string name="vesdk_audio_composition_trim_start_time">%1$02d:%2$02d</string>
     <string name="vesdk_audio_composition_title">%2$s - %1$s</string>
 
-    <string name="vesdk_audio_composition_video_level">frOriginal</string>
-    <string name="vesdk_audio_composition_equal_level">frBalanced</string>
-    <string name="vesdk_audio_composition_overlay_level">frOverlay</string>
+    <string name="vesdk_audio_composition_video_level">Original</string>
+    <string name="vesdk_audio_composition_equal_level">Équilibré</string>
+    <string name="vesdk_audio_composition_overlay_level">Superposer</string>
 
 
 </resources>

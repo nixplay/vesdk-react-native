@@ -18,10 +18,10 @@
 
 <resources>
 
-    <string name="pesdk_transform_button_freeCrop">deCustom</string>
-    <string name="pesdk_transform_button_resetCrop">deReset</string>
-    <string name="pesdk_transform_button_squareCrop">deSquare</string>
-    <string name="pesdk_transform_button_circleCropMask">deCircle</string>
-    <string name="pesdk_transform_title_name">deTransform</string>
+    <string name="pesdk_transform_button_freeCrop">Benutzerdefiniert</string>
+    <string name="pesdk_transform_button_resetCrop">Zurücksetzen</string>
+    <string name="pesdk_transform_button_squareCrop">Quadratisch</string>
+    <string name="pesdk_transform_button_circleCropMask">Kreis</string>
+    <string name="pesdk_transform_title_name">Transformieren</string>
 
 </resources>

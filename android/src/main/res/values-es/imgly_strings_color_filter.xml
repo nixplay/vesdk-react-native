@@ -17,7 +17,7 @@
 
 
 <resources>
-    <string name="pesdk_filter_title_name">esFilter</string>
+    <string name="pesdk_filter_title_name">Filtro</string>
     <string name="pesdk_filter_text_intensityValue" formatted="false">%d</string>
-    <string name="pesdk_filter_asset_none">esNone</string>
+    <string name="pesdk_filter_asset_none">Ninguno</string>
 </resources>

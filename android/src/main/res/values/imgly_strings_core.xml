@@ -23,10 +23,17 @@
     <string name="pesdk_editor_title_name">Editor</string>
     <string name="pesdk_editor_title_mainMenu"/>
 
-    <string name="pesdk_editor_title_closeEditorAlert">Close Editor?</string>
-    <string name="pesdk_editor_text_closeEditorAlert">Do you really want to discard the image?</string>
-    <string name="pesdk_editor_button_closeEditorAlertConfirmation">Yes</string>
-    <string name="pesdk_editor_button_closeEditorAlertCancelation">No</string>
+    <string name="pesdk_editor_title_closeEditorAlert">Discard Changes?</string>
+    <string name="pesdk_editor_text_closeEditorAlert">If you go back now, your edits will be discarded.</string>
+    <string name="pesdk_editor_button_closeEditorAlertConfirmation">Discard</string>
+    <string name="pesdk_editor_button_closeEditorAlertCancelation">Cancel</string>
+
+    <string name="nixplay_upgradeEditorAlert">Unlock this feature?</string>
+    <string name="nixplay_text_upgradeEditorAlert">Upgrade to Nixplay Plus now to unlock this feature and enjoy more advanced editing tools.</string>
+    <string name="nixplay_button_upgradeEditorAlertConfirmation">Upgrade</string>
+    <string name="nixplay_button_upgradeEditorAlertCancelation">Cancel</string>
+
+    <string name="nixplay_banner_advanced_title">Try more advanced features</string>
 
     <string name="pesdk_editor_title_somethingWentWrongAlert">Something went wrong.</string>
     <string name="pesdk_editor_text_somethingWentWrongAlert">Couldn\'t load Photo/Video.</string>

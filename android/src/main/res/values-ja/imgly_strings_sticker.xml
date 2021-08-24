@@ -18,24 +18,24 @@
 
 <resources>
 
-    <string name="pesdk_sticker_title_name">jaSticker</string>
-    <string name="pesdk_sticker_title_color">jaSticker Color</string>
-    <string name="pesdk_sticker_title_options">jaSticker Options</string>
+    <string name="pesdk_sticker_title_name">ステッカー</string>
+    <string name="pesdk_sticker_title_color">ステッカーの色</string>
+    <string name="pesdk_sticker_title_options">ステッカーのオプション</string>
+    
+    <string name="pesdk_sticker_button_add">追加</string>
+    <string name="pesdk_sticker_button_color">カラー</string>
+    <string name="pesdk_sticker_button_flipV">反転V</string>
+    <string name="pesdk_sticker_button_flipH">反転H</string>
+    <string name="pesdk_sticker_button_delete">削除</string>
+    <string name="pesdk_sticker_button_bringToFront">前面へ</string>
+    <string name="pesdk_sticker_button_straighten">補正</string>
+    <string name="pesdk_sticker_button_replace">交換</string>
+    <string name="pesdk_sticker_button_opacity">不透明度</string>
 
-    <string name="pesdk_sticker_button_add">jaAdd</string>
-    <string name="pesdk_sticker_button_color">jaColor</string>
-    <string name="pesdk_sticker_button_flipV">jaFlip V</string>
-    <string name="pesdk_sticker_button_flipH">jaFlip H</string>
-    <string name="pesdk_sticker_button_delete">jaDelete</string>
-    <string name="pesdk_sticker_button_bringToFront">jaTo Front</string>
-    <string name="pesdk_sticker_button_straighten">jaStraighten</string>
-    <string name="pesdk_sticker_button_replace">jaReplace</string>
-    <string name="pesdk_sticker_button_opacity">jaOpacity</string>
+    <string name="pesdk_sticker_button_contrast">コントラスト</string>
+    <string name="pesdk_sticker_button_saturation">彩度</string>
+    <string name="pesdk_sticker_button_brightness">明るさ</string>
 
-    <string name="pesdk_sticker_button_contrast">jaContrast</string>
-    <string name="pesdk_sticker_button_saturation">jaSaturation</string>
-    <string name="pesdk_sticker_button_brightness">jaBrightness</string>
-
-    <string name="pesdk_sticker_category_name_custom">jaUploads</string>
+    <string name="pesdk_sticker_category_name_custom">Uploads</string>
 
 </resources>

@@ -18,28 +18,28 @@
 
 <resources>
 
-    <string name="pesdk_text_title_name">frText</string>
-    <string name="pesdk_text_title_options">frText Options</string>
-    <string name="pesdk_text_title_input">frAdd Text</string>
-    <string name="pesdk_text_title_textColor">frText Color</string>
-    <string name="pesdk_text_title_font">frFont</string>
+    <string name="pesdk_text_title_name">Texte</string>
+    <string name="pesdk_text_title_options">Options du texte</string>
+    <string name="pesdk_text_title_input">Ajouter du texte</string>
+    <string name="pesdk_text_title_textColor">Couleur du texte</string>
+    <string name="pesdk_text_title_font">Police</string>
 
-    <string name="pesdk_text_button_add">frAdd</string>
-    <string name="pesdk_text_button_edit">frEdit</string>
-    <string name="pesdk_text_button_straighten">frStraighten</string>
+    <string name="pesdk_text_button_add">Ajouter</string>
+    <string name="pesdk_text_button_edit">Modifier</string>
+    <string name="pesdk_text_button_straighten">Redresser</string>
 
-    <string name="pesdk_text_button_font">frFont</string>
-    <string name="pesdk_text_button_color">frColor</string>
-    <string name="pesdk_text_button_backgroundColor">frBG Color</string>
-    <string name="pesdk_text_button_alignment">frAlignment</string>
+    <string name="pesdk_text_button_font">Police de caractères</string>
+    <string name="pesdk_text_button_color">Couleur</string>
+    <string name="pesdk_text_button_backgroundColor">Couleur du BG</string>
+    <string name="pesdk_text_button_alignment">Alignement</string>
 
-    <string name="pesdk_text_button_flipV">frFlip V</string>
-    <string name="pesdk_text_button_flipH">frFlip H</string>
-    <string name="pesdk_text_button_bringToFront">frTo Front</string>
-    <string name="pesdk_text_button_delete">frDelete</string>
+    <string name="pesdk_text_button_flipV">Retourner V</string>
+    <string name="pesdk_text_button_flipH">Retourner H</string>
+    <string name="pesdk_text_button_bringToFront">Au recto</string>
+    <string name="pesdk_text_button_delete">Supprimer</string>
 
-    <string name="pesdk_text_text_editTextPlaceholder">frYour text</string>
+    <string name="pesdk_text_text_editTextPlaceholder">Your text</string>
 
-    <string name="pesdk_text_button_fontPreview">frAg</string>
+    <string name="pesdk_text_button_fontPreview">Ag</string>
 
 </resources>

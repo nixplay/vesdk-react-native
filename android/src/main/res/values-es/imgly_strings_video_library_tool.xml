@@ -17,8 +17,8 @@
 <resources>
 
 
-    <string name="vesdk_video_library_button_add">esAdd</string>
-    <string name="vesdk_video_library_title_name">esAdd video</string>
+    <string name="vesdk_video_library_button_add">Añadir</string>
+    <string name="vesdk_video_library_title_name">Añadir vídeo</string>
 
 
 </resources>

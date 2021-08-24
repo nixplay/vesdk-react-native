@@ -18,15 +18,15 @@
 
 <resources>
 
-    <string name="pesdk_frame_title_name">esFrame</string>
-    <string name="pesdk_frame_title_options">esFrame Options</string>
+    <string name="pesdk_frame_title_name">Marco</string>
+    <string name="pesdk_frame_title_options">Opciones del marco</string>
 
 
-    <string name="pesdk_frame_button_bringToFront">esTo front</string>
-    <string name="pesdk_frame_button_width">esWidth</string>
-    <string name="pesdk_frame_button_replace">esReplace</string>
-    <string name="pesdk_frame_button_opacity">esOpacity</string>
+    <string name="pesdk_frame_button_bringToFront">Al frente</string>
+    <string name="pesdk_frame_button_width">Anchura</string>
+    <string name="pesdk_frame_button_replace">Reemplazar</string>
+    <string name="pesdk_frame_button_opacity">Opacidad</string>
 
-    <string name="pesdk_frame_button_none">esNo Frame</string>
+    <string name="pesdk_frame_button_none">Sin marco</string>
 
 </resources>

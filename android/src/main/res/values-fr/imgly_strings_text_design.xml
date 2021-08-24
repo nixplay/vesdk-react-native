@@ -18,35 +18,35 @@
 
 <resources>
 
-    <string name="pesdk_textDesign_title_name">frText Design</string>
-    <string name="pesdk_textDesign_title_options">frText Design Options</string>
-    <string name="pesdk_textDesign_title_input">frAdd Text</string>
+    <string name="pesdk_textDesign_title_name">Design de texte</string>
+    <string name="pesdk_textDesign_title_options">Text Design Options</string>
+    <string name="pesdk_textDesign_title_input">Ajouter du texte</string>
 
-    <string name="pesdk_textDesign_button_flipV">frFlip V</string>
-    <string name="pesdk_textDesign_button_flipH">frFlip H</string>
-    <string name="pesdk_textDesign_button_bringToFront">frTo Front</string>
-    <string name="pesdk_textDesign_button_add">frAdd</string>
-    <string name="pesdk_textDesign_button_delete">frDelete</string>
-    <string name="pesdk_textDesign_button_invert">frInvert</string>
+    <string name="pesdk_textDesign_button_flipV">Retourner V</string>
+    <string name="pesdk_textDesign_button_flipH">Retourner H</string>
+    <string name="pesdk_textDesign_button_bringToFront">Au recto</string>
+    <string name="pesdk_textDesign_button_add">Ajouter</string>
+    <string name="pesdk_textDesign_button_delete">Supprimer</string>
+    <string name="pesdk_textDesign_button_invert">Inverser</string>
 
-    <string name="pesdk_textDesign_text_editTextPlaceholder">frYour text</string>
+    <string name="pesdk_textDesign_text_editTextPlaceholder">Your text</string>
 
-    <string name="pesdk_textDesign_asset_none">frNone</string>
-    <string name="pesdk_textDesign_asset_blocks">frBlocks</string>
-    <string name="pesdk_textDesign_asset_rotated">frRotated</string>
-    <string name="pesdk_textDesign_asset_blocksLight">frBlocks Light</string>
-    <string name="pesdk_textDesign_asset_equalWidth">frEqual Width</string>
-    <string name="pesdk_textDesign_asset_masked">frMasked</string>
-    <string name="pesdk_textDesign_asset_celebrate">frCelebrate</string>
-    <string name="pesdk_textDesign_asset_sunshine">frSunshine</string>
-    <string name="pesdk_textDesign_asset_maskedBadge">frMasked Badge</string>
-    <string name="pesdk_textDesign_asset_blocksCondensed">frBlocks Condensed</string>
-    <string name="pesdk_textDesign_asset_celebrateSimple">frCelebrate Simple</string>
-    <string name="pesdk_textDesign_asset_equalWidthFat">frEqual Width Fat</string>
-    <string name="pesdk_textDesign_asset_watercolor">frWatercolor</string>
-    <string name="pesdk_textDesign_asset_particles">frParticles</string>
-    <string name="pesdk_textDesign_asset_maskedSpeechBubble">frMasked Speech Bubble</string>
-    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">frMasked Speech Bubble Comic</string>
-    <string name="pesdk_textDesign_asset_multiline">frMultiline</string>
+    <string name="pesdk_textDesign_asset_none">Aucun</string>
+    <string name="pesdk_textDesign_asset_blocks">Blocs</string>
+    <string name="pesdk_textDesign_asset_rotated">Rotated</string>
+    <string name="pesdk_textDesign_asset_blocksLight">Blocs légers</string>
+    <string name="pesdk_textDesign_asset_equalWidth">Largeur égale</string>
+    <string name="pesdk_textDesign_asset_masked">Masqué</string>
+    <string name="pesdk_textDesign_asset_celebrate">Célébrer</string>
+    <string name="pesdk_textDesign_asset_sunshine">Soleil</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">Badge masqué</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">Blocs condensés</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">Célébrer simple</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">Largeur égale Gras</string>
+    <string name="pesdk_textDesign_asset_watercolor">Aquarelle</string>
+    <string name="pesdk_textDesign_asset_particles">Particules</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">Bulle de parole masquée</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">Bande dessinée à bulles masquées</string>
+    <string name="pesdk_textDesign_asset_multiline">Multiline</string>
 
 </resources>

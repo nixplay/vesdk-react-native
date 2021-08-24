@@ -18,13 +18,13 @@
 
 <resources>
 
-    <string name="pesdk_brush_title_name">jaBrush</string>
-    <string name="pesdk_brush_button_color">jaColor</string>
-    <string name="pesdk_brush_button_size">jaSize</string>
-    <string name="pesdk_brush_button_hardness">jaHardness</string>
-    <string name="pesdk_brush_button_bringToFront">jaTo Front</string>
-    <string name="pesdk_brush_button_delete">jaDelete</string>
-
-    <string name="pesdk_brush_title_brushColor">jaBrush Color</string>
+    <string name="pesdk_brush_title_name">ブラシ</string>
+    <string name="pesdk_brush_button_color">カラー</string>
+    <string name="pesdk_brush_button_size">サイズ</string>
+    <string name="pesdk_brush_button_hardness">硬度</string>
+    <string name="pesdk_brush_button_bringToFront">前面へ</string>
+    <string name="pesdk_brush_button_delete">削除</string>
+    
+    <string name="pesdk_brush_title_brushColor">ブラシの色</string>
 
 </resources>

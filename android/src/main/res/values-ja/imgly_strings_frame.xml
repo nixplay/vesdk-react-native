@@ -18,15 +18,15 @@
 
 <resources>
 
-    <string name="pesdk_frame_title_name">jaFrame</string>
-    <string name="pesdk_frame_title_options">jaFrame Options</string>
+    <string name="pesdk_frame_title_name">フレーム</string>
+    <string name="pesdk_frame_title_options">フレームのオプション</string>
 
 
-    <string name="pesdk_frame_button_bringToFront">jaTo front</string>
-    <string name="pesdk_frame_button_width">jaWidth</string>
-    <string name="pesdk_frame_button_replace">jaReplace</string>
-    <string name="pesdk_frame_button_opacity">jaOpacity</string>
+    <string name="pesdk_frame_button_bringToFront">前面へ</string>
+    <string name="pesdk_frame_button_width">幅</string>
+    <string name="pesdk_frame_button_replace">置き換え</string>
+    <string name="pesdk_frame_button_opacity">不透明度</string>
 
-    <string name="pesdk_frame_button_none">jaNo Frame</string>
+    <string name="pesdk_frame_button_none">フレームなし</string>
 
 </resources>

@@ -17,8 +17,8 @@
 <resources>
 
 
-    <string name="vesdk_video_library_button_add">jaAdd</string>
-    <string name="vesdk_video_library_title_name">jaAdd video</string>
+    <string name="vesdk_video_library_button_add">追加</string>
+    <string name="vesdk_video_library_title_name">ビデオの追加</string>
 
 
 </resources>

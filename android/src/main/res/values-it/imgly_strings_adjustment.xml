@@ -17,20 +17,20 @@
 
 
 <resources>
-    <string name="pesdk_adjustments_title_name">itAdjust</string>
+    <string name="pesdk_adjustments_title_name">Regolare</string>
 
-    <string name="pesdk_adjustments_button_shadowTool">itShadows</string>
-    <string name="pesdk_adjustments_button_exposureTool">itExposure</string>
-    <string name="pesdk_adjustments_button_highlightTool">itHighlights</string>
-    <string name="pesdk_adjustments_button_brightnessTool">itBrightness</string>
-    <string name="pesdk_adjustments_button_contrastTool">itContrast</string>
-    <string name="pesdk_adjustments_button_saturationTool">itSaturation</string>
-    <string name="pesdk_adjustments_button_clarityTool">itClarity</string>
-    <string name="pesdk_adjustments_button_gammaTool">itGamma</string>
-    <string name="pesdk_adjustments_button_blacksTool">itBlacks</string>
-    <string name="pesdk_adjustments_button_whitesTool">itWhites</string>
-    <string name="pesdk_adjustments_button_temperatureTool">itTemperature</string>
-    <string name="pesdk_adjustments_button_sharpnessTool">itSharpness</string>
-    <string name="pesdk_adjustments_button_reset">itReset</string>
+    <string name="pesdk_adjustments_button_shadowTool">Ombre</string>
+    <string name="pesdk_adjustments_button_exposureTool">Esposizione</string>
+    <string name="pesdk_adjustments_button_highlightTool">Highlights</string>
+    <string name="pesdk_adjustments_button_brightnessTool">Luminosità</string>
+    <string name="pesdk_adjustments_button_contrastTool">Contrasto</string>
+    <string name="pesdk_adjustments_button_saturationTool">Saturazione</string>
+    <string name="pesdk_adjustments_button_clarityTool">Chiarezza</string>
+    <string name="pesdk_adjustments_button_gammaTool">Gamma</string>
+    <string name="pesdk_adjustments_button_blacksTool">Neri</string>
+    <string name="pesdk_adjustments_button_whitesTool">Bianchi</string>
+    <string name="pesdk_adjustments_button_temperatureTool">Temperatura</string>
+    <string name="pesdk_adjustments_button_sharpnessTool">Nitidezza</string>
+    <string name="pesdk_adjustments_button_reset">Azzeramento</string>
 
 </resources>

@@ -18,13 +18,13 @@
 
 <resources>
 
-    <string name="pesdk_brush_title_name">frBrush</string>
-    <string name="pesdk_brush_button_color">frColor</string>
-    <string name="pesdk_brush_button_size">frSize</string>
-    <string name="pesdk_brush_button_hardness">frHardness</string>
-    <string name="pesdk_brush_button_bringToFront">frTo Front</string>
-    <string name="pesdk_brush_button_delete">frDelete</string>
-
-    <string name="pesdk_brush_title_brushColor">frBrush Color</string>
+    <string name="pesdk_brush_title_name">Brosse</string>
+    <string name="pesdk_brush_button_color">Couleur</string>
+    <string name="pesdk_brush_button_size">Taille</string>
+    <string name="pesdk_brush_button_hardness">Dureté</string>
+    <string name="pesdk_brush_button_bringToFront">Au recto</string>
+    <string name="pesdk_brush_button_delete">Supprimer</string>
+    
+    <string name="pesdk_brush_title_brushColor">Couleur de la brosse</string>
 
 </resources>

@@ -16,7 +16,7 @@
 
 <resources>
 
-    <string name="vesdk_video_composition_title_name">deVideo</string>
-    <string name="vesdk_video_composition_trim_current_time">de%1$02d:%2$02d</string>
-    <string name="vesdk_video_composition_trim_duration">de%1$02d:%2$02d</string>
+    <string name="vesdk_video_composition_title_name">Video</string>
+    <string name="vesdk_video_composition_trim_current_time">%1$02d:%2$02d</string>
+    <string name="vesdk_video_composition_trim_duration">%1$02d:%2$02d</string>
 </resources>

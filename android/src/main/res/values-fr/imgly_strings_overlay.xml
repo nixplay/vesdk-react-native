@@ -18,25 +18,25 @@
 
 <resources>
 
-    <string name="pesdk_overlay_title_name">frOverlay</string>
+    <string name="pesdk_overlay_title_name">Superposition</string>
 
-    <string name="pesdk_overlay_text_intensityValue" formatted="false">fr%d</string>
+    <string name="pesdk_overlay_text_intensityValue" formatted="false">%d</string>
 
-    <string name="pesdk_overlay_button_blendModeNormal">frNormal</string>
-    <string name="pesdk_overlay_button_blendModeDarken">frDarken</string>
-    <string name="pesdk_overlay_button_blendModeScreen">frScreen</string>
-    <string name="pesdk_overlay_button_blendModeOverlay">frOverlay</string>
-    <string name="pesdk_overlay_button_blendModeLighten">frLighten</string>
-    <string name="pesdk_overlay_button_blendModeMultiply">frMultiply</string>
-    <string name="pesdk_overlay_button_blendModeColorBurn">frColor Burn</string>
-    <string name="pesdk_overlay_button_blendModeSoftLight">frSoft Light</string>
-    <string name="pesdk_overlay_button_blendModeHardLight">frHard Light</string>
+    <string name="pesdk_overlay_button_blendModeNormal">Normal</string>
+    <string name="pesdk_overlay_button_blendModeDarken">Assombrir</string>
+    <string name="pesdk_overlay_button_blendModeScreen">Écran</string>
+    <string name="pesdk_overlay_button_blendModeOverlay">Superposition</string>
+    <string name="pesdk_overlay_button_blendModeLighten">Éclaircir</string>
+    <string name="pesdk_overlay_button_blendModeMultiply">Multiplier</string>
+    <string name="pesdk_overlay_button_blendModeColorBurn">Couleur brûlée</string>
+    <string name="pesdk_overlay_button_blendModeSoftLight">Lumière douce</string>
+    <string name="pesdk_overlay_button_blendModeHardLight">Lumière dure</string>
 
-    <string name="pesdk_overlay_asset_none">frNone</string>
-    <string name="pesdk_overlay_asset_golden">frGolden</string>
-    <string name="pesdk_overlay_asset_lightleak1">frLightleak 1</string>
-    <string name="pesdk_overlay_asset_mosaic">frMosaic</string>
-    <string name="pesdk_overlay_asset_paper">frPaper</string>
-    <string name="pesdk_overlay_asset_rain">frRain</string>
-    <string name="pesdk_overlay_asset_vintage">frVintage</string>
+    <string name="pesdk_overlay_asset_none">Aucun</string>
+    <string name="pesdk_overlay_asset_golden">Doré</string>
+    <string name="pesdk_overlay_asset_lightleak1">Fuite de lumière 1</string>
+    <string name="pesdk_overlay_asset_mosaic">Mosaïque</string>
+    <string name="pesdk_overlay_asset_paper">Papier</string>
+    <string name="pesdk_overlay_asset_rain">Pluie</string>
+    <string name="pesdk_overlay_asset_vintage">Vintage</string>
 </resources>

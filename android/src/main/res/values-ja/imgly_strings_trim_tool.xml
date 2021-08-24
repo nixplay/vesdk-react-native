@@ -16,7 +16,7 @@
 
 <resources>
 
-    <string name="vesdk_video_composition_title_name">jaVideo</string>
+    <string name="vesdk_video_composition_title_name">ビデオ</string>
     <string name="vesdk_video_composition_trim_current_time">%1$02d:%2$02d</string>
     <string name="vesdk_video_composition_trim_duration">%1$02d:%2$02d</string>
 </resources>

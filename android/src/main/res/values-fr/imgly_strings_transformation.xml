@@ -18,10 +18,10 @@
 
 <resources>
 
-    <string name="pesdk_transform_button_freeCrop">frCustom</string>
-    <string name="pesdk_transform_button_resetCrop">frReset</string>
-    <string name="pesdk_transform_button_squareCrop">frSquare</string>
-    <string name="pesdk_transform_button_circleCropMask">frCircle</string>
-    <string name="pesdk_transform_title_name">frTransform</string>
+    <string name="pesdk_transform_button_freeCrop">Personnalisé</string>
+    <string name="pesdk_transform_button_resetCrop">Réinitialiser</string>
+    <string name="pesdk_transform_button_squareCrop">Carré</string>
+    <string name="pesdk_transform_button_circleCropMask">Cercle</string>
+    <string name="pesdk_transform_title_name">Transformer</string>
 
 </resources>

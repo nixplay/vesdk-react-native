@@ -17,12 +17,12 @@
 
 
 <resources>
-    <string name="pesdk_camera_button_hdrOn">esHDR ON</string>
-    <string name="pesdk_camera_button_hdrOff">esHDR OFF</string>
+    <string name="pesdk_camera_button_hdrOn">HDR ON</string>
+    <string name="pesdk_camera_button_hdrOff">HDR OFF</string>
 
-    <string name="pesdk_camera_button_flashAuto">esAUTO</string>
-    <string name="pesdk_camera_button_flashOn">esON</string>
-    <string name="pesdk_camera_button_flashOff">esOFF</string>
+    <string name="pesdk_camera_button_flashAuto">AUTO</string>
+    <string name="pesdk_camera_button_flashOn">ON</string>
+    <string name="pesdk_camera_button_flashOff">OFF</string>
 
-    <string name="pesdk_issue_gallery_not_found">esNo Gallery-Application installed.</string>
+    <string name="pesdk_issue_gallery_not_found">No Gallery-Application installed.</string>
 </resources>

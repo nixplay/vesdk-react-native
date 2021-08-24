@@ -18,10 +18,10 @@
 
 <resources>
 
-    <string name="pesdk_transform_button_freeCrop">jaCustom</string>
-    <string name="pesdk_transform_button_resetCrop">jaReset</string>
-    <string name="pesdk_transform_button_squareCrop">jaSquare</string>
-    <string name="pesdk_transform_button_circleCropMask">jaCircle</string>
-    <string name="pesdk_transform_title_name">jaTransform</string>
+    <string name="pesdk_transform_button_freeCrop">カスタム</string>
+    <string name="pesdk_transform_button_resetCrop">リセット</string>
+    <string name="pesdk_transform_button_squareCrop">スクエア</string>
+    <string name="pesdk_transform_button_circleCropMask">サークル</string>
+    <string name="pesdk_transform_title_name">変形</string>
 
 </resources>
