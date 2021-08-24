@@ -37,17 +37,17 @@
     <string name="nixplay_banner_advanced_subtitle_filter">Plus de filtres : Duotone, b&amp;w, vintage, etc.</string>
     <string name="nixplay_banner_advanced_title_adjust">Essayez les fonctions plus avancées</string>
     <string name="nixplay_banner_advanced_subtitle_adjust">Plus de réglage : Luminosité, contraste, etc.</string>
-    <string name="nixplay_banner_advanced_title_focus">Essayez les fonctions plus avancées</string>
+    <string name="nixplay_banner_advanced_title_focus">Essayez des fonctions plus avancées</string>
     <string name="nixplay_banner_advanced_subtitle_focus">Plus de mise au point : Miroir, linéaire, etc.</string>
-    <string name="nixplay_banner_advanced_title_sticker">Essayez les fonctions plus avancées</string>
+    <string name="nixplay_banner_advanced_title_sticker">Essayez des fonctions plus avancées</string>
     <string name="nixplay_banner_advanced_subtitle_sticker">Plus d\'autocollants et de formes</string>
     <string name="nixplay_banner_advanced_title_text">Essayez les fonctions plus avancées</string>
     <string name="nixplay_banner_advanced_subtitle_text">Plus de polices : Open Sans, aleo, amatic, etc.</string>
-    <string name="nixplay_banner_advanced_title_textdesign">Essayez les fonctions plus avancées</string>
+    <string name="nixplay_banner_advanced_title_textdesign">Essayez des fonctions plus avancées</string>
     <string name="nixplay_banner_advanced_subtitle_textdesign">Plus de conceptions de texte</string>
     <string name="nixplay_banner_advanced_title_overlay">Essayez des fonctions plus avancées</string>
     <string name="nixplay_banner_advanced_subtitle_overlay">Plus de superpositions : Golden, lightleak, pluie, etc.</string>
-    <string name="nixplay_banner_advanced_title_frame">Essayez les fonctions plus avancées</string>
+    <string name="nixplay_banner_advanced_title_frame">Essayez des fonctions plus avancées</string>
     <string name="nixplay_banner_advanced_subtitle_frame">Plus de cadres</string>
 
     <string name="pesdk_editor_title_somethingWentWrongAlert">Something went wrong.</string>
