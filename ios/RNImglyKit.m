@@ -249,6 +249,8 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                         weakController.needToUpgrade = 0;
                     } else {
                         weakController.needToUpgrade = 1;
+						[weakController.banner removeFromSuperview];
+                        weakController.banner = nil;
                         NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixOverlay"];
                         [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
                     }
