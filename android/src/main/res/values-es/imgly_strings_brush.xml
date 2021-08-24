@@ -18,13 +18,13 @@
 
 <resources>
 
-    <string name="pesdk_brush_title_name">esBrush</string>
-    <string name="pesdk_brush_button_color">esColor</string>
-    <string name="pesdk_brush_button_size">esSize</string>
-    <string name="pesdk_brush_button_hardness">esHardness</string>
-    <string name="pesdk_brush_button_bringToFront">esTo Front</string>
-    <string name="pesdk_brush_button_delete">esDelete</string>
-
-    <string name="pesdk_brush_title_brushColor">esBrush Color</string>
+    <string name="pesdk_brush_title_name">Cepillo</string>
+    <string name="pesdk_brush_button_color">Color</string>
+    <string name="pesdk_brush_button_size">Tamaño</string>
+    <string name="pesdk_brush_button_hardness">Dureza</string>
+    <string name="pesdk_brush_button_bringToFront">Al frente</string>
+    <string name="pesdk_brush_button_delete">Borrar</string>
+    
+    <string name="pesdk_brush_title_brushColor">Color del cepillo</string>
 
 </resources>

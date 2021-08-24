@@ -17,20 +17,20 @@
 
 
 <resources>
-    <string name="pesdk_adjustments_title_name">jaAdjust</string>
+    <string name="pesdk_adjustments_title_name">調整</string>
 
-    <string name="pesdk_adjustments_button_shadowTool">jaShadows</string>
-    <string name="pesdk_adjustments_button_exposureTool">jaExposure</string>
-    <string name="pesdk_adjustments_button_highlightTool">jaHighlights</string>
-    <string name="pesdk_adjustments_button_brightnessTool">jaBrightness</string>
-    <string name="pesdk_adjustments_button_contrastTool">jaContrast</string>
-    <string name="pesdk_adjustments_button_saturationTool">jaSaturation</string>
-    <string name="pesdk_adjustments_button_clarityTool">jaClarity</string>
-    <string name="pesdk_adjustments_button_gammaTool">jaGamma</string>
-    <string name="pesdk_adjustments_button_blacksTool">jaBlacks</string>
-    <string name="pesdk_adjustments_button_whitesTool">jaWhites</string>
-    <string name="pesdk_adjustments_button_temperatureTool">jaTemperature</string>
-    <string name="pesdk_adjustments_button_sharpnessTool">jaSharpness</string>
-    <string name="pesdk_adjustments_button_reset">jaReset</string>
+    <string name="pesdk_adjustments_button_shadowTool">シャドー</string>
+    <string name="pesdk_adjustments_button_exposureTool">露出</string>
+    <string name="pesdk_adjustments_button_highlightTool">ハイライト</string>
+    <string name="pesdk_adjustments_button_brightnessTool">明るさ</string>
+    <string name="pesdk_adjustments_button_contrastTool">コントラスト</string>
+    <string name="pesdk_adjustments_button_saturationTool">彩度</string>
+    <string name="pesdk_adjustments_button_clarityTool">鮮明さ</string>
+    <string name="pesdk_adjustments_button_gammaTool">ガンマ</string>
+    <string name="pesdk_adjustments_button_blacksTool">黒</string>
+    <string name="pesdk_adjustments_button_whitesTool">白</string>
+    <string name="pesdk_adjustments_button_temperatureTool">温度</string>
+    <string name="pesdk_adjustments_button_sharpnessTool">シャープネス</string>
+    <string name="pesdk_adjustments_button_reset">リセット</string>
 
 </resources>

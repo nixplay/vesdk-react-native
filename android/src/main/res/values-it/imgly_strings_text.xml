@@ -18,28 +18,28 @@
 
 <resources>
 
-    <string name="pesdk_text_title_name">itText</string>
-    <string name="pesdk_text_title_options">itText Options</string>
-    <string name="pesdk_text_title_input">itAdd Text</string>
-    <string name="pesdk_text_title_textColor">itText Color</string>
-    <string name="pesdk_text_title_font">itFont</string>
+    <string name="pesdk_text_title_name">Testo</string>
+    <string name="pesdk_text_title_options">Opzioni del testo</string>
+    <string name="pesdk_text_title_input">Aggiungi testo</string>
+    <string name="pesdk_text_title_textColor">Colore del testo</string>
+    <string name="pesdk_text_title_font">Font</string>
 
-    <string name="pesdk_text_button_add">itAdd</string>
-    <string name="pesdk_text_button_edit">itEdit</string>
-    <string name="pesdk_text_button_straighten">itStraighten</string>
+    <string name="pesdk_text_button_add">Aggiungi</string>
+    <string name="pesdk_text_button_edit">Modifica</string>
+    <string name="pesdk_text_button_straighten">Raddrizzare</string>
 
-    <string name="pesdk_text_button_font">itFont</string>
-    <string name="pesdk_text_button_color">itColor</string>
-    <string name="pesdk_text_button_backgroundColor">itBG Color</string>
-    <string name="pesdk_text_button_alignment">itAlignment</string>
+    <string name="pesdk_text_button_font">Font</string>
+    <string name="pesdk_text_button_color">Colore</string>
+    <string name="pesdk_text_button_backgroundColor">Colore BG</string>
+    <string name="pesdk_text_button_alignment">Allineamento</string>
 
-    <string name="pesdk_text_button_flipV">itFlip V</string>
-    <string name="pesdk_text_button_flipH">itFlip H</string>
-    <string name="pesdk_text_button_bringToFront">itTo Front</string>
-    <string name="pesdk_text_button_delete">itDelete</string>
+    <string name="pesdk_text_button_flipV">Capovolgi V</string>
+    <string name="pesdk_text_button_flipH">Capovolgi H</string>
+    <string name="pesdk_text_button_bringToFront">Davanti</string>
+    <string name="pesdk_text_button_delete">Cancella</string>
 
-    <string name="pesdk_text_text_editTextPlaceholder">itYour text</string>
+    <string name="pesdk_text_text_editTextPlaceholder">Your text</string>
 
-    <string name="pesdk_text_button_fontPreview">itAg</string>
+    <string name="pesdk_text_button_fontPreview">Ag</string>
 
 </resources>

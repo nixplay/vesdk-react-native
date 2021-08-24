@@ -18,15 +18,15 @@
 
 <resources>
 
-    <string name="pesdk_frame_title_name">frFrame</string>
-    <string name="pesdk_frame_title_options">frFrame Options</string>
+    <string name="pesdk_frame_title_name">Cadre</string>
+    <string name="pesdk_frame_title_options">Options du cadre</string>
 
 
-    <string name="pesdk_frame_button_bringToFront">frTo front</string>
-    <string name="pesdk_frame_button_width">frWidth</string>
-    <string name="pesdk_frame_button_replace">frReplace</string>
-    <string name="pesdk_frame_button_opacity">frOpacity</string>
+    <string name="pesdk_frame_button_bringToFront">Au recto</string>
+    <string name="pesdk_frame_button_width">Largeur</string>
+    <string name="pesdk_frame_button_replace">Remplacer</string>
+    <string name="pesdk_frame_button_opacity">Opacité</string>
 
-    <string name="pesdk_frame_button_none">frNo Frame</string>
+    <string name="pesdk_frame_button_none">Pas de cadre</string>
 
 </resources>

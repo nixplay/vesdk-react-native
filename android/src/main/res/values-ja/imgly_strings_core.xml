@@ -20,65 +20,65 @@
 
     <string name="app_name"/>
 
-    <string name="pesdk_editor_title_name">jaEditor</string>
+    <string name="pesdk_editor_title_name">編集</string>
     <string name="pesdk_editor_title_mainMenu"/>
 
-    <string name="pesdk_editor_title_closeEditorAlert">jaClose Editor?</string>
-    <string name="pesdk_editor_text_closeEditorAlert">jaDo you really want to discard the image?</string>
-    <string name="pesdk_editor_button_closeEditorAlertConfirmation">jaYes</string>
-    <string name="pesdk_editor_button_closeEditorAlertCancelation">jaNo</string>
+    <string name="pesdk_editor_title_closeEditorAlert">変更内容の破棄</string>
+    <string name="pesdk_editor_text_closeEditorAlert">今戻ると、あなたの編集内容は破棄されます</string>
+    <string name="pesdk_editor_button_closeEditorAlertConfirmation">廃棄されます</string>
+    <string name="pesdk_editor_button_closeEditorAlertCancelation">キャンセル</string>
 
-    <string name="pesdk_editor_title_somethingWentWrongAlert">jaSomething went wrong.</string>
-    <string name="pesdk_editor_text_somethingWentWrongAlert">jaCouldn\'t load Photo/Video.</string>
-    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">jaClose</string>
+    <string name="pesdk_editor_title_somethingWentWrongAlert">何かがうまくいかなかった。</string>
+    <string name="pesdk_editor_text_somethingWentWrongAlert">写真/ビデオを読み込めませんでした。</string>
+    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">閉じる</string>
 
-    <string name="pesdk_editor_cancel">jaCancel</string>
-    <string name="pesdk_editor_accept">jaAccept</string>
-    <string name="pesdk_editor_save">jaSave</string>
+    <string name="pesdk_editor_cancel">キャンセル</string>
+    <string name="pesdk_editor_accept">受け入れる</string>
+    <string name="pesdk_editor_save">保存する</string>
 
-    <string name="pesdk_editor_text_exportProgressUnknown">jaExporting…</string>
-    <string name="pesdk_editor_text_exportProgress" formatted="false">jaExporting %s.</string>
+    <string name="pesdk_editor_text_exportProgressUnknown">ビデオのエクスポート</string>
+    <string name="pesdk_editor_text_exportProgress" formatted="false">ビデオのエクスポート %s.</string>
 
-    <string name="pesdk_editor_text_loadProgressUnknown">jaLoad Data…</string>
-    <string name="pesdk_editor_text_loadProgress" formatted="false">jaLoad Data %s.</string>
+    <string name="pesdk_editor_text_loadProgressUnknown">ローディング…</string>
+    <string name="pesdk_editor_text_loadProgress" formatted="false">ローディング %s.</string>
 
-    <string name="pesdk_common_button_flipH">jaFlip H</string>
-    <string name="pesdk_common_button_flipV">jaFlip V</string>
-    <string name="pesdk_common_button_undo">jaUndo</string>
-    <string name="pesdk_common_button_redo">jaRedo</string>
+    <string name="pesdk_common_button_flipH">反転H</string>
+    <string name="pesdk_common_button_flipV">反転V</string>
+    <string name="pesdk_common_button_undo">取り消し</string>
+    <string name="pesdk_common_button_redo">やり直し</string>
 
-    <string name="vesdk_video_trim_title_name">jaTrim</string>
-    <string name="vesdk_video_composition_title_name">jaCompose</string>
-    <string name="vesdk_audio_composition_title_name">jaAudio</string>
-    <string name="pesdk_transform_title_name">jaTransform</string>
-    <string name="pesdk_filter_title_name">jaFilter</string>
-    <string name="pesdk_adjustments_title_name">jaAdjust</string>
-    <string name="pesdk_sticker_title_name">jaSticker</string>
-    <string name="pesdk_text_title_name">jaText</string>
-    <string name="pesdk_textDesign_title_name">jaText Design</string>
-    <string name="pesdk_overlay_title_name">jaOverlay</string>
-    <string name="pesdk_frame_title_name">jaFrame</string>
-    <string name="pesdk_brush_title_name">jaBrush</string>
-    <string name="pesdk_focus_title_name">jaFocus</string>
+    <string name="vesdk_video_trim_title_name">トリム</string>
+    <string name="vesdk_video_composition_title_name">作成</string>
+    <string name="vesdk_audio_composition_title_name">オーディオ</string>
+    <string name="pesdk_transform_title_name">変形</string>
+    <string name="pesdk_filter_title_name">フィルター</string>
+    <string name="pesdk_adjustments_title_name">調整</string>
+    <string name="pesdk_sticker_title_name">ステッカー</string>
+    <string name="pesdk_text_title_name">テキスト</string>
+    <string name="pesdk_textDesign_title_name">テキストデザイン</string>
+    <string name="pesdk_overlay_title_name">オーバーレイ</string>
+    <string name="pesdk_frame_title_name">フレーム</string>
+    <string name="pesdk_brush_title_name">ブラシ</string>
+    <string name="pesdk_focus_title_name">フォーカス</string>
 
 
-    <string name="pesdk_common_title_colorPicker">jaColor Picker</string>
-    <string name="pesdk_common_title_transparentColor">jaTransparent</string>
-    <string name="pesdk_common_title_whiteColor">jaWhite</string>
-    <string name="pesdk_common_title_grayColor">jaGray</string>
-    <string name="pesdk_common_title_blackColor">jaBlack</string>
-    <string name="pesdk_common_title_lightBlueColor">jaLight blue</string>
-    <string name="pesdk_common_title_blueColor">jaBlue</string>
-    <string name="pesdk_common_title_purpleColor">jaPurple</string>
-    <string name="pesdk_common_title_orchidColor">jaOrchid</string>
-    <string name="pesdk_common_title_pinkColor">jaPink</string>
-    <string name="pesdk_common_title_redColor">jaRed</string>
-    <string name="pesdk_common_title_orangeColor">jaOrange</string>
-    <string name="pesdk_common_title_goldColor">jaGold</string>
-    <string name="pesdk_common_title_yellowColor">jaYellow</string>
-    <string name="pesdk_common_title_oliveColor">jaOlive</string>
-    <string name="pesdk_common_title_greenColor">jaGreen</string>
-    <string name="pesdk_common_title_aquamarinColor">jaAquamarin</string>
-    <string name="pesdk_common_title_pipettableColor">jaPipettable color</string>
+    <string name="pesdk_common_title_colorPicker">色相ピッカー</string>
+    <string name="pesdk_common_title_transparentColor">透明</string>
+    <string name="pesdk_common_title_whiteColor">白</string>
+    <string name="pesdk_common_title_grayColor">グレー</string>
+    <string name="pesdk_common_title_blackColor">ブラック</string>
+    <string name="pesdk_common_title_lightBlueColor">ライトブルー</string>
+    <string name="pesdk_common_title_blueColor">ブルー</string>
+    <string name="pesdk_common_title_purpleColor">紫色</string>
+    <string name="pesdk_common_title_orchidColor">オーキッド<</string>
+    <string name="pesdk_common_title_pinkColor">ピンク</string>
+    <string name="pesdk_common_title_redColor">赤</string>
+    <string name="pesdk_common_title_orangeColor">オレンジ</string>
+    <string name="pesdk_common_title_goldColor">ゴールド</string>
+    <string name="pesdk_common_title_yellowColor">黄</string>
+    <string name="pesdk_common_title_oliveColor">オリーブ</string>
+    <string name="pesdk_common_title_greenColor">緑</string>
+    <string name="pesdk_common_title_aquamarinColor">アクアマリン</string>
+    <string name="pesdk_common_title_pipettableColor">ピペッタブルカラー</string>
 
 </resources>

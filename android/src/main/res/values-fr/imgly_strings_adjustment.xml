@@ -17,20 +17,20 @@
 
 
 <resources>
-    <string name="pesdk_adjustments_title_name">frAdjust</string>
-
-    <string name="pesdk_adjustments_button_shadowTool">frShadows</string>
-    <string name="pesdk_adjustments_button_exposureTool">frExposure</string>
-    <string name="pesdk_adjustments_button_highlightTool">frHighlights</string>
-    <string name="pesdk_adjustments_button_brightnessTool">frBrightness</string>
-    <string name="pesdk_adjustments_button_contrastTool">frContrast</string>
-    <string name="pesdk_adjustments_button_saturationTool">frSaturation</string>
-    <string name="pesdk_adjustments_button_clarityTool">frClarity</string>
-    <string name="pesdk_adjustments_button_gammaTool">frGamma</string>
-    <string name="pesdk_adjustments_button_blacksTool">frBlacks</string>
-    <string name="pesdk_adjustments_button_whitesTool">frWhites</string>
-    <string name="pesdk_adjustments_button_temperatureTool">frTemperature</string>
-    <string name="pesdk_adjustments_button_sharpnessTool">frSharpness</string>
-    <string name="pesdk_adjustments_button_reset">frReset</string>
+    <string name="pesdk_adjustments_title_name">Ajuster</string>
+    
+    <string name="pesdk_adjustments_button_shadowTool">Ombres</string>
+    <string name="pesdk_adjustments_button_exposureTool">Exposition</string>
+    <string name="pesdk_adjustments_button_highlightTool">Hautes lumières</string>
+    <string name="pesdk_adjustments_button_brightnessTool">Luminosité</string>
+    <string name="pesdk_adjustments_button_contrastTool">Contraste</string>
+    <string name="pesdk_adjustments_button_saturationTool">Saturation</string>
+    <string name="pesdk_adjustments_button_clarityTool">Clarté</string>
+    <string name="pesdk_adjustments_button_gammaTool">Gamma</string>
+    <string name="pesdk_adjustments_button_blacksTool">Noirs</string>
+    <string name="pesdk_adjustments_button_whitesTool">Blancs</string>
+    <string name="pesdk_adjustments_button_temperatureTool">Température</string>
+    <string name="pesdk_adjustments_button_sharpnessTool">Netteté</string>
+    <string name="pesdk_adjustments_button_reset">Réinitialiser</string>
 
 </resources>

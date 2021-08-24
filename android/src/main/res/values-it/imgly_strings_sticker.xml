@@ -18,24 +18,24 @@
 
 <resources>
 
-    <string name="pesdk_sticker_title_name">itSticker</string>
-    <string name="pesdk_sticker_title_color">itSticker Color</string>
-    <string name="pesdk_sticker_title_options">itSticker Options</string>
+    <string name="pesdk_sticker_title_name">Sticker</string>
+    <string name="pesdk_sticker_title_color">Colore dell'adesivo</string>
+    <string name="pesdk_sticker_title_options">Opzioni dell'adesivo</string>
 
-    <string name="pesdk_sticker_button_add">itAdd</string>
-    <string name="pesdk_sticker_button_color">itColor</string>
-    <string name="pesdk_sticker_button_flipV">itFlip V</string>
-    <string name="pesdk_sticker_button_flipH">itFlip H</string>
-    <string name="pesdk_sticker_button_delete">itDelete</string>
-    <string name="pesdk_sticker_button_bringToFront">itTo Front</string>
-    <string name="pesdk_sticker_button_straighten">itStraighten</string>
-    <string name="pesdk_sticker_button_replace">itReplace</string>
-    <string name="pesdk_sticker_button_opacity">itOpacity</string>
+    <string name="pesdk_sticker_button_add">Aggiungi</string>
+    <string name="pesdk_sticker_button_color">Colore</string>
+    <string name="pesdk_sticker_button_flipV">Capovolgi V</string>
+    <string name="pesdk_sticker_button_flipH">Capovolgi H</string>
+    <string name="pesdk_sticker_button_delete">Cancella</string>
+    <string name="pesdk_sticker_button_bringToFront">Davanti</string>
+    <string name="pesdk_sticker_button_straighten">Raddrizza</string>
+    <string name="pesdk_sticker_button_replace">Sostituisci</string>
+    <string name="pesdk_sticker_button_opacity">Opacità</string>
 
-    <string name="pesdk_sticker_button_contrast">itContrast</string>
-    <string name="pesdk_sticker_button_saturation">itSaturation</string>
-    <string name="pesdk_sticker_button_brightness">itBrightness</string>
+    <string name="pesdk_sticker_button_contrast">Contrasto</string>
+    <string name="pesdk_sticker_button_saturation">Saturazione</string>
+    <string name="pesdk_sticker_button_brightness">Luminosità</string>
 
-    <string name="pesdk_sticker_category_name_custom">itUploads</string>
+    <string name="pesdk_sticker_category_name_custom">Uploads</string>
 
 </resources>

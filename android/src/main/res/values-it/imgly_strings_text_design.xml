@@ -18,35 +18,35 @@
 
 <resources>
 
-    <string name="pesdk_textDesign_title_name">itText Design</string>
-    <string name="pesdk_textDesign_title_options">itText Design Options</string>
-    <string name="pesdk_textDesign_title_input">itAdd Text</string>
+    <string name="pesdk_textDesign_title_name">Design del testo</string>
+    <string name="pesdk_textDesign_title_options">Text Design Options</string>
+    <string name="pesdk_textDesign_title_input">Aggiungi testo</string>
 
-    <string name="pesdk_textDesign_button_flipV">itFlip V</string>
-    <string name="pesdk_textDesign_button_flipH">itFlip H</string>
-    <string name="pesdk_textDesign_button_bringToFront">itTo Front</string>
-    <string name="pesdk_textDesign_button_add">itAdd</string>
-    <string name="pesdk_textDesign_button_delete">itDelete</string>
-    <string name="pesdk_textDesign_button_invert">itInvert</string>
+    <string name="pesdk_textDesign_button_flipV">Capovolgi V</string>
+    <string name="pesdk_textDesign_button_flipH">Capovolgi H</string>
+    <string name="pesdk_textDesign_button_bringToFront">Davanti</string>
+    <string name="pesdk_textDesign_button_add">Aggiungi</string>
+    <string name="pesdk_textDesign_button_delete">Cancella</string>
+    <string name="pesdk_textDesign_button_invert">Invertire</string>
 
-    <string name="pesdk_textDesign_text_editTextPlaceholder">itYour text</string>
+    <string name="pesdk_textDesign_text_editTextPlaceholder">Your text</string>
 
-    <string name="pesdk_textDesign_asset_none">itNone</string>
-    <string name="pesdk_textDesign_asset_blocks">itBlocks</string>
-    <string name="pesdk_textDesign_asset_rotated">itRotated</string>
-    <string name="pesdk_textDesign_asset_blocksLight">itBlocks Light</string>
-    <string name="pesdk_textDesign_asset_equalWidth">itEqual Width</string>
-    <string name="pesdk_textDesign_asset_masked">itMasked</string>
-    <string name="pesdk_textDesign_asset_celebrate">itCelebrate</string>
-    <string name="pesdk_textDesign_asset_sunshine">itSunshine</string>
-    <string name="pesdk_textDesign_asset_maskedBadge">itMasked Badge</string>
-    <string name="pesdk_textDesign_asset_blocksCondensed">itBlocks Condensed</string>
-    <string name="pesdk_textDesign_asset_celebrateSimple">itCelebrate Simple</string>
-    <string name="pesdk_textDesign_asset_equalWidthFat">itEqual Width Fat</string>
-    <string name="pesdk_textDesign_asset_watercolor">itWatercolor</string>
-    <string name="pesdk_textDesign_asset_particles">itParticles</string>
-    <string name="pesdk_textDesign_asset_maskedSpeechBubble">itMasked Speech Bubble</string>
-    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">itMasked Speech Bubble Comic</string>
-    <string name="pesdk_textDesign_asset_multiline">itMultiline</string>
+    <string name="pesdk_textDesign_asset_none">Nessuno</string>
+    <string name="pesdk_textDesign_asset_blocks">Blocchi</string>
+    <string name="pesdk_textDesign_asset_rotated">ruotato</string>
+    <string name="pesdk_textDesign_asset_blocksLight">Blocchi chiari</string>
+    <string name="pesdk_textDesign_asset_equalWidth">Larghezza uguale</string>
+    <string name="pesdk_textDesign_asset_masked">Mascherato</string>
+    <string name="pesdk_textDesign_asset_celebrate">Celebrare</string>
+    <string name="pesdk_textDesign_asset_sunshine">Sole</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">Distintivo mascherato</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">Blocchi condensati</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">Celebrare semplice</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">Grasso di uguale larghezza</string>
+    <string name="pesdk_textDesign_asset_watercolor">Acquerello</string>
+    <string name="pesdk_textDesign_asset_particles">Particelle</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">Bolla di discorso mascherato</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">Fumetto mascherato della bolla di discorso</string>
+    <string name="pesdk_textDesign_asset_multiline">Multilinea</string>
 
 </resources>

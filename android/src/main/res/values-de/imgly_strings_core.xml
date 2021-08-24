@@ -20,65 +20,64 @@
 
     <string name="app_name"/>
 
-    <string name="pesdk_editor_title_name">deEditor</string>
+    <string name="pesdk_editor_title_name">Editor</string>
     <string name="pesdk_editor_title_mainMenu"/>
 
-    <string name="pesdk_editor_title_closeEditorAlert">deClose Editor?</string>
-    <string name="pesdk_editor_text_closeEditorAlert">deDo you really want to discard the image?</string>
-    <string name="pesdk_editor_button_closeEditorAlertConfirmation">deYes</string>
-    <string name="pesdk_editor_button_closeEditorAlertCancelation">deNo</string>
+    <string name="pesdk_editor_title_closeEditorAlert">Änderungen verwerfen?</string>
+    <string name="pesdk_editor_text_closeEditorAlert">Wenn du jetzt zurückgehst, werden deine Änderungen verworfen</string>
+    <string name="pesdk_editor_button_closeEditorAlertConfirmation">Verwerfen</string>
+    <string name="pesdk_editor_button_closeEditorAlertCancelation">Abbrechen</string>
 
-    <string name="pesdk_editor_title_somethingWentWrongAlert">deSomething went wrong.</string>
-    <string name="pesdk_editor_text_somethingWentWrongAlert">deCouldn\'t load Photo/Video.</string>
-    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">deClose</string>
+    <string name="pesdk_editor_title_somethingWentWrongAlert">Something went wrong.</string>
+    <string name="pesdk_editor_text_somethingWentWrongAlert">Couldn\'t load Photo/Video.</string>
+    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">Schließen</string>
 
-    <string name="pesdk_editor_cancel">deCancel</string>
-    <string name="pesdk_editor_accept">deAccept</string>
-    <string name="pesdk_editor_save">deSave</string>
+    <string name="pesdk_editor_cancel">Abbrechen</string>
+    <string name="pesdk_editor_accept">Akzeptieren</string>
+    <string name="pesdk_editor_save">Save</string>
 
-    <string name="pesdk_editor_text_exportProgressUnknown">deExporting…</string>
-    <string name="pesdk_editor_text_exportProgress" formatted="false">deExporting %s.</string>
+    <string name="pesdk_editor_text_exportProgressUnknown">Exportieren...</string>
+    <string name="pesdk_editor_text_exportProgress" formatted="false">Exportieren %s.</string>
 
-    <string name="pesdk_editor_text_loadProgressUnknown">deLoad Data…</string>
-    <string name="pesdk_editor_text_loadProgress" formatted="false">deLoad Data %s.</string>
+    <string name="pesdk_editor_text_loadProgressUnknown">Laden…</string>
+    <string name="pesdk_editor_text_loadProgress" formatted="false">Laden %s.</string>
 
-    <string name="pesdk_common_button_flipH">deFlip H</string>
-    <string name="pesdk_common_button_flipV">deFlip V</string>
-    <string name="pesdk_common_button_undo">deUndo</string>
-    <string name="pesdk_common_button_redo">deRedo</string>
+    <string name="pesdk_common_button_flipH">Spiegeln H</string>
+    <string name="pesdk_common_button_flipV">Spiegeln V</string>
+    <string name="pesdk_common_button_undo">Rückgängig</string>
+    <string name="pesdk_common_button_redo">Wiederholen</string>
 
-    <string name="vesdk_video_trim_title_name">deTrim</string>
-    <string name="vesdk_video_composition_title_name">deCompose</string>
-    <string name="vesdk_audio_composition_title_name">deAudio</string>
-    <string name="pesdk_transform_title_name">deTransform</string>
-    <string name="pesdk_filter_title_name">deFilter</string>
-    <string name="pesdk_adjustments_title_name">deAdjust</string>
-    <string name="pesdk_sticker_title_name">deSticker</string>
-    <string name="pesdk_text_title_name">deText</string>
-    <string name="pesdk_textDesign_title_name">deText Design</string>
-    <string name="pesdk_overlay_title_name">deOverlay</string>
-    <string name="pesdk_frame_title_name">deFrame</string>
-    <string name="pesdk_brush_title_name">deBrush</string>
-    <string name="pesdk_focus_title_name">deFocus</string>
-
-
-    <string name="pesdk_common_title_colorPicker">deColor Picker</string>
-    <string name="pesdk_common_title_transparentColor">deTransparent</string>
-    <string name="pesdk_common_title_whiteColor">deWhite</string>
-    <string name="pesdk_common_title_grayColor">deGray</string>
-    <string name="pesdk_common_title_blackColor">deBlack</string>
-    <string name="pesdk_common_title_lightBlueColor">deLight blue</string>
-    <string name="pesdk_common_title_blueColor">deBlue</string>
-    <string name="pesdk_common_title_purpleColor">dePurple</string>
-    <string name="pesdk_common_title_orchidColor">deOrchid</string>
-    <string name="pesdk_common_title_pinkColor">dePink</string>
-    <string name="pesdk_common_title_redColor">deRed</string>
-    <string name="pesdk_common_title_orangeColor">deOrange</string>
-    <string name="pesdk_common_title_goldColor">deGold</string>
-    <string name="pesdk_common_title_yellowColor">deYellow</string>
-    <string name="pesdk_common_title_oliveColor">deOlive</string>
-    <string name="pesdk_common_title_greenColor">deGreen</string>
-    <string name="pesdk_common_title_aquamarinColor">deAquamarin</string>
-    <string name="pesdk_common_title_pipettableColor">dePipettable color</string>
+    <string name="vesdk_video_trim_title_name">Zuschneiden</string>
+    <string name="vesdk_video_composition_title_name">Komponieren</string>
+    <string name="vesdk_audio_composition_title_name">Ton</string>
+    <string name="pesdk_transform_title_name">Transformieren</string>
+    <string name="pesdk_filter_title_name">Filter</string>
+    <string name="pesdk_adjustments_title_name">Einstellen</string>
+    <string name="pesdk_sticker_title_name">Aufkleber</string>
+    <string name="pesdk_text_title_name">Text</string>
+    <string name="pesdk_textDesign_title_name">Text gestalten</string>
+    <string name="pesdk_overlay_title_name">Überlagerung</string>
+    <string name="pesdk_frame_title_name">Rahmen</string>
+    <string name="pesdk_brush_title_name">Pinsel</string>
+    <string name="pesdk_focus_title_name">Fokus</string>
+    
+    <string name="pesdk_common_title_colorPicker">Farbe-Auswahl</string>
+    <string name="pesdk_common_title_transparentColor">Durchsichtig</string>
+    <string name="pesdk_common_title_whiteColor">Weiß</string>
+    <string name="pesdk_common_title_grayColor">Grau</string>
+    <string name="pesdk_common_title_blackColor">Schwarz</string>
+    <string name="pesdk_common_title_lightBlueColor">Hellblau</string>
+    <string name="pesdk_common_title_blueColor">Blau</string>
+    <string name="pesdk_common_title_purpleColor">Lila</string>
+    <string name="pesdk_common_title_orchidColor">Orchidee</string>
+    <string name="pesdk_common_title_pinkColor">Rosa</string>
+    <string name="pesdk_common_title_redColor">Rot</string>
+    <string name="pesdk_common_title_orangeColor">Orange</string>
+    <string name="pesdk_common_title_goldColor">Gold</string>
+    <string name="pesdk_common_title_yellowColor">Gelb</string>
+    <string name="pesdk_common_title_oliveColor">Olivgrün</string>
+    <string name="pesdk_common_title_greenColor">Grün</string>
+    <string name="pesdk_common_title_aquamarinColor">Aquamarin</string>
+    <string name="pesdk_common_title_pipettableColor">Pipettierbare Farbe</string>
 
 </resources>

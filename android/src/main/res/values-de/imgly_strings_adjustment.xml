@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ This file is part of the PhotoEditor Software Development Kit.
@@ -17,20 +18,20 @@
 
 
 <resources>
-    <string name="pesdk_adjustments_title_name">deAdjust</string>
+    <string name="pesdk_adjustments_title_name">Einstellen</string>
 
-    <string name="pesdk_adjustments_button_shadowTool">deShadows</string>
-    <string name="pesdk_adjustments_button_exposureTool">deExposure</string>
-    <string name="pesdk_adjustments_button_highlightTool">deHighlights</string>
-    <string name="pesdk_adjustments_button_brightnessTool">deBrightness</string>
-    <string name="pesdk_adjustments_button_contrastTool">deContrast</string>
-    <string name="pesdk_adjustments_button_saturationTool">deSaturation</string>
-    <string name="pesdk_adjustments_button_clarityTool">deClarity</string>
-    <string name="pesdk_adjustments_button_gammaTool">deGamma</string>
-    <string name="pesdk_adjustments_button_blacksTool">deBlacks</string>
-    <string name="pesdk_adjustments_button_whitesTool">deWhites</string>
-    <string name="pesdk_adjustments_button_temperatureTool">deTemperature</string>
-    <string name="pesdk_adjustments_button_sharpnessTool">deSharpness</string>
-    <string name="pesdk_adjustments_button_reset">deReset</string>
+    <string name="pesdk_adjustments_button_shadowTool">Schatten</string>
+    <string name="pesdk_adjustments_button_exposureTool">Belichtung</string>
+    <string name="pesdk_adjustments_button_highlightTool">Lichter</string>
+    <string name="pesdk_adjustments_button_brightnessTool">Helligkeit</string>
+    <string name="pesdk_adjustments_button_contrastTool">Kontrast</string>
+    <string name="pesdk_adjustments_button_saturationTool">Sättigung</string>
+    <string name="pesdk_adjustments_button_clarityTool">Klarheit</string>
+    <string name="pesdk_adjustments_button_gammaTool">Gamma</string>
+    <string name="pesdk_adjustments_button_blacksTool">Schwarze</string>
+    <string name="pesdk_adjustments_button_whitesTool">Weiße</string>
+    <string name="pesdk_adjustments_button_temperatureTool">Temperatur</string>
+    <string name="pesdk_adjustments_button_sharpnessTool">Schärfe</string>
+    <string name="pesdk_adjustments_button_reset">Zurücksetzen</string>
 
 </resources>

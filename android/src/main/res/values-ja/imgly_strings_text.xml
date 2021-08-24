@@ -18,28 +18,28 @@
 
 <resources>
 
-    <string name="pesdk_text_title_name">jaText</string>
-    <string name="pesdk_text_title_options">jaText Options</string>
-    <string name="pesdk_text_title_input">jaAdd Text</string>
-    <string name="pesdk_text_title_textColor">jaText Color</string>
-    <string name="pesdk_text_title_font">jaFont</string>
+    <string name="pesdk_text_title_name">テキスト</string>
+    <string name="pesdk_text_title_options">テキストオプション</string>
+    <string name="pesdk_text_title_input">テキストの追加</string>
+    <string name="pesdk_text_title_textColor">文字色</string>
+    <string name="pesdk_text_title_font">フォント</string>
 
-    <string name="pesdk_text_button_add">jaAdd</string>
-    <string name="pesdk_text_button_edit">jaEdit</string>
-    <string name="pesdk_text_button_straighten">jaStraighten</string>
+    <string name="pesdk_text_button_add">追加</string>
+    <string name="pesdk_text_button_edit">編集</string>
+    <string name="pesdk_text_button_straighten">直線化</string>
 
-    <string name="pesdk_text_button_font">jaFont</string>
-    <string name="pesdk_text_button_color">jaColor</string>
-    <string name="pesdk_text_button_backgroundColor">jaBG Color</string>
-    <string name="pesdk_text_button_alignment">jaAlignment</string>
+    <string name="pesdk_text_button_font">フォント</string>
+    <string name="pesdk_text_button_color">色</string>
+    <string name="pesdk_text_button_backgroundColor">背景色</string>
+    <string name="pesdk_text_button_alignment">アライメント</string>
 
-    <string name="pesdk_text_button_flipV">jaFlip V</string>
-    <string name="pesdk_text_button_flipH">jaFlip H</string>
-    <string name="pesdk_text_button_bringToFront">jaTo Front</string>
-    <string name="pesdk_text_button_delete">jaDelete</string>
+    <string name="pesdk_text_button_flipV">反転V</string>
+    <string name="pesdk_text_button_flipH">反転H</string>
+    <string name="pesdk_text_button_bringToFront">前面へ</string>
+    <string name="pesdk_text_button_delete">削除</string>
 
-    <string name="pesdk_text_text_editTextPlaceholder">jaYour text</string>
+    <string name="pesdk_text_text_editTextPlaceholder">あなたのテキスト</string>
 
-    <string name="pesdk_text_button_fontPreview">jaAg</string>
+    <string name="pesdk_text_button_fontPreview">Ag</string>
 
 </resources>

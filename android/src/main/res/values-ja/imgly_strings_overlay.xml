@@ -18,25 +18,25 @@
 
 <resources>
 
-    <string name="pesdk_overlay_title_name">jaOverlay</string>
+    <string name="pesdk_overlay_title_name">オーバーレイ</string>
 
     <string name="pesdk_overlay_text_intensityValue" formatted="false">%d</string>
 
-    <string name="pesdk_overlay_button_blendModeNormal">jaNormal</string>
-    <string name="pesdk_overlay_button_blendModeDarken">jaDarken</string>
-    <string name="pesdk_overlay_button_blendModeScreen">jaScreen</string>
-    <string name="pesdk_overlay_button_blendModeOverlay">jaOverlay</string>
-    <string name="pesdk_overlay_button_blendModeLighten">jaLighten</string>
-    <string name="pesdk_overlay_button_blendModeMultiply">jaMultiply</string>
-    <string name="pesdk_overlay_button_blendModeColorBurn">jaColor Burn</string>
-    <string name="pesdk_overlay_button_blendModeSoftLight">jaSoft Light</string>
-    <string name="pesdk_overlay_button_blendModeHardLight">jaHard Light</string>
+    <string name="pesdk_overlay_button_blendModeNormal">ノーマル</string>
+    <string name="pesdk_overlay_button_blendModeDarken">暗くする</string>
+    <string name="pesdk_overlay_button_blendModeScreen">スクリーン</string>
+    <string name="pesdk_overlay_button_blendModeOverlay">オーバーレイ</string>
+    <string name="pesdk_overlay_button_blendModeLighten">明るくする</string>
+    <string name="pesdk_overlay_button_blendModeMultiply">倍率</string>
+    <string name="pesdk_overlay_button_blendModeColorBurn">色焼け</string>
+    <string name="pesdk_overlay_button_blendModeSoftLight">ソフトライト</string>
+    <string name="pesdk_overlay_button_blendModeHardLight">ハードライト</string>
 
-    <string name="pesdk_overlay_asset_none">jaNone</string>
-    <string name="pesdk_overlay_asset_golden">jaGolden</string>
-    <string name="pesdk_overlay_asset_lightleak1">jaLightleak 1</string>
-    <string name="pesdk_overlay_asset_mosaic">jaMosaic</string>
-    <string name="pesdk_overlay_asset_paper">jaPaper</string>
-    <string name="pesdk_overlay_asset_rain">jaRain</string>
-    <string name="pesdk_overlay_asset_vintage">jaVintage</string>
+    <string name="pesdk_overlay_asset_none">なし</string>
+    <string name="pesdk_overlay_asset_golden">ゴールデン</string>
+    <string name="pesdk_overlay_asset_lightleak1">Lightleak 1</string>
+    <string name="pesdk_overlay_asset_mosaic">モザイク</string>
+    <string name="pesdk_overlay_asset_paper">ペーパー</string>
+    <string name="pesdk_overlay_asset_rain">雨</string>
+    <string name="pesdk_overlay_asset_vintage">ヴィンテージ</string>
 </resources>

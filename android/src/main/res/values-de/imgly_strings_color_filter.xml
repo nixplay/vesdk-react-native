@@ -17,7 +17,7 @@
 
 
 <resources>
-    <string name="pesdk_filter_title_name">deFilter</string>
+    <string name="pesdk_filter_title_name">Filter</string>
     <string name="pesdk_filter_text_intensityValue" formatted="false">%d</string>
-    <string name="pesdk_filter_asset_none">deNone</string>
+    <string name="pesdk_filter_asset_none">Keine</string>
 </resources>
