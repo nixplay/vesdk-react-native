@@ -514,6 +514,8 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 // reset invoke
                 [options setAdjustToolSelectedBlock:^(NSNumber * _Nullable adjust) {
 					 if (adjust != nil) {
+						[weakController.banner removeFromSuperview];
+                        weakController.banner = nil;
                         NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixAdjust"];
                         [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
                     } else {
