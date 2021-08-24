@@ -28,6 +28,13 @@
     <string name="pesdk_editor_button_closeEditorAlertConfirmation">廃棄されます</string>
     <string name="pesdk_editor_button_closeEditorAlertCancelation">キャンセル</string>
 
+    <string name="nixplay_upgradeEditorAlert">この機能を解除しますか？</string>
+    <string name="nixplay_text_upgradeEditorAlert">今すぐNixplay Plusにアップグレードして、この機能を解除し、より高度な編集ツールをお楽しみください。</string>
+    <string name="nixplay_button_upgradeEditorAlertConfirmation">アップグレード</string>
+    <string name="nixplay_button_upgradeEditorAlertCancelation">キャンセル </string>
+
+    <string name="nixplay_banner_advanced_title">より高度な機能を試す</string>
+
     <string name="pesdk_editor_title_somethingWentWrongAlert">何かがうまくいかなかった。</string>
     <string name="pesdk_editor_text_somethingWentWrongAlert">写真/ビデオを読み込めませんでした。</string>
     <string name="pesdk_editor_button_somethingWentWrongCloseEditor">閉じる</string>

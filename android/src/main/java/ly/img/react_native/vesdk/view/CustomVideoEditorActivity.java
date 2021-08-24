@@ -146,19 +146,19 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
         final String effects = getCurrentEffects();
         mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_show", null);
         new AlertDialog.Builder(this)
-                .setTitle("Unlock this feature?")
-                .setMessage("Upgrade to Nixplay Plus now to unlock this feature and enjoy more advanced editing tools.")
-                .setPositiveButton("Upgrade", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.nixplay_upgradeEditorAlert)
+                .setMessage(R.string.nixplay_text_upgradeEditorAlert)
+                .setPositiveButton(R.string.nixplay_button_upgradeEditorAlertConfirmation, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 //                        saveSerialization();
                         mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_upgrade", null);
                         goToSubscriptionScreen(0);
                     }
                 })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.nixplay_button_upgradeEditorAlertCancelation, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        revertToInitial();
+                       revertToInitial();
                     }
                 })
                 .setCancelable(false)
@@ -169,15 +169,15 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
         final String effects = getCurrentEffects();
         mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_show", null);
         new AlertDialog.Builder(this)
-                .setTitle("Discard Changes?")
-                .setMessage("If you go back now, your edits will be discarded.")
-                .setPositiveButton("Discard", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.pesdk_editor_title_closeEditorAlert)
+                .setMessage(R.string.pesdk_editor_text_closeEditorAlert)
+                .setPositiveButton(R.string.pesdk_editor_button_closeEditorAlertConfirmation, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 //                        saveSerialization();
                         discardChanges();
                     }
                 })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.pesdk_editor_button_closeEditorAlertCancelation, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 

@@ -28,6 +28,13 @@
     <string name="pesdk_editor_button_closeEditorAlertConfirmation">Descartar</string>
     <string name="pesdk_editor_button_closeEditorAlertCancelation">Cancelar</string>
 
+    <string name="nixplay_upgradeEditorAlert">¿Desbloquear esta función?</string>
+    <string name="nixplay_text_upgradeEditorAlert">Actualiza ahora a Nixplay Plus para desbloquear esta función y disfrutar de herramientas de edición más avanzadas.</string>
+    <string name="nixplay_button_upgradeEditorAlertConfirmation">Actualizar</string>
+    <string name="nixplay_button_upgradeEditorAlertCancelation">Cancelar</string>
+
+    <string name="nixplay_banner_advanced_title">Prova funzioni più avanzate</string>
+
     <string name="pesdk_editor_title_somethingWentWrongAlert">Something went wrong.</string>
     <string name="pesdk_editor_text_somethingWentWrongAlert">Couldn\'t load Photo/Video.</string>
     <string name="pesdk_editor_button_somethingWentWrongCloseEditor">Cerrar</string>
