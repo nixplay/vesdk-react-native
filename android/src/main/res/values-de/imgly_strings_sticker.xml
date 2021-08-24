@@ -18,24 +18,24 @@
 
 <resources>
 
-    <string name="pesdk_sticker_title_name">deSticker</string>
-    <string name="pesdk_sticker_title_color">deSticker Color</string>
-    <string name="pesdk_sticker_title_options">deSticker Options</string>
+    <string name="pesdk_sticker_title_name">Aufkleber</string>
+    <string name="pesdk_sticker_title_color">Aufkleber Farbe</string>
+    <string name="pesdk_sticker_title_options">Aufkleber-Optionen</string>
 
-    <string name="pesdk_sticker_button_add">deAdd</string>
-    <string name="pesdk_sticker_button_color">deColor</string>
-    <string name="pesdk_sticker_button_flipV">deFlip V</string>
-    <string name="pesdk_sticker_button_flipH">deFlip H</string>
-    <string name="pesdk_sticker_button_delete">deDelete</string>
-    <string name="pesdk_sticker_button_bringToFront">deTo Front</string>
-    <string name="pesdk_sticker_button_straighten">deStraighten</string>
-    <string name="pesdk_sticker_button_replace">deReplace</string>
-    <string name="pesdk_sticker_button_opacity">deOpacity</string>
+    <string name="pesdk_sticker_button_add">Hinzufügen</string>
+    <string name="pesdk_sticker_button_color">Farbe</string>
+    <string name="pesdk_sticker_button_flipV">Spiegeln V</string>
+    <string name="pesdk_sticker_button_flipH">Spiegeln H</string>
+    <string name="pesdk_sticker_button_delete">Löschen</string>
+    <string name="pesdk_sticker_button_bringToFront">Nach vorne</string>
+    <string name="pesdk_sticker_button_straighten">Begradigen</string>
+    <string name="pesdk_sticker_button_replace">Ersetzen</string>
+    <string name="pesdk_sticker_button_opacity">Deckkraft</string>
 
-    <string name="pesdk_sticker_button_contrast">deContrast</string>
-    <string name="pesdk_sticker_button_saturation">deSaturation</string>
-    <string name="pesdk_sticker_button_brightness">deBrightness</string>
+    <string name="pesdk_sticker_button_contrast">Kontrast</string>
+    <string name="pesdk_sticker_button_saturation">Sättigung</string>
+    <string name="pesdk_sticker_button_brightness">Helligkeit</string>
 
-    <string name="pesdk_sticker_category_name_custom">deUploads</string>
+    <string name="pesdk_sticker_category_name_custom">Uploads</string>
 
 </resources>

@@ -18,13 +18,13 @@
 
 <resources>
 
-    <string name="pesdk_brush_title_name">deBrush</string>
-    <string name="pesdk_brush_button_color">deColor</string>
-    <string name="pesdk_brush_button_size">deSize</string>
-    <string name="pesdk_brush_button_hardness">deHardness</string>
-    <string name="pesdk_brush_button_bringToFront">deTo Front</string>
-    <string name="pesdk_brush_button_delete">deDelete</string>
-
-    <string name="pesdk_brush_title_brushColor">deBrush Color</string>
+    <string name="pesdk_brush_title_name">Pinsel</string>
+    <string name="pesdk_brush_button_color">Farbe</string>
+    <string name="pesdk_brush_button_size">Größe</string>
+    <string name="pesdk_brush_button_hardness">Härte</string>
+    <string name="pesdk_brush_button_bringToFront">Nach vorne</string>
+    <string name="pesdk_brush_button_delete">Löschen</string>
+    
+    <string name="pesdk_brush_title_brushColor">Farbe der Bürste</string>
 
 </resources>

@@ -18,15 +18,15 @@
 
 <resources>
 
-    <string name="pesdk_frame_title_name">deFrame</string>
-    <string name="pesdk_frame_title_options">deFrame Options</string>
+    <string name="pesdk_frame_title_name">Rahmen</string>
+    <string name="pesdk_frame_title_options">Rahmen-Optionen</string>
 
 
-    <string name="pesdk_frame_button_bringToFront">deTo front</string>
-    <string name="pesdk_frame_button_width">deWidth</string>
-    <string name="pesdk_frame_button_replace">deReplace</string>
-    <string name="pesdk_frame_button_opacity">deOpacity</string>
+    <string name="pesdk_frame_button_bringToFront">Nach vorne</string>
+    <string name="pesdk_frame_button_width">Breite</string>
+    <string name="pesdk_frame_button_replace">Ersetzen</string>
+    <string name="pesdk_frame_button_opacity">Deckkraft</string>
 
-    <string name="pesdk_frame_button_none">deNo Frame</string>
+    <string name="pesdk_frame_button_none">Kein Rahmen</string>
 
 </resources>

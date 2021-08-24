@@ -18,13 +18,13 @@
 
 <resources>
 
-    <string name="pesdk_brush_title_name">itBrush</string>
-    <string name="pesdk_brush_button_color">itColor</string>
-    <string name="pesdk_brush_button_size">itSize</string>
-    <string name="pesdk_brush_button_hardness">itHardness</string>
-    <string name="pesdk_brush_button_bringToFront">itTo Front</string>
-    <string name="pesdk_brush_button_delete">itDelete</string>
-
-    <string name="pesdk_brush_title_brushColor">itBrush Color</string>
+    <string name="pesdk_brush_title_name">Pennello</string>
+    <string name="pesdk_brush_button_color">Colore</string>
+    <string name="pesdk_brush_button_size">Dimensione</string>
+    <string name="pesdk_brush_button_hardness">Durezza</string>
+    <string name="pesdk_brush_button_bringToFront">Davanti</string>
+    <string name="pesdk_brush_button_delete">Cancella</string>
+    
+    <string name="pesdk_brush_title_brushColor">Colore della spazzola</string>
 
 </resources>

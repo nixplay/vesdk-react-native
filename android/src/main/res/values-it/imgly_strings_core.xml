@@ -20,65 +20,72 @@
 
     <string name="app_name"/>
 
-    <string name="pesdk_editor_title_name">itEditor</string>
+    <string name="pesdk_editor_title_name">Editor</string>
     <string name="pesdk_editor_title_mainMenu"/>
 
-    <string name="pesdk_editor_title_closeEditorAlert">itClose Editor?</string>
-    <string name="pesdk_editor_text_closeEditorAlert">itDo you really want to discard the image?</string>
-    <string name="pesdk_editor_button_closeEditorAlertConfirmation">itYes</string>
-    <string name="pesdk_editor_button_closeEditorAlertCancelation">itNo</string>
+    <string name="pesdk_editor_title_closeEditorAlert">Scartare le modifiche?</string>
+    <string name="pesdk_editor_text_closeEditorAlert">Se torni indietro ora, le tue modifiche saranno scartate</string>
+    <string name="pesdk_editor_button_closeEditorAlertConfirmation">Scartate</string>
+    <string name="pesdk_editor_button_closeEditorAlertCancelation">Annulla</string>
 
-    <string name="pesdk_editor_title_somethingWentWrongAlert">itSomething went wrong.</string>
-    <string name="pesdk_editor_text_somethingWentWrongAlert">itCouldn\'t load Photo/Video.</string>
-    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">itClose</string>
+    <string name="nixplay_upgradeEditorAlert">Sbloccare questa funzione?</string>
+    <string name="nixplay_text_upgradeEditorAlert">Aggiorna a Nixplay Plus ora per sbloccare questa funzione e godere di strumenti di editing più avanzati.</string>
+    <string name="nixplay_button_upgradeEditorAlertConfirmation">Aggiornare</string>
+    <string name="nixplay_button_upgradeEditorAlertCancelation">Cancella</string>
 
-    <string name="pesdk_editor_cancel">itCancel</string>
-    <string name="pesdk_editor_accept">itAccept</string>
-    <string name="pesdk_editor_save">itSave</string>
+    <string name="nixplay_banner_advanced_title">Prova funzioni più avanzate</string>
 
-    <string name="pesdk_editor_text_exportProgressUnknown">itExporting…</string>
-    <string name="pesdk_editor_text_exportProgress" formatted="false">itExporting %s.</string>
+    <string name="pesdk_editor_title_somethingWentWrongAlert">Qualcosa è andato storto.</string>
+    <string name="pesdk_editor_text_somethingWentWrongAlert">Impossibile caricare foto/video.</string>
+    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">Chiudi</string>
 
-    <string name="pesdk_editor_text_loadProgressUnknown">itLoad Data…</string>
-    <string name="pesdk_editor_text_loadProgress" formatted="false">itLoad Data %s.</string>
+    <string name="pesdk_editor_cancel">Annulla</string>
+    <string name="pesdk_editor_accept">Accetta</string>
+    <string name="pesdk_editor_save">Salva</string>
 
-    <string name="pesdk_common_button_flipH">itFlip H</string>
-    <string name="pesdk_common_button_flipV">itFlip V</string>
-    <string name="pesdk_common_button_undo">itUndo</string>
-    <string name="pesdk_common_button_redo">itRedo</string>
+    <string name="pesdk_editor_text_exportProgressUnknown">Esportazione di video...</string>
+    <string name="pesdk_editor_text_exportProgress" formatted="false">Esportazione di video %s.</string>
 
-    <string name="vesdk_video_trim_title_name">itTrim</string>
-    <string name="vesdk_video_composition_title_name">itCompose</string>
-    <string name="vesdk_audio_composition_title_name">itAudio</string>
-    <string name="pesdk_transform_title_name">itTransform</string>
-    <string name="pesdk_filter_title_name">itFilter</string>
-    <string name="pesdk_adjustments_title_name">itAdjust</string>
-    <string name="pesdk_sticker_title_name">itSticker</string>
-    <string name="pesdk_text_title_name">itText</string>
-    <string name="pesdk_textDesign_title_name">itText Design</string>
-    <string name="pesdk_overlay_title_name">itOverlay</string>
-    <string name="pesdk_frame_title_name">itFrame</string>
-    <string name="pesdk_brush_title_name">itBrush</string>
-    <string name="pesdk_focus_title_name">itFocus</string>
+    <string name="pesdk_editor_text_loadProgressUnknown">Caricamento…</string>
+    <string name="pesdk_editor_text_loadProgress" formatted="false">Caricamento %s.</string>
+
+    <string name="pesdk_common_button_flipH">Capovolgi H</string>
+    <string name="pesdk_common_button_flipV">Capovolgi V</string>
+    <string name="pesdk_common_button_undo">Annulla</string>
+    <string name="pesdk_common_button_redo">Rifare</string>
+
+    <string name="vesdk_video_trim_title_name">Ritagliare</string>
+    <string name="vesdk_video_composition_title_name">Componi</string>
+    <string name="vesdk_audio_composition_title_name">Audio</string>
+    <string name="pesdk_transform_title_name">Trasforma</string>
+    <string name="pesdk_filter_title_name">Filtro</string>
+    <string name="pesdk_adjustments_title_name">Regolare</string>
+    <string name="pesdk_sticker_title_name">Sticker</string>
+    <string name="pesdk_text_title_name">Testo</string>
+    <string name="pesdk_textDesign_title_name">Design del testo</string>
+    <string name="pesdk_overlay_title_name">Sovrapposizione</string>
+    <string name="pesdk_frame_title_name">Telaio</string>
+    <string name="pesdk_brush_title_name">Pennello</string>
+    <string name="pesdk_focus_title_name">Messa a fuoco</string>
 
 
-    <string name="pesdk_common_title_colorPicker">itColor Picker</string>
-    <string name="pesdk_common_title_transparentColor">itTransparent</string>
-    <string name="pesdk_common_title_whiteColor">itWhite</string>
-    <string name="pesdk_common_title_grayColor">itGray</string>
-    <string name="pesdk_common_title_blackColor">itBlack</string>
-    <string name="pesdk_common_title_lightBlueColor">itLight blue</string>
-    <string name="pesdk_common_title_blueColor">itBlue</string>
-    <string name="pesdk_common_title_purpleColor">itPurple</string>
-    <string name="pesdk_common_title_orchidColor">itOrchid</string>
-    <string name="pesdk_common_title_pinkColor">itPink</string>
-    <string name="pesdk_common_title_redColor">itRed</string>
-    <string name="pesdk_common_title_orangeColor">itOrange</string>
-    <string name="pesdk_common_title_goldColor">itGold</string>
-    <string name="pesdk_common_title_yellowColor">itYellow</string>
-    <string name="pesdk_common_title_oliveColor">itOlive</string>
-    <string name="pesdk_common_title_greenColor">itGreen</string>
-    <string name="pesdk_common_title_aquamarinColor">itAquamarin</string>
-    <string name="pesdk_common_title_pipettableColor">itPipettable color</string>
+    <string name="pesdk_common_title_colorPicker">Color Picker</string>
+    <string name="pesdk_common_title_transparentColor">Trasparente</string>
+    <string name="pesdk_common_title_whiteColor">Bianco</string>
+    <string name="pesdk_common_title_grayColor">Grigio</string>
+    <string name="pesdk_common_title_blackColor">Nero</string>
+    <string name="pesdk_common_title_lightBlueColor">Azzurro</string>
+    <string name="pesdk_common_title_blueColor">Blu</string>
+    <string name="pesdk_common_title_purpleColor">Viola</string>
+    <string name="pesdk_common_title_orchidColor">Orchid</string>
+    <string name="pesdk_common_title_pinkColor">Rosa</string>
+    <string name="pesdk_common_title_redColor">Rosso</string>
+    <string name="pesdk_common_title_orangeColor">Arancione</string>
+    <string name="pesdk_common_title_goldColor">Oro</string>
+    <string name="pesdk_common_title_yellowColor">Giallo</string>
+    <string name="pesdk_common_title_oliveColor">Oliva</string>
+    <string name="pesdk_common_title_greenColor">Verde</string>
+    <string name="pesdk_common_title_aquamarinColor">Aquamarin</string>
+    <string name="pesdk_common_title_pipettableColor">Colore pipettabile</string>
 
 </resources>

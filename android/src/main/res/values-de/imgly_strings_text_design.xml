@@ -18,35 +18,35 @@
 
 <resources>
 
-    <string name="pesdk_textDesign_title_name">deText Design</string>
-    <string name="pesdk_textDesign_title_options">deText Design Options</string>
-    <string name="pesdk_textDesign_title_input">deAdd Text</string>
+    <string name="pesdk_textDesign_title_name">Text Gestalten</string>
+    <string name="pesdk_textDesign_title_options">Text-Gestalten-Optionen</string>
+    <string name="pesdk_textDesign_title_input">Text hinzufügen</string>
 
-    <string name="pesdk_textDesign_button_flipV">deFlip V</string>
-    <string name="pesdk_textDesign_button_flipH">deFlip H</string>
-    <string name="pesdk_textDesign_button_bringToFront">deTo Front</string>
-    <string name="pesdk_textDesign_button_add">deAdd</string>
-    <string name="pesdk_textDesign_button_delete">deDelete</string>
-    <string name="pesdk_textDesign_button_invert">deInvert</string>
+    <string name="pesdk_textDesign_button_flipV">Spiegeln V</string>
+    <string name="pesdk_textDesign_button_flipH">Spiegeln H</string>
+    <string name="pesdk_textDesign_button_bringToFront">Nach vorne</string>
+    <string name="pesdk_textDesign_button_add">Hinzufügen</string>
+    <string name="pesdk_textDesign_button_delete">Löschen</string>
+    <string name="pesdk_textDesign_button_invert">Invertieren</string>
 
-    <string name="pesdk_textDesign_text_editTextPlaceholder">deYour text</string>
+    <string name="pesdk_textDesign_text_editTextPlaceholder">Your text</string>
 
-    <string name="pesdk_textDesign_asset_none">deNone</string>
-    <string name="pesdk_textDesign_asset_blocks">deBlocks</string>
-    <string name="pesdk_textDesign_asset_rotated">deRotated</string>
-    <string name="pesdk_textDesign_asset_blocksLight">deBlocks Light</string>
-    <string name="pesdk_textDesign_asset_equalWidth">deEqual Width</string>
-    <string name="pesdk_textDesign_asset_masked">deMasked</string>
-    <string name="pesdk_textDesign_asset_celebrate">deCelebrate</string>
-    <string name="pesdk_textDesign_asset_sunshine">deSunshine</string>
-    <string name="pesdk_textDesign_asset_maskedBadge">deMasked Badge</string>
-    <string name="pesdk_textDesign_asset_blocksCondensed">deBlocks Condensed</string>
-    <string name="pesdk_textDesign_asset_celebrateSimple">deCelebrate Simple</string>
-    <string name="pesdk_textDesign_asset_equalWidthFat">deEqual Width Fat</string>
-    <string name="pesdk_textDesign_asset_watercolor">deWatercolor</string>
-    <string name="pesdk_textDesign_asset_particles">deParticles</string>
-    <string name="pesdk_textDesign_asset_maskedSpeechBubble">deMasked Speech Bubble</string>
-    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">deMasked Speech Bubble Comic</string>
-    <string name="pesdk_textDesign_asset_multiline">deMultiline</string>
+    <string name="pesdk_textDesign_asset_none">Keine</string>
+    <string name="pesdk_textDesign_asset_blocks">Blöcke</string>
+    <string name="pesdk_textDesign_asset_rotated">Gedreht</string>
+    <string name="pesdk_textDesign_asset_blocksLight">Blöcke Hell</string>
+    <string name="pesdk_textDesign_asset_equalWidth">Gleiche Breite</string>
+    <string name="pesdk_textDesign_asset_masked">Maskiert</string>
+    <string name="pesdk_textDesign_asset_celebrate">Feiern</string>
+    <string name="pesdk_textDesign_asset_sunshine">Sonnenschein</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">Maskiertes Abzeichen</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">Blöcke Verdichtet</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">Celebrate Einfach</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">Gleiche Breite Fett</string>
+    <string name="pesdk_textDesign_asset_watercolor">Aquarell</string>
+    <string name="pesdk_textDesign_asset_particles">Partikel</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">Maskierte Sprechblase</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">Maskierte Sprechblase Comic</string>
+    <string name="pesdk_textDesign_asset_multiline">Mehrzeilig</string>
 
 </resources>

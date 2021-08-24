@@ -17,12 +17,12 @@
 
 
 <resources>
-    <string name="pesdk_focus_title_name">frFocus</string>
-    <string name="pesdk_focus_title_disabled">frNone</string>
-    <string name="pesdk_focus_button_radial">frRadial</string>
-    <string name="pesdk_focus_button_linear">frLinear</string>
-    <string name="pesdk_focus_button_mirrored">frMirrored</string>
-    <string name="pesdk_focus_button_gaussian">frGaussian</string>
+    <string name="pesdk_focus_title_name">Focus</string>
+    <string name="pesdk_focus_title_disabled">Aucun</string>
+    <string name="pesdk_focus_button_radial">Radial</string>
+    <string name="pesdk_focus_button_linear">Linéaire</string>
+    <string name="pesdk_focus_button_mirrored">Miroir</string>
+    <string name="pesdk_focus_button_gaussian">Gaussien</string>
 
 
 </resources>

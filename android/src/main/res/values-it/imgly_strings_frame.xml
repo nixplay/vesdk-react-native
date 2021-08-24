@@ -18,15 +18,15 @@
 
 <resources>
 
-    <string name="pesdk_frame_title_name">itFrame</string>
-    <string name="pesdk_frame_title_options">itFrame Options</string>
+    <string name="pesdk_frame_title_name">Telaio</string>
+    <string name="pesdk_frame_title_options">Opzioni della cornice</string>
 
 
-    <string name="pesdk_frame_button_bringToFront">itTo front</string>
-    <string name="pesdk_frame_button_width">itWidth</string>
-    <string name="pesdk_frame_button_replace">itReplace</string>
-    <string name="pesdk_frame_button_opacity">itOpacity</string>
+    <string name="pesdk_frame_button_bringToFront">Davanti</string>
+    <string name="pesdk_frame_button_width">Larghezza</string>
+    <string name="pesdk_frame_button_replace">Sostituisci</string>
+    <string name="pesdk_frame_button_opacity">Opacità</string>
 
-    <string name="pesdk_frame_button_none">itNo Frame</string>
+    <string name="pesdk_frame_button_none">Nessuna cornice</string>
 
 </resources>

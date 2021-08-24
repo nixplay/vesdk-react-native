@@ -17,12 +17,12 @@
 
 
 <resources>
-    <string name="pesdk_focus_title_name">deFocus</string>
-    <string name="pesdk_focus_title_disabled">deNone</string>
-    <string name="pesdk_focus_button_radial">deRadial</string>
-    <string name="pesdk_focus_button_linear">deLinear</string>
-    <string name="pesdk_focus_button_mirrored">deMirrored</string>
-    <string name="pesdk_focus_button_gaussian">deGaussian</string>
+    <string name="pesdk_focus_title_name">Fokus</string>
+    <string name="pesdk_focus_title_disabled">Keine</string>
+    <string name="pesdk_focus_button_radial">Radial</string>
+    <string name="pesdk_focus_button_linear">Linear</string>
+    <string name="pesdk_focus_button_mirrored">Gespiegelter</string>
+    <string name="pesdk_focus_button_gaussian">Gaußscher</string>
 
 
 </resources>

@@ -17,12 +17,12 @@
 
 
 <resources>
-    <string name="pesdk_focus_title_name">jaFocus</string>
-    <string name="pesdk_focus_title_disabled">jaNone</string>
-    <string name="pesdk_focus_button_radial">jaRadial</string>
-    <string name="pesdk_focus_button_linear">jaLinear</string>
-    <string name="pesdk_focus_button_mirrored">jaMirrored</string>
-    <string name="pesdk_focus_button_gaussian">jaGaussian</string>
+    <string name="pesdk_focus_title_name">フォーカス</string>
+    <string name="pesdk_focus_title_disabled">なし</string>
+    <string name="pesdk_focus_button_radial">放射状</string>
+    <string name="pesdk_focus_button_linear">リニア</string>
+    <string name="pesdk_focus_button_mirrored">ミラーリング</string>
+    <string name="pesdk_focus_button_gaussian">ガウシアン</string>
 
 
 </resources>
