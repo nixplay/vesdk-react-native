@@ -135,11 +135,11 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
             } else if (overlaySettings.hasChanges()) {
                 showUpgradeDialog();
             } else {
-                videoSubscriptionOverlayLayout.setHasChanges(false);
+                if (!_isSubscriber) { videoSubscriptionOverlayLayout.setHasChanges(false); };
                 super.onAcceptClicked();
             }
         } else {
-            videoSubscriptionOverlayLayout.setHasChanges(false);
+            if (!_isSubscriber) { videoSubscriptionOverlayLayout.setHasChanges(false); };
             super.onAcceptClicked();
         }
     }

@@ -24,17 +24,21 @@
 			app:layout_constraintBottom_toTopOf="@id/tv_features_video"
 			android:layout_marginStart="24dp"
 			android:layout_marginTop="12dp"
+			android:layout_marginRight="25dp"
 			android:textStyle="bold"
 			android:textSize="16sp"/>
 
 		<TextView
 			android:id="@+id/tv_features_video"
-			android:layout_width="match_parent"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			app:layout_constraintTop_toBottomOf="@id/tv_add_more_features_video"
 			app:layout_constraintBottom_toBottomOf="parent"
-			android:layout_marginStart="24dp"
 			android:layout_marginBottom="12dp"
+			android:layout_marginLeft="24dp"
+			android:paddingLeft="24dp"
+			android:layout_marginRight="25dp"
+			android:paddingRight="25dp"
 			android:textColor="@color/white"
 			android:textSize="13sp"/>
 
