@@ -156,8 +156,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
                     new ToolItem(TextToolPanel.TOOL_ID, R.string.pesdk_text_title_name, ImageSource.create(R.drawable.imgly_icon_tool_text)),
                     new ToolItem(TextDesignToolPanel.TOOL_ID, R.string.pesdk_textDesign_title_name, ImageSource.create(R.drawable.imgly_icon_tool_text_design)),
                     new ToolItem(OverlayToolPanel.TOOL_ID, R.string.pesdk_overlay_title_name, ImageSource.create(R.drawable.imgly_icon_tool_overlay)),
-                    new ToolItem(FrameToolPanel.TOOL_ID, R.string.pesdk_frame_title_name, ImageSource.create(R.drawable.imgly_icon_tool_frame)),
-                    new ToolItem(BrushToolPanel.TOOL_ID, R.string.pesdk_brush_title_name, ImageSource.create(R.drawable.imgly_icon_tool_brush))
+                    new ToolItem(FrameToolPanel.TOOL_ID, R.string.pesdk_frame_title_name, ImageSource.create(R.drawable.imgly_icon_tool_frame))
             );
         } else {
             settingsList.getSettingsModel(UiConfigFilter.class).setFilterList(
