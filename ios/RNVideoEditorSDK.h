@@ -16,7 +16,7 @@
 @property int textAdded;
 @property int enableToValidate;
 @property BOOL hasBegan;
-@property NSString *languageCode;
+@property NSString * _Nonnull languageCode;
 
 typedef void (^RNVESDKConfigurationBlock)(PESDKConfigurationBuilder * _Nonnull builder);
 typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull videoEditViewController);
@@ -38,6 +38,6 @@ typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull 
 - (void)addButtonApply:(UIButton* _Nonnull)button;
 - (void)addButtonDiscard:(UIButton* _Nonnull)button;
 - (void)saveSerialDataWithKey:(NSString * _Nonnull)key;
-
+- (void)trackEvent:(NSString * _Nonnull)key;
 
 @end
