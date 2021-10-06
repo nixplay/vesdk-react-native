@@ -388,6 +388,10 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
 	}
 }
 
+- (void)trackEvent:(NSString *)key {
+    [FIRAnalytics logEventWithName:[NSString stringWithFormat:@"vesdk_%@", key] parameters:@{}];
+}
+
 - (void)addButtonTrigger:(UIButton* _Nonnull)button usage:(NSString * _Nonnull)usage {
     if ([usage isEqualToString:@"undo"]) {
         [button addTarget:self action:@selector(undoTrigger:) forControlEvents:UIControlEventTouchUpInside];
