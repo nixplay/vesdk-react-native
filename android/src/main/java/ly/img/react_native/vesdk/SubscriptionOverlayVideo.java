@@ -12,7 +12,9 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.facebook.react.bridge.ReadableMap;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
+import ly.img.android.PESDK;
 import ly.img.android.pesdk.annotations.OnEvent;
 import ly.img.android.pesdk.backend.model.state.HistoryState;
 import ly.img.android.pesdk.backend.model.state.LayerListSettings;
@@ -29,6 +31,7 @@ public class SubscriptionOverlayVideo extends ConstraintLayout {
     public ReadableMap configMap;
     private StateHandler stateHandler;
     private boolean hasChanges;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     public SubscriptionOverlayVideo(Context context) {
         super(context);
@@ -46,6 +49,7 @@ public class SubscriptionOverlayVideo extends ConstraintLayout {
         this.configMap = configMap;
         this.tv_title = tv_title;
         this.tv_subtitle = tv_subtitle;
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(PESDK.getAppContext());
     }
 
     public void setHasChanges(boolean hasChanges) {
@@ -80,6 +84,15 @@ public class SubscriptionOverlayVideo extends ConstraintLayout {
     }, triggerDelay = 50)
     public void onToolChanged() {
         AbstractToolPanel currentTool = settings != null ? settings.getCurrentTool() : null;
+        if (currentTool.equals("ly.img.android.pesdk.ui.panels.StickerToolPanel")) {
+            mFirebaseAnalytics.logEvent("vesdk_sticker_tap", null);
+        }
+        if (currentTool.equals("ly.img.android.pesdk.ui.panels.TextToolPanel")) {
+            mFirebaseAnalytics.logEvent("vesdk_text_tap", null);
+        }
+        if (currentTool.equals("ly.img.android.pesdk.ui.panels.TextDesignToolPanel")) {
+            mFirebaseAnalytics.logEvent("vesdk_textdesign_tap", null);
+        }
         if (!_isSubscriber) {
             if (currentTool != null && currentTool.isAttached() && !UiStateMenu.MAIN_TOOL_ID.equals(settings.getCurrentPanelData().getId())
                     && !settings.getCurrentPanelData().getId().equals("imgly_tool_transform")) {
