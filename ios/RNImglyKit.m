@@ -126,8 +126,8 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 //    NSArray *nixToolFilter = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolFilter] : nil;
 //    NSArray *nixToolFilterDefault = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolFilterDefault] : nil;
 //    NSArray *nixTFCDuotone = [(NSDictionary *)nixToolFilterDefault[0] objectForKey:@"items"];
-    NSArray *nixToolAdjust = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolAdjust] : nil;
-    NSArray *nixToolFocus = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolFocus] : nil;
+    // NSArray *nixToolAdjust = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolAdjust] : nil;
+    // NSArray *nixToolFocus = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolFocus] : nil;
     NSArray *nixToolSticker = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolSticker] : nil;
     NSArray *nixToolText = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolText] : nil;
     NSArray *nixToolTextDesign = (isSubscriber == NO) ? (NSArray *)[dictionary valueForKeyPath:kNixVToolTextDesign] : nil;
@@ -212,6 +212,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     weakController.userActivity = [[NSMutableDictionary alloc] init];
                     // save last changes
                     [weakController saveSerialDataWithKey:@"nonPlusActivity"];
+                    [weakController trackEvent:@"frame_tap"];
                 }];
             }];
             [builder configureFrameOptionsToolController:^(PESDKFrameOptionsToolControllerOptionsBuilder * _Nonnull options) {
@@ -220,6 +221,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     weakController.banner = nil;
                 }];
                 [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController trackEvent:@"frame_apply"];
                     [weakController addButtonApply:button];
                 }];
                 [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
@@ -280,6 +282,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 [options setDidEnterToolClosure:^{
                     weakController.currentEffects = @"textdesign";
+                    [weakController trackEvent:@"textdesign_tap"];
                 }];
                 [options setOverlayButtonConfigurationClosure:^(PESDKOverlayButton * _Nonnull button, enum TextDesignOverlayAction action) {
                     if ((long)action == 4) {
@@ -295,6 +298,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
                     [weakController addButtonApply:button];
+                    [weakController trackEvent:@"textdesign_apply"];
                 }];
                 [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
                     [weakController addButtonDiscard:button];
@@ -347,6 +351,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     weakController.currentEffects = @"text";
                     [weakController.banner removeFromSuperview];
                     weakController.banner = nil;
+                    [weakController trackEvent:@"text_tap"];
                 }];
             }];
             [builder configureTextOptionsToolController:^(PESDKTextOptionsToolControllerOptionsBuilder * _Nonnull options) {
@@ -364,6 +369,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
                     [weakController addButtonApply:button];
+                    [weakController trackEvent:@"text_apply"];
                 }];
                 [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
                     [weakController addButtonDiscard:button];
@@ -401,6 +407,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     [weakController.banner removeFromSuperview];
                     weakController.banner = nil;
                     weakController.enableToValidate++;
+                    [weakController trackEvent:@"sticker_tap"];
                 }];
                 [options setWillLeaveToolClosure:^{
                     NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixSticker"];
@@ -408,6 +415,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
                     [weakController addButtonApply:button];
+                    [weakController trackEvent:@"sticker_apply"];
                 }];
                 [options setDiscardButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
                     [weakController addButtonDiscard:button];
@@ -594,6 +602,10 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 [options setDidEnterToolClosure:^{
                     weakController.currentEffects = @"filter";
+                    [weakController trackEvent:@"transform_tap"];
+                }];
+                [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+                    [weakController trackEvent:@"transform_apply"];
                 }];
             }];
         }
@@ -674,6 +686,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
         controller.userActivity = [[NSMutableDictionary alloc] init];
         // save last changes
         [controller saveSerialDataWithKey:@"nonPlusActivity"];
+        [controller trackEvent:[NSString stringWithFormat:@"%@_tap", key]];
     }];
     [options setWillLeaveToolClosure:^{
         if (controller.hasBegan) {
@@ -686,6 +699,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
         controller.hasBegan = NO;
     }];
     [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
+        [controller trackEvent:[NSString stringWithFormat:@"%@_apply", key]];
         [controller addButtonApply:button];
     }];
 }
