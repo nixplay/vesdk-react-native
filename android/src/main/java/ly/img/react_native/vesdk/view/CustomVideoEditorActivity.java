@@ -78,6 +78,14 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
 
     @Override
     protected void onAcceptClicked() {
+        String rawToolId = uiStateMenu.getCurrentPanelData().getId();
+        String toolEffect = formatEffectsKey(rawToolId);
+        // avoid double record for imgly_tool_text and imgly_tool_text_design
+        if (rawToolId.equals("imgly_tool_text") || rawToolId.equals("imgly_tool_text_design")) {
+            // do nothing
+        } else {
+            mFirebaseAnalytics.logEvent(toolEffect, null);
+        }
         if (!_isSubscriber && !uiStateMenu.getCurrentPanelData().getId().equals("imgly_tool_transform") && uiStateMenu.getCurrentTool().isAttached()) {
             boolean hasPlusSticker = false;
             boolean hasPlusTextLayer = false;
@@ -189,6 +197,16 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                 .show();
     }
 
+    private String formatEffectsKey(String raw) {
+        String currentEffects = raw.replace("imgly_tool_", "vesdk_");
+        currentEffects = currentEffects.replace("_options", "");
+        currentEffects = currentEffects.replace("_replacement", "");
+        if (currentEffects.equals("text_design")) {
+            currentEffects = currentEffects.replace("text_design", "textdesign");
+        }
+        currentEffects = currentEffects.concat("_apply");
+        return currentEffects;
+    }
 
     @Override
     protected void onCancelClicked() {
