@@ -154,6 +154,7 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
 
     private void showUpgradeDialog() {
         final String effects = getCurrentEffects();
+        mFirebaseAnalytics.logEvent("unblock_feat_v_show", null);
         mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_show", null);
         new AlertDialog.Builder(this)
                 .setTitle(R.string.nixplay_upgradeEditorAlert)
