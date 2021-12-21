@@ -155,14 +155,14 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     private void showUpgradeDialog() {
         final String effects = getCurrentEffects();
         mFirebaseAnalytics.logEvent("unblock_feat_v_show", null);
-        mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_show", null);
+        // mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_show", null);
         new AlertDialog.Builder(this)
                 .setTitle(R.string.nixplay_upgradeEditorAlert)
                 .setMessage(R.string.nixplay_text_upgradeEditorAlert)
                 .setPositiveButton(R.string.nixplay_button_upgradeEditorAlertConfirmation, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 //                        saveSerialization();
-                        mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_upgrade", null);
+                        // mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_upgrade", null);
                         goToSubscriptionScreen(2);
                     }
                 })
