@@ -424,12 +424,12 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
           CGRect frame = [UIScreen mainScreen].bounds;
 
           self.banner = [[UIView alloc] init];
-          self.banner.backgroundColor = UIColorFromRGB(0x4A90E2);
+          self.banner.backgroundColor = UIColorFromRGB(0x08829D);
           self.banner.frame = CGRectMake(0, 0, frame.size.width, (80 + additionalHeight));
 
           CAGradientLayer *gradient = [CAGradientLayer layer];
           gradient.frame = self.banner.bounds;
-          gradient.colors = @[(id)UIColorFromRGB(0x80C3F3).CGColor, (id)UIColorFromRGB(0x4A90E2).CGColor, (id)UIColorFromRGB(0x4A90E2).CGColor];
+          gradient.colors = @[(id)UIColorFromRGB(0x08829D).CGColor, (id)UIColorFromRGB(0x08829D).CGColor, (id)UIColorFromRGB(0x08829D).CGColor];
           gradient.startPoint = CGPointMake(0.10, 0.10);
           gradient.endPoint = CGPointMake(1.0, 0.8);
 
