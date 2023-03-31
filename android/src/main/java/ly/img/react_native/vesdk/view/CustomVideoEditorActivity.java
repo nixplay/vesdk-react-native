@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -43,10 +41,9 @@ import ly.img.react_native.vesdk.ViewTooltip;
 
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.RESULT_DISCARD;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.VESDK_RESULT;
-import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._freeTrial;
-import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isCameOnSubscription;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isSubscriber;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.alertPromptInfo;
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.getTrialFlag;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.stickerConfig;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textConfig;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textDesignConfig;
@@ -61,7 +58,7 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     public static ViewTooltip.TooltipView tooltip_view;
 
     public static void closeTooltip() {
-        if (_freeTrial && tooltip_view != null) {
+        if (getTrialFlag() && tooltip_view != null) {
             tooltip_view.close();
             tooltip_view = null;
         }
@@ -91,7 +88,7 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
         }
 
         // insert tooltip for free trial subscription
-        if (_freeTrial) {
+        if (getTrialFlag()) {
             Typeface typeface = ReactFontManager.getInstance().getTypeface("NotoSans-SemiBold", 0, getApplicationContext().getAssets());
              this.tooltip_view = ViewTooltip
                     .on(this, findViewById(R.id.imglyActionBar))

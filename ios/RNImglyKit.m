@@ -143,7 +143,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
     __weak typeof(self)weakSelf = self;
     __block NSDictionary *rawDictionary = [dictionary copy];
     __weak typeof(RNVideoEditorSDK)* weakController = controller;
-    self.freeTrial = controller.freeTrial;
+    self.freeTrial = controller.flagTrial;
     configuration = [[PESDKConfiguration alloc] initWithBuilder:^(PESDKConfigurationBuilder * _Nonnull builder) {
       builder.assetCatalog = assetCatalog;
       [builder configureFromDictionary:updatedDictionary error:&error];
@@ -610,6 +610,9 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     // remove subview for transform
                     [weakSelf removePlusBanner:cell];
 
+                    if ([cell.captionTextLabel.text isEqualToString:weakController.clampTooltip]){
+                        [weakController addTooltip:cell];
+                    }
 					// add plus icon
 					//look for "Transform" localization in all languages to hide plus icon on Transform
                     NSBundle *bundle = [NSBundle mainBundle];

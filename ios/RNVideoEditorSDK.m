@@ -39,9 +39,13 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
 {
     // Check if enable free trial
     if ([[dictionary allKeys] containsObject:@"freeTrial"]) {
-        self.freeTrial = [[dictionary objectForKey:@"freeTrial"] boolValue];
+        self.flagTrial = [[dictionary objectForKey:@"freeTrial"] boolValue];
     }
 
+    if ([[dictionary allKeys] containsObject:@"tooltip"]) {
+        self.flagTooltip = [[dictionary objectForKey:@"tooltip"] boolValue];
+        self.tooltipShown = NO;
+    }
     // alert prompt dictionary
     if ([[dictionary allKeys] containsObject:@"alertPromptInfo"]) {
         self.alertPromptInfo = (NSDictionary *)[dictionary objectForKey:@"alertPromptInfo"];
@@ -120,6 +124,14 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
         RNVESDKWillPresentBlock willPresentVideoEditViewController = RNVideoEditorSDK.willPresentVideoEditViewController;
         if (willPresentVideoEditViewController != nil) {
           willPresentVideoEditViewController(self.mainController);
+        }
+        if (self.flagTooltip) {
+            CGRect mRect = [UIScreen mainScreen].bounds;
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.frame = CGRectMake(0, 0, mRect.size.width, mRect.size.height);
+            [button addTarget:self action:@selector(hideTooltip:) forControlEvents:UIControlEventTouchUpInside];
+            [self.mainController.view addSubview:button];
+            [self.mainController.view bringSubviewToFront:button];
         }
         return self.mainController;
 
@@ -206,6 +218,9 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
     NSString* path = [bundle pathForResource:resourceName ofType:@"plist"];
     NSDictionary *d = [[NSDictionary alloc] initWithContentsOfFile:path];
     
+    // set clamp tooltip name for adjust
+    self.clampTooltip = [NSString stringWithFormat:@"%@", [d objectForKey:@"pesdk_adjustments_title_name"]];
+
     // sometimes languagePreferred is not the phone language, use languageCurrent
     NSString *languagePreferred = [[NSLocale preferredLanguages] objectAtIndex:0];
     NSString *languagePreferredCode = [[NSLocale componentsFromLocaleIdentifier:languagePreferred] objectForKey:NSLocaleLanguageCode];
@@ -422,8 +437,37 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
     }];
 }
 
+- (void)addTooltip:(UIView*)target {
+    if (self.flagTrial && self.flagTooltip && !self.tooltipShown) {
+        self.tooltipShown = YES;
+        RCEasyTipPreferences *preferences = [[RCEasyTipPreferences alloc] initWithDefaultPreferences];
+            preferences.drawing.backgroundColor = UIColorFromRGB(0x08829D);
+            preferences.drawing.arrowPostion = Top;
+            preferences.drawing.font = [UIFont fontWithName:@"NotoSans-SemiBold" size:16.0f];
+            preferences.drawing.textAlignment = NSTextAlignmentLeft;
+            preferences.animating.showDuration = 1.5;
+            preferences.animating.dismissDuration = 0;
+            preferences.animating.dismissTransform = CGAffineTransformMakeTranslation(0, -15);
+            preferences.animating.showInitialTransform = CGAffineTransformMakeTranslation(0, -15);
+            preferences.drawing.cornerRadius = 8.0f;
+            preferences.positioning.maxWidth = 265;
+
+        self.tooltipView = [[RCEasyTipView alloc] initWithPreferences:preferences];
+        self.tooltipView.frame = CGRectMake(0, 0, 265, 70);
+        self.tooltipView.text = [NSString stringWithFormat:@"%@", [self.alertPromptInfo objectForKey:@"tooltip"]];
+        [self.tooltipView showAnimated:YES forView:target withinSuperView:[self.mainController view]];
+    }
+}
+
+- (void)hideTooltip:(UIButton *)button {
+    if (self.tooltipShown) {
+        [button removeFromSuperview];
+        [self.tooltipView dismissWithCompletion:^{}];
+    }
+}
+
 - (void)addBanner:(NSString *)nixTitle subtitle:(NSString *)nixSubtitle {
-    if (!self.freeTrial) {
+    if (!self.flagTrial) {
         dispatch_async(dispatch_get_main_queue(), ^{
             int additionalHeight = 0;
             if (@available( iOS 11.0, * )) {

@@ -10,7 +10,7 @@ import ly.img.android.pesdk.ui.panels.item.TextDesignItem;
 import ly.img.react_native.vesdk.viewholder.CustomTextDesignViewHolder;
 import ly.img.react_native.vesdk.R;
 
-import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._freeTrial;
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.getTrialFlag;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textDesignConfig;
 
 public class CustomTextDesignItem extends TextDesignItem {
@@ -43,7 +43,7 @@ public class CustomTextDesignItem extends TextDesignItem {
     }
 
     public int getLayout() {
-        return _freeTrial ? R.layout.imgly_list_item_text_design_plus_trial : R.layout.imgly_list_item_text_design_plus;
+        return getTrialFlag() ? R.layout.imgly_list_item_text_design_plus_trial : R.layout.imgly_list_item_text_design_plus;
     }
 
     @NonNull

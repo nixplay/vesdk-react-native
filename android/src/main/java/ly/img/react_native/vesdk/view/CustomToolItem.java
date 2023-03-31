@@ -35,7 +35,7 @@ public class CustomToolItem extends ToolItem {
 
     @Override
     public int getLayout() {
-        return RNVideoEditorSDKModule._freeTrial ? R.layout.imgly_list_item_tool_plus_trial : R.layout.imgly_list_item_tool_plus;
+        return RNVideoEditorSDKModule.getTrialFlag() ? R.layout.imgly_list_item_tool_plus_trial : R.layout.imgly_list_item_tool_plus;
     }
 
     @NonNull

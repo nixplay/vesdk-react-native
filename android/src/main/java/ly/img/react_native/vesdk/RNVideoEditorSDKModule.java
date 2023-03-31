@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
-import android.os.Environment;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -73,7 +72,6 @@ import ly.img.android.pesdk.ui.panels.item.TextDesignItem;
 import ly.img.android.pesdk.ui.panels.item.ToolItem;
 import ly.img.android.pesdk.ui.utils.DataSourceIdItemList;
 import ly.img.android.pesdk.utils.DataSourceArrayList;
-import ly.img.android.serializer._3.IMGLYFileReader;
 
 import ly.img.react_native.vesdk.effects.CustomFilterPack;
 import ly.img.react_native.vesdk.effects.CustomFontPack;
@@ -85,7 +83,6 @@ import ly.img.react_native.vesdk.view.CustomAdjustOption;
 import ly.img.react_native.vesdk.view.CustomFocusOption;
 import ly.img.react_native.vesdk.view.CustomTextDesignItem;
 import ly.img.react_native.vesdk.view.CustomToolItem;
-import ly.img.react_native.vesdk.view.CustomToolItemDisabled;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -105,7 +102,8 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
     public static boolean _isSubscriber = false;
     public static boolean _isCameOnSubscription = false;
 
-    public static boolean _freeTrial = false;
+    public static boolean _flagFreeTrial = false;
+    public static boolean _flagTooltip = false;
     public static ReadableMap configMap;
 
     public static ReadableMap alertPromptInfo;
@@ -281,7 +279,8 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         frameConfig = configMap.getMap("nixFrame").getArray("list");
         _isSubscriber = config.getBoolean("isSubscriber");
         _isCameOnSubscription = config.getBoolean("isCameOnSubscription");
-        _freeTrial = config.getBoolean("freeTrial");
+        _flagFreeTrial = config.getBoolean("freeTrial");
+        _flagTooltip = config.getBoolean("tooltip");
 
         settingsList = createsVesdkSettingsList();
         settingsList.getSettingsModel(LoadSettings.class).setSource(uri);
@@ -294,6 +293,9 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
 
     }
 
+    public static boolean getTrialFlag() {
+        return _flagFreeTrial && _flagTooltip;
+    }
 
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {

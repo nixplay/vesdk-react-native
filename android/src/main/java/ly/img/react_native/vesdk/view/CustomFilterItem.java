@@ -9,8 +9,8 @@ import ly.img.android.pesdk.ui.panels.item.FilterItem;
 import ly.img.react_native.vesdk.viewholder.CustomImageFilterViewHolder;
 import ly.img.react_native.vesdk.R;
 
-import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._freeTrial;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.filterConfig;
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.getTrialFlag;
 
 public class CustomFilterItem extends FilterItem {
     public CustomFilterItem(String id, int name) {
@@ -31,7 +31,7 @@ public class CustomFilterItem extends FilterItem {
     @Override
     public int getLayout(String flavor) {
         if (flavor.equals("FLAVOR_OPTION_LIST_FOLDER_SUBITEM")) {
-            if (_freeTrial) {
+            if (getTrialFlag()) {
                 return R.layout.imgly_list_item_filter_folder_subitem_plus_trial;
             }
             return R.layout.imgly_list_item_filter_folder_subitem_plus;
