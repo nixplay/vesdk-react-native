@@ -143,6 +143,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
     __weak typeof(self)weakSelf = self;
     __block NSDictionary *rawDictionary = [dictionary copy];
     __weak typeof(RNVideoEditorSDK)* weakController = controller;
+    self.freeTrial = controller.freeTrial;
     configuration = [[PESDKConfiguration alloc] initWithBuilder:^(PESDKConfigurationBuilder * _Nonnull builder) {
       builder.assetCatalog = assetCatalog;
       [builder configureFromDictionary:updatedDictionary error:&error];
@@ -201,8 +202,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                         NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixFrame"];
                         [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
                     } else {
-                        [weakController.banner removeFromSuperview];
-                        weakController.banner = nil;
+                        [weakController removeBanner];
                         weakController.needToUpgrade = 0;
                     }
                 }];
@@ -217,8 +217,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
             }];
             [builder configureFrameOptionsToolController:^(PESDKFrameOptionsToolControllerOptionsBuilder * _Nonnull options) {
                 [options setWillLeaveToolClosure:^{
-                    [weakController.banner removeFromSuperview];
-                    weakController.banner = nil;
+                    [weakController removeBanner];
                 }];
                 [options setApplyButtonConfigurationClosure:^(PESDKButton * _Nonnull button) {
                     [weakController trackEvent:@"frame_apply"];
@@ -246,13 +245,11 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 [options setOverlaySelectedClosure:^(PESDKOverlay * _Nonnull overlay) {
                     [weakController.userActivity setObject:overlay.identifier forKey:@"nixOverlay"];
                     if ([weakSelf isExistWithList:nixToolOverlay predicate:[NSPredicate predicateWithFormat:@"SELF == %@", overlay.identifier]]) {
-                        [weakController.banner removeFromSuperview];
-                        weakController.banner = nil;
+                        [weakController removeBanner];
                         weakController.needToUpgrade = 0;
                     } else {
                         weakController.needToUpgrade = 1;
-						[weakController.banner removeFromSuperview];
-                        weakController.banner = nil;
+                        [weakController removeBanner];
                         NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixOverlay"];
                         [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
                     }
@@ -276,8 +273,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     weakController.needToUpgrade = 1;
                 }];
                 [options setWillLeaveToolClosure:^{
-                    [weakController.banner removeFromSuperview];
-                    weakController.banner = nil;
+                    [weakController removeBanner];
                     weakController.enableToValidate = 0;
                 }];
                 [options setDidEnterToolClosure:^{
@@ -315,8 +311,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 [options setDidEnterToolClosure:^{
                     weakController.currentEffects = @"textdesign";
-                    [weakController.banner removeFromSuperview];
-                    weakController.banner = nil;
+                    [weakController removeBanner];
                 }];
             }];
 
@@ -349,8 +344,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 [options setDidEnterToolClosure:^{
                     weakController.currentEffects = @"text";
-                    [weakController.banner removeFromSuperview];
-                    weakController.banner = nil;
+                    [weakController removeBanner];
                     [weakController trackEvent:@"text_tap"];
                 }];
             }];
@@ -375,8 +369,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                     [weakController addButtonDiscard:button];
                 }];
                 [options setWillLeaveToolClosure:^{
-                    [weakController.banner removeFromSuperview];
-                    weakController.banner = nil;
+                    [weakController removeBanner];
                     weakController.enableToValidate = 0;
                 }];
                 [options setDidEnterToolClosure:^{
@@ -404,8 +397,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 [options setDidEnterToolClosure:^{
                     weakController.currentEffects = @"sticker";
-                    [weakController.banner removeFromSuperview];
-                    weakController.banner = nil;
+                    [weakController removeBanner];
                     weakController.enableToValidate++;
                     [weakController trackEvent:@"sticker_tap"];
                 }];
@@ -443,8 +435,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 [options setWillLeaveToolClosure:^{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakController.banner removeFromSuperview];
-                        weakController.banner = nil;
+                        [weakController removeBanner];
                     });
                     [weakController.mainController.undoController endUndoGrouping];
                     weakController.enableToValidate = 0;
@@ -477,8 +468,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 }];
                 // handling of upgrade new upgrade path
                 [options setFocusModeSelectedClosure:^(enum PESDKFocusMode mode) {
-                    [weakController.banner removeFromSuperview];
-                    weakController.banner = nil;
+                    [weakController removeBanner];
                     [weakController.userActivity setObject:[NSNumber numberWithLong:mode]
                                                     forKey:@"nixFocus"];
                     if ((long)mode > 0) {
@@ -522,13 +512,11 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 // reset invoke
                 [options setAdjustToolSelectedBlock:^(NSNumber * _Nullable adjust) {
 					 if (adjust != nil) {
-						[weakController.banner removeFromSuperview];
-                        weakController.banner = nil;
+                        [weakController removeBanner];
                         NSDictionary *d = (NSDictionary *)[rawDictionary valueForKeyPath:@"nixAdjust"];
                         [weakController addBanner:[d objectForKey:@"title"] subtitle:[d objectForKey:@"subtitle"]];
                     } else {
-                        [weakController.banner removeFromSuperview];
-                        weakController.banner = nil;
+                        [weakController removeBanner];
                     }
                     if ([adjust intValue] == 0 && weakController.needToUpgrade) {
                         [weakController.mainController.undoController undo];
@@ -575,8 +563,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
                 [options setFilterSelectedClosure:^(PESDKEffect * _Nonnull effect) {
                     [weakController.userActivity setObject:effect.identifier
                                                     forKey:@"nixFilter"];
-                    [weakController.banner removeFromSuperview];
-                    weakController.banner = nil;
+                    [weakController removeBanner];
                     if ([effect.identifier isEqualToString:@"None"]){
                         // do nothing
                         weakController.needToUpgrade = 0;
@@ -693,8 +680,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
             [controller.mainController.undoController endUndoGrouping];
         }
         if (controller.banner != nil) {
-            [controller.banner removeFromSuperview];
-            controller.banner = nil;
+            [controller removeBanner];
         }
         controller.hasBegan = NO;
     }];
@@ -719,9 +705,10 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 }
 
 - (void)addPlusBanner:(UICollectionViewCell *)cell {
+    NSString *iconName = self.freeTrial ? @"ic_plus_trial" : @"ic_plus";
     dispatch_async(dispatch_get_main_queue(), ^{
         CGRect rect = cell.bounds;
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_plus"]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];
         imageView.frame = CGRectMake(rect.size.width - 24, 4, 20, 10);
         imageView.tag = 100;
         [cell addSubview:imageView];
@@ -809,8 +796,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
     if (isSubscriber == NO) {
         [options setWillLeaveToolClosure:^{
             // reset
-            [controller.banner removeFromSuperview];
-            controller.banner = nil;
+            [controller removeBanner];
             if (controller.userActivity != nil && controller.needToUpgrade) {
                 [controller showPromptUpgrade:key];
             }

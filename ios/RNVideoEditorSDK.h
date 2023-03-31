@@ -11,11 +11,13 @@
 @property (nonatomic, strong) UIView * _Nullable banner;
 @property (nonatomic, strong) NSUserDefaults * _Nonnull sharedDefaults;
 @property (nonatomic, strong) NSMutableDictionary * _Nullable userActivity;
+@property (nonatomic, assign) NSDictionary * _Nonnull alertPromptInfo;
 @property (nonatomic, strong) NSString * _Nonnull currentEffects;
 @property int needToUpgrade;
 @property int textAdded;
 @property int enableToValidate;
 @property BOOL hasBegan;
+@property BOOL freeTrial;
 @property NSString * _Nonnull languageCode;
 
 typedef void (^RNVESDKConfigurationBlock)(PESDKConfigurationBuilder * _Nonnull builder);
@@ -39,5 +41,6 @@ typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull 
 - (void)addButtonDiscard:(UIButton* _Nonnull)button;
 - (void)saveSerialDataWithKey:(NSString * _Nonnull)key;
 - (void)trackEvent:(NSString * _Nonnull)key;
+- (void)removeBanner;
 
 @end
