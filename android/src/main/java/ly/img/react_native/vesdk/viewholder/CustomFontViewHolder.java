@@ -14,6 +14,7 @@ import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.FontItem;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.view.CustomFontItem;
+import ly.img.react_native.vesdk.view.CustomVideoEditorActivity;
 
 public class CustomFontViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomFontItem, Typeface> implements View.OnClickListener {
     private final View contentHolder;
@@ -63,6 +64,7 @@ public class CustomFontViewHolder extends DataSourceListAdapter.DataSourceViewHo
     }
 
     public void onClick(View v) {
+        CustomVideoEditorActivity.closeTooltip();
         this.dispatchOnItemClick();
         this.dispatchSelection();
     }

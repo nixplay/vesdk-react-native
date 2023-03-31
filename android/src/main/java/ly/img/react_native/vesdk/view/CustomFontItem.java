@@ -9,6 +9,7 @@ import ly.img.android.pesdk.ui.panels.item.FontItem;
 import ly.img.react_native.vesdk.viewholder.CustomFontViewHolder;
 import ly.img.react_native.vesdk.R;
 
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._freeTrial;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textConfig;
 
 public class CustomFontItem extends FontItem {
@@ -35,7 +36,7 @@ public class CustomFontItem extends FontItem {
     }
 
     public int getLayout() {
-        return R.layout.imgly_list_item_font_plus;
+        return _freeTrial ? R.layout.imgly_list_item_font_plus_trial : R.layout.imgly_list_item_font_plus;
     }
 
     @NonNull

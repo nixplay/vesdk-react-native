@@ -13,6 +13,7 @@ import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.view.CustomToolItem;
+import ly.img.react_native.vesdk.view.CustomVideoEditorActivity;
 
 public class CustomDefaultViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomToolItem, CustomDefaultViewHolder.ThumbnailResult> implements View.OnClickListener {
     public final View contentHolder;
@@ -33,6 +34,7 @@ public class CustomDefaultViewHolder extends DataSourceListAdapter.DataSourceVie
 
     @Override
     public void onClick(View view) {
+        CustomVideoEditorActivity.closeTooltip();
         this.dispatchSelection();
         this.dispatchOnItemClick();
     }

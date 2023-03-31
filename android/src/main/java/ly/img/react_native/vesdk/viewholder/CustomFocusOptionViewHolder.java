@@ -16,6 +16,7 @@ import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.view.CustomFocusOption;
+import ly.img.react_native.vesdk.view.CustomVideoEditorActivity;
 
 public class CustomFocusOptionViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomFocusOption, CustomFocusOptionViewHolder.ThumbnailResult> implements View.OnClickListener {
     public final View contentHolder;
@@ -39,6 +40,7 @@ public class CustomFocusOptionViewHolder extends DataSourceListAdapter.DataSourc
 
     @Override
     public void onClick(View view) {
+        CustomVideoEditorActivity.closeTooltip();
         this.dispatchSelection();
         this.dispatchOnItemClick();
     }

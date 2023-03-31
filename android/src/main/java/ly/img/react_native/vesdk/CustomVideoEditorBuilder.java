@@ -1,7 +1,12 @@
 package ly.img.react_native.vesdk;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import org.jetbrains.annotations.Nullable;
 

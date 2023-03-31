@@ -12,6 +12,7 @@ import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.view.CustomFolderItem;
+import ly.img.react_native.vesdk.view.CustomVideoEditorActivity;
 
 public class CustomFolderViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomFolderItem, Bitmap> implements View.OnClickListener {
     public final View contentHolder;
@@ -34,6 +35,7 @@ public class CustomFolderViewHolder extends DataSourceListAdapter.DataSourceView
 
     @Override
     public void onClick(View view) {
+        CustomVideoEditorActivity.closeTooltip();
         this.dispatchOnItemClick();
     }
 
@@ -66,7 +68,5 @@ public class CustomFolderViewHolder extends DataSourceListAdapter.DataSourceView
     }
 
     @Override
-    public void setSelectedState(boolean b) {
-
-    }
+    public void setSelectedState(boolean b) {}
 }

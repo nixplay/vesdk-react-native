@@ -10,6 +10,7 @@ import ly.img.android.pesdk.ui.panels.item.AdjustOption;
 import ly.img.react_native.vesdk.viewholder.CustomAdjustOptionViewHolder;
 import ly.img.react_native.vesdk.R;
 
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._freeTrial;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.adjustConfig;
 
 public class CustomAdjustOption extends AdjustOption {
@@ -49,7 +50,7 @@ public class CustomAdjustOption extends AdjustOption {
     }
 
     public int getLayout() {
-        return R.layout.imgly_list_item_option_plus;
+        return _freeTrial ? R.layout.imgly_list_item_option_plus_trial : R.layout.imgly_list_item_option_plus;
     }
 
     @NotNull

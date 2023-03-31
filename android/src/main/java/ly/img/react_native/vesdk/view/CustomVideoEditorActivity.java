@@ -4,13 +4,17 @@ package ly.img.react_native.vesdk.view;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.facebook.react.views.text.ReactFontManager;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.File;
@@ -35,11 +39,14 @@ import ly.img.android.serializer._3.IMGLYFileWriter;
 import ly.img.react_native.vesdk.SubscriptionOverlayVideo;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.RNVideoEditorSDKModule;
+import ly.img.react_native.vesdk.ViewTooltip;
 
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.RESULT_DISCARD;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.VESDK_RESULT;
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._freeTrial;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isCameOnSubscription;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isSubscriber;
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.alertPromptInfo;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.stickerConfig;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textConfig;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.textDesignConfig;
@@ -51,6 +58,14 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
     private TextView tv_subtitle;
     private UiStateMenu uiStateMenu;
     private FirebaseAnalytics mFirebaseAnalytics;
+    public static ViewTooltip.TooltipView tooltip_view;
+
+    public static void closeTooltip() {
+        if (_freeTrial && tooltip_view != null) {
+            tooltip_view.close();
+            tooltip_view = null;
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,10 +89,30 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
                 }
             });
         }
+
+        // insert tooltip for free trial subscription
+        if (_freeTrial) {
+            Typeface typeface = ReactFontManager.getInstance().getTypeface("NotoSans-SemiBold", 0, getApplicationContext().getAssets());
+             this.tooltip_view = ViewTooltip
+                    .on(this, findViewById(R.id.imglyActionBar))
+                    .autoHide(false, 0)
+                    .corner(30)
+                    .distanceWithView(220)
+                    .arrowHeight(20)
+                    .clickToHide(true)
+                    .margin(180,30,180,30)
+                    .position(ViewTooltip.Position.TOP)
+                    .textTypeFace(typeface)
+                    .textSize(1, 16)
+                    .text(alertPromptInfo.getString("tooltip"))
+                    .align(ViewTooltip.ALIGN.CENTER)
+                    .show();
+        }
     }
 
     @Override
     protected void onAcceptClicked() {
+        this.closeTooltip();
         String rawToolId = uiStateMenu.getCurrentPanelData().getId();
         String toolEffect = formatEffectsKey(rawToolId);
         // avoid double record for imgly_tool_text and imgly_tool_text_design
@@ -157,16 +192,16 @@ public class CustomVideoEditorActivity extends VideoEditorActivity {
         mFirebaseAnalytics.logEvent("unblock_feat_v_show", null);
         // mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_show", null);
         new AlertDialog.Builder(this)
-                .setTitle(R.string.nixplay_upgradeEditorAlert)
-                .setMessage(R.string.nixplay_text_upgradeEditorAlert)
-                .setPositiveButton(R.string.nixplay_button_upgradeEditorAlertConfirmation, new DialogInterface.OnClickListener() {
+                .setTitle(alertPromptInfo.getString("title"))
+                .setMessage(alertPromptInfo.getString("message"))
+                .setPositiveButton(alertPromptInfo.getString("upgrade"), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 //                        saveSerialization();
                         // mFirebaseAnalytics.logEvent("unblock_feat_v_" + effects + "_upgrade", null);
                         goToSubscriptionScreen(2);
                     }
                 })
-                .setNegativeButton(R.string.nixplay_button_upgradeEditorAlertCancelation, new DialogInterface.OnClickListener() {
+                .setNegativeButton(alertPromptInfo.getString("cancel"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                        revertToInitial();

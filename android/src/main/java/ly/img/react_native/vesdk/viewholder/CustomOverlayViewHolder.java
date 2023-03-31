@@ -17,6 +17,7 @@ import ly.img.android.pesdk.ui.panels.item.OverlayItem;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.view.CustomOverlayItem;
+import ly.img.react_native.vesdk.view.CustomVideoEditorActivity;
 
 public class CustomOverlayViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomOverlayItem, Bitmap> implements View.OnClickListener {
     public static boolean SHOW_PREVIEW_IMAGE_ON_NONE_OVERLAY_ITEM = true;
@@ -53,10 +54,10 @@ public class CustomOverlayViewHolder extends DataSourceListAdapter.DataSourceVie
         if (this.valueTextView != null) {
             this.valueTextView.setVisibility(selected && !this.isNoneOverlayItem ? View.VISIBLE : View.INVISIBLE);
         }
-
     }
 
     public void onClick(View v) {
+        CustomVideoEditorActivity.closeTooltip();
         this.dispatchSelection();
         this.dispatchOnItemClick();
     }

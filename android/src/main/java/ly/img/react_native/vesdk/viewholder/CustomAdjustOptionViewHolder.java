@@ -11,10 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
-import ly.img.android.pesdk.ui.panels.item.AbstractItem;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.view.CustomAdjustOption;
+import ly.img.react_native.vesdk.view.CustomVideoEditorActivity;
 
 public class CustomAdjustOptionViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomAdjustOption, CustomAdjustOptionViewHolder.ThumbnailResult> implements View.OnClickListener {
     public final View contentHolder;
@@ -38,6 +38,7 @@ public class CustomAdjustOptionViewHolder extends DataSourceListAdapter.DataSour
 
     @Override
     public void onClick(View view) {
+        CustomVideoEditorActivity.closeTooltip();
         this.dispatchSelection();
         this.dispatchOnItemClick();
     }

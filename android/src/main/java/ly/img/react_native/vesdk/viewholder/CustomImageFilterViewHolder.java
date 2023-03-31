@@ -13,6 +13,7 @@ import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.FilterPreviewView;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.view.CustomFilterItem;
+import ly.img.react_native.vesdk.view.CustomVideoEditorActivity;
 
 public class CustomImageFilterViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomFilterItem, Bitmap> implements View.OnClickListener {
     private final View contentHolder;
@@ -62,6 +63,7 @@ public class CustomImageFilterViewHolder extends DataSourceListAdapter.DataSourc
         contentHolder.setSelected(selected);
     }
     public void onClick(View v) {
+        CustomVideoEditorActivity.closeTooltip();
         dispatchSelection();
         dispatchOnItemClick();
     }

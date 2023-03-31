@@ -10,6 +10,7 @@ import ly.img.android.pesdk.ui.panels.item.ImageStickerItem;
 import ly.img.react_native.vesdk.viewholder.CustomImageStickerViewHolder;
 import ly.img.react_native.vesdk.R;
 
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._freeTrial;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.stickerConfig;
 
 public class CustomImageStickerItem extends ImageStickerItem {
@@ -41,7 +42,7 @@ public class CustomImageStickerItem extends ImageStickerItem {
     }
 
     public int getLayout() {
-        return R.layout.imgly_list_item_sticker_plus;
+        return _freeTrial ? R.layout.imgly_list_item_sticker_plus_trial : R.layout.imgly_list_item_sticker_plus;
     }
 
     @NotNull

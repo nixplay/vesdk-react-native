@@ -104,7 +104,11 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
     public static int RESULT_DISCARD = 36;
     public static boolean _isSubscriber = false;
     public static boolean _isCameOnSubscription = false;
+
+    public static boolean _freeTrial = false;
     public static ReadableMap configMap;
+
+    public static ReadableMap alertPromptInfo;
     public static ReadableArray filterConfig;
     public static ReadableArray adjustConfig;
     public static ReadableArray focusConfig;
@@ -266,6 +270,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         Uri uri = Uri.parse(name);
         SettingsList settingsList;
         configMap = config;
+        alertPromptInfo = configMap.getMap("alertPromptInfo");
         filterConfig = configMap.getMap("nixFilter").getArray("list");
         adjustConfig = configMap.getMap("nixAdjust").getArray("list");
         focusConfig = configMap.getMap("nixFocus").getArray("list");
@@ -276,6 +281,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         frameConfig = configMap.getMap("nixFrame").getArray("list");
         _isSubscriber = config.getBoolean("isSubscriber");
         _isCameOnSubscription = config.getBoolean("isCameOnSubscription");
+        _freeTrial = config.getBoolean("freeTrial");
 
         settingsList = createsVesdkSettingsList();
         settingsList.getSettingsModel(LoadSettings.class).setSource(uri);
@@ -283,6 +289,9 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
         new CustomVideoEditorBuilder(getCurrentActivity())
             .setSettingsList(settingsList)
             .startActivityForResult(getCurrentActivity(), VESDK_RESULT);
+
+
+
     }
 
 
