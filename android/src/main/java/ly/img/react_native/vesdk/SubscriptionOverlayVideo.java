@@ -22,6 +22,7 @@ import ly.img.android.pesdk.backend.model.state.manager.StateHandler;
 import ly.img.android.pesdk.ui.model.state.UiStateMenu;
 import ly.img.android.pesdk.ui.panels.AbstractToolPanel;
 
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._flagFreeTrial;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule._isSubscriber;
 
 public class SubscriptionOverlayVideo extends ConstraintLayout {
@@ -93,7 +94,7 @@ public class SubscriptionOverlayVideo extends ConstraintLayout {
         if (currentTool.equals("ly.img.android.pesdk.ui.panels.TextDesignToolPanel")) {
             mFirebaseAnalytics.logEvent("vesdk_textdesign_tap", null);
         }
-        if (!_isSubscriber) {
+        if (!_isSubscriber && !_flagFreeTrial) {
             if (currentTool != null && currentTool.isAttached() && !UiStateMenu.MAIN_TOOL_ID.equals(settings.getCurrentPanelData().getId())
                     && !settings.getCurrentPanelData().getId().equals("imgly_tool_transform")) {
                 Window window = ((Activity) getContext()).getWindow();

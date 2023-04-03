@@ -37,6 +37,20 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
 - (void)present:(nonnull PESDKVideo *)video withConfiguration:(nullable NSDictionary *)dictionary andSerialization:(nullable NSDictionary *)state
         resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
 {
+    // Check if enable free trial
+    if ([[dictionary allKeys] containsObject:@"freeTrial"]) {
+        self.flagTrial = [[dictionary objectForKey:@"freeTrial"] boolValue];
+    }
+
+    if ([[dictionary allKeys] containsObject:@"tooltip"]) {
+        self.flagTooltip = [[dictionary objectForKey:@"tooltip"] boolValue];
+        self.tooltipShown = NO;
+    }
+    // alert prompt dictionary
+    if ([[dictionary allKeys] containsObject:@"alertPromptInfo"]) {
+        self.alertPromptInfo = (NSDictionary *)[dictionary objectForKey:@"alertPromptInfo"];
+    }
+
     // Check if subscriber
     __block BOOL isSubscriber = NO;
     if ([[dictionary allKeys] containsObject:@"isSubscriber"]) {
@@ -110,6 +124,14 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
         RNVESDKWillPresentBlock willPresentVideoEditViewController = RNVideoEditorSDK.willPresentVideoEditViewController;
         if (willPresentVideoEditViewController != nil) {
           willPresentVideoEditViewController(self.mainController);
+        }
+        if (self.flagTooltip) {
+            CGRect mRect = [UIScreen mainScreen].bounds;
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.frame = CGRectMake(0, 0, mRect.size.width, mRect.size.height);
+            [button addTarget:self action:@selector(hideTooltip:) forControlEvents:UIControlEventTouchUpInside];
+            [self.mainController.view addSubview:button];
+            [self.mainController.view bringSubviewToFront:button];
         }
         return self.mainController;
 
@@ -196,6 +218,9 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
     NSString* path = [bundle pathForResource:resourceName ofType:@"plist"];
     NSDictionary *d = [[NSDictionary alloc] initWithContentsOfFile:path];
     
+    // set clamp tooltip name for adjust
+    self.clampTooltip = [NSString stringWithFormat:@"%@", [d objectForKey:@"pesdk_adjustments_title_name"]];
+
     // sometimes languagePreferred is not the phone language, use languageCurrent
     NSString *languagePreferred = [[NSLocale preferredLanguages] objectAtIndex:0];
     NSString *languagePreferredCode = [[NSLocale componentsFromLocaleIdentifier:languagePreferred] objectForKey:NSLocaleLanguageCode];
@@ -412,61 +437,99 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
     }];
 }
 
+- (void)addTooltip:(UIView*)target {
+    if (self.flagTrial && self.flagTooltip && !self.tooltipShown) {
+        self.tooltipShown = YES;
+        RCEasyTipPreferences *preferences = [[RCEasyTipPreferences alloc] initWithDefaultPreferences];
+            preferences.drawing.backgroundColor = UIColorFromRGB(0x08829D);
+            preferences.drawing.arrowPostion = Top;
+            preferences.drawing.font = [UIFont fontWithName:@"NotoSans-SemiBold" size:16.0f];
+            preferences.drawing.textAlignment = NSTextAlignmentLeft;
+            preferences.animating.showDuration = 1.5;
+            preferences.animating.dismissDuration = 0;
+            preferences.animating.dismissTransform = CGAffineTransformMakeTranslation(0, -15);
+            preferences.animating.showInitialTransform = CGAffineTransformMakeTranslation(0, -15);
+            preferences.drawing.cornerRadius = 8.0f;
+            preferences.positioning.maxWidth = 265;
+
+        self.tooltipView = [[RCEasyTipView alloc] initWithPreferences:preferences];
+        self.tooltipView.frame = CGRectMake(0, 0, 265, 70);
+        self.tooltipView.text = [NSString stringWithFormat:@"%@", [self.alertPromptInfo objectForKey:@"tooltip"]];
+        [self.tooltipView showAnimated:YES forView:target withinSuperView:[self.mainController view]];
+    }
+}
+
+- (void)hideTooltip:(UIButton *)button {
+    if (self.tooltipShown) {
+        [button removeFromSuperview];
+        [self.tooltipView dismissWithCompletion:^{}];
+    }
+}
+
 - (void)addBanner:(NSString *)nixTitle subtitle:(NSString *)nixSubtitle {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        int additionalHeight = 0;
-        if (@available( iOS 11.0, * )) {
-            if ([[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom > 0) {
-              additionalHeight = 10;
+    if (!self.flagTrial) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            int additionalHeight = 0;
+            if (@available( iOS 11.0, * )) {
+                if ([[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom > 0) {
+                  additionalHeight = 10;
+                }
             }
-        }
-        if (self.banner == nil) {
-          CGRect frame = [UIScreen mainScreen].bounds;
+            if (self.banner == nil) {
+              CGRect frame = [UIScreen mainScreen].bounds;
 
-          self.banner = [[UIView alloc] init];
-          self.banner.backgroundColor = UIColorFromRGB(0x08829D);
-          self.banner.frame = CGRectMake(0, 0, frame.size.width, (80 + additionalHeight));
+              self.banner = [[UIView alloc] init];
+              self.banner.backgroundColor = UIColorFromRGB(0x08829D);
+              self.banner.frame = CGRectMake(0, 0, frame.size.width, (80 + additionalHeight));
 
-          CAGradientLayer *gradient = [CAGradientLayer layer];
-          gradient.frame = self.banner.bounds;
-          gradient.colors = @[(id)UIColorFromRGB(0x08829D).CGColor, (id)UIColorFromRGB(0x08829D).CGColor, (id)UIColorFromRGB(0x08829D).CGColor];
-          gradient.startPoint = CGPointMake(0.10, 0.10);
-          gradient.endPoint = CGPointMake(1.0, 0.8);
+              CAGradientLayer *gradient = [CAGradientLayer layer];
+              gradient.frame = self.banner.bounds;
+              gradient.colors = @[(id)UIColorFromRGB(0x08829D).CGColor, (id)UIColorFromRGB(0x08829D).CGColor, (id)UIColorFromRGB(0x08829D).CGColor];
+              gradient.startPoint = CGPointMake(0.10, 0.10);
+              gradient.endPoint = CGPointMake(1.0, 0.8);
 
-          [self.banner.layer insertSublayer:gradient atIndex:0];
+              [self.banner.layer insertSublayer:gradient atIndex:0];
 
-          // label top
-		  UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(20, (25 + additionalHeight), frame.size.width - 60, 25)];
-          [title setAdjustsFontSizeToFitWidth:TRUE];
-          [title setBaselineAdjustment:UIBaselineAdjustmentNone];
-          [title setMinimumScaleFactor:0.7];          
-		  [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
-          [title setTextColor:[UIColor whiteColor]];
-          [title setText:nixTitle];
-          [self.banner addSubview:title];
+              // label top
+              UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(20, (25 + additionalHeight), frame.size.width - 60, 25)];
+              [title setAdjustsFontSizeToFitWidth:TRUE];
+              [title setBaselineAdjustment:UIBaselineAdjustmentNone];
+              [title setMinimumScaleFactor:0.7];
+              [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
+              [title setTextColor:[UIColor whiteColor]];
+              [title setText:nixTitle];
+              [self.banner addSubview:title];
 
-          // label bottom
- 		  UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(20, (42 + additionalHeight), frame.size.width - 60, 25)];
-          [subtitle setAdjustsFontSizeToFitWidth:TRUE];
-          [subtitle setBaselineAdjustment:UIBaselineAdjustmentNone];
-          [subtitle setMinimumScaleFactor:0.6];          
-		  [subtitle setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
-          [subtitle setText:nixSubtitle];
-          [subtitle setTextColor:[UIColor whiteColor]];
-          [self.banner addSubview:subtitle];
+              // label bottom
+               UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(20, (42 + additionalHeight), frame.size.width - 60, 25)];
+              [subtitle setAdjustsFontSizeToFitWidth:TRUE];
+              [subtitle setBaselineAdjustment:UIBaselineAdjustmentNone];
+              [subtitle setMinimumScaleFactor:0.6];
+              [subtitle setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
+              [subtitle setText:nixSubtitle];
+              [subtitle setTextColor:[UIColor whiteColor]];
+              [self.banner addSubview:subtitle];
 
-          // chevron-forward icon
-          UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic-arrow-right"]];
-          imgView.frame = CGRectMake(frame.size.width - 40, (35 + additionalHeight), 20, 20);
-          [self.banner addSubview:imgView];
+              // chevron-forward icon
+              UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic-arrow-right"]];
+              imgView.frame = CGRectMake(frame.size.width - 40, (35 + additionalHeight), 20, 20);
+              [self.banner addSubview:imgView];
 
-          UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-          [btn addTarget:self action:@selector(didSubscribe:) forControlEvents:UIControlEventTouchUpInside];
-          [btn setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-          [self.banner addSubview:btn];
-          [self.mainController.view addSubview:self.banner];
-        }
-    });
+              UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+              [btn addTarget:self action:@selector(didSubscribe:) forControlEvents:UIControlEventTouchUpInside];
+              [btn setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+              [self.banner addSubview:btn];
+              [self.mainController.view addSubview:self.banner];
+            }
+        });
+    }
+}
+
+- (void)removeBanner {
+    if (!self.freeTrial) {
+        [self.banner removeFromSuperview];
+        self.banner = nil;
+    }
 }
 
 - (void)presentToolWithName:(NSString *)toolName icon:(NSString *)icon class:(Class)class {

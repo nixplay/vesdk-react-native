@@ -11,6 +11,7 @@ import ly.img.android.pesdk.ui.viewholder.OverlayViewHolder;
 import ly.img.react_native.vesdk.viewholder.CustomOverlayViewHolder;
 import ly.img.react_native.vesdk.R;
 
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.getTrialFlag;
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.overlayConfig;
 
 public class CustomOverlayItem extends OverlayItem {
@@ -42,7 +43,13 @@ public class CustomOverlayItem extends OverlayItem {
     }
 
     public int getLayout() {
-        return this.id.equals("imgly_overlay_none") && OverlayViewHolder.SHOW_PREVIEW_IMAGE_ON_NONE_OVERLAY_ITEM ? R.layout.imgly_list_item_overlay_thumbnail : R.layout.imgly_list_item_overlay_plus;
+        if (this.id.equals("imgly_overlay_none") && OverlayViewHolder.SHOW_PREVIEW_IMAGE_ON_NONE_OVERLAY_ITEM) {
+            return R.layout.imgly_list_item_overlay_thumbnail;
+        }
+        if (getTrialFlag()) {
+            return R.layout.imgly_list_item_overlay_plus_trial;
+        }
+        return R.layout.imgly_list_item_overlay_plus;
     }
 
     @NonNull

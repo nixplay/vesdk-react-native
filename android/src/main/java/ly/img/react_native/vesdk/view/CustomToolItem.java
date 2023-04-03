@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import ly.img.android.pesdk.backend.decoder.ImageSource;
 import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.panels.item.ToolItem;
+import ly.img.react_native.vesdk.RNVideoEditorSDKModule;
 import ly.img.react_native.vesdk.viewholder.CustomDefaultViewHolder;
 import ly.img.react_native.vesdk.R;
 
@@ -34,7 +35,7 @@ public class CustomToolItem extends ToolItem {
 
     @Override
     public int getLayout() {
-        return R.layout.imgly_list_item_tool_plus;
+        return RNVideoEditorSDKModule.getTrialFlag() ? R.layout.imgly_list_item_tool_plus_trial : R.layout.imgly_list_item_tool_plus;
     }
 
     @NonNull

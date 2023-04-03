@@ -2,6 +2,8 @@
 #import <React/RCTViewManager.h>
 #import "RNImglyKit.h"
 
+#import <NMEasyTipView/RCEasyTipView.h>
+
 @import VideoEditorSDK;
 
 /// The React Native module for VideoEditor SDK
@@ -11,11 +13,17 @@
 @property (nonatomic, strong) UIView * _Nullable banner;
 @property (nonatomic, strong) NSUserDefaults * _Nonnull sharedDefaults;
 @property (nonatomic, strong) NSMutableDictionary * _Nullable userActivity;
+@property (nonatomic, strong) NSDictionary * _Nonnull alertPromptInfo;
 @property (nonatomic, strong) NSString * _Nonnull currentEffects;
+@property (nonatomic, strong) NSString * _Nonnull clampTooltip;
+@property (nonatomic, strong) RCEasyTipView * _Nonnull tooltipView;
 @property int needToUpgrade;
 @property int textAdded;
 @property int enableToValidate;
 @property BOOL hasBegan;
+@property BOOL flagTrial;
+@property BOOL flagTooltip;
+@property BOOL tooltipShown;
 @property NSString * _Nonnull languageCode;
 
 typedef void (^RNVESDKConfigurationBlock)(PESDKConfigurationBuilder * _Nonnull builder);
@@ -39,5 +47,8 @@ typedef void (^RNVESDKWillPresentBlock)(PESDKVideoEditViewController * _Nonnull 
 - (void)addButtonDiscard:(UIButton* _Nonnull)button;
 - (void)saveSerialDataWithKey:(NSString * _Nonnull)key;
 - (void)trackEvent:(NSString * _Nonnull)key;
+- (void)removeBanner;
+- (void)addTooltip:(UIView * _Nonnull)target;
+- (void)hideTooltip;
 
 @end

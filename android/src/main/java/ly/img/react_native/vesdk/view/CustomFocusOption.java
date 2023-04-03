@@ -10,6 +10,7 @@ import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.viewholder.CustomFocusOptionViewHolder;
 
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.focusConfig;
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.getTrialFlag;
 
 public class CustomFocusOption extends FocusOption {
 
@@ -36,7 +37,7 @@ public class CustomFocusOption extends FocusOption {
 
     @Override
     public int getLayout() {
-        return R.layout.imgly_list_item_option_plus;
+        return getTrialFlag() ? R.layout.imgly_list_item_option_plus_trial : R.layout.imgly_list_item_option_plus;
     }
 
     @NotNull

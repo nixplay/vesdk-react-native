@@ -13,6 +13,7 @@ import ly.img.android.pesdk.ui.adapter.DataSourceListAdapter;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.view.CustomFrameItem;
+import ly.img.react_native.vesdk.view.CustomVideoEditorActivity;
 
 public class CustomFrameViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomFrameItem, Bitmap> implements View.OnClickListener {
     @NonNull
@@ -36,6 +37,7 @@ public class CustomFrameViewHolder extends DataSourceListAdapter.DataSourceViewH
     }
 
     public void onClick(View v) {
+        CustomVideoEditorActivity.closeTooltip();
         this.dispatchSelection();
         this.dispatchOnItemClick();
     }

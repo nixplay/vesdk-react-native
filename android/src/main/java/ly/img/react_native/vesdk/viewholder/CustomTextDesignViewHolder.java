@@ -18,6 +18,7 @@ import ly.img.android.pesdk.ui.model.state.UiConfigTheme;
 import ly.img.android.pesdk.ui.widgets.ImageSourceView;
 import ly.img.react_native.vesdk.R;
 import ly.img.react_native.vesdk.view.CustomTextDesignItem;
+import ly.img.react_native.vesdk.view.CustomVideoEditorActivity;
 
 public class CustomTextDesignViewHolder extends DataSourceListAdapter.DataSourceViewHolder<CustomTextDesignItem, Void> implements View.OnClickListener {
     @NonNull
@@ -65,6 +66,7 @@ public class CustomTextDesignViewHolder extends DataSourceListAdapter.DataSource
     }
 
     public void onClick(View v) {
+        CustomVideoEditorActivity.closeTooltip();
         this.dispatchSelection();
         this.dispatchOnItemClick();
     }

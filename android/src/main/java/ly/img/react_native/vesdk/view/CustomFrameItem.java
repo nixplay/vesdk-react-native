@@ -11,6 +11,7 @@ import ly.img.react_native.vesdk.viewholder.CustomFrameViewHolder;
 import ly.img.react_native.vesdk.R;
 
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.frameConfig;
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.getTrialFlag;
 
 public class CustomFrameItem extends FrameItem {
     public static final Creator<CustomFrameItem> CREATOR = new Creator<CustomFrameItem>() {
@@ -41,7 +42,13 @@ public class CustomFrameItem extends FrameItem {
     }
 
     public int getLayout() {
-        return "imgly_frame_none".equals(this.getId()) ? R.layout.imgly_list_item_none_frame : ly.img.react_native.vesdk.R.layout.imgly_list_item_frame_plus;
+        if ("imgly_frame_none".equals(this.getId())) {
+            return R.layout.imgly_list_item_none_frame;
+        }
+        if (getTrialFlag()) {
+            return R.layout.imgly_list_item_frame_plus_trial;
+        }
+        return R.layout.imgly_list_item_frame_plus;
     }
 
     @NonNull

@@ -14,6 +14,7 @@ import ly.img.react_native.vesdk.viewholder.CustomFolderViewHolder;
 import ly.img.react_native.vesdk.R;
 
 import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.filterConfig;
+import static ly.img.react_native.vesdk.RNVideoEditorSDKModule.getTrialFlag;
 
 public class CustomFolderItem extends FolderItem {
 
@@ -52,7 +53,7 @@ public class CustomFolderItem extends FolderItem {
     }
 
     public int getLayout() {
-        return R.layout.imgly_list_item_folder_plus;
+        return getTrialFlag() ? R.layout.imgly_list_item_folder_plus_trial : R.layout.imgly_list_item_folder_plus;
     }
 
     @NonNull
