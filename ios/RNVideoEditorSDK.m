@@ -313,43 +313,11 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
         [FIRAnalytics logEventWithName:[NSString stringWithFormat:@"unblock_feat_v_%@_show", self.currentEffects] parameters:@{}];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-		// update language first
-		NSString *title = @"Unlock this feature?";
-		NSString *message = @"Upgrade to Nixplay Plus now to unlock this feature and enjoy more advanced editing tools.";
-		NSString *upgrade = @"Upgrade";
-		NSString *cancel = @"Cancel";
-		if ([self.languageCode isEqualToString:@"de"]) {
-			title = @"Diese Funktion freischalten?";
-			message = @"Erwerben Sie jetzt ein Upgrade auf Nixplay Plus, um diese Funktion freizuschalten und mehr fortschrittliche Bearbeitungswerkzeuge zu nutzen.";
-			upgrade = @"Aufrüstung";
-			cancel = @"Abbrechen";
-		} else if ([self.languageCode isEqualToString:@"es"]) {
-			title = @"¿Desbloquear esta función?";
-			message = @"Actualiza ahora a Nixplay Plus para desbloquear esta función y disfrutar de herramientas de edición más avanzadas.";
-			upgrade = @"Actualización";
-			cancel = @"Cancelar";
-		} else if ([self.languageCode isEqualToString:@"fr"]) {
-			title = @"Débloquer cette fonctionnalité ?";
-			message = @"Passez à Nixplay Plus maintenant pour déverrouiller cette fonction et profiter d'outils d'édition plus avancés.";
-			upgrade = @"Mise à niveau";
-			cancel = @"Annuler";
-		} else if ([self.languageCode isEqualToString:@"it"]) {
-			title = @"Sbloccare questa funzione?";
-			message = @"Aggiorna a Nixplay Plus ora per sbloccare questa funzione e godere di strumenti di editing più avanzati.";
-			upgrade = @"Aggiorna";
-			cancel = @"Annulla";
-		} else if ([self.languageCode isEqualToString:@"ja"]) {
-			title = @"この機能を解除しますか？";
-			message = @"今すぐNixplay Plusにアップグレードして、この機能を解除し、より高度な編集ツールをお楽しみください。";
-			upgrade = @"アップグレード";
-			cancel = @"キャンセル";
-		} 
-
-      UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
-                                                                     message:message
+      UIAlertController *alert = [UIAlertController alertControllerWithTitle:[self.alertPromptInfo objectForKey:@"title"]
+                                                                     message:[self.alertPromptInfo objectForKey:@"message"]
                                                               preferredStyle:UIAlertControllerStyleAlert];
 
-      UIAlertAction * action = [UIAlertAction actionWithTitle:upgrade
+      UIAlertAction * action = [UIAlertAction actionWithTitle:[self.alertPromptInfo objectForKey:@"upgrade"]
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
           if (self.currentEffects != nil && ![self.currentEffects isEqualToString:@""]) {
@@ -362,14 +330,16 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
               resolve(@{ @"action": @"open-subscription", @"path": @2 });
           }];
                                                             }];
-      UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:cancel
+      [alert addAction:action];
+
+      UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:[self.alertPromptInfo objectForKey:@"cancel"]
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
           [self resetEffectsOnExit:key];
           [alert dismissViewControllerAnimated:YES completion:nil];
                                                             }];
+
       [alert addAction:cancelAction];
-      [alert addAction:action];
 
       [self.mainController presentViewController:alert animated:YES completion:nil];
     });
