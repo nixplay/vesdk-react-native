@@ -125,7 +125,7 @@ static RNVESDKWillPresentBlock _willPresentVideoEditViewController = nil;
         if (willPresentVideoEditViewController != nil) {
           willPresentVideoEditViewController(self.mainController);
         }
-        if (self.flagTooltip) {
+        if (self.flagTooltip && self.freeTrial) {
             CGRect mRect = [UIScreen mainScreen].bounds;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake(0, 0, mRect.size.width, mRect.size.height);
