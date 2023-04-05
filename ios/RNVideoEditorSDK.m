@@ -337,7 +337,8 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
           [self resetEffectsOnExit:key];
-          [alert dismissViewControllerAnimated:YES completion:nil];
+          [self.mainController play];
+          [alert dismissViewControllerAnimated:YES completion:nil];          
                                                             }];
 
       [alert addAction:cancelAction];
