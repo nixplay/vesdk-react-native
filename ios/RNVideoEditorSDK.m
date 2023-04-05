@@ -309,6 +309,7 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
 }
 
 - (void)showPromptUpgrade:(NSString * _Nonnull)key {
+    [self.mainController pause];
     if (self.currentEffects != nil && ![self.currentEffects isEqualToString:@""]) {
         [FIRAnalytics logEventWithName:[NSString stringWithFormat:@"unblock_feat_v_%@_show", self.currentEffects] parameters:@{}];
     }
