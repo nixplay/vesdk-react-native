@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_textDesign_title_name">Design del testo</string>
+    <string name="pesdk_textDesign_title_options">Text Design Options</string>
+    <string name="pesdk_textDesign_title_input">Aggiungi testo</string>
+
+    <string name="pesdk_textDesign_button_flipV">Capovolgi V</string>
+    <string name="pesdk_textDesign_button_flipH">Capovolgi H</string>
+    <string name="pesdk_textDesign_button_bringToFront">Davanti</string>
+    <string name="pesdk_textDesign_button_add">Aggiungi</string>
+    <string name="pesdk_textDesign_button_delete">Cancella</string>
+    <string name="pesdk_textDesign_button_invert">Invertire</string>
+
+    <string name="pesdk_textDesign_text_editTextPlaceholder">Your text</string>
+
+    <string name="pesdk_textDesign_asset_none">Nessuno</string>
+    <string name="pesdk_textDesign_asset_blocks">Blocchi</string>
+    <string name="pesdk_textDesign_asset_rotated">ruotato</string>
+    <string name="pesdk_textDesign_asset_blocksLight">Blocchi chiari</string>
+    <string name="pesdk_textDesign_asset_equalWidth">Larghezza uguale</string>
+    <string name="pesdk_textDesign_asset_masked">Mascherato</string>
+    <string name="pesdk_textDesign_asset_celebrate">Celebrare</string>
+    <string name="pesdk_textDesign_asset_sunshine">Sole</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">Distintivo mascherato</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">Blocchi condensati</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">Celebrare semplice</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">Grasso di uguale larghezza</string>
+    <string name="pesdk_textDesign_asset_watercolor">Acquerello</string>
+    <string name="pesdk_textDesign_asset_particles">Particelle</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">Bolla di discorso mascherato</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">Fumetto mascherato della bolla di discorso</string>
+    <string name="pesdk_textDesign_asset_multiline">Multilinea</string>
+
+</resources>

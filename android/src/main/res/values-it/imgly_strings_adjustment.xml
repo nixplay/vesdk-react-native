@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+    <string name="pesdk_adjustments_title_name">Regolare</string>
+
+    <string name="pesdk_adjustments_button_shadowTool">Ombre</string>
+    <string name="pesdk_adjustments_button_exposureTool">Esposizione</string>
+    <string name="pesdk_adjustments_button_highlightTool">Highlights</string>
+    <string name="pesdk_adjustments_button_brightnessTool">Luminosità</string>
+    <string name="pesdk_adjustments_button_contrastTool">Contrasto</string>
+    <string name="pesdk_adjustments_button_saturationTool">Saturazione</string>
+    <string name="pesdk_adjustments_button_clarityTool">Chiarezza</string>
+    <string name="pesdk_adjustments_button_gammaTool">Gamma</string>
+    <string name="pesdk_adjustments_button_blacksTool">Neri</string>
+    <string name="pesdk_adjustments_button_whitesTool">Bianchi</string>
+    <string name="pesdk_adjustments_button_temperatureTool">Temperatura</string>
+    <string name="pesdk_adjustments_button_sharpnessTool">Nitidezza</string>
+    <string name="pesdk_adjustments_button_reset">Azzeramento</string>
+
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ly.img.android.pesdk.ui.widgets.AutoRotateLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/contentHolder"
+	style="?attr/Imgly.PESDK.Editor.Panel.TextDesign.TextDesignItem">
+	<ly.img.android.pesdk.ui.widgets.ImageSourceView
+		android:id="@+id/image"
+		style="?attr/Imgly.PESDK.Editor.Panel.TextDesign.TextDesignItem.Icon"/>
+	<ly.img.android.pesdk.ui.widgets.ImageSourceView
+		android:id="@+id/selected_overlay"
+		app:src="@drawable/imgly_item_selected_overlay"
+		style="?attr/Imgly.PESDK.Editor.Panel.TextDesign.TextDesignItem.Overlay"/>
+	<ly.img.android.pesdk.ui.widgets.ImageSourceView
+		android:id="@+id/selected_shuffle"
+		app:src="@drawable/imgly_icon_shuffle"
+		style="?attr/Imgly.PESDK.Editor.Panel.TextDesign.TextDesignItem.Overlay.Icon"/>
+	<RelativeLayout
+		style="?attr/Imgly.PESDK.Editor.Panel.TextDesign.TextDesignItem.Border"/>
+	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/nixPlusText"
+		android:layout_width="30dp"
+		android:layout_height="14dp"
+		android:layout_margin="4dp"
+		android:scaleType="fitXY"
+		android:layout_alignParentEnd="true"
+		android:elevation="20dp"
+		android:src="@drawable/ic_plus"/>
+</ly.img.android.pesdk.ui.widgets.AutoRotateLayout>

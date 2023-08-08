@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_sticker_title_name">Aufkleber</string>
+    <string name="pesdk_sticker_title_color">Aufkleber Farbe</string>
+    <string name="pesdk_sticker_title_options">Aufkleber-Optionen</string>
+
+    <string name="pesdk_sticker_button_add">Hinzufügen</string>
+    <string name="pesdk_sticker_button_color">Farbe</string>
+    <string name="pesdk_sticker_button_flipV">Spiegeln V</string>
+    <string name="pesdk_sticker_button_flipH">Spiegeln H</string>
+    <string name="pesdk_sticker_button_delete">Löschen</string>
+    <string name="pesdk_sticker_button_bringToFront">Nach vorne</string>
+    <string name="pesdk_sticker_button_straighten">Begradigen</string>
+    <string name="pesdk_sticker_button_replace">Ersetzen</string>
+    <string name="pesdk_sticker_button_opacity">Deckkraft</string>
+
+    <string name="pesdk_sticker_button_contrast">Kontrast</string>
+    <string name="pesdk_sticker_button_saturation">Sättigung</string>
+    <string name="pesdk_sticker_button_brightness">Helligkeit</string>
+
+    <string name="pesdk_sticker_category_name_custom">Uploads</string>
+
+</resources>

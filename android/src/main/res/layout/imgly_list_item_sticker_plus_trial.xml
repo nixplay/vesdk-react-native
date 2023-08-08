@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ly.img.android.pesdk.ui.widgets.AutoRotateLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/contentHolder"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	style="?attr/Imgly.PESDK.Editor.Panel.Sticker.StickerItem">
+	<ly.img.android.pesdk.ui.widgets.ImageSourceView
+		android:id="@+id/image"
+		app:src="@drawable/imgly_icon_wait"
+		style="?attr/Imgly.PESDK.Editor.Panel.Sticker.StickerItem.Icon"/>
+	<TextView
+		android:id="@+id/label"
+		style="?attr/Imgly.PESDK.Editor.Panel.Sticker.StickerItem.Label"/>
+	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/nixPlusText"
+		android:layout_width="30dp"
+		android:layout_height="14dp"
+		android:layout_margin="4dp"
+		android:scaleType="fitXY"
+		android:layout_alignParentEnd="true"
+		android:elevation="20dp"
+		android:src="@drawable/ic_plus_trial"/>
+</ly.img.android.pesdk.ui.widgets.AutoRotateLayout>

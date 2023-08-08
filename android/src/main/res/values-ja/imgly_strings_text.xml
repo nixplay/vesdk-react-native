@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_text_title_name">テキスト</string>
+    <string name="pesdk_text_title_options">テキストオプション</string>
+    <string name="pesdk_text_title_input">テキストの追加</string>
+    <string name="pesdk_text_title_textColor">文字色</string>
+    <string name="pesdk_text_title_font">フォント</string>
+
+    <string name="pesdk_text_button_add">追加</string>
+    <string name="pesdk_text_button_edit">編集</string>
+    <string name="pesdk_text_button_straighten">直線化</string>
+
+    <string name="pesdk_text_button_font">フォント</string>
+    <string name="pesdk_text_button_color">色</string>
+    <string name="pesdk_text_button_backgroundColor">背景色</string>
+    <string name="pesdk_text_button_alignment">アライメント</string>
+
+    <string name="pesdk_text_button_flipV">反転V</string>
+    <string name="pesdk_text_button_flipH">反転H</string>
+    <string name="pesdk_text_button_bringToFront">前面へ</string>
+    <string name="pesdk_text_button_delete">削除</string>
+
+    <string name="pesdk_text_text_editTextPlaceholder">あなたのテキスト</string>
+
+    <string name="pesdk_text_button_fontPreview">Ag</string>
+
+</resources>

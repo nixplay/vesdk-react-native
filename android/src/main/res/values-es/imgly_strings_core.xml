@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="app_name"/>
+
+    <string name="pesdk_editor_title_name">Editor</string>
+    <string name="pesdk_editor_title_mainMenu"/>
+
+    <string name="pesdk_editor_title_closeEditorAlert">¿Descartar los cambios?</string>
+    <string name="pesdk_editor_text_closeEditorAlert">Si vuelves ahora, tus ediciones se descartarán</string>
+    <string name="pesdk_editor_button_closeEditorAlertConfirmation">Descartar</string>
+    <string name="pesdk_editor_button_closeEditorAlertCancelation">Cancelar</string>
+
+    <string name="nixplay_upgradeEditorAlert">¿Desbloquear esta función?</string>
+    <string name="nixplay_text_upgradeEditorAlert">Actualiza ahora a Nixplay Plus para desbloquear esta función y disfrutar de herramientas de edición más avanzadas.</string>
+    <string name="nixplay_button_upgradeEditorAlertConfirmation">Actualizar</string>
+    <string name="nixplay_button_upgradeEditorAlertCancelation">Cancelar</string>
+
+    <string name="nixplay_banner_advanced_title_filter">Prueba las funciones más avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_filter">Más filtros: Duotono, b&amp;n, vintage, etc.</string>
+    <string name="nixplay_banner_advanced_title_adjust">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_adjust">Más ajustes: Brillo, contraste, etc.</string>
+    <string name="nixplay_banner_advanced_title_focus">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_focus">Más enfoque: Espejo, lineal, etc.</string>
+    <string name="nixplay_banner_advanced_title_sticker">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_sticker">Más pegatinas y formas</string>
+    <string name="nixplay_banner_advanced_title_text">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_text">Más fuentes: Open Sans, aleo, amatic, etc.</string>
+    <string name="nixplay_banner_advanced_title_textdesign">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_textdesign">Más diseños de texto</string>
+    <string name="nixplay_banner_advanced_title_overlay">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_overlay">Más superposiciones: Dorado, lightleak, lluvia, etc.</string>
+    <string name="nixplay_banner_advanced_title_frame">Prueba más funciones avanzadas</string>
+    <string name="nixplay_banner_advanced_subtitle_frame">Más marcos</string>
+
+    <string name="pesdk_editor_title_somethingWentWrongAlert">Something went wrong.</string>
+    <string name="pesdk_editor_text_somethingWentWrongAlert">Couldn\'t load Photo/Video.</string>
+    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">Cerrar</string>
+
+    <string name="pesdk_editor_cancel">Cancelar</string>
+    <string name="pesdk_editor_accept">Aceptar</string>
+    <string name="pesdk_editor_save">Save</string>
+
+    <string name="pesdk_editor_text_exportProgressUnknown">Exporting…</string>
+    <string name="pesdk_editor_text_exportProgress" formatted="false">Exporting %s.</string>
+
+    <string name="pesdk_editor_text_loadProgressUnknown">Load Data…</string>
+    <string name="pesdk_editor_text_loadProgress" formatted="false">Load Data %s.</string>
+
+    <string name="pesdk_common_button_flipH">Flip H</string>
+    <string name="pesdk_common_button_flipV">Flip V</string>
+    <string name="pesdk_common_button_undo">Deshacer</string>
+    <string name="pesdk_common_button_redo">Rehacer</string>
+
+    <string name="vesdk_video_trim_title_name">Recortar</string>
+    <string name="vesdk_video_composition_title_name">Componer</string>
+    <string name="vesdk_audio_composition_title_name">Audio</string>
+    <string name="pesdk_transform_title_name">Transformar</string>
+    <string name="pesdk_filter_title_name">Filtro</string>
+    <string name="pesdk_adjustments_title_name">Ajustar</string>
+    <string name="pesdk_sticker_title_name">Pegatina</string>
+    <string name="pesdk_text_title_name">Texto</string>
+    <string name="pesdk_textDesign_title_name">Diseño de texto</string>
+    <string name="pesdk_overlay_title_name">Superposición</string>
+    <string name="pesdk_frame_title_name">Marco</string>
+    <string name="pesdk_brush_title_name">Cepillo</string>
+    <string name="pesdk_focus_title_name">Enfoque</string>
+
+    <string name="pesdk_common_title_colorPicker">Color Picker</string>
+    <string name="pesdk_common_title_transparentColor">Transparente</string>
+    <string name="pesdk_common_title_whiteColor">Blanco</string>
+    <string name="pesdk_common_title_grayColor">Gris</string>
+    <string name="pesdk_common_title_blackColor">Negro</string>
+    <string name="pesdk_common_title_lightBlueColor">Azul claro</string>
+    <string name="pesdk_common_title_blueColor">Azul</string>
+    <string name="pesdk_common_title_purpleColor">Púrpura</string>
+    <string name="pesdk_common_title_orchidColor">Orquídea</string>
+    <string name="pesdk_common_title_pinkColor">Rosa</string>
+    <string name="pesdk_common_title_redColor">Rojo</string>
+    <string name="pesdk_common_title_orangeColor">Naranja</string>
+    <string name="pesdk_common_title_goldColor">Oro</string>
+    <string name="pesdk_common_title_yellowColor">Amarillo</string>
+    <string name="pesdk_common_title_oliveColor">Oliva</string>
+    <string name="pesdk_common_title_greenColor">Verde</string>
+    <string name="pesdk_common_title_aquamarinColor">Aquamarin</string>
+    <string name="pesdk_common_title_pipettableColor">Color de la pipeta</string>
+    
+</resources>

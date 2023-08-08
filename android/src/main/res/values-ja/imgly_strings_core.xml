@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="app_name"/>
+
+    <string name="pesdk_editor_title_name">編集</string>
+    <string name="pesdk_editor_title_mainMenu"/>
+
+    <string name="pesdk_editor_title_closeEditorAlert">変更内容の破棄</string>
+    <string name="pesdk_editor_text_closeEditorAlert">今戻ると、あなたの編集内容は破棄されます</string>
+    <string name="pesdk_editor_button_closeEditorAlertConfirmation">廃棄されます</string>
+    <string name="pesdk_editor_button_closeEditorAlertCancelation">キャンセル</string>
+
+    <string name="nixplay_upgradeEditorAlert">この機能を解除しますか？</string>
+    <string name="nixplay_text_upgradeEditorAlert">今すぐNixplay Plusにアップグレードして、この機能を解除し、より高度な編集ツールをお楽しみください。</string>
+    <string name="nixplay_button_upgradeEditorAlertConfirmation">アップグレード</string>
+    <string name="nixplay_button_upgradeEditorAlertCancelation">キャンセル </string>
+
+    <string name="nixplay_banner_advanced_title_filter">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_filter">より多くのフィルター。デュオトーン、B&amp;W、ビンテージなど</string>
+    <string name="nixplay_banner_advanced_title_adjust">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_adjust">もっと調整したい。輝度、コントラストなど</string>
+    <string name="nixplay_banner_advanced_title_focus">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_focus">より多くのフォーカス。ミラーリング、リニアなど</string>
+    <string name="nixplay_banner_advanced_title_sticker">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_sticker">より多くのステッカーとシェイプ</string>
+    <string name="nixplay_banner_advanced_title_text">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_text">より多くのフォント。Open Sans、aleo、amaticなど</string>
+    <string name="nixplay_banner_advanced_title_textdesign">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_textdesign">より多くのテキストデザイン</string>
+    <string name="nixplay_banner_advanced_title_overlay">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_overlay">オーバーレイを増やす。ゴールデン、ライトリーク、レインなど</string>
+    <string name="nixplay_banner_advanced_title_frame">より高度な機能を試す</string>
+    <string name="nixplay_banner_advanced_subtitle_frame">フレームを増やす</string>
+
+    <string name="pesdk_editor_title_somethingWentWrongAlert">何かがうまくいかなかった。</string>
+    <string name="pesdk_editor_text_somethingWentWrongAlert">写真/ビデオを読み込めませんでした。</string>
+    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">閉じる</string>
+
+    <string name="pesdk_editor_cancel">キャンセル</string>
+    <string name="pesdk_editor_accept">受け入れる</string>
+    <string name="pesdk_editor_save">保存する</string>
+
+    <string name="pesdk_editor_text_exportProgressUnknown">ビデオのエクスポート</string>
+    <string name="pesdk_editor_text_exportProgress" formatted="false">ビデオのエクスポート %s.</string>
+
+    <string name="pesdk_editor_text_loadProgressUnknown">ローディング…</string>
+    <string name="pesdk_editor_text_loadProgress" formatted="false">ローディング %s.</string>
+
+    <string name="pesdk_common_button_flipH">反転H</string>
+    <string name="pesdk_common_button_flipV">反転V</string>
+    <string name="pesdk_common_button_undo">取り消し</string>
+    <string name="pesdk_common_button_redo">やり直し</string>
+
+    <string name="vesdk_video_trim_title_name">トリム</string>
+    <string name="vesdk_video_composition_title_name">作成</string>
+    <string name="vesdk_audio_composition_title_name">オーディオ</string>
+    <string name="pesdk_transform_title_name">変形</string>
+    <string name="pesdk_filter_title_name">フィルター</string>
+    <string name="pesdk_adjustments_title_name">調整</string>
+    <string name="pesdk_sticker_title_name">ステッカー</string>
+    <string name="pesdk_text_title_name">テキスト</string>
+    <string name="pesdk_textDesign_title_name">テキストデザイン</string>
+    <string name="pesdk_overlay_title_name">オーバーレイ</string>
+    <string name="pesdk_frame_title_name">フレーム</string>
+    <string name="pesdk_brush_title_name">ブラシ</string>
+    <string name="pesdk_focus_title_name">フォーカス</string>
+
+
+    <string name="pesdk_common_title_colorPicker">色相ピッカー</string>
+    <string name="pesdk_common_title_transparentColor">透明</string>
+    <string name="pesdk_common_title_whiteColor">白</string>
+    <string name="pesdk_common_title_grayColor">グレー</string>
+    <string name="pesdk_common_title_blackColor">ブラック</string>
+    <string name="pesdk_common_title_lightBlueColor">ライトブルー</string>
+    <string name="pesdk_common_title_blueColor">ブルー</string>
+    <string name="pesdk_common_title_purpleColor">紫色</string>
+    <string name="pesdk_common_title_orchidColor">オーキッド</string>
+    <string name="pesdk_common_title_pinkColor">ピンク</string>
+    <string name="pesdk_common_title_redColor">赤</string>
+    <string name="pesdk_common_title_orangeColor">オレンジ</string>
+    <string name="pesdk_common_title_goldColor">ゴールド</string>
+    <string name="pesdk_common_title_yellowColor">黄</string>
+    <string name="pesdk_common_title_oliveColor">オリーブ</string>
+    <string name="pesdk_common_title_greenColor">緑</string>
+    <string name="pesdk_common_title_aquamarinColor">アクアマリン</string>
+    <string name="pesdk_common_title_pipettableColor">ピペッタブルカラー</string>
+
+</resources>

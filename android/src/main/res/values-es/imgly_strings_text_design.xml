@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_textDesign_title_name">Diseño de texto</string>
+    <string name="pesdk_textDesign_title_options">Text Design Options</string>
+    <string name="pesdk_textDesign_title_input">Añadir texto</string>
+
+    <string name="pesdk_textDesign_button_flipV">Voltear V</string>
+    <string name="pesdk_textDesign_button_flipH">Voltear H</string>
+    <string name="pesdk_textDesign_button_bringToFront">Al frente</string>
+    <string name="pesdk_textDesign_button_add">Añadir</string>
+    <string name="pesdk_textDesign_button_delete">Borrar</string>
+    <string name="pesdk_textDesign_button_invert">Invertir</string>
+
+    <string name="pesdk_textDesign_text_editTextPlaceholder">Your text</string>
+    
+    <string name="pesdk_textDesign_asset_none">Ninguno</string>
+    <string name="pesdk_textDesign_asset_blocks">Bloques</string>
+    <string name="pesdk_textDesign_asset_rotated">Rotado</string>
+    <string name="pesdk_textDesign_asset_blocksLight">Bloques claros</string>
+    <string name="pesdk_textDesign_asset_equalWidth">Igualdad de anchura</string>
+    <string name="pesdk_textDesign_asset_masked">Enmascarado</string>
+    <string name="pesdk_textDesign_asset_celebrate">Celebrar</string>
+    <string name="pesdk_textDesign_asset_sunshine">Sol</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">Insignia enmascarada</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">Bloques Condensados</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">Celebrar simple</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">Grasa de igual anchura</string>
+    <string name="pesdk_textDesign_asset_watercolor">Acuarela</string>
+    <string name="pesdk_textDesign_asset_particles">Partículas</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">Burbuja de expresión enmascarada</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">Burbuja de expresión enmascarada Cómic</string>
+    <string name="pesdk_textDesign_asset_multiline">Multilínea</string>
+
+</resources>

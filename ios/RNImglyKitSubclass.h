@@ -63,7 +63,7 @@ typedef void (^IMGLYCompletionBlock)(void);
 @property (strong, atomic, nullable) NSString* uuid;
 
 - (void)present:(nonnull IMGLYMediaEditViewControllerBlock)createMediaEditViewController withUTI:(nonnull IMGLYUTIBlock)getUTI
-  configuration:(nullable NSDictionary *)dictionary serialization:(nullable NSDictionary *)state
+  configuration:(nullable NSDictionary *)dictionary serialization:(nullable NSDictionary *)state controller:(RNVideoEditorSDK *)controller
         resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject;
 
 - (void)dismiss:(nullable PESDKMediaEditViewController *)mediaEditViewController animated:(BOOL)animated completion:(nullable IMGLYCompletionBlock)completion;
