@@ -4,7 +4,7 @@
 
 #import <NMEasyTipView/RCEasyTipView.h>
 
-@import VideoEditorSDK;
+#import <ImglyKit/ImglyKit-Swift.h>
 
 /// The React Native module for VideoEditor SDK
 @interface RNVideoEditorSDK : RNVESDKImglyKit <RCTBridgeModule>
