@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'React'
   s.dependency 'React-RCTImage'
-  s.dependency 'VideoEditorSDK', '~> 11.8'
+  s.dependency 'VideoEditorSDK', '~> 11.9'
   s.dependency "Firebase/Analytics"
   s.dependency 'NMEasyTipView', '~> 1.2'
 end
