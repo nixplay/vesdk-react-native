@@ -11,8 +11,8 @@
 		style="?attr/Imgly.PESDK.Editor.Panel.Font.FontItem.Label"/>
 	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/nixPlusText"
-		android:layout_width="30dp"
-		android:layout_height="14dp"
+		android:layout_width="20dp"
+		android:layout_height="20dp"
 		android:layout_margin="4dp"
 		android:scaleType="fitXY"
 		android:layout_alignParentEnd="true"

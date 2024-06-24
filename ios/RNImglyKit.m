@@ -710,7 +710,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
     dispatch_async(dispatch_get_main_queue(), ^{
         CGRect rect = cell.bounds;
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];
-        imageView.frame = CGRectMake(rect.size.width - 24, 4, 20, 10);
+        imageView.frame = CGRectMake(rect.size.width - 24, 4, 20, 20);
         imageView.tag = 100;
         [cell addSubview:imageView];
         [cell setNeedsDisplay];
