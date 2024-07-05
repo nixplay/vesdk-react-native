@@ -70,19 +70,6 @@
     <string name="pesdk_common_button_redo">Rifare</string>
 
     <string name="vesdk_video_trim_title_name">Ritagliare</string>
-    <string name="vesdk_video_composition_title_name">Componi</string>
-    <string name="vesdk_audio_composition_title_name">Audio</string>
-    <string name="pesdk_transform_title_name">Trasforma</string>
-    <string name="pesdk_filter_title_name">Filtro</string>
-    <string name="pesdk_adjustments_title_name">Regolare</string>
-    <string name="pesdk_sticker_title_name">Sticker</string>
-    <string name="pesdk_text_title_name">Testo</string>
-    <string name="pesdk_textDesign_title_name">Design del testo</string>
-    <string name="pesdk_overlay_title_name">Sovrapposizione</string>
-    <string name="pesdk_frame_title_name">Telaio</string>
-    <string name="pesdk_brush_title_name">Pennello</string>
-    <string name="pesdk_focus_title_name">Messa a fuoco</string>
-
 
     <string name="pesdk_common_title_colorPicker">Color Picker</string>
     <string name="pesdk_common_title_transparentColor">Trasparente</string>

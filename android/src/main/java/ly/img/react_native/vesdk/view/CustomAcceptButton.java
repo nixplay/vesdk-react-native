@@ -20,19 +20,19 @@ public class CustomAcceptButton extends AutoRotateImageSource implements View.On
 
     public CustomAcceptButton(Context context) {
         super(context);
-        this.confirmIcon = ImageSource.create(R.drawable.imgly_icon_confirm);
+        this.confirmIcon = ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_confirm);
         this.init();
     }
 
     public CustomAcceptButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.confirmIcon = ImageSource.create(R.drawable.imgly_icon_confirm);
+        this.confirmIcon = ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_confirm);
         this.init();
     }
 
     public CustomAcceptButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.confirmIcon = ImageSource.create(R.drawable.imgly_icon_confirm);
+        this.confirmIcon = ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_confirm);
         this.init();
     }
 

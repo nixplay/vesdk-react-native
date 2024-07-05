@@ -24,8 +24,6 @@ public class CustomOverlayViewHolder extends DataSourceListAdapter.DataSourceVie
     @NonNull
     public final View contentHolder;
     @Nullable
-    protected final TextView valueTextView;
-    @Nullable
     protected final TextView labelTextView;
     @Nullable
     protected final ImageSourceView imageView;
@@ -42,7 +40,6 @@ public class CustomOverlayViewHolder extends DataSourceListAdapter.DataSourceVie
         super(v);
         this.imageView = v.findViewById(R.id.image);
         this.labelTextView = v.findViewById(R.id.label);
-        this.valueTextView = v.findViewById(R.id.value);
         this.contentHolder = v.findViewById(R.id.contentHolder);
         this.selectedOverlay = v.findViewById(R.id.selected_overlay);
         this.selectedShuffle = v.findViewById(R.id.selected_shuffle);
@@ -51,24 +48,13 @@ public class CustomOverlayViewHolder extends DataSourceListAdapter.DataSourceVie
     }
 
     public void setSelectedState(boolean selected) {
-        if (this.valueTextView != null) {
-            this.valueTextView.setVisibility(selected && !this.isNoneOverlayItem ? View.VISIBLE : View.INVISIBLE);
-        }
+
     }
 
     public void onClick(View v) {
         CustomVideoEditorActivity.closeTooltip();
         this.dispatchSelection();
         this.dispatchOnItemClick();
-    }
-
-    @MainThread
-    public void onValueChanged(OverlaySettings overlaySettings) {
-        if (this.valueTextView != null) {
-            String text = PESDK.getAppResource().getString(R.string.pesdk_overlay_text_intensityValue, Math.round(overlaySettings.getIntensity() * 100.0F));
-            this.valueTextView.setText(text);
-        }
-
     }
 
     protected Bitmap createAsyncData(CustomOverlayItem abstractItem) {

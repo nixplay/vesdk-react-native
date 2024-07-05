@@ -43,7 +43,7 @@ public class CustomFrameItem extends FrameItem {
 
     public int getLayout() {
         if ("imgly_frame_none".equals(this.getId())) {
-            return R.layout.imgly_list_item_none_frame;
+            return ly.img.android.pesdk.ui.frame.R.layout.imgly_list_item_none_frame;
         }
         if (getTrialFlag()) {
             return R.layout.imgly_list_item_frame_plus_trial;

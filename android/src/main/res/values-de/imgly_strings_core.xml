@@ -70,18 +70,6 @@
     <string name="pesdk_common_button_redo">Wiederholen</string>
 
     <string name="vesdk_video_trim_title_name">Zuschneiden</string>
-    <string name="vesdk_video_composition_title_name">Komponieren</string>
-    <string name="vesdk_audio_composition_title_name">Ton</string>
-    <string name="pesdk_transform_title_name">Transformieren</string>
-    <string name="pesdk_filter_title_name">Filter</string>
-    <string name="pesdk_adjustments_title_name">Einstellen</string>
-    <string name="pesdk_sticker_title_name">Aufkleber</string>
-    <string name="pesdk_text_title_name">Text</string>
-    <string name="pesdk_textDesign_title_name">Text gestalten</string>
-    <string name="pesdk_overlay_title_name">Überlagerung</string>
-    <string name="pesdk_frame_title_name">Rahmen</string>
-    <string name="pesdk_brush_title_name">Pinsel</string>
-    <string name="pesdk_focus_title_name">Fokus</string>
     
     <string name="pesdk_common_title_colorPicker">Farbe-Auswahl</string>
     <string name="pesdk_common_title_transparentColor">Durchsichtig</string>

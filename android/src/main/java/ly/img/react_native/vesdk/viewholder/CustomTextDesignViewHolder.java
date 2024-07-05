@@ -37,7 +37,7 @@ public class CustomTextDesignViewHolder extends DataSourceListAdapter.DataSource
         this.nixPlusIcon = v.findViewById(R.id.nixPlusText);
         this.contentHolder.setOnClickListener(this);
         int theme = this.getStateHandler().getSettingsModel(UiConfigTheme.class).getTheme();
-        TypedArray typedArray = this.itemView.getContext().obtainStyledAttributes(theme, new int[]{R.attr.imgly_icon_color});
+        TypedArray typedArray = this.itemView.getContext().obtainStyledAttributes(theme, new int[]{ly.img.android.pesdk.ui.R.attr.imgly_icon_color});
         int thumbColor = typedArray.getColor(0, -1);
         typedArray.recycle();
         ColorMatrix inkColorMatrix = new ColorMatrix();

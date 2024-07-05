@@ -150,15 +150,15 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
 
             UiConfigMainMenu uiConfigMainMenu = settingsList.getSettingsModel(UiConfigMainMenu.class);
             uiConfigMainMenu.setToolList(
-                    new ToolItem(TransformToolPanel.TOOL_ID, R.string.pesdk_transform_title_name, ImageSource.create(R.drawable.imgly_icon_tool_transform)),
-                    new ToolItem(FilterToolPanel.TOOL_ID, R.string.pesdk_filter_title_name, ImageSource.create(R.drawable.imgly_icon_tool_filters)),
-                    new ToolItem(AdjustmentToolPanel.TOOL_ID, R.string.pesdk_adjustments_title_name, ImageSource.create(R.drawable.imgly_icon_tool_adjust)),
-                    new ToolItem(FocusToolPanel.TOOL_ID, R.string.pesdk_focus_title_name, ImageSource.create(R.drawable.imgly_icon_tool_focus)),
-                    new ToolItem(StickerToolPanel.TOOL_ID, R.string.pesdk_sticker_title_name, ImageSource.create(R.drawable.imgly_icon_tool_sticker)),
-                    new ToolItem(TextToolPanel.TOOL_ID, R.string.pesdk_text_title_name, ImageSource.create(R.drawable.imgly_icon_tool_text)),
-                    new ToolItem(TextDesignToolPanel.TOOL_ID, R.string.pesdk_textDesign_title_name, ImageSource.create(R.drawable.imgly_icon_tool_text_design)),
-                    new ToolItem(OverlayToolPanel.TOOL_ID, R.string.pesdk_overlay_title_name, ImageSource.create(R.drawable.imgly_icon_tool_overlay)),
-                    new ToolItem(FrameToolPanel.TOOL_ID, R.string.pesdk_frame_title_name, ImageSource.create(R.drawable.imgly_icon_tool_frame))
+                    new ToolItem(TransformToolPanel.TOOL_ID, R.string.pesdk_transform_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_transform)),
+                    new CustomToolItem(FilterToolPanel.TOOL_ID, R.string.pesdk_filter_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_filters)),
+                    new CustomToolItem(AdjustmentToolPanel.TOOL_ID, R.string.pesdk_adjustments_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_adjust)),
+                    new CustomToolItem(FocusToolPanel.TOOL_ID, R.string.pesdk_focus_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_focus)),
+                    new CustomToolItem(StickerToolPanel.TOOL_ID, R.string.pesdk_sticker_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_sticker)),
+                    new CustomToolItem(TextToolPanel.TOOL_ID, R.string.pesdk_text_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_text)),
+                    new CustomToolItem(TextDesignToolPanel.TOOL_ID, R.string.pesdk_textDesign_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_text_design)),
+                    new CustomToolItem(OverlayToolPanel.TOOL_ID, R.string.pesdk_overlay_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_overlay)),
+                    new CustomToolItem(FrameToolPanel.TOOL_ID, R.string.pesdk_frame_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_frame))
             );
         } else {
             settingsList.getSettingsModel(UiConfigFilter.class).setFilterList(
@@ -208,15 +208,15 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
 
             UiConfigMainMenu uiConfigMainMenu = settingsList.getSettingsModel(UiConfigMainMenu.class);
             uiConfigMainMenu.setToolList(
-                    new ToolItem(TransformToolPanel.TOOL_ID, R.string.pesdk_transform_title_name, ImageSource.create(R.drawable.imgly_icon_tool_transform)),
-                    new CustomToolItem(FilterToolPanel.TOOL_ID, R.string.pesdk_filter_title_name, ImageSource.create(R.drawable.imgly_icon_tool_filters)),
-                    new CustomToolItem(AdjustmentToolPanel.TOOL_ID, R.string.pesdk_adjustments_title_name, ImageSource.create(R.drawable.imgly_icon_tool_adjust)),
-                    new CustomToolItem(FocusToolPanel.TOOL_ID, R.string.pesdk_focus_title_name, ImageSource.create(R.drawable.imgly_icon_tool_focus)),
-                    new CustomToolItem(StickerToolPanel.TOOL_ID, R.string.pesdk_sticker_title_name, ImageSource.create(R.drawable.imgly_icon_tool_sticker)),
-                    new CustomToolItem(TextToolPanel.TOOL_ID, R.string.pesdk_text_title_name, ImageSource.create(R.drawable.imgly_icon_tool_text)),
-                    new CustomToolItem(TextDesignToolPanel.TOOL_ID, R.string.pesdk_textDesign_title_name, ImageSource.create(R.drawable.imgly_icon_tool_text_design)),
-                    new CustomToolItem(OverlayToolPanel.TOOL_ID, R.string.pesdk_overlay_title_name, ImageSource.create(R.drawable.imgly_icon_tool_overlay)),
-                    new CustomToolItem(FrameToolPanel.TOOL_ID, R.string.pesdk_frame_title_name, ImageSource.create(R.drawable.imgly_icon_tool_frame))
+                    new ToolItem(TransformToolPanel.TOOL_ID, R.string.pesdk_transform_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_transform)),
+                    new CustomToolItem(FilterToolPanel.TOOL_ID, R.string.pesdk_filter_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_filters)),
+                    new CustomToolItem(AdjustmentToolPanel.TOOL_ID, R.string.pesdk_adjustments_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_adjust)),
+                    new CustomToolItem(FocusToolPanel.TOOL_ID, R.string.pesdk_focus_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_focus)),
+                    new CustomToolItem(StickerToolPanel.TOOL_ID, R.string.pesdk_sticker_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_sticker)),
+                    new CustomToolItem(TextToolPanel.TOOL_ID, R.string.pesdk_text_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_text)),
+                    new CustomToolItem(TextDesignToolPanel.TOOL_ID, R.string.pesdk_textDesign_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_text_design)),
+                    new CustomToolItem(OverlayToolPanel.TOOL_ID, R.string.pesdk_overlay_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_overlay)),
+                    new CustomToolItem(FrameToolPanel.TOOL_ID, R.string.pesdk_frame_title_name, ImageSource.create(ly.img.android.pesdk.ui.R.drawable.imgly_icon_tool_frame))
             );
         }
 
@@ -229,7 +229,7 @@ public class RNVideoEditorSDKModule extends ReactContextBaseJavaModule implement
             cropAspectItems.add(new CropResetItem());
         }
         if (configMap.getMap("transform").getBoolean("allowFreeCrop")) {
-            cropAspectItems.add(new CropAspectItem("my_crop_free", R.string.pesdk_transform_button_freeCrop, ImageSource.create(R.drawable.imgly_icon_custom_crop)));
+            cropAspectItems.add(new CropAspectItem("my_crop_free", R.string.pesdk_transform_button_freeCrop, ImageSource.create(ly.img.android.pesdk.ui.transform.R.drawable.imgly_icon_custom_crop)));
         }
         for (int i = 0; i < configMap.getMap("transform").getArray("items").size(); i++) {
             String name = configMap.getMap("transform").getArray("items").getMap(i).getString("name");

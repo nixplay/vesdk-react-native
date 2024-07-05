@@ -26,7 +26,9 @@ public class CustomFilterItem extends FilterItem {
     }
 
     @Override
-    public int getLayout() { return R.layout.imgly_list_item_filter; }
+    public int getLayout() {
+        return ly.img.android.pesdk.ui.filter.R.layout.imgly_list_item_filter;
+    }
 
     @Override
     public int getLayout(String flavor) {
@@ -36,7 +38,7 @@ public class CustomFilterItem extends FilterItem {
             }
             return R.layout.imgly_list_item_filter_folder_subitem_plus;
         }
-        return R.layout.imgly_list_item_filter;
+        return ly.img.android.pesdk.ui.filter.R.layout.imgly_list_item_filter;
     }
 
     @Override

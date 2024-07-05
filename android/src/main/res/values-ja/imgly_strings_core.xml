@@ -70,19 +70,6 @@
     <string name="pesdk_common_button_redo">やり直し</string>
 
     <string name="vesdk_video_trim_title_name">トリム</string>
-    <string name="vesdk_video_composition_title_name">作成</string>
-    <string name="vesdk_audio_composition_title_name">オーディオ</string>
-    <string name="pesdk_transform_title_name">変形</string>
-    <string name="pesdk_filter_title_name">フィルター</string>
-    <string name="pesdk_adjustments_title_name">調整</string>
-    <string name="pesdk_sticker_title_name">ステッカー</string>
-    <string name="pesdk_text_title_name">テキスト</string>
-    <string name="pesdk_textDesign_title_name">テキストデザイン</string>
-    <string name="pesdk_overlay_title_name">オーバーレイ</string>
-    <string name="pesdk_frame_title_name">フレーム</string>
-    <string name="pesdk_brush_title_name">ブラシ</string>
-    <string name="pesdk_focus_title_name">フォーカス</string>
-
 
     <string name="pesdk_common_title_colorPicker">色相ピッカー</string>
     <string name="pesdk_common_title_transparentColor">透明</string>

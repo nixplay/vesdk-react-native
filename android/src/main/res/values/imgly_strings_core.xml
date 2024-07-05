@@ -70,19 +70,6 @@
     <string name="pesdk_common_button_redo">Redo</string>
 
     <string name="vesdk_video_trim_title_name">Trim</string>
-    <string name="vesdk_video_composition_title_name">Compose</string>
-    <string name="vesdk_audio_composition_title_name">Audio</string>
-    <string name="pesdk_transform_title_name">Transform</string>
-    <string name="pesdk_filter_title_name">Filter</string>
-    <string name="pesdk_adjustments_title_name">Adjust</string>
-    <string name="pesdk_sticker_title_name">Sticker</string>
-    <string name="pesdk_text_title_name">Text</string>
-    <string name="pesdk_textDesign_title_name">Text Design</string>
-    <string name="pesdk_overlay_title_name">Overlay</string>
-    <string name="pesdk_frame_title_name">Frame</string>
-    <string name="pesdk_brush_title_name">Brush</string>
-    <string name="pesdk_focus_title_name">Focus</string>
-
 
     <string name="pesdk_common_title_colorPicker">Color Picker</string>
     <string name="pesdk_common_title_transparentColor">Transparent</string>

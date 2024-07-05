@@ -44,7 +44,7 @@ public class CustomOverlayItem extends OverlayItem {
 
     public int getLayout() {
         if (this.id.equals("imgly_overlay_none") && OverlayViewHolder.SHOW_PREVIEW_IMAGE_ON_NONE_OVERLAY_ITEM) {
-            return R.layout.imgly_list_item_overlay_thumbnail;
+            return ly.img.android.pesdk.ui.overlay.R.layout.imgly_list_item_overlay_thumbnail;
         }
         if (getTrialFlag()) {
             return R.layout.imgly_list_item_overlay_plus_trial;
