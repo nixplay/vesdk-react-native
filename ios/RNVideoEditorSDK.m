@@ -333,6 +333,8 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
         resourceName=@"ImglyFR";
     } else if ([needle isEqualToString:@"it"]) {
         resourceName=@"ImglyIT";
+    } else if ([needle isEqualToString:@"pt"]) {
+        resourceName=@"ImglyPT";
     } else if ([needle isEqualToString:@"ja"]) {
         resourceName=@"ImglyJA";
     } else {

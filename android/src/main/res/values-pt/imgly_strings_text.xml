@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_text_title_name">Texto</string>
+    <string name="pesdk_text_title_options">Opções de texto</string>
+    <string name="pesdk_text_title_input">Adicionar texto</string>
+    <string name="pesdk_text_title_textColor">Cor do texto</string>
+    <string name="pesdk_text_title_font">Fonte</string>
+
+    <string name="pesdk_text_button_add">Adicionar</string>
+    <string name="pesdk_text_button_edit">Editar</string>
+    <string name="pesdk_text_button_straighten">Endireitar</string>
+
+    <string name="pesdk_text_button_font">Fonte</string>
+    <string name="pesdk_text_button_color">Cor</string>
+    <string name="pesdk_text_button_backgroundColor">Cor BG</string>
+    <string name="pesdk_text_button_alignment">Alinhamento</string>
+
+    <string name="pesdk_text_button_flipV">@string/pesdk_common_button_flipV</string>
+    <string name="pesdk_text_button_flipH">@string/pesdk_common_button_flipH</string>
+    <string name="pesdk_text_button_bringToFront">Para frente</string>
+    <string name="pesdk_text_button_delete">Excluir</string>
+
+    <string name="pesdk_text_text_editTextPlaceholder">Seu texto</string>
+
+    <string name="pesdk_text_button_fontPreview">Ag</string>
+
+</resources>

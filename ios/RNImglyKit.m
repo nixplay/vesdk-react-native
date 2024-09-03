@@ -153,7 +153,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 			// "Reset" and "None" strings for all languages
             NSBundle *bundle = [NSBundle mainBundle];
             NSArray *resourceNameList = @[@"ImglyEN", @"ImglyDE", @"ImglyES",
-                                          @"ImglyFR", @"ImglyIT", @"ImglyJA"];
+                                          @"ImglyFR", @"ImglyIT", @"ImglyJA", @"ImglyPT"];
             NSArray *identifiersList = @[@"pesdk_transform_button_reset",
                                          @"pesdk_adjustments_button_reset",
                                          @"pesdk_frame_button_none",
@@ -613,7 +613,7 @@ const struct RN_IMGLY_Constants RN_IMGLY = {
 					// add plus icon
 					//look for "Transform" localization in all languages to hide plus icon on Transform
                     NSBundle *bundle = [NSBundle mainBundle];
-                    NSArray *resourceNameList = @[@"ImglyEN", @"ImglyDE", @"ImglyES", @"ImglyFR", @"ImglyIT", @"ImglyJA"];
+                    NSArray *resourceNameList = @[@"ImglyEN", @"ImglyDE", @"ImglyES", @"ImglyFR", @"ImglyIT", @"ImglyJA", @"ImglyPT"];
                     NSMutableArray *transformStrings = [NSMutableArray new];
                     for (NSString *r in resourceNameList) {
                         NSString* path = [bundle pathForResource:r ofType:@"plist"];

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="pesdk_textDesign_title_name">Design de texto</string>
+    <string name="pesdk_textDesign_title_options">Opções de design de texto</string>
+    <string name="pesdk_textDesign_title_input">Adicionar texto</string>
+
+    <string name="pesdk_textDesign_button_flipV">@string/pesdk_common_button_flipV</string>
+    <string name="pesdk_textDesign_button_flipH">@string/pesdk_common_button_flipH</string>
+    <string name="pesdk_textDesign_button_bringToFront">Para frente</string>
+    <string name="pesdk_textDesign_button_add">Adicionar</string>
+    <string name="pesdk_textDesign_button_delete">Excluir</string>
+    <string name="pesdk_textDesign_button_invert">Invertido</string>
+
+    <string name="pesdk_textDesign_text_editTextPlaceholder">Seu texto</string>
+
+    <string name="pesdk_textDesign_asset_none">Nenhum</string>
+    <string name="pesdk_textDesign_asset_blocks">Blocos</string>
+    <string name="pesdk_textDesign_asset_rotated">Girado</string>
+    <string name="pesdk_textDesign_asset_blocksLight">Bloqueia a luz</string>
+    <string name="pesdk_textDesign_asset_equalWidth">Largura igual</string>
+    <string name="pesdk_textDesign_asset_masked">Mascarado</string>
+    <string name="pesdk_textDesign_asset_celebrate">Comemore</string>
+    <string name="pesdk_textDesign_asset_sunshine">Luz do sol</string>
+    <string name="pesdk_textDesign_asset_maskedBadge">Distintivo Mascarado</string>
+    <string name="pesdk_textDesign_asset_blocksCondensed">Blocos Condensados</string>
+    <string name="pesdk_textDesign_asset_celebrateSimple">Comemore o Simples</string>
+    <string name="pesdk_textDesign_asset_equalWidthFat">Gordura de largura igual</string>
+    <string name="pesdk_textDesign_asset_watercolor">Aquarela</string>
+    <string name="pesdk_textDesign_asset_particles">Partículas</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubble">Bolha de fala mascarada</string>
+    <string name="pesdk_textDesign_asset_maskedSpeechBubbleComic">Quadrinho de balão de fala mascarado</string>
+    <string name="pesdk_textDesign_asset_multiline">Multilinha</string>
+
+</resources>

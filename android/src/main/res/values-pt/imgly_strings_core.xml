@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <string name="app_name"/>
+
+    <string name="pesdk_editor_title_name">Editor</string>
+    <string name="pesdk_editor_title_mainMenu"/>
+
+    <string name="pesdk_editor_title_closeEditorAlert">Descartar alterações?</string>
+    <string name="pesdk_editor_text_closeEditorAlert">Se você voltar agora, suas edições serão descartadas.</string>
+    <string name="pesdk_editor_button_closeEditorAlertConfirmation">Descartar</string>
+    <string name="pesdk_editor_button_closeEditorAlertCancelation">Cancelar</string>
+
+    <string name="nixplay_upgradeEditorAlert">Desbloquear esse recurso?</string>
+    <string name="nixplay_text_upgradeEditorAlert">Atualize para o Nixplay Plus agora para desbloquear esse recurso e desfrutar de ferramentas de edição mais avançadas.</string>
+    <string name="nixplay_button_upgradeEditorAlertConfirmation">Atualizar</string>
+    <string name="nixplay_button_upgradeEditorAlertCancelation">Cancelar</string>
+
+    <string name="nixplay_banner_advanced_title_filter">Experimente recursos mais avançados</string>
+    <string name="nixplay_banner_advanced_subtitle_filter">Mais filtros: Duotone, preto e branco, vintage, etc.</string>
+    <string name="nixplay_banner_advanced_title_adjust">Experimente recursos mais avançados</string>
+    <string name="nixplay_banner_advanced_subtitle_adjust">Mais ajustes: brilho, contraste, etc.</string>
+    <string name="nixplay_banner_advanced_title_focus">Experimente recursos mais avançados</string>
+    <string name="nixplay_banner_advanced_subtitle_focus">Mais foco: Espelhado, linear, etc.</string>
+    <string name="nixplay_banner_advanced_title_sticker">Experimente recursos mais avançados</string>
+    <string name="nixplay_banner_advanced_subtitle_sticker">Mais adesivos e formas</string>
+    <string name="nixplay_banner_advanced_title_text">Experimente recursos mais avançados</string>
+    <string name="nixplay_banner_advanced_subtitle_text">Mais fontes: Open Sans, aleo, amatic, etc.</string>
+    <string name="nixplay_banner_advanced_title_textdesign">Experimente recursos mais avançados</string>
+    <string name="nixplay_banner_advanced_subtitle_textdesign">Mais designs de texto</string>
+    <string name="nixplay_banner_advanced_title_overlay">Experimente recursos mais avançados</string>
+    <string name="nixplay_banner_advanced_subtitle_overlay">Mais sobreposição: Dourado, vazamento de luz, chuva, etc.</string>
+    <string name="nixplay_banner_advanced_title_frame">Experimente recursos mais avançados</string>
+    <string name="nixplay_banner_advanced_subtitle_frame">Mais quadros</string>
+
+    <string name="pesdk_editor_title_somethingWentWrongAlert">Algo deu errado.</string>
+    <string name="pesdk_editor_text_somethingWentWrongAlert">Não foi possível carregar a foto/vídeo.</string>
+    <string name="pesdk_editor_button_somethingWentWrongCloseEditor">Fechar</string>
+
+    <string name="pesdk_editor_cancel">Cancelar</string>
+    <string name="pesdk_editor_accept">Aceitar</string>
+    <string name="pesdk_editor_save">Salvar</string>
+
+    <string name="pesdk_editor_text_exportProgressUnknown">Exportador…</string>
+    <string name="pesdk_editor_text_exportProgress" formatted="false">Exportando %s.</string>
+
+    <string name="pesdk_editor_text_loadProgressUnknown">Carregar dados…</string>
+    <string name="pesdk_editor_text_loadProgress" formatted="false">Carregar dados %s.</string>
+
+    <string name="pesdk_common_button_flipH">Virar H</string>
+    <string name="pesdk_common_button_flipV">Virar V</string>
+    <string name="pesdk_common_button_undo">Desfazer</string>
+    <string name="pesdk_common_button_redo">Refazer</string>
+
+    <string name="vesdk_video_trim_title_name">Aparar</string>
+
+    <string name="pesdk_common_title_colorPicker">Seletor de cores</string>
+    <string name="pesdk_common_title_transparentColor">Transparente</string>
+    <string name="pesdk_common_title_whiteColor">Branco</string>
+    <string name="pesdk_common_title_grayColor">Cinza</string>
+    <string name="pesdk_common_title_blackColor">Preto</string>
+    <string name="pesdk_common_title_lightBlueColor">Azul claro</string>
+    <string name="pesdk_common_title_blueColor">Azul</string>
+    <string name="pesdk_common_title_purpleColor">Roxo</string>
+    <string name="pesdk_common_title_orchidColor">Orquídea</string>
+    <string name="pesdk_common_title_pinkColor">Rosa</string>
+    <string name="pesdk_common_title_redColor">Vermelho</string>
+    <string name="pesdk_common_title_orangeColor">Laranja</string>
+    <string name="pesdk_common_title_goldColor">Ouro</string>
+    <string name="pesdk_common_title_yellowColor">Amarelo</string>
+    <string name="pesdk_common_title_oliveColor">Azeitona</string>
+    <string name="pesdk_common_title_greenColor">Verde</string>
+    <string name="pesdk_common_title_aquamarinColor">Água-marinha</string>
+    <string name="pesdk_common_title_pipettableColor">Cor pipetável</string>
+    
+</resources>
