@@ -640,69 +640,42 @@ RCT_EXPORT_METHOD(updateLanguage:(NSString*)languageCode)
 #pragma mark - PESDKVideoEditViewControllerDelegate
 
 - (void)videoEditViewControllerDidFinish:(nonnull PESDKVideoEditViewController *)videoEditViewController result:(nonnull PESDKVideoEditorResult *)result {
-    NSError *error = nil;
-    id serialization = nil;
+  NSError *error = nil;
+  id serialization = nil;
 
-    if (self.serializationEnabled)
-    {
-      NSData *serializationData = [videoEditViewController serializedSettings];
-      if ([self.serializationType isEqualToString:RN_IMGLY.kExportTypeFileURL]) {
-        if ([serializationData RN_IMGLY_writeToURL:self.serializationFile andCreateDirectoryIfNecessary:YES error:&error]) {
-          serialization = self.serializationFile.absoluteString;
-        }
-      } else if ([self.serializationType isEqualToString:RN_IMGLY.kExportTypeObject]) {
-        serialization = [NSJSONSerialization JSONObjectWithData:serializationData options:kNilOptions error:&error];
+  if (self.serializationEnabled)
+  {
+    NSData *serializationData = [videoEditViewController serializedSettings];
+    if ([self.serializationType isEqualToString:RN_IMGLY.kExportTypeFileURL]) {
+      if ([serializationData RN_IMGLY_writeToURL:self.serializationFile andCreateDirectoryIfNecessary:YES error:&error]) {
+        serialization = self.serializationFile.absoluteString;
       }
+    } else if ([self.serializationType isEqualToString:RN_IMGLY.kExportTypeObject]) {
+      serialization = [NSJSONSerialization JSONObjectWithData:serializationData options:kNilOptions error:&error];
     }
+  }
 
+  if (error == nil) {
     RCTPromiseResolveBlock resolve = self.resolve;
+    NSArray<NSDictionary *> *segments;
 
-    // save to album photos
-    __block NSURL *movieUrl = result.output.url;
-    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-
-    if ([PHObject class]) {
-        __block PHAssetChangeRequest *assetRequest;
-        __block PHObjectPlaceholder *placeholder;
-        // Save to the album
-        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-
-            [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-
-                assetRequest = [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:movieUrl];
-                placeholder = [assetRequest placeholderForCreatedAsset];
-            } completionHandler:^(BOOL success, NSError *error) {
-                if (success) {
-                    [self dismiss:videoEditViewController animated:YES completion:^{
-                      if (error == nil) {
-                        NSArray<NSDictionary *> *segments;
-
-                        if (self.exportVideoSegments) {
-                            segments = [self serializeVideoSegments:result.task.video.segments];
-                        }
-                        resolve(@{ @"video": (result.output.url != nil) ? result.output.url.absoluteString : [NSNull null],
-                                   @"hasChanges": @(result.status == VESDKVideoEditorStatusRenderedWithChanges),
-                                   @"serialization": (serialization != nil) ? serialization : [NSNull null],
-                                   @"phasset": [NSString stringWithFormat:@"ph://%@", placeholder.localIdentifier],
-                                   @"segments": (segments != nil) ? segments : [NSNull null],
-                                   @"videoSize": @{@"height": @(result.task.video.size.height), @"width": @(result.task.video.size.height)},
-                                   @"identifier": self.uuid
-                                });
-                      } else {
-                        [self handleError:videoEditViewController code:RN_IMGLY.kErrorUnableToExport message:[NSString RN_IMGLY_string:@"Unable to export video or serialization." withError:error] error:error];
-                      }
-                    }];
-
-                    dispatch_semaphore_signal(sema);
-                }
-                else {
-                    NSLog(@"%@", error);
-                    dispatch_semaphore_signal(sema);
-                }
-            }];
-        }];
+    if (self.exportVideoSegments) {
+      segments = [self serializeVideoSegments:result.task.video.segments];
     }
- }
+
+    [self dismiss:videoEditViewController animated:YES completion:^{
+      resolve(@{ @"video": (result.output.url != nil) ? result.output.url.absoluteString : [NSNull null],
+                 @"hasChanges": @(result.status == VESDKVideoEditorStatusRenderedWithChanges),
+                 @"serialization": (serialization != nil) ? serialization : [NSNull null],
+                 @"segments": (segments != nil) ? segments : [NSNull null],
+                 @"videoSize": @{@"height": @(result.task.video.size.height), @"width": @(result.task.video.size.height)},
+                 @"identifier": self.uuid
+              });
+    }];
+  } else {
+    [self handleError:videoEditViewController code:RN_IMGLY.kErrorUnableToExport message:[NSString RN_IMGLY_string:@"Unable to export video or serialization." withError:error] error:error];
+  }
+}
 
 - (void)videoEditViewControllerDidCancel:(nonnull PESDKVideoEditViewController *)videoEditViewController {
   RCTPromiseResolveBlock resolve = self.resolve;
